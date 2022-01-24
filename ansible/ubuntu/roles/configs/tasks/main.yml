@@ -1,0 +1,11 @@
+---
+- name: Configurations
+  command: "{{ item }}"
+  with_items:
+    # Make sure git uses correct line endings
+    - git config --global core.autocrlf false
+    - git config --global core.eol lf
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted

@@ -1,0 +1,10 @@
+---
+- name: Create new virtualhost
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true
+  vars_files:
+    - config.yml
+  roles:
+    - virtualhost

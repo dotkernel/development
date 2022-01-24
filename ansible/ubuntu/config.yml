@@ -1,0 +1,21 @@
+# System
+system_user: ""
+
+# MySQL
+mysql_root_password: ""
+login_unix_socket: "/run/mysqld/mysqld.sock"
+
+# Git
+git_configurations:
+  - name: core.autocrlf
+    value: "false"
+  - name: core.eol
+    value: "lf"
+  - name: user.name
+    value: ""
+  - name: user.email
+    value: ""
+
+# List of virtualhosts to create
+virtualhosts:
+  - "example.local"

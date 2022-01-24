@@ -1,0 +1,13 @@
+---
+- name: Install PhpMyAdmin
+  apt:
+    name: phpmyadmin
+    state: latest
+- name: Include PhpMyAdmin config to Apache config
+  blockinfile:
+    path: /etc/apache2/apache2.conf
+    insertafter: IncludeOptional sites-enabled/*.conf
+    block: |
+      # Include phpmyadmin config
+      IncludeOptional /etc/phpmyadmin/apache.conf
+  notify: Restart Apache
