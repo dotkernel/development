@@ -68,9 +68,7 @@ This will iterate over the `virtualhosts` configured in `config.yml` and will ou
 
 At this step, your virtual host is not yet accessible because first, you need to route these requests to localhost.
 
-Open **as administrator** any text editor (Notepad, Sublime Text etc.).
-
-Open file `C:\Windows\System32\drivers\etc\hosts` (if you don't see it, select `All files` from the file type selector).
+**Run as administrator** any text editor (Notepad, Sublime Text etc.) and open file `C:\Windows\System32\drivers\etc\hosts` (if you don't see it, select `All files` from the file type selector).
 
 For each item you placed in `virtualhosts`, add the below lines to the end of the file (make sure you replace `{virtualhost}` with your virtual host), then save the file.
 
