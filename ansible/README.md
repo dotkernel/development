@@ -2,8 +2,13 @@
 
 [< Back](../README.md)
 
+
 ## Prerequisites
-If you plan to develop on Windows, make sure to install [WSL2](wsl.md) before proceeding to the next step.
+If you plan to develop on Windows, make sure to install [WSL2](wsl/README.md) before proceeding to the next step.
+
+**Note**:
+Make sure that Apache/MySQL are not running on your Windows machine (via XAMPP or any other tool) or in a different distro, else the installation will fail.
+
 
 ## Setup
 Using your non-root system user, log into your Linux machine.
