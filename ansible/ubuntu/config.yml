@@ -17,5 +17,6 @@ git_configurations:
     value: ""
 
 # List of virtualhosts to create
+# (example.local is just an example, you can remove it)
 virtualhosts:
   - "example.local"
