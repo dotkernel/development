@@ -38,7 +38,7 @@ At the end, you should see the below output:
 More on installing WSL and other distributions can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install)
 
 
-## Change hostname displayed in terminal:
+## (Optional) Change hostname displayed in terminal
 When you have more than one machines installed, knowing which machine your terminal is connected to can become difficult.
 The following solution should fix this.
 
