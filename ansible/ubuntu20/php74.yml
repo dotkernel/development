@@ -10,7 +10,7 @@
     - packages
     - apache
     - mysql
-    - php
+    - php74
     - phpmyadmin
     - composer
     - git

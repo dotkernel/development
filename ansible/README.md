@@ -35,7 +35,7 @@ Move inside the directory `development/ansible/{distro}` - where `{distro}` stan
 
 For example, if you're on Ubuntu, type in this command:
 ```shell
-cd development/ansible/ubuntu
+cd development/ansible/ubuntu20
 ```
 Inside this directory, you will find `config.yml` - a generic config file used by all scripts across this playbook.
 
@@ -50,11 +50,14 @@ Open this file and fill in the empty fields:
 ## Install
 Install and configure all necessary packages by running the below Ansible command:
 ```shell
-ansible-playbook -i hosts install.yml
+ansible-playbook -i hosts php74.yml
 ```
 The installation process will iterate over each task in the playbook and will output a short summary with the results.
 
-Now if you open in your browser [http://localhost/](http://localhost/), you should see Apache's default home page.
+Now check if everything works by opening in your browser:
+* [http://localhost/](http://localhost/) - Apache's default home page
+* [http://localhost/info.php](http://localhost/info.php) - PHP info page
+* [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/) - PhpMyAdmin (login with `root` + the password you configured in `config.yml` under `mysql_root_password`)
 
 This installation is complete, your development environment is ready to use.
 
@@ -81,3 +84,7 @@ Example:
     127.0.0.1	example2.local
     ::1	example2.local
 Now, your virtual host should be accessible and ready to use.
+
+**Note**:
+* Your projects' directory is located under `/home/{system_user}/projects/` (where `{system_user}` is the username you are logged in with on this distro)
+* You can still run scripts under the default Apache directory, located at `/var/www/html/`
