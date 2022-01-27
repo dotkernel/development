@@ -1,6 +1,6 @@
 # Install Ansible development environment
 
-[< Back](../README.md)
+[< DotKernel: Install development environment](../README.md)
 
 
 ## Prerequisites
@@ -11,9 +11,9 @@ Make sure that Apache/MySQL are not running on your Windows machine (via XAMPP o
 
 
 ## Setup
-Using your non-root system user, log into your Linux machine.
+Using Windows Terminal, log into your distro with the (non-root) system user created at installation.
 
-Update Linux distro packages using the below command:
+Update/Upgrade Linux distro packages using the below command:
 
     sudo apt-get update && sudo apt-get upgrade -y
 
@@ -50,8 +50,10 @@ Open this file and fill in the empty fields:
 ## Install
 Install and configure all necessary packages by running the below Ansible command:
 ```shell
-ansible-playbook -i hosts php74.yml
+ansible-playbook -i hosts php74.yml --ask-become-pass
 ```
+Once again, you will be prompted to enter your password.
+
 The installation process will iterate over each task in the playbook and will output a short summary with the results.
 
 Now check if everything works by opening in your browser:

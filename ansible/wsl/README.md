@@ -1,5 +1,7 @@
 # WSL2
 
+[< Install Ansible development environment](../README.md)
+
 
 ## Prerequisites
 Before proceeding to the installation, we need to make sure your machine is ready for running WSL2.
@@ -10,21 +12,41 @@ This will open a window where you can turn Windows features on/off.
 
 Make sure the next features are activated (checked):
 * `Hyper-V` (including its sub-features)
+* `Virtual Machine Platform`
 * `Windows Subsystem for Linux`
 
-Click `Ok` and restart your machine.
+> If any of the above features is missing, then first you need to install them manually using [this guide](https://docs.microsoft.com/en-us/windows/wsl/install-manual) and then continue with the below steps.
+
+Click `Ok` and restart your computer.
+
+Make sure you use WSL2 by default by executing the below command in Windows Terminal:
+
+    wsl --set-default-version 2
 
 
 ## Install
-Open Windows Terminal and type in the below command:
-```shell
-wsl --install
-```
-This command will:
-* enable the required optional components
-* download the latest Linux kernel
-* set WSL 2 as your default
-* install a Linux distribution for you (Ubuntu by default)
+Get a list of available distros by executing `wsl -l -o` or `wsl --list --online`:
+
+    The following is a list of valid distributions that can be installed.
+    Install using 'wsl --install -d <Distro>'.
+    
+    NAME            FRIENDLY NAME
+    Ubuntu          Ubuntu
+    Debian          Debian GNU/Linux
+    kali-linux      Kali Linux Rolling
+    openSUSE-42     openSUSE Leap 42
+    SLES-12         SUSE Linux Enterprise Server v12
+    Ubuntu-16.04    Ubuntu 16.04 LTS
+    Ubuntu-18.04    Ubuntu 18.04 LTS
+    Ubuntu-20.04    Ubuntu 20.04 LTS
+
+Pick any distro and install it using the below command:
+
+    wsl --install -d {distro}
+
+after you replace `{distro}` with the name of selected distro - for example:
+
+    wsl --install -d Ubuntu
 
 Once completed, a new terminal will open, prompting you to:
 * `Enter new UNIX username:` - enter the username you will use to log in to this machine
@@ -41,10 +63,6 @@ More on installing WSL and other distributions can be found [here](https://docs.
 You can close the installation window that was opened during the installation process.
 
 
-## WSL and PhpStorm
-Check out [this](https://www.jetbrains.com/help/phpstorm/how-to-use-wsl-development-environment-in-product.html) article on working with PhpStorm.
-
-
 ## List installed distros
 Open Windows Terminal and execute `wsl -l -v` or `wsl --list --verbose`.
 
@@ -58,13 +76,13 @@ Depending on the installed distros, the output of this command will look similar
 | Ubuntu-18.04 | stopped | 2       |
 | Ubuntu-18.04 | stopped | 2       |
 
-Although it's self-explanatory, a few details on the columns:
-* `NAME`: distro name - use this value in the future when you need to replace `{distro}` with a value
-* `STATE`: indicates distro status (running or stopped)
-* `VERSION`: indicates if a distro runs on WSL 1 or 2
+Although the column names are self-explanatory, here's a few details on the columns:
+* `NAME`: distro name - use this string when you need to replace `{distro}` with a value
+* `STATE`: indicates distro status (`running` or `stopped`)
+* `VERSION`: indicates if a distro runs on WSL1 or WSL2
 
 
-## Access your Linux distros
+## Access your distros
 There are multiple ways for accessing a Linux distro:
 * from Windows Terminal: use the arrow found in the tab bar (if you just installed a new distro, you need to restart the terminal for it to appear in the list)
 * from Windows Terminal: type `wsl -d {distro}`, then hit `Enter`
@@ -72,27 +90,27 @@ There are multiple ways for accessing a Linux distro:
 
 
 ## Change hostname displayed in terminal (recommended)
-When you have more than one distro installed, knowing which distro your terminal is connected to can become difficult.
+When you have more than one distro installed, identifying which distro your terminal is connected to can become difficult.
 
-The following solution should fix this.
+In the below example we will modify the displayed hostname, by changing it to `ubuntu2004php74` - you can use any name you see fit.
 
-Access your distro using Windows Explorer, then locate and open `.bashrc` in your preferred text editor.
+[Access your distro](#access-your-distros) and go to your home directory. Then, locate and open `.bashrc` using your preferred text editor.
 
-Around line 60, locate the following:
+Around line 60, locate the following string:
 
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-and replace it with
+> PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@**\h**\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@__HOSTNAME__\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-where `__HOSTNAME__` must be replaced with a more relevant name (example: `ubuntu20php74`).
-
-Also, around line 62, locate the following:
-
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 and replace it with:
 
-    PS1='${debian_chroot:+($debian_chroot)}\u@__HOSTNAME__:\w\$ '
-where again, `__HOSTNAME__` must be replaced with the same relevant name used above.
+> PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@**ubuntu2004php74**\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+Also, around line 62, locate the following string:
+
+> PS1='${debian_chroot:+($debian_chroot)}\u@**\h**:\w\$ '
+
+and replace it with:
+
+> PS1='${debian_chroot:+($debian_chroot)}\u@**ubuntu2004php74**:\w\$ '
 
 Save the file and close it.
 
@@ -127,6 +145,10 @@ Finally, we restore the distro from the backup to the new location:
 Get help anytime by typing `wsl -h` or `wsl --help`.
 
 **Note**: You can also use this method to create forks of the same distro, each of them running different version of PHP.
+
+
+## WSL and PhpStorm
+Check out [this](https://www.jetbrains.com/help/phpstorm/how-to-use-wsl-development-environment-in-product.html) article on working with PhpStorm.
 
 
 ## WSL distro disk drive default locations
