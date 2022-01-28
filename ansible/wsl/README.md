@@ -44,7 +44,7 @@ Pick any distro and install it using the below command:
 
     wsl --install -d {distro}
 
-after you replace `{distro}` with the name of selected distro - for example:
+after you replace `{distro}` with the name of the selected distro - for example:
 
     wsl --install -d Ubuntu
 
@@ -61,32 +61,6 @@ At the end, you should see the below output:
 More on installing WSL and other distributions can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install)
 
 You can close the installation window that was opened during the installation process.
-
-
-## List installed distros
-Open Windows Terminal and execute `wsl -l -v` or `wsl --list --verbose`.
-
-Depending on the installed distros, the output of this command will look similar to the following:
-
-| NAME         | STATE   | VERSION |
-|--------------|---------|---------|
-| Debian       | running | 2       |
-| Ubuntu       | stopped | 2       |
-| Ubuntu-16.04 | stopped | 2       |
-| Ubuntu-18.04 | stopped | 2       |
-| Ubuntu-18.04 | stopped | 2       |
-
-Although the column names are self-explanatory, here's a few details on the columns:
-* `NAME`: distro name - use this string when you need to replace `{distro}` with a value
-* `STATE`: indicates distro status (`running` or `stopped`)
-* `VERSION`: indicates if a distro runs on WSL1 or WSL2
-
-
-## Access your distros
-There are multiple ways for accessing a Linux distro:
-* from Windows Terminal: use the arrow found in the tab bar (if you just installed a new distro, you need to restart the terminal for it to appear in the list)
-* from Windows Terminal: type `wsl -d {distro}`, then hit `Enter`
-* from Windows Explorer: type `\\wsl$\{distro}` in the address bar, then hit `Enter` (once there, you can also pin the directory to Quick access)
 
 
 ## Change hostname displayed in terminal (recommended)
@@ -145,6 +119,32 @@ Finally, we restore the distro from the backup to the new location:
 Get help anytime by typing `wsl -h` or `wsl --help`.
 
 **Note**: You can also use this method to create forks of the same distro, each of them running different version of PHP.
+
+
+## List installed distros
+Open Windows Terminal and execute `wsl -l -v` or `wsl --list --verbose`.
+
+Depending on the installed distros, the output of this command will look similar to the following:
+
+| NAME         | STATE   | VERSION |
+|--------------|---------|---------|
+| Debian       | running | 2       |
+| Ubuntu       | stopped | 2       |
+| Ubuntu-16.04 | stopped | 2       |
+| Ubuntu-18.04 | stopped | 2       |
+| Ubuntu-20.04 | stopped | 2       |
+
+Although the column names are self-explanatory, here's a few details on the columns:
+* `NAME`: distro name - use this string when you need to replace `{distro}` with a value
+* `STATE`: indicates distro status (`running` or `stopped`)
+* `VERSION`: indicates if a distro runs on WSL1 or WSL2
+
+
+## Access your distros
+There are multiple ways for accessing a Linux distro:
+* from Windows Terminal: use the arrow found in the tab bar (if you just installed a new distro, you need to restart the terminal for it to appear in the list)
+* from Windows Terminal: type `wsl -d {distro}`, then hit `Enter`
+* from Windows Explorer: type `\\wsl$\{distro}` in the address bar, then hit `Enter` (once there, you can also pin the directory to Quick access)
 
 
 ## WSL and PhpStorm
