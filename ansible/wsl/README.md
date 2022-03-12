@@ -72,19 +72,19 @@ In the below example we will modify the displayed hostname, by changing it to `u
 
 Around line 60, locate the following string:
 
-> PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@**\h**\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+> PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@**_\h_**\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 and replace it with:
 
-> PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@**ubuntu2004php74**\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+> PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@**_ubuntu2004php74_**\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 Also, around line 62, locate the following string:
 
-> PS1='${debian_chroot:+($debian_chroot)}\u@**\h**:\w\$ '
+> PS1='${debian_chroot:+($debian_chroot)}\u@**_\h_**:\w\$ '
 
 and replace it with:
 
-> PS1='${debian_chroot:+($debian_chroot)}\u@**ubuntu2004php74**:\w\$ '
+> PS1='${debian_chroot:+($debian_chroot)}\u@**_ubuntu2004php74_**:\w\$ '
 
 Save the file and close it.
 

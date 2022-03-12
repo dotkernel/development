@@ -1,0 +1,11 @@
+---
+- name: Setup new development environment
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true
+  vars_files:
+    - config.yml
+- name: "ansible_distribution={{ ansible_distribution }} ansible_lsb.major_release={{ ansible_lsb.major_release }} ansible_distribution_version={{ ansible_distribution_version }}"
+  import_playbook: ubuntu20/php74.yml
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "20.04"
