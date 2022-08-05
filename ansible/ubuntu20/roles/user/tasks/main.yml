@@ -2,11 +2,11 @@
 - name: Set default user
   template:
     src: wsl.conf.j2
-    dest: "/etc/wsl.conf"
+    dest: "{{ user_wsl_config_dest }}"
 - name: Create projects directory
   file:
-    path: "/home/{{ system_user }}/projects"
+    path: "{{ user_projects_dir }}"
     state: directory
-    owner: "{{ system_user }}"
-    group: "{{ system_user }}"
+    owner: "{{ config.system.username }}"
+    group: "{{ config.system.username }}"
     mode: 0755

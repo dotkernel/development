@@ -4,14 +4,20 @@
 
 
 ## Prerequisites
-If you plan to develop on Windows, make sure to install [WSL2](wsl/README.md) before proceeding to the next step.
+If you plan to develop on Windows, make sure to install [WSL2](/wsl/README.md) before proceeding to the next step.
+
+
+## Terminology
+* `username` - your non-root username created at the distro installation.
+* `distro` - the Linux distribution you are working on.
+
 
 **Note**:
-Make sure that Apache/MySQL are not running on your Windows machine (via XAMPP or any other tool) or in a different distro, else the installation will fail.
+Make sure that Apache/MySQL are not running on your Windows machine (via XAMPP or any other tool) or in a different distro, else the installation will fail (because port is already in use).
 
 
 ## Setup
-Using Windows Terminal, log into your distro with the (non-root) system user created at installation.
+Using Windows Terminal, log into the distro with your username.
 
 Update/Upgrade Linux distro packages using the below command:
 
@@ -27,11 +33,11 @@ Now execute the following command:
 
 This will automatically install the latest version of Ansible on your machine.
 
-Clone dotkernel/development into your home directory using the below command:
+Clone dotkernel/development into your home directory (usually **/home/username**) using the below command:
 
     git clone https://github.com/dotkernel/development
 
-Move inside the directory `development/ansible/{distro}` - where `{distro}` stands for the Linux distribution (in lowercase) your machine runs on.
+Move inside the directory `development/ansible/{distro}`.
 
 For example, if you're on Ubuntu, type in this command:
 ```shell

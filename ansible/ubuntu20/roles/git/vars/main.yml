@@ -1,2 +1,4 @@
 ---
-# vars file for /home/merlin/ansible/roles/git/
+git_config:
+- "core.autocrlf": "false"
+- "core.eol": "lf"

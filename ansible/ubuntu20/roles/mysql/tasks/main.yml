@@ -11,15 +11,16 @@
 - name: Start and enable MySQL
   service:
     name: mysql
-    state: started
+    state: restarted
     enabled: true
 - name: Set MySQL root password
   mysql_user:
     name: root
-    password: "{{ mysql_root_password }}"
+    password: "{{ config.mysql.root_password }}"
     login_unix_socket: "{{ login_unix_socket }}"
   no_log: true
 - name: Configure login socket location
   template:
     src: my.cnf.j2
-    dest: /etc/my.cnf
+    dest: "{{ mysql_mycnf_dest }}"
+  notify: Restart MySQL

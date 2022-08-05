@@ -1,17 +1,17 @@
 ---
 - name: Start MySQL
   service:
-    name: mysqld
+    name: mysql
     state: started
 - name: Stop MySQL
   service:
-    name: mysqld
+    name: mysql
     state: stopped
 - name: Restart MySQL
   service:
-    name: mysqld
+    name: mysql
     state: restarted
 - name: Enable MySQL
   service:
-    name: mysqld
+    name: mysql
     enabled: yes

@@ -1,0 +1,17 @@
+---
+- name: Setup Ubuntu 20 development environment
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true
+  vars_files:
+    - ../config.yml
+  roles:
+    - system
+    - apache
+    - mysql
+    - php
+    - phpmyadmin
+    - composer
+    - git
+    - user

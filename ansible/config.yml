@@ -1,0 +1,17 @@
+# ansible-galaxy install -r requirements.yml
+
+config:
+  git:
+    config:
+      "user.name": ""
+      "user.email": ""
+  mysql:
+    root_password: "123456"
+  php:
+    versions:
+      - "74"
+      - "81"
+  system:
+    username: "{{ lookup('env', 'USER') }}"
+  virtualhosts:
+    - "example.local"

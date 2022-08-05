@@ -1,2 +1,2 @@
 ---
-# vars file for /home/merlin/ansible/roles/phpmyadmin/
+phpmyadmin_apache_config_file: /etc/phpmyadmin/apache.conf

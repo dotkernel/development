@@ -1,0 +1,17 @@
+---
+- name: Setup development environment
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true
+  # vars_files:
+  #   - config.yml
+  tasks:
+    - name: Identify operating system 
+      set_fact: os="{{ ansible_distribution|lower }}{{ ansible_distribution_major_version }}"
+    # - name: do stuff 2
+    #   debug: msg="{{ config }}"
+- import_playbook: "ubuntu19/install.yml"
+  when: os == "ubuntu19"
+- import_playbook: "ubuntu20/install.yml"
+  when: os == "ubuntu20"

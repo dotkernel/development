@@ -1,2 +1,3 @@
 ---
-# vars file for /home/merlin/ansible/roles/mysql/
+login_unix_socket: "/run/mysqld/mysqld.sock"
+mysql_mycnf_dest: /etc/my.cnf
