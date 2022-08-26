@@ -1,24 +1,25 @@
 ---
 - name: Create virtualhost directories
   file:
-    path: "/home/{{ system_user }}/projects/{{ virtualhost }}"
+    path: "{{ user_projects_dir }}/{{ virtualhost }}"
     state: directory
-    owner: "{{ system_user }}"
-    group: "{{ system_user }}"
+    owner: "{{ config.system.username }}"
+    group: "{{ config.system.username }}"
     mode: 0755
-  loop: "{{ virtualhosts }}"
+  loop: "{{ config.virtualhosts }}"
   loop_control:
     loop_var: virtualhost
 - name: Create virtualhosts
   template:
     src: virtualhost.conf.j2
     dest: "/etc/apache2/sites-available/{{ virtualhost }}.conf"
-  loop: "{{ virtualhosts }}"
+  loop: "{{ config.virtualhosts }}"
   loop_control:
     loop_var: virtualhost
 - name: Enable virtualhosts
   command: "a2ensite {{ virtualhost }}"
-  loop: "{{ virtualhosts }}"
+  loop: "{{ config.virtualhosts }}"
   loop_control:
     loop_var: virtualhost
-  notify: Reload Apache
+  notify:
+    - Restart Apache

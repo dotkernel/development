@@ -11,9 +11,9 @@
         ServerAlias www.{{ virtualhost }}
 
         ServerAdmin webmaster@localhost
-        DocumentRoot /home/{{ system_user }}/projects/{{ virtualhost }}/public
+        DocumentRoot {{ user_projects_dir }}/{{ virtualhost }}/public
 
-        <Directory /home/{{ system_user }}/projects/{{ virtualhost }}>
+        <Directory {{ user_projects_dir }}/{{ virtualhost }}>
                 Options Indexes FollowSymLinks
                 AllowOverride All
                 Require all granted

@@ -5,8 +5,9 @@
   become: true
   gather_facts: true
   vars_files:
-    - ../config.yml
+    - ../../config.yml
   roles:
+    - _
     - system
     - apache
     - mysql
