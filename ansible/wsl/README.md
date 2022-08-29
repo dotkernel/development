@@ -68,7 +68,7 @@ When you have more than one distro installed, identifying which distro your term
 
 In the below example we will modify the displayed hostname, by changing it to `ubuntu2004php74` - you can use any name you see fit.
 
-[Access your distro](#access-your-distros) and go to your home directory. Usually **/home/username**.
+[Access distro](#access-your-distros) and [move to your home directory](../HELP.md#move-to-your-home-directory) (usually **/home/username**).
 
 Then, locate and open `.bashrc` using your preferred text editor.
 
