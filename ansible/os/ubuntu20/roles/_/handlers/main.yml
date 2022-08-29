@@ -1,0 +1,33 @@
+---
+- name: Start Apache
+  service:
+    name: apache2
+    state: started
+- name: Stop Apache
+  service:
+    name: apache2
+    state: stopped
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
+- name: Reload Apache
+  service:
+    name: apache2
+    state: reloaded
+- name: Start MySQL
+  service:
+    name: mysql
+    state: started
+- name: Stop MySQL
+  service:
+    name: mysql
+    state: stopped
+- name: Restart MySQL
+  service:
+    name: mysql
+    state: restarted
+- name: Enable MySQL
+  service:
+    name: mysql
+    enabled: yes

@@ -104,8 +104,6 @@ Finally, we restore the distro from the backup to the new location:
 * execute command `wsl --import Ubuntu Ubuntu ubuntu-backup.tar`
 * make sure the distro has been reinstalled by [listing installed distros](#list-installed-distros)
 
-Get help anytime by typing `wsl -h` or `wsl --help`.
-
 **Note**: You can also use this method to create forks of the same distro, each of them running different version of PHP.
 
 
@@ -131,12 +129,64 @@ Although the column names are self-explanatory, here's a few details on the colu
 ## Access your distros
 There are multiple ways for accessing a Linux distro:
 * from Windows Terminal: use the arrow found in the tab bar (if you just installed a new distro, you need to restart the terminal for it to appear in the list)
-* from Windows Terminal: type `wsl -d {distro}`, then hit `Enter`
-* from Windows Explorer: type `\\wsl$\{distro}` in the address bar, then hit `Enter` (once there, you can also pin the directory to Quick access)
+* from Windows Terminal: type `wsl -d {distro}` (replace {distro} with your `distro`), then hit `Enter`
+* from Windows Explorer: type `\\wsl$\{distro}` (replace {distro} with your `distro`) in the address bar, then hit `Enter` (once there, you can also pin the directory to Quick access)
+
+
+## Start distro
+Open Windows Terminal. If you don't know the name of the distro you want to start, [list installed distros](#list-installed-distros).
+
+You can start it by executing the following command (replace {distro} with your `distro`):
+
+    wsl -d {distro}
+
+
+## Stop distro
+Open Windows Terminal. If you don't know the name of the distro you want to stop, [list installed distros](#list-installed-distros).
+
+You can stop it by executing the following command (replace {distro} with your `distro`):
+
+    wsl -t {distro}
+
+OR
+
+    wsl --terminate {distro}
+
+
+## Restart distro
+Open Windows Terminal. If you don't know the name of the distro you want to restart, [list installed distros](#list-installed-distros).
+
+First, [stop the distro](#stop-distro), then [start it](#start-distro).
 
 
 ## WSL and PhpStorm
 Check out [this](https://www.jetbrains.com/help/phpstorm/how-to-use-wsl-development-environment-in-product.html) article on working with PhpStorm.
+
+
+## Check identity
+See below methods to identify the user you are logged in with:
+
+### Method 1:
+By looking at your terminal's prompt area, you should see something similar to this:
+
+    username@hostname:~$
+
+The part before the `@` character is you current user, so in this example the username is `username`.
+
+### Method 2:
+Using your terminal and being logged in to your `distro`, type in the following command:
+
+    whoami
+
+The output of this command is the username you are currently logged in with.
+
+
+## Switch from root to your username
+[Check your identity](#switch-from-root-to-your-username) and if it's _root_, then execute the following command (replace {username} with your `username`):
+
+    su - {username}
+
+[Check your identity](#switch-from-root-to-your-username) to make sure that your identity has been switched to the desired username.
 
 
 ## WSL distro disk drive default locations
@@ -146,3 +196,141 @@ Below you will find the disk drive file locations for the most common distros:
 * `Ubuntu 16.04`: %USERPROFILE%\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu16.04onWindows_79rhkp1fndgsc\LocalState
 * `Ubuntu 18.04`: %USERPROFILE%\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState
 * `Ubuntu 20.04`: %USERPROFILE%\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState
+
+
+## Getting help
+If you need help using WSL, type `wsl --help` and hit `Enter`. This will output all available options on how to use WSL:
+
+    Copyright (c) Microsoft Corporation. All rights reserved.
+
+    Usage: wsl.exe [Argument] [Options...] [CommandLine]
+    
+    Arguments for running Linux binaries:
+
+    If no command line is provided, wsl.exe launches the default shell.
+
+    --exec, -e <CommandLine>
+        Execute the specified command without using the default Linux shell.
+
+    --
+        Pass the remaining command line as is.
+
+    Options:
+    --cd <Directory>
+    Sets the specified directory as the current working directory.
+    If ~ is used the Linux user's home path will be used. If the path begins
+    with a / character, it will be interpreted as an absolute Linux path.
+    Otherwise, the value must be an absolute Windows path.
+
+    --distribution, -d <Distro>
+        Run the specified distribution.
+
+    --user, -u <UserName>
+        Run as the specified user.
+
+    --system
+        Launches a shell for the system distribution.
+
+    Arguments for managing Windows Subsystem for Linux:
+
+    --help
+        Display usage information.
+
+    --install [Options]
+        Install additional Windows Subsystem for Linux distributions.
+        For a list of valid distributions, use 'wsl --list --online'.
+
+        Options:
+            --distribution, -d [Argument]
+                Downloads and installs a distribution by name.
+
+                Arguments:
+                    A valid distribution name (not case sensitive).
+
+                Examples:
+                    wsl --install -d Ubuntu
+                    wsl --install --distribution Debian
+
+    --set-default-version <Version>
+        Changes the default install version for new distributions.
+
+    --shutdown
+        Immediately terminates all running distributions and the WSL 2
+        lightweight utility virtual machine.
+
+    --status
+        Show the status of Windows Subsystem for Linux.
+
+    --update [Options]
+        If no options are specified, the WSL 2 kernel will be updated
+        to the latest version.
+
+        Options:
+            --rollback
+                Revert to the previous version of the WSL 2 kernel.
+
+    Arguments for managing distributions in Windows Subsystem for Linux:
+
+    --export <Distro> <FileName>
+        Exports the distribution to a tar file.
+        The filename can be - for standard output.
+
+    --import <Distro> <InstallLocation> <FileName> [Options]
+        Imports the specified tar file as a new distribution.
+        The filename can be - for standard input.
+
+        Options:
+            --version <Version>
+                Specifies the version to use for the new distribution.
+
+    --list, -l [Options]
+        Lists distributions.
+
+        Options:
+            --all
+                List all distributions, including distributions that are
+                currently being installed or uninstalled.
+
+            --running
+                List only distributions that are currently running.
+
+            --quiet, -q
+                Only show distribution names.
+
+            --verbose, -v
+                Show detailed information about all distributions.
+
+            --online, -o
+                Displays a list of available distributions for install with 'wsl --install'.
+
+    --set-default, -s <Distro>
+        Sets the distribution as the default.
+
+    --set-version <Distro> <Version>
+        Changes the version of the specified distribution.
+
+    --terminate, -t <Distro>
+        Terminates the specified distribution.
+
+    --unregister <Distro>
+        Unregisters the distribution and deletes the root filesystem.
+
+    --mount <Disk>
+        Attaches and mounts a physical disk in all WSL2 distributions.
+
+        Options:
+            --bare
+                Attach the disk to WSL2, but don't mount it.
+
+            --type <Type>
+                Filesystem to use when mounting a disk, if not specified defaults to ext4.
+
+            --options <Options>
+                Additional mount options.
+
+            --partition <Index>
+                Index of the partition to mount, if not specified defaults to the whole disk.
+
+    --unmount [Disk]
+        Unmounts and detaches a disk from all WSL2 distributions.
+        Unmounts and detaches all disks if called without argument.

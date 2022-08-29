@@ -1,0 +1,4 @@
+- name: community.general
+  src: https://github.com/ansible-collections/community.general
+- name: community.mysql
+  src: https://github.com/ansible-collections/community.mysql
