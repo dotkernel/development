@@ -1,0 +1,13 @@
+---
+- name: Update/Upgrade installed packages
+  dnf:
+    name: "*"
+    state: latest
+    update_cache: true
+- name: Install helper packages
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - vim
+    - unzip

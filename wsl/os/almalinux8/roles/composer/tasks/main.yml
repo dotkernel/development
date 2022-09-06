@@ -1,0 +1,8 @@
+---
+- name: Download Composer
+  get_url:
+    url: "{{ composer_download_url }}"
+    dest: "{{ composer_download_dest }}"
+- name: Install Composer
+  command: php "{{ composer_download_dest }}" --install-dir="{{ bin_directory }}" --filename="{{ composer_filename }}"
+  when: composer_executable.stat.isreg is not defined or not composer_executable.stat.isreg

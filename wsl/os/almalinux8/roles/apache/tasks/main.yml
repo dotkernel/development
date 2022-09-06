@@ -1,0 +1,13 @@
+---
+- name: Install Apache
+  dnf:
+    name: httpd
+    state: latest
+#- name: Enable rewrite module
+#  command: a2enmod rewrite
+#- name: Allow port 80 through firewall
+#  ansible.posix.firewalld:
+#    port: "{{ apache_port }}/tcp"
+#    state: enabled
+#    permanent: yes
+#    immediate: yes
