@@ -1,0 +1,19 @@
+Alias /phpmyadmin {{ phpmyadmin_dest_dir }}
+
+<Directory {{ phpmyadmin_dest_dir }}/>
+   AddDefaultCharset UTF-8
+   <IfModule mod_authz_core.c>
+     # Apache 2.4
+     <RequireAny>
+      Require all granted
+     </RequireAny>
+   </IfModule>
+</Directory>
+
+<Directory {{ phpmyadmin_dest_dir }}/setup/>
+   <IfModule mod_authz_core.c>
+     <RequireAny>
+       Require all granted
+     </RequireAny>
+   </IfModule>
+</Directory>

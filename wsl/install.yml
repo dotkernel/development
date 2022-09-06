@@ -1,0 +1,25 @@
+---
+- name: Setup development environment
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Identify operating system
+      set_fact: os="{{ ansible_distribution|lower }}{{ ansible_distribution_major_version }}"
+    - name: Find supported Operating Systems (Step 1)
+      find:
+        paths: "{{ playbook_dir }}/os"
+        file_type: directory
+      register: os_list
+    - name: Find supported Operating Systems (Step 2)
+      set_fact:
+        os_list="{{ os_list.files | map(attribute='path') | map('basename') | list }}"
+    - name: Halt execution if OS is not supported
+      assert:
+        that: os in os_list
+        msg: "Operating System '{{ ansible_distribution }} {{ ansible_distribution_major_version }}' is not supported"
+- import_playbook: "{{ playbook_dir }}/os/ubuntu20/install.yml"
+  when: os == "ubuntu20"
+- import_playbook: "{{ playbook_dir }}/os/almalinux8/install.yml"
+  when: os == "almalinux8"

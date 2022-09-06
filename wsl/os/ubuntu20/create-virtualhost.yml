@@ -1,0 +1,12 @@
+---
+- name: Create new virtualhost under Ubuntu 20
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true
+  vars_files:
+    - ../../config.yml
+    - ./roles/user/vars/main.yml
+  roles:
+    - _
+    - virtualhost

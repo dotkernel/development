@@ -1,0 +1,13 @@
+config:
+  git:
+    config:
+      "user.name": ""
+      "user.email": ""
+  mysql:
+    root_password: ""
+  system:
+    username: "{{ lookup('env', 'USER') }}"
+  # Add as many virtualhosts as needed - if a virtualhost already exists, it will not be created
+  # example.local is an example, you can remove it and add your own local domains
+  virtualhosts:
+    - "example.local"
