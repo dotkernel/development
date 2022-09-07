@@ -1,6 +1,6 @@
 # Install WSL development environment on AlmaLinux 8
 
-[< DotKernel: Install development environment](../../../README.md)
+[< DotKernel: Install development environment](../../README.md)
 
 
 ## Warning

@@ -1,6 +1,6 @@
 # Install WSL development environment on Ubuntu 20
 
-[< DotKernel: Install development environment](../../../README.md)
+[< DotKernel: Install development environment](../../README.md)
 
 
 ## Download Ubuntu 20 WSL image
