@@ -3,6 +3,14 @@
 [< DotKernel: Install development environment](../../../README.md)
 
 
+## Warning
+Not fully functional yet, because there's a known issue running systemd as PID1 inside WSL2.
+
+This causes crucial services (Apache, MySQL) not being possible to be started.
+
+If you still want to give it a try, you can proceed with the installation.
+
+
 ## Download AlmaLinux 8 WSL image
 Open Microsoft Store, in the search box type in: `AlmaLinux` and hit `Enter`.
 
@@ -19,13 +27,13 @@ Here you will be asked to fill in your username (for example `dotkernel`):
     For more information visit: https://aka.ms/wslusers
     Enter new UNIX username:
 
-Next, you are prompted to enter a password to use with your username (you will not see what you're typing, that's a security measure in Linux regarding passwords):
+Next, you are prompted to enter a password to use with your username (you will not see what you are typing, that's a security measure in Linux regarding passwords):
 
     Enter new UNIX username: dotkernel.
     Changing password for user dotkernel.
     New password:
 
-Depending on the strength of your password, you might see the following message (if you want to choose a different password, hit `Enter` and you're taken back to previous step - else, continue)
+Depending on the strength of your password, you might see the following message (if you want to choose a different password, hit `Enter` and you are taken back to previous step - else, continue)
 
     BAD PASSWORD: The password fails the dictionary check - it is based on a dictionary word
 

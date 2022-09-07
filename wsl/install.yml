@@ -21,5 +21,7 @@
         msg: "Operating System '{{ ansible_distribution }} {{ ansible_distribution_major_version }}' is not supported"
 - import_playbook: "{{ playbook_dir }}/os/ubuntu20/install.yml"
   when: os == "ubuntu20"
+- import_playbook: "{{ playbook_dir }}/os/ubuntu22/install.yml"
+  when: os == "ubuntu22"
 - import_playbook: "{{ playbook_dir }}/os/almalinux8/install.yml"
   when: os == "almalinux8"

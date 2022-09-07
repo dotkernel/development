@@ -19,7 +19,7 @@ Here you will be asked to fill in your username (for example `dotkernel`):
     For more information visit: https://aka.ms/wslusers
     Enter new UNIX username:
 
-Next, you are prompted to enter a password to use with your username (you will not see what you're typing, that's a security measure in Linux regarding passwords):
+Next, you are prompted to enter a password to use with your username (you will not see what you are typing, that's a security measure in Linux regarding passwords):
 
     Enter new UNIX username: dotkernel.
     Changing password for user dotkernel.
