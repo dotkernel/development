@@ -4,6 +4,25 @@
 
 
 ## Download Ubuntu 20 WSL image
+Download Ubuntu 20 image by following one of the below methods.
+
+
+### Method 1: Download Ubuntu 20 WSL image using Windows Terminal
+Open Windows Terminal and execute the following command:
+
+    wsl --install -d Ubuntu-20.04
+
+You should see the download progress and once finished, the output should look like this:
+
+    Downloading: Ubuntu 20.04 LTS
+    Installing: Ubuntu 20.04 LTS
+    Ubuntu 20.04 LTS has been installed.
+    Launching Ubuntu 20.04 LTS...
+
+Also, you should find a new tab in Windows Terminal that is already connected to Ubuntu 20.
+
+
+### Method 2: Download Ubuntu 20 WSL image from Microsoft Store
 Open Microsoft Store, in the search box type in: `Ubuntu` and hit `Enter`.
 
 From the results, select `Ubuntu 20.04.4 LTS` - this will take you to Ubuntu 20's app page.
@@ -12,7 +31,9 @@ On this page, locate and click the `Install` button - this will download Ubuntu 
 
 Once the download has finished, the `Install` button is replaced by an `Open` button - clicking it will open Windows Terminal.
 
-Here you will be asked to fill in your username (for example `dotkernel`):
+
+## Install Ubuntu 20
+You will be asked to fill in your username (for example `dotkernel`):
 
     Installing, this may take a few minutes...
     Please create a default UNIX user account. The username does not need to match your Windows username.
@@ -37,7 +58,7 @@ Finally, you should see the following message:
     dotkernel@hostname:~$
 
 
-## Install Ubuntu 20
+## Install services on Ubuntu 20
 Make sure you are in your home directory:
 
     cd ~
