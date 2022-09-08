@@ -1,0 +1,17 @@
+---
+- name: Install Git
+  apt:
+    name: git
+    state: latest
+- name: Apply global configurations
+  git_config:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    scope: global
+  with_dict: "{{ git_config }}"
+- name: Apply global user configurations
+  git_config:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    scope: global
+  with_dict: "{{ config.git.config }}"
