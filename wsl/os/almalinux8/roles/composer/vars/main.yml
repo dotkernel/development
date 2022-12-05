@@ -1,5 +1,0 @@
----
-composer_download_url: https://getcomposer.org/installer
-composer_download_dest: /tmp/composer-setup.php
-composer_filename: composer
-composer_path: "{{ bin_directory }}/{{ composer_filename }}"

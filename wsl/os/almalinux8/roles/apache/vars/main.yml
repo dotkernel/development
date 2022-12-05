@@ -1,4 +1,0 @@
----
-apache_port: "80"
-apache_config_file: /etc/apache2/apache2.conf
-apache_home_dir: /var/www/html

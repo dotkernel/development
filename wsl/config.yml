@@ -3,7 +3,7 @@ config:
     config:
       "user.name": ""
       "user.email": ""
-  mysql:
+  mariadb:
     root_password: ""
   system:
     username: "{{ lookup('env', 'USER') }}"

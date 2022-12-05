@@ -1,2 +1,0 @@
----
-ansible_dir: "/home/{{ config.system.username }}/development/ansible"

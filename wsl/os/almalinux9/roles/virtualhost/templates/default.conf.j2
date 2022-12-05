@@ -1,0 +1,15 @@
+<VirtualHost *:{{ apache_port }}>
+    ServerName localhost
+
+    ServerAdmin webmaster@localhost
+    DocumentRoot {{ apache_root_dir }}/html
+
+    <Directory {{ apache_root_dir }}>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog {{ apache_root_dir }}/log/error.log
+    CustomLog {{ apache_root_dir }}/log/requests.log combined
+</VirtualHost>

@@ -1,0 +1,28 @@
+---
+- name: Create sites-available directory
+  file:
+    path: "{{ apache_sites_available}}"
+    state: directory
+- name: Create /etc/httpd/sites-enabled directory
+  file:
+    path: "{{ apache_sites_enabled }}"
+    state: directory
+- name: Check if sites-enabled config files are already added to Apache config
+  shell: grep -c "^IncludeOptional sites-enabled" "{{ apache_config_file }}"
+  register: sites_enabled_check
+  failed_when: sites_enabled_check.rc not in [ 0, 1 ]
+- name: Add config files from sites-enabled to Apache config
+  lineinfile:
+    path: "{{ apache_config_file }}"
+    insertafter: EOF
+    line: IncludeOptional sites-enabled/*.conf
+  when: sites_enabled_check.stdout == "0"
+- name: Setup localhost
+  include_role:
+    name: virtualhost
+    tasks_from: default
+- name: Create virtualhosts
+  include_role:
+    name: virtualhost
+    tasks_from: create
+  when: sites_enabled_check.stdout == "1"

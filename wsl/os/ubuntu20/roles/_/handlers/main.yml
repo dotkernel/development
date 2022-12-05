@@ -15,19 +15,19 @@
   service:
     name: apache2
     state: reloaded
-- name: Start MySQL
+- name: Start MariaDB
   service:
     name: mysql
     state: started
-- name: Stop MySQL
+- name: Stop MariaDB
   service:
     name: mysql
     state: stopped
-- name: Restart MySQL
+- name: Restart MariaDB
   service:
     name: mysql
     state: restarted
-- name: Enable MySQL
+- name: Enable MariaDB
   service:
     name: mysql
     enabled: yes

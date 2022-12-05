@@ -1,0 +1,9 @@
+---
+- name: Install PHP 8.1
+  command: dnf module install php:remi-8.1 -y
+- name: Enable and start PHP 8.1
+  command: systemctl enable --now php-fpm
+- name: Create PHP info file
+  template:
+    src: "{{ php_info_filename }}.j2"
+    dest: "{{ apache_home_dir }}/{{ php_info_filename }}"

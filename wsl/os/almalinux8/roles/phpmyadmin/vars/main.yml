@@ -1,4 +1,0 @@
----
-phpmyadmin_download_url: https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-english.zip
-phpmyadmin_dest_dir: /usr/share/phpmyadmin
-phpmyadmin_apache_config_file: /etc/httpd/conf.d/phpmyadmin.conf

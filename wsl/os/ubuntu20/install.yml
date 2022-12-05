@@ -10,7 +10,7 @@
     - _
     - system
     - apache
-    - mysql
+    - mariadb
     - php
     - phpmyadmin
     - composer

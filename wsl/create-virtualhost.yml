@@ -21,5 +21,5 @@
         msg: "Operating System '{{ ansible_distribution }} {{ ansible_distribution_major_version }}' is not supported"
 - import_playbook: "{{ playbook_dir }}/os/ubuntu20/create-virtualhost.yml"
   when: os == "ubuntu20"
-- import_playbook: "{{ playbook_dir }}/os/almalinux8/create-virtualhost.yml"
-  when: os == "almalinux8"
+- import_playbook: "{{ playbook_dir }}/os/almalinux9/create-virtualhost.yml"
+  when: os == "almalinux9"

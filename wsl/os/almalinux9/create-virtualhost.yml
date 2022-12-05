@@ -1,0 +1,11 @@
+---
+- name: Create new virtualhost under AlmaLinux 9
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true
+  vars_files:
+    - ../../config.yml
+    - ./roles/apache/vars/main.yml
+  roles:
+    - virtualhost

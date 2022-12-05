@@ -1,39 +1,18 @@
-# Install WSL development environment on Ubuntu 20
+# Install WSL development environment on AlmaLinux 9
 
 [< DotKernel: Install development environment](../../README.md)
 
 
-## Download Ubuntu 20 WSL image
-Download Ubuntu 20 image by following one of the below methods.
+## Download AlmaLinux 9 WSL image
+Open Microsoft Store, in the search box type in: `AlmaLinux` and hit `Enter`.
 
+From the results, select `AlmaLinux 9` - this will take you to AlmaLinux 9's app page.
 
-### Method 1: Download Ubuntu 20 WSL image using Windows Terminal
-Open Windows Terminal and execute the following command:
-
-    wsl --install -d Ubuntu-20.04
-
-You should see the download progress and once finished, the output should look like this:
-
-    Downloading: Ubuntu 20.04 LTS
-    Installing: Ubuntu 20.04 LTS
-    Ubuntu 20.04 LTS has been installed.
-    Launching Ubuntu 20.04 LTS...
-
-Also, you should find a new tab in Windows Terminal that is already connected to Ubuntu 20.
-
-
-### Method 2: Download Ubuntu 20 WSL image from Microsoft Store
-Open Microsoft Store, in the search box type in: `Ubuntu` and hit `Enter`.
-
-From the results, select `Ubuntu 20.04.4 LTS` - this will take you to Ubuntu 20's app page.
-
-On this page, locate and click the `Install` button - this will download Ubuntu 20 WSL image on your machine.
+On this page, locate and click the `Install` button - this will download AlmaLinux 9 WSL image on your machine.
 
 Once the download has finished, the `Install` button is replaced by an `Open` button - clicking it will open Windows Terminal.
 
-
-## Install Ubuntu 20
-You will be asked to fill in your username (for example `dotkernel`):
+Here you will be asked to fill in your username (for example `dotkernel`):
 
     Installing, this may take a few minutes...
     Please create a default UNIX user account. The username does not need to match your Windows username.
@@ -46,26 +25,34 @@ Next, you are prompted to enter a password to use with your username (you will n
     Changing password for user dotkernel.
     New password:
 
+Depending on the strength of your password, you might see one of the following messages (if you want to choose a different password, hit `Enter` and you are taken back to previous step - else, continue with retyping your password)
+
+    BAD PASSWORD: The password fails the dictionary check - it is based on a dictionary word
+    BAD PASSWORD: The password is a palindrome
+
 Next, you are asked to retype your password:
 
     Retype new password:
 
 Finally, you should see the following message:
 
-    passwd: password updated successfully
+    passwd: all authentication tokens updated successfully.
     Installation successful!
-    ...
-    dotkernel@hostname:~$
+    [dotkernel@hostname:~]$
 
 
-## Install services on Ubuntu 20
+## Install AlmaLinux 9
+Install requirements:
+
+    sudo dnf install epel-release dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
+
 Update/Upgrade system packages:
 
-    sudo apt-get update && sudo apt-get upgrade -y
+    sudo dnf upgrade -y
 
 Now, install the latest version of Ansible:
 
-    sudo apt-get install ansible -y
+    sudo dnf install ansible -y
 
 Clone dotkernel/development into your home directory:
 
@@ -79,23 +66,33 @@ Using your preferred text editor, open `config.yml` where you must fill in the e
 
 Save and close the file.
 
-Install and configure all necessary services by running the below Ansible command:
+Install requirements and initialize systemd by running the below Ansible command:
 
     ansible-playbook -i hosts install.yml --ask-become-pass
 
 The installation process will iterate over each task in the playbook and will output a short summary with the results.
 
-At this point, Ubuntu 20 needs to be restarted, so quit it by pressing `Control` + `d`.
+AlmaLinux 9 needs to be restarted, so quit it by pressing `Control` + `d`.
 
 Open Windows Terminal.
 
-Stop Ubuntu 20:
+Stop AlmaLinux 9:
 
-    wsl -t Ubuntu-20.04
+    wsl -t AlmaLinux9
 
-Start Ubuntu 20:
+Start AlmaLinux 9:
 
-    wsl -d Ubuntu-20.04
+    wsl -d AlmaLinux9
+
+Move inside the directory `development/wsl`:
+
+    cd ~/development/wsl/
+
+Continue installation by running the below Ansible command:
+
+    ansible-playbook -i hosts install.yml --ask-become-pass
+
+The installation process will iterate over each task in the playbook and will output a short summary with the results.
 
 Now check if everything works by opening in your browser:
 * [http://localhost/](http://localhost/) - Apache's default home page
@@ -132,11 +129,11 @@ Example:
 
 Your virtual host should be accessible and ready to use.
 
-You will install your projects under the `/home/your-username/projects/` directory.
-The virtualhost's document root is set to the `public` directory of the above location, for example `/home/your-username/projects/example.local/public`.
+You will install your project under the `html` directory of your project, for example: `/var/www/example.local/html`.
+The virtualhost's document root is set to the `public` directory of the above location, for example `/var/www/example.local/html/public`.
 
 **Note**:
-* In order to run your installed projects, you need to start Ubuntu 20 first
-* If you work with virtualhosts, your projects are created under `/home/your-username/projects/`
+* In order to run your installed projects, you need to start AlmaLinux 9 first
+* If you work with virtualhosts, your projects are created under `/var/www/`
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`
 * If you encounter write permission issues, see [this guide](HELP.md#fix-common-permission-issues)

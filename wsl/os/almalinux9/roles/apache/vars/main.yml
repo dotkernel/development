@@ -1,0 +1,7 @@
+---
+apache_port: "80"
+apache_config_file: /etc/httpd/conf/httpd.conf
+apache_root_dir: /var/www
+apache_home_dir: /var/www/html
+apache_sites_available: /etc/httpd/sites-available
+apache_sites_enabled: /etc/httpd/sites-enabled

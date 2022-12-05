@@ -1,0 +1,19 @@
+---
+- name: Create virtualhost/log directory
+  file:
+    path: "{{ apache_root_dir }}/log"
+    state: directory
+    mode: 0755
+- name: Create localhost config file
+  template:
+    src: default.conf.j2
+    dest: "{{ apache_sites_available }}/default.conf"
+- name: Enable localhost
+  file:
+    src: "{{ apache_sites_available }}/default.conf"
+    dest: "{{ apache_sites_enabled }}/default.conf"
+    owner: "{{ config.system.username }}"
+    group: "{{ config.system.username }}"
+    state: link
+- name: Reload Apache
+  command: systemctl reload httpd
