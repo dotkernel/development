@@ -26,4 +26,4 @@ Make sure WSL2 is set ad default by executing the below command in Windows Termi
 
 ## Choose the Operating System you wish to use for development
 * [Ubuntu 20](os/ubuntu20/README.md)
-* [Alma Linux 8](os/almalinux9/README.md)
+* [Alma Linux 9](os/almalinux9/README.md)
