@@ -1,5 +1,5 @@
 ---
-- name: Create sites-available directory
+- name: Create /etc/httpd/sites-available directory
   file:
     path: "{{ apache_sites_available}}"
     state: directory

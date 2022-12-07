@@ -11,3 +11,9 @@
   command: "firewall-cmd --permanent --zone=public --add-service=https"
 - name: Enable and start Apache service
   command: systemctl enable --now httpd
+- name: Fix Apache home directory ownership
+  file:
+    path: "{{ apache_home_dir}}"
+    state: directory
+    owner: "{{ config.system.username }}"
+    group: "{{ config.system.username }}"

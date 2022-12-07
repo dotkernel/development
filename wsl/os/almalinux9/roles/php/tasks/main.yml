@@ -7,3 +7,5 @@
   template:
     src: "{{ php_info_filename }}.j2"
     dest: "{{ apache_home_dir }}/{{ php_info_filename }}"
+    owner: "{{ config.system.username }}"
+    group: "{{ config.system.username }}"
