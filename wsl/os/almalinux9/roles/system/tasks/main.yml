@@ -9,7 +9,6 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - vim
     - unzip
     - firewalld
 - name: Copy WSL configuration file
