@@ -2,3 +2,4 @@
 git_config:
 - "core.autocrlf": "false"
 - "core.eol": "lf"
+- "credential.helper": "store"
