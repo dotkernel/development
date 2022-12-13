@@ -19,11 +19,12 @@ Make sure the next features are activated (checked):
 
 Click `Ok` and restart your computer.
 
-Make sure WSL2 is set ad default by executing the below command in Windows Terminal:
+Open Microsoft Store, search for `Windows Subsystem for Linux` and install it.
+
+Make sure WSL2 is set as default by executing the below command in Windows Terminal:
 
     wsl --set-default-version 2
 
-
-## Choose the Operating System you wish to use for development
+## Choose the Operating System you want to use for development:
 * [Ubuntu 20](os/ubuntu20/README.md)
-* [Alma Linux 9](os/almalinux9/README.md)
+* [AlmaLinux 9](os/almalinux9/README.md)
