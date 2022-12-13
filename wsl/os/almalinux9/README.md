@@ -3,7 +3,7 @@
 [< DotKernel: Install development environment](../../README.md)
 
 
-## Download AlmaLinux 9 WSL image
+## Download and install AlmaLinux 9
 Open Microsoft Store, in the search box type in: `AlmaLinux` and hit `Enter`.
 
 From the results, select `AlmaLinux 9` - this will take you to AlmaLinux 9's app page.
@@ -41,7 +41,7 @@ Finally, you should see the following message:
     [dotkernel@hostname:~]$
 
 
-## Install AlmaLinux 9
+## Setup AlmaLinux 9
 Install requirements:
 
     sudo dnf install epel-release dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
