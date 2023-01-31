@@ -1,7 +1,7 @@
-# Troubleshooting
+# Frequently Asked Questions
 
 
-## Switching PHP versions
+## How do I switch between PHP versions?
 In this example we will switch from PHP version 7.4 to 8.1.
 
 Follow the same pattern if you need to switch between other versions than the ones presented in this example.
@@ -24,7 +24,7 @@ sudo service apache2 restart
 ```
 
 
-## Fix common permission issues
+## How do I fix common permission issues?
 If running your project you encounter some permission issues, follow the below steps.
 
 **Errors:**

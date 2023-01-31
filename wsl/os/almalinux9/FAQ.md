@@ -1,16 +1,20 @@
-# Troubleshooting
+# Frequently Asked Questions
 
 
-## Switching to PHP 8.2
+## How do I switch to PHP 7.4?
 
-    sudo dnf module switch-to php:remi-8.2 -y
+    sudo dnf module switch-to php:remi-7.4 -y
 
-## Switching to PHP 8.1
+## How do I switch to PHP 8.1?
 
     sudo dnf module switch-to php:remi-8.1 -y
 
+## How do I switch to PHP 8.2?
 
-## Fix common permission issues
+    sudo dnf module switch-to php:remi-8.2 -y
+
+
+## How do I fix common permission issues?
 If running your project you encounter some permission issues, follow the below steps.
 
 ### Errors:

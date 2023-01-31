@@ -139,4 +139,4 @@ The virtualhost's document root is set to the `public` directory of the above lo
 * In order to run your installed projects, you need to start Ubuntu 20 first
 * If you work with virtualhosts, your projects are created under `/home/your-username/projects/`
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`
-* If you encounter write permission issues, see [this guide](HELP.md#fix-common-permission-issues)
+* If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues)
