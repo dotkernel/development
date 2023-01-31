@@ -4,9 +4,9 @@
 
 
 ## Prerequisites
-Before proceeding to the installation, we need to make sure your machine is ready for running WSL2.
+Before proceeding with the installation, please consult Microsoft's [documentation](https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites) regarding the minimum requirements for running WSL2.
 
-Open the `Run` prompt by pressing `Win`+`r` and type in the dialog `OptionalFeatures`, then press `Enter`.
+Once you know that your machine can run WSL2, open the `Run` prompt by pressing `Win`+`r` and type in the dialog `OptionalFeatures`, then press `Enter`.
 
 This will open a window where you can turn Windows features on/off.
 
