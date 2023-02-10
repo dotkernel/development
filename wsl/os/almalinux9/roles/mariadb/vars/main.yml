@@ -1,0 +1,3 @@
+---
+mariadb_repo_src: MariaDB.repo.j2
+mariadb_repo_dest: /etc/yum.repos.d/MariaDB.repo

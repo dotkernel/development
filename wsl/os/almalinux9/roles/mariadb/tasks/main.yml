@@ -1,6 +1,12 @@
 ---
+- name: Create MariaDB 10.6 repo file
+  template:
+    src: "{{ mariadb_repo_src }}"
+    dest: "{{ mariadb_repo_dest }}"
+    owner: "{{ config.system.username }}"
+    group: "{{ config.system.username }}"
 - name: Install MariaDB 10.6
-  command: "dnf install python3-mysqlclient https://mirror.mariadb.org/yum/10.6.11/rhel9-amd64/rpms/MariaDB-server-10.6.11-1.el9.x86_64.rpm https://mirror.mariadb.org/yum/10.6.11/rhel9-amd64/rpms/MariaDB-client-10.6.11-1.el9.x86_64.rpm https://mirror.mariadb.org/yum/10.6.11/rhel9-amd64/rpms/MariaDB-common-10.6.11-1.el9.x86_64.rpm https://mirror.mariadb.org/yum/10.6.11/rhel9-amd64/rpms/MariaDB-shared-10.6.11-1.el9.x86_64.rpm https://mirror.mariadb.org/yum/10.6.11/rhel9-amd64/rpms/galera-4-26.4.13-1.el9.x86_64.rpm -y"
+  command: "dnf install python3-mysqlclient MariaDB-server MariaDB-client -y"
 - name: Enable and start MariaDB service
   command: systemctl enable --now mariadb
 - name: Set MariaDB root password
