@@ -103,6 +103,10 @@ The installation is complete, your development environment is ready to use.
 
 
 ## Create virtual hosts
+Move inside the directory `development/wsl`:
+
+    cd ~/development/wsl/
+
 Using your preferred text editor, open `config.yml` and add the hosts that you want to create under the `virtualhosts` list. Save and close the file.
 
 Create the specified virtual hosts:
@@ -133,7 +137,9 @@ You will install your project under the `html` directory of your project, for ex
 The virtualhost's document root is set to the `public` directory of the above location, for example `/var/www/example.local/html/public`.
 
 **Note**:
-* In order to run your installed projects, you need to start AlmaLinux 9 first
-* If you work with virtualhosts, your projects are created under `/var/www/`
-* You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`
-* If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues)
+* In order to run your installed projects, you need to start AlmaLinux 9 first.
+* If you work with virtualhosts, your projects are created under `/var/www/`.
+* You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
+* If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues).
+* We install PHP 8.1 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-php).
+* We install NodeJS 18 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).

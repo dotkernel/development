@@ -136,7 +136,9 @@ You will install your projects under the `/home/your-username/projects/` directo
 The virtualhost's document root is set to the `public` directory of the above location, for example `/home/your-username/projects/example.local/public`.
 
 **Note**:
-* In order to run your installed projects, you need to start Ubuntu 20 first
-* If you work with virtualhosts, your projects are created under `/home/your-username/projects/`
-* You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`
-* If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues)
+* In order to run your installed projects, you need to start Ubuntu 20 first.
+* If you work with virtualhosts, your projects are created under `/home/your-username/projects/`.
+* You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
+* If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues).
+* Default version of PHP is set to 7.4. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-between-php-versions).
+* We install NodeJS 18 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).
