@@ -24,6 +24,35 @@ sudo service apache2 restart
 ```
 
 
+## How do I switch to a different version of Node.js?
+
+### Switch to Node.js 18.x
+
+    sudo apt remove nodejs -y
+    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    sudo apt install nodejs -y
+
+### Switch to Node.js 16.x
+
+    sudo apt remove nodejs -y
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    sudo apt install nodejs -y
+
+### Switch to Node.js 14.x
+
+    sudo apt remove nodejs -y
+    curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt install nodejs -y
+
+### Switch to Node.js 12.x
+
+    sudo apt remove nodejs -y
+    curl -fsSL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    sudo apt install nodejs -y
+
+**Note**: Node.js 12.x is no longer actively supported!
+
+
 ## How do I fix common permission issues?
 If running your project you encounter some permission issues, follow the below steps.
 
