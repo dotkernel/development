@@ -49,15 +49,23 @@
 If running your project you encounter some permission issues, follow the below steps.
 
 ### Errors:
-> PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/_example.local_/data" is not writable...
+> PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/_example.local_/html/data" is not writable...
 
-> PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/_example.local_/data/cache" is not writable...
+> PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/_example.local_/html/data/cache" is not writable...
 
-> PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/_example.local_/data/cache/doctrine" is not writable...
+> PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/_example.local_/html/data/cache/doctrine" is not writable...
 
 **Fix:**
 
     chmod -R 777 data
+
+
+### Error:
+> PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/_example.local_/html/public/uploads" is not writable...
+
+**Fix:**
+
+    chmod -R 777 public/uploads
 
 
 ### Error:
