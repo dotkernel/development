@@ -64,15 +64,21 @@ If running your project you encounter some permission issues, follow the below s
 > PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/home/_username_/projects/_example.local_/data/cache/doctrine" is not writable...
 
 **Fix:**
-```
-chmod -R 777 data
-```
+
+    chmod -R 777 data
+
+
+### Error:
+> PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/home/_username_/projects/_example.local_/public/uploads" is not writable...
+
+**Fix:**
+
+    chmod -R 777 public/uploads
 
 
 **Error:**
 > PHP Fatal error:  Uncaught ErrorException: fopen(/home/_username_/projects/_example.local_/config/autoload/../../log/error-log-_yyyy-mm-dd.log_): Failed to open stream: Permission denied...
 
 **Fix:**
-```
-chmod -R 777 log
-```
+
+    chmod -R 777 log
