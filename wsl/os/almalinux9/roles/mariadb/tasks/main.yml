@@ -1,11 +1,11 @@
 ---
-- name: Create MariaDB 10.6 repo file
+- name: Create MariaDB 10.11 repo file
   template:
     src: "{{ mariadb_repo_src }}"
     dest: "{{ mariadb_repo_dest }}"
     owner: "{{ config.system.username }}"
     group: "{{ config.system.username }}"
-- name: Install MariaDB 10.6
+- name: Install MariaDB 10.11
   command: "dnf install python3-mysqlclient MariaDB-server MariaDB-client -y"
 - name: Enable and start MariaDB service
   command: systemctl enable --now mariadb
