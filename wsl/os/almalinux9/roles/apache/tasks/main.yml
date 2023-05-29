@@ -5,10 +5,6 @@
       - httpd
       - httpd-tools
     state: latest
-- name: Allow port 80 through firewall
-  command: "firewall-cmd --permanent --zone=public --add-service=http"
-- name: Allow port 443 through firewall
-  command: "firewall-cmd --permanent --zone=public --add-service=https"
 - name: Enable and start Apache service
   command: systemctl enable --now httpd
 - name: Fix Apache home directory ownership
