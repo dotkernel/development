@@ -15,6 +15,10 @@
 
     sudo dnf module switch-to php:remi-8.2 -y
 
+### Switch to PHP 8.3
+
+    sudo dnf module switch-to php:remi-8.3 -y
+
 
 ## How do I switch to a different version of Node.js?
 
