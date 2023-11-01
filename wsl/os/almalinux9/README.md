@@ -102,44 +102,33 @@ Now check if everything works by opening in your browser:
 The installation is complete, your development environment is ready to use.
 
 
-## Create virtual hosts
+## Create virtualhosts
 Move inside the directory `development/wsl`:
 
     cd ~/development/wsl/
 
-Using your preferred text editor, open `config.yml` and add the hosts that you want to create under the `virtualhosts` list. Save and close the file.
+Using your preferred text editor, open `config.yml` and, under the `virtualhosts` key, enter the virtualhosts that you want to create, each on its own line. 
 
-Create the specified virtual hosts:
+Already existing ones will be skipped, no need to comment or remove them.
+
+Save and close the file.
+
+Create the specified virtualhosts:
 
     ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass
 
-This will iterate over the list of `virtualhosts` configured in `config.yml` and will output a short summary with the results.
+This will iterate over the list of configured `virtualhosts` and will output a short summary with the results.
 
-At this step, your virtual host is not yet accessible because first, you need to route the requests to your localhost.
+Your virtualhost should be accessible and ready to use.
 
-**Run as administrator** any text editor and open file `C:\Windows\System32\drivers\etc\hosts` (if you don't see it, select `All files` from the file type selector).
+You will install your project under the `html` directory of your project, for example: `/var/www/example.localhost/html`.
 
-For each item you placed in the `virtualhosts` list, add the below lines to the end of the file (make sure you replace `{virtualhost}` with your virtual host), then save and close the file.
-
-    127.0.0.1	{virtualhost}
-    ::1	{virtualhost}
-
-Example:
-
-    127.0.0.1	example.local
-    ::1	example.local
-    127.0.0.1	example2.local
-    ::1	example2.local
-
-Your virtual host should be accessible and ready to use.
-
-You will install your project under the `html` directory of your project, for example: `/var/www/example.local/html`.
-The virtualhost's document root is set to the `public` directory of the above location, for example `/var/www/example.local/html/public`.
+The virtualhost's document root is set to the `public` directory of the above location, for example `/var/www/example.localhost/html/public`.
 
 **Note**:
 * In order to run your installed projects, you need to start AlmaLinux 9 first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 * If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues).
-* We install PHP 8.1 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-php).
+* We install PHP 8.2 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-php).
 * We install NodeJS 18 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).
