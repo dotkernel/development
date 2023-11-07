@@ -106,31 +106,23 @@ The installation is complete, your development environment is ready to use.
 
 
 ## Create virtual hosts
-Using your preferred text editor, open `config.yml` and add the hosts that you want to create under the `virtualhosts` list. Save and close the file.
+Move inside the directory `development/wsl`:
 
-Create the specified virtual hosts:
+    cd ~/development/wsl/
+
+Using your preferred text editor, open `config.yml` and, under the `virtualhosts` key, enter the virtualhosts that you want to create, each on its own line.
+
+Already existing ones will be skipped, no need to comment or remove them.
+
+Save and close the file.
+
+Create the specified virtualhosts:
 
     ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass
 
-This will iterate over the list of `virtualhosts` configured in `config.yml` and will output a short summary with the results.
+This will iterate over the list of configured `virtualhosts` and will output a short summary with the results.
 
-At this step, your virtual host is not yet accessible because first, you need to route the requests to your localhost.
-
-**Run as administrator** any text editor and open file `C:\Windows\System32\drivers\etc\hosts` (if you don't see it, select `All files` from the file type selector).
-
-For each item you placed in the `virtualhosts` list, add the below lines to the end of the file (make sure you replace `{virtualhost}` with your virtual host), then save and close the file.
-
-    127.0.0.1	{virtualhost}
-    ::1	{virtualhost}
-
-Example:
-
-    127.0.0.1	example.local
-    ::1	example.local
-    127.0.0.1	example2.local
-    ::1	example2.local
-
-Your virtual host should be accessible and ready to use.
+Your virtualhost should be accessible and ready to use.
 
 You will install your projects under the `/home/your-username/projects/` directory.
 The virtualhost's document root is set to the `public` directory of the above location, for example `/home/your-username/projects/example.local/public`.
