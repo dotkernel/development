@@ -26,6 +26,12 @@ sudo service apache2 restart
 
 ## How do I switch to a different version of Node.js?
 
+### Switch to Node.js 20.x
+
+    sudo apt remove nodejs -y
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    sudo apt install nodejs -y
+
 ### Switch to Node.js 18.x
 
     sudo apt remove nodejs -y

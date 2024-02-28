@@ -3,4 +3,5 @@ php_info_filename: info.php
 php_versions:
   - "74"
   - "81"
-
+  - "82"
+  - "83"
