@@ -3,24 +3,30 @@
 
 ## How do I switch to a different version of PHP?
 
-### Switch to PHP 7.4
+### Switch to PHP 8.3
 
-    sudo dnf module switch-to php:remi-7.4 -y
-
-### Switch to PHP 8.1
-
-    sudo dnf module switch-to php:remi-8.1 -y
+    sudo dnf module switch-to php:remi-8.3 -y
 
 ### Switch to PHP 8.2
 
     sudo dnf module switch-to php:remi-8.2 -y
 
-### Switch to PHP 8.3
+### Switch to PHP 8.1
 
-    sudo dnf module switch-to php:remi-8.3 -y
+    sudo dnf module switch-to php:remi-8.1 -y
+
+### Switch to PHP 7.4
+
+    sudo dnf module switch-to php:remi-7.4 -y
 
 
 ## How do I switch to a different version of Node.js?
+
+### Switch to Node.js 20.x
+
+    sudo dnf remove nodejs -y
+    curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
+    sudo dnf install nodejs -y
 
 ### Switch to Node.js 18.x
 
