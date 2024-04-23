@@ -111,6 +111,9 @@ Using your preferred text editor, open `config.yml` and, under the `virtualhosts
 
 Already existing ones will be skipped, no need to comment or remove them.
 
+### NOTE
+> by using the pattern `*.localhost` for any new virtualhost, you do not need to modify `hosts` file in Win 11, are routed by default.
+
 Save and close the file.
 
 Create the specified virtualhosts:
@@ -123,7 +126,10 @@ Your virtualhost should be accessible and ready to use.
 
 You will install your project under the `html` directory of your project, for example: `/var/www/example.localhost/html`.
 
-The virtualhost's document root is set to the `public` directory of the above location, for example `/var/www/example.localhost/html/public`.
+### NOTE
+> The virtualhost's document root is set to the `public` directory of the above location, for example `/var/www/example.localhost/html/public`.
+> 
+> If you want to have the DocumentRoot directly in `html` folder, you need to modify the file `/etc/httpd/sites-available/example.localhost` 
 
 **Note**:
 * In order to run your installed projects, you need to start AlmaLinux 9 first.
