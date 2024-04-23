@@ -1,5 +1,16 @@
 # Frequently Asked Questions
 
+### How do i tell Windows 11 about a new virtual hosts ?
+
+- navigate to  "C:\Windows\System32\drivers\etc" directory.
+- In the "etc" folder, you'll find a file named "hosts". Right-click on the file and choose "Open with" -> "Notepad" (or any text editor of your choice).
+- add one or more lines , at the bottom of the file , like below examples:
+  
+   > ::1	dotkernel.local
+   
+   > ::1	laminas.local
+  
+- each of this line will correspond to a virtual host you previously created 
 
 ## How do I switch to a different version of PHP?
 
