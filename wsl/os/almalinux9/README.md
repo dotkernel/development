@@ -112,7 +112,7 @@ Using your preferred text editor, open `config.yml` and, under the `virtualhosts
 Already existing ones will be skipped, no need to comment or remove them.
 
 ### NOTE
-> by using the pattern `*.localhost` for any new virtualhost, you do not need to modify `hosts` file in Win 11, are routed by default.
+> By using the pattern `*.localhost` for any new virtualhost, you do not need to modify the `hosts` file in Windows, because these are routed by default.
 
 Save and close the file.
 
