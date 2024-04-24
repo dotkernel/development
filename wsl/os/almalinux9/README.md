@@ -131,7 +131,7 @@ You will install your project under the `html` directory of your project, for ex
 > 
 > If you want to have the DocumentRoot directly in `html` folder, you need to modify the file `/etc/httpd/sites-available/example.localhost` 
 
-**Note**:
+### Good to know
 * In order to run your installed projects, you need to start AlmaLinux 9 first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
