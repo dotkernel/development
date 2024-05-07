@@ -22,6 +22,12 @@
 
 ## How do I switch to a different version of Node.js?
 
+### Switch to Node.js 22.x
+
+    sudo dnf remove nodejs -y
+    curl -fsSL https://rpm.nodesource.com/setup_22.x | sudo bash -
+    sudo dnf install nodejs -y
+
 ### Switch to Node.js 20.x
 
     sudo dnf remove nodejs -y

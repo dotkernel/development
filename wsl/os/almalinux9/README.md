@@ -137,4 +137,4 @@ You will install your project under the `html` directory of your project, for ex
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 * If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues).
 * We install PHP 8.3 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-php).
-* We install NodeJS 20 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).
+* We install NodeJS 22 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).

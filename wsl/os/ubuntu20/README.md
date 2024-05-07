@@ -133,4 +133,4 @@ The virtualhost's document root is set to the `public` directory of the above lo
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 * If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues).
 * Default version of PHP is set to 8.3. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-between-php-versions).
-* We install NodeJS 20 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).
+* We install NodeJS 22 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).
