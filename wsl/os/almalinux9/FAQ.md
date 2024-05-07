@@ -4,17 +4,25 @@
 
 ### Switch to PHP 8.3
 
+Use alias `php83` or execute:
+
     sudo dnf module switch-to php:remi-8.3 -y
 
 ### Switch to PHP 8.2
+
+Use alias `php82` or execute:
 
     sudo dnf module switch-to php:remi-8.2 -y
 
 ### Switch to PHP 8.1
 
+Use alias `php81` or execute:
+
     sudo dnf module switch-to php:remi-8.1 -y
 
 ### Switch to PHP 7.4
+
+Use alias `php74` or execute:
 
     sudo dnf module switch-to php:remi-7.4 -y
 
@@ -22,17 +30,23 @@
 
 ### Switch to Node.js 22.x
 
+Use alias `node22` or execute:
+
     sudo dnf remove nodejs -y
     curl -fsSL https://rpm.nodesource.com/setup_22.x | sudo bash -
     sudo dnf install nodejs -y
 
 ### Switch to Node.js 20.x
 
+Use alias `node20` or execute:
+
     sudo dnf remove nodejs -y
     curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
     sudo dnf install nodejs -y
 
 ### Switch to Node.js 18.x
+
+Use alias `node18` or execute:
 
     sudo dnf remove nodejs -y
     curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
