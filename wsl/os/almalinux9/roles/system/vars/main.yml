@@ -1,2 +1,3 @@
 ---
 wsl_config_dest: /etc/wsl.conf
+bash_profile_dest: "/home/{{ config.system.username }}/.bash_profile"

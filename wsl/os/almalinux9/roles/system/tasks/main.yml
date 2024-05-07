@@ -15,3 +15,7 @@
   template:
     src: wsl.conf.j2
     dest: "{{ wsl_config_dest }}"
+- name: Copy .bash_profile file
+  template:
+    src: bash_profile.j2
+    dest: "{{ bash_profile_dest }}"
