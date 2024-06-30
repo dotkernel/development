@@ -116,7 +116,7 @@ where:
 - `command_alias` is the name by which you want to call your original command
 - `command to execute`: the original command to be executed on alias call
 
-### Example:
+### Example
 
 ```text
 alias list_files="ls -Al"

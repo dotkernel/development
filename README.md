@@ -12,7 +12,7 @@ It's a modern tool that incorporates the power of multiple already known command
 
 ## How it works?
 
-Choose a tool from the below list, and we will guide you through the steps that will install and configure it for you. 
+Choose a tool from the below list, and we will guide you through the steps that will install and configure it for you.
 
 - [WSL](wsl/README.md)
 - [Docker](docker/README.md)
