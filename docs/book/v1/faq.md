@@ -107,7 +107,9 @@ Using your preferred text editor, open the file: `.bash_profile` (if it does not
 
 Move to the end of the file and enter on a new line:
 
-    alias command_alias="command to execute"
+```text
+alias command_alias="command to execute"
+```
 
 where:
 
@@ -116,7 +118,9 @@ where:
 
 ### Example:
 
-    alias list_files="ls -Al"
+```text
+alias list_files="ls -Al"
+```
 
 will create an alias called `list_files` that will run the command `ls -Al`.
 
