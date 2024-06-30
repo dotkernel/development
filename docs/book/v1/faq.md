@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# Frequently asked questions
 
 ## How do I switch to a different version of PHP?
 
@@ -119,3 +119,9 @@ where:
     alias list_files="ls -Al"
 
 will create an alias called `list_files` that will run the command `ls -Al`.
+
+Then, you can execute your custom alias in a terminal just as a regular command:
+
+```shell
+list_files
+```

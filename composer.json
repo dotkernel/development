@@ -1,0 +1,13 @@
+{
+    "name": "dotkernel/development",
+    "description": "Set up development environment using Ansible+WSL2/Docker.",
+    "type": "metapackage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "DotKernel Team",
+            "email": "team@dotkernel.com"
+        }
+    ],
+    "require": {}
+}
