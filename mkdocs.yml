@@ -1,0 +1,23 @@
+docs_dir: docs/book
+site_dir: docs/html
+extra:
+  project: Development
+  current_version: v1
+  versions:
+    - v1
+nav:
+  - Home: index.md
+  - v1:
+      - Introduction: v1/introduction.md
+      - Setup:
+          - System Requirements: v1/setup/system-requirements.md
+          - Installation: v1/setup/installation.md
+      - Virtualhosts:
+          - Overview: v1/virtualhosts/overview.md
+          - Create virtualhost: v1/virtualhosts/create-virtualhost.md
+      - FAQ: v1/faq.md
+site_name: development
+site_description: "WSL2 Development Environment"
+repo_url: "https://github.com/dotkernel/development"
+plugins:
+  - search

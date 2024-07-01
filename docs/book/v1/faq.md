@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# Frequently asked questions
 
 ## How do I switch to a different version of PHP?
 
@@ -107,15 +107,25 @@ Using your preferred text editor, open the file: `.bash_profile` (if it does not
 
 Move to the end of the file and enter on a new line:
 
-    alias command_alias="command to execute"
+```text
+alias command_alias="command to execute"
+```
 
 where:
 
 - `command_alias` is the name by which you want to call your original command
 - `command to execute`: the original command to be executed on alias call
 
-### Example:
+### Example
 
-    alias list_files="ls -Al"
+```text
+alias list_files="ls -Al"
+```
 
 will create an alias called `list_files` that will run the command `ls -Al`.
+
+Then, you can execute your custom alias in a terminal just as a regular command:
+
+```shell
+list_files
+```

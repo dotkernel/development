@@ -1,2 +1,5 @@
-# Admin-specific stuff:
 .idea
+composer.lock
+docs/html
+documentation-theme
+vendor
