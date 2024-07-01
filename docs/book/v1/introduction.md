@@ -2,6 +2,7 @@
 
 `dotkernel/development` is a tool that helps you prepare your development environment with the following components:
 
+- `WSL2` - Windows Subsystem for Linux
 - `AlmaLinux9` - free and open source Linux distribution
 - `PHP` - general-purpose scripting language geared towards web development
 - `Apache` - free and open-source cross-platform web server software

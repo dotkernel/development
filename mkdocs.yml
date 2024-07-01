@@ -17,7 +17,7 @@ nav:
           - Create virtualhost: v1/virtualhosts/create-virtualhost.md
       - FAQ: v1/faq.md
 site_name: development
-site_description: "DotKernel Development environment setup"
+site_description: "WSL2 Development Environment"
 repo_url: "https://github.com/dotkernel/development"
 plugins:
   - search

@@ -1,4 +1,4 @@
-# Install WSL development environment
+# Install WSL2 development environment
 
 [< Back](../README.md)
 

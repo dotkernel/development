@@ -51,7 +51,7 @@ Installation successful!
 [dotkernel@hostname:~]$
 ```
 
-## Setup AlmaLinux 9
+## Setup the packages in AlmaLinux 9
 
 Install requirements:
 
