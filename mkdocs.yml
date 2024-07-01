@@ -12,6 +12,7 @@ nav:
       - Setup:
           - System Requirements: v1/setup/system-requirements.md
           - Installation: v1/setup/installation.md
+          - Setup Packages: v1/setup/setup-packages.md
       - Virtualhosts:
           - Overview: v1/virtualhosts/overview.md
           - Create virtualhost: v1/virtualhosts/create-virtualhost.md
