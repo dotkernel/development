@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/setup/system-requirements/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/setup/setup-packages/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>System Requirements - development - DotKernel Documentation</title>
+        <title>Setup Packages - development - DotKernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -153,7 +153,7 @@
                         
                     
 
-                    <li class="breadcrumb-item active" aria-current="page">System Requirements</li>
+                    <li class="breadcrumb-item active" aria-current="page">Setup Packages</li>
                 
             
         </ol>
@@ -206,8 +206,8 @@
     <ul class="subnavigation__list collapse" id="setup">
         
         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">System Requirements</a>
+<li class="subnavigation__list-item ">
+    <a href="../system-requirements/" class="subnavigation__link">System Requirements</a>
 </li>
 
         
@@ -218,8 +218,8 @@
 
         
         
-<li class="subnavigation__list-item ">
-    <a href="../setup-packages/" class="subnavigation__link">Setup Packages</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Setup Packages</a>
 </li>
 
         
@@ -297,6 +297,17 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#running-almalinux-9" class="toc__link nav-link">Running AlmaLinux 9</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -312,45 +323,52 @@
 <!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
     
 
-    <h1 id="system-requirements">System Requirements</h1>
-<p>First, you need to check if your system is ready for using <strong>WSL2</strong>. Open <code>Windows Terminal</code> and execute the following
-command:</p>
-<pre class="highlight"><code class="language-shell">wsl -v</code></pre>
-<p>The output should look similar to this:</p>
-<pre class="highlight"><code class="language-text">WSL version: 2.2.4.0
-Kernel version: 5.15.153.1-2
-WSLg version: 1.0.61
-MSRDC version: 1.2.5326
-Direct3D version: 1.611.1-81528511
-DXCore version: 10.0.26091.1-240325-1447.ge-release
-Windows version: 10.0.22631.3737</code></pre>
-<p>If the output starts with <code>WSL version: 2.x</code>, you are ready to use <strong>WSL2</strong> and can continue with
-<a href="../installation/">the installation</a>.</p>
-<p>Else, you need to install <strong>WSL2</strong> and it's components as shown below.</p>
-<p>Before proceeding with the installation, please consult Microsoft's
-<a href="https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites">documentation</a> regarding the minimum requirements
-for running <strong>WSL2</strong>.</p>
-<p>Once you know that your system can run <strong>WSL2</strong>, open the <code>Run</code> prompt by pressing <code>Win</code>+<code>r</code> and type in the dialog
-<code>OptionalFeatures</code>, then press <code>Enter</code>.</p>
-<p>This will open a window where you can turn Windows features on/off.</p>
-<p>Make sure the next features are activated (checked):</p>
+    <h1 id="setup-the-packages-in-almalinux-9">Setup the packages in AlmaLinux 9</h1>
+<p>Install requirements:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y</code></pre>
+<p>Update/Upgrade system packages:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
+<p>Now, install the latest version of <strong>Ansible</strong>:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf install ansible -y</code></pre>
+<p>Clone <code>dotkernel/development</code> into your home directory:</p>
+<pre class="highlight"><code class="language-shell">git clone https://github.com/dotkernel/development.git</code></pre>
+<p>Move inside the directory <code>development/wsl</code>:</p>
+<pre class="highlight"><code class="language-shell">cd ~/development/wsl/</code></pre>
+<p>Using your preferred text editor, open <code>config.yml</code> where you must fill in the empty fields.</p>
+<p>Save and close the file.</p>
+<p>Install requirements and initialize systemd by running the below Ansible command:</p>
+<pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
+<p>The installation process will ask for your password (set during the installation process) and will iterate over each
+task in the playbook and will output a short summary with the results.</p>
+<p>At this step, <strong>AlmaLinux 9</strong> needs to be restarted - quit it by pressing <code>Control</code> + <code>d</code>.</p>
+<p>Open <code>Windows Terminal</code>.</p>
+<p>Stop <strong>AlmaLinux 9</strong>:</p>
+<pre class="highlight"><code class="language-shell">wsl -t AlmaLinux9</code></pre>
+<p>Start <strong>AlmaLinux 9</strong>:</p>
+<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux9</code></pre>
+<p>Move inside the directory <code>development/wsl</code>:</p>
+<pre class="highlight"><code class="language-shell">cd ~/development/wsl/</code></pre>
+<p>Continue installation by running the below Ansible command:</p>
+<pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
+<p>The installation process will ask for your password (set during the installation process) and will iterate over each
+task in the playbook and will output a short summary with the results.</p>
+<p>Now check if everything works by opening in your browser:</p>
 <ul>
-<li><code>Hyper-V</code> (including its sub-features)</li>
-<li><code>Virtual Machine Platform</code></li>
-<li><code>Windows Subsystem for Linux</code></li>
+<li><a href="http://localhost/">http://localhost/</a> - Apache's default home page</li>
+<li><a href="http://localhost/info.php">http://localhost/info.php</a> - PHP info page</li>
+<li><a href="http://localhost/phpmyadmin/">http://localhost/phpmyadmin/</a> - PhpMyAdmin (login with <code>root</code> + the root password you
+  configured in <code>config.yml</code> under <code>mariadb</code> -&gt; <code>root_password</code>)</li>
 </ul>
+<p>The installation is complete, your <strong>AlmaLinux 9</strong> development environment is ready to use.</p>
+<h2 id="running-almalinux-9">Running AlmaLinux 9</h2>
+<p>Open <code>Windows Terminal</code>.</p>
+<p>Start <strong>AlmaLinux 9</strong>:</p>
+<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux9</code></pre>
+<h3 id="note">Note</h3>
 <blockquote>
-<p>If any of the above features is missing, then first you need to install them manually using
-<a href="https://docs.microsoft.com/en-us/windows/wsl/install-manual">this guide</a> and then continue with the below steps.</p>
+<p>In order to run your applications using WSL2, you always need to be connected to your AlmaLinux9 distribution.
+For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.</p>
 </blockquote>
-<p>Click <code>Ok</code> and restart your computer.</p>
-<p>Open Microsoft Store, search for <code>Windows Subsystem for Linux</code> and install it.</p>
-<p>Make sure <strong>WSL2</strong> is set as default by executing the below command in <code>Windows Terminal</code>:</p>
-<pre class="highlight"><code class="language-shell">wsl --set-default-version 2</code></pre>
-<p>To test, run again the following command:</p>
-<pre class="highlight"><code class="language-shell">wsl -v</code></pre>
-<p>This time the output should display <code>WSL version: 2.x</code>, which means that your system is ready for using <strong>WSL2</strong> and you
-can continue with the <a href="../installation/">installation</a>.</p>
 
 
 
@@ -360,10 +378,10 @@ can continue with the <a href="../installation/">installation</a>.</p>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../introduction/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../installation/">
                     <small class="page-nav__label">Previous</small>
                     <i class="bi bi-chevron-left"></i>
-                    Introduction
+                    Installation
                 </a>
             
         </li>
@@ -371,9 +389,9 @@ can continue with the <a href="../installation/">installation</a>.</p>
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../installation/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../../virtualhosts/overview/">
                     <small class="page-nav__label">Next</small>
-                    Installation
+                    Overview
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
