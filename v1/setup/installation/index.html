@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="WSL2 Development Environment">
+        
+        
+
+        
+        
+            
+        
+        <meta name="docsearch:version" content="1.0.0,latest">
+        <meta name="docsearch:language" content="en">
+        <meta name="docsearch:component" content="development">
+
+        
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/setup/installation/">
+        
+        <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
+
+        <title>Installation - development - DotKernel Documentation</title>
+
+        <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
+        <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://docs.dotkernel.org/css/docs.css">
+        <script src="https://docs.dotkernel.org//js/bootstrap.js" defer></script>
+        <script src="https://docs.dotkernel.org//js/docs.js" defer></script>
+        <script src="https://docs.dotkernel.org//js/scripts.js" defer></script>
+    </head>
+    <body data-bs-spy="scroll" data-bs-target=".toc" data-bs-offset="100">
+
+        
+        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-light dk-nav py-3" data-bs-theme="light">
+    <div class="container justify-content-between">
+        <div class="dk-nav-icon d-flex align-items-center">
+            <a class="navbar-brand" href="https://docs.dotkernel.org/">
+                <img alt="DotKernel Logo" class="d-inline-block align-text-top" height="50"
+                     src="https://docs.dotkernel.org//img/dk_logomark_white.svg" width="45"/>
+            </a>
+
+            <div class="dk-nav-icon-items">
+                <span style="font-size: 12px; line-height: 13px">DotKernel Documentation</span>
+
+                <div class="dropdown" data-bs-theme="light">
+                    <span class="fw-bold dropdown-toggle dk-pkg-name" data-bs-toggle="dropdown" aria-expanded="false">Development</span>
+                    <ul class="dropdown-menu">
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/api-documentation/" class="nav-link d-flex gap-4 align-items-center">
+                                <img alt="DotKernel Logo" class="d-inline-block align-text-top" height="50" src="https://docs.dotkernel.org/img/dk_logomark.svg" width="45" />
+                                <div>
+                                    <span class="fw-bold d-block">API</span>
+                                    <span>DotKernel API</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/admin/" class="nav-link d-flex gap-4 align-items-center">
+                                <img alt="DotKernel Logo" class="d-inline-block align-text-top" height="50" src="https://docs.dotkernel.org/img/dk_logomark.svg" width="45" />
+                                <div>
+                                    <span class="fw-bold d-block">Admin</span>
+                                    <span>DotKernel Admin application</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/frontend/" class="nav-link d-flex gap-4 align-items-center">
+                                <img alt="DotKernel Logo" class="d-inline-block align-text-top" height="50" src="https://docs.dotkernel.org/img/dk_logomark.svg" width="45" />
+                                <div>
+                                    <span class="fw-bold d-block">Frontend</span>
+                                    <span>DotKernel Frontend application</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/packages/" class="nav-link d-flex gap-4 align-items-center">
+                                <img alt="DotKernel Logo" class="d-inline-block align-text-top" height="50" src="https://docs.dotkernel.org/img/dk_logomark.svg" width="45" />
+                                <div>
+                                    <span class="fw-bold d-block">Packages</span>
+                                    <span>DotKernel packages</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<!--                <li class="nav-item">-->
+<!--                    <a href="#" class="nav-link fw-bold text-white" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal" title="Open search">-->
+<!--                        <i class="bi bi-search"></i> Search-->
+<!--                    </a>-->
+<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-white" href="https://github.com/dotkernel/development" title="Go to development repository" target="_blank">
+                        <i class="bi bi-github"></i>
+                        GitHub
+                    </a>
+                </li>
+                <li class="nav-item">
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+        
+        <div class="container">
+    <nav aria-label="breadcrumb" class="nav_breadcrumb">
+        <ol class="breadcrumb">
+            
+                <li class="breadcrumb-item"><a href="https://docs.dotkernel.org/">Overview</a></li>
+                
+
+                
+                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
+
+                    
+                        
+                            
+                            
+                        
+                    
+                        
+                            
+                            
+                                <li class="breadcrumb-item">Setup</li>
+                            
+                        
+                    
+
+                    <li class="breadcrumb-item active" aria-current="page">Installation</li>
+                
+            
+        </ol>
+    </nav>
+</div>
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 right_sidebar">
+                    
+                    
+    <div class="subnavigation hidden-print">
+<!--        <h4 class="subnavigation__title">-->
+<!--            <a href="../../..">development</a>-->
+<!--        </h4>-->
+
+        <h5 class="subnavigation__title">Table of Contents</h5>
+
+        <ul class="subnavigation__list">
+            
+
+                
+                
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
+</li>
+
+                    
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#setup" role="button" aria-expanded="false" aria-controls="setup">
+        <span class="subnavigation__headline">Setup</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="setup">
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../system-requirements/" class="subnavigation__link">System Requirements</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Installation</a>
+</li>
+
+        
+    </ul>
+</li>
+
+                    
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#virtualhosts" role="button" aria-expanded="false" aria-controls="virtualhosts">
+        <span class="subnavigation__headline">Virtualhosts</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="virtualhosts">
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../virtualhosts/overview/" class="subnavigation__link">Overview</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
+</li>
+
+        
+    </ul>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../../faq/" class="subnavigation__link">FAQ</a>
+</li>
+
+                    
+                
+            
+        </ul>
+    </div>
+
+                    
+
+                    
+                    
+                    
+    
+
+    
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#install-almalinux-9" class="toc__link nav-link">Install AlmaLinux 9</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#setup-the-packages-in-almalinux-9" class="toc__link nav-link">Setup the packages in AlmaLinux 9</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#running-almalinux-9" class="toc__link nav-link">Running AlmaLinux 9</a>
+                </li>
+            
+            </ul>
+        </div>
+    
+
+                    
+                </div>
+                <div class="col-lg-9 main_docs">
+                    
+                    
+
+
+
+
+    
+    
+<!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
+    
+
+    <h1 id="installation">Installation</h1>
+<h2 id="install-almalinux-9">Install AlmaLinux 9</h2>
+<p>Open Microsoft Store, in the search box type in: <code>AlmaLinux</code> and hit <code>Enter</code>.</p>
+<p>From the results, select <strong>AlmaLinux 9</strong> - this will take you to <strong>AlmaLinux 9</strong>'s app page.</p>
+<p>On this page, locate and click the <code>Install</code> button - this will download <strong>AlmaLinux 9</strong> WSL image on your system.</p>
+<p>Once the download has finished, the <code>Install</code> button is replaced by an <code>Open</code> button - clicking it will open
+<code>Windows Terminal</code>.</p>
+<p>Here you will be asked to fill in your username (for example <code>dotkernel</code>):</p>
+<pre class="highlight"><code class="language-text">Installing, this may take a few minutes...
+Please create a default UNIX user account. The username does not need to match your Windows username.
+For more information visit: https://aka.ms/wslusers
+Enter new UNIX username:</code></pre>
+<p>Next, you are prompted to enter a password to use with your username (you will not see what you are typing, that's a
+security measure in Linux regarding passwords):</p>
+<pre class="highlight"><code class="language-text">Enter new UNIX username: dotkernel.
+Changing password for user dotkernel.
+New password:</code></pre>
+<p>Depending on the strength of your password, you might see one of the following messages (if you want to choose a
+different password, hit <code>Enter</code> and you are taken back to previous step - else, continue with retyping your password).</p>
+<pre class="highlight"><code class="language-text">BAD PASSWORD: The password fails the dictionary check - it is based on a dictionary word
+BAD PASSWORD: The password is a palindrome</code></pre>
+<p>Next, you are asked to retype your password:</p>
+<pre class="highlight"><code class="language-text">Retype new password:</code></pre>
+<p>Finally, you should see the following message:</p>
+<pre class="highlight"><code class="language-text">passwd: all authentication tokens updated successfully.
+Installation successful!
+[dotkernel@hostname:~]$</code></pre>
+<h2 id="setup-the-packages-in-almalinux-9">Setup the packages in AlmaLinux 9</h2>
+<p>Install requirements:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y</code></pre>
+<p>Update/Upgrade system packages:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
+<p>Now, install the latest version of <strong>Ansible</strong>:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf install ansible -y</code></pre>
+<p>Clone <code>dotkernel/development</code> into your home directory:</p>
+<pre class="highlight"><code class="language-shell">git clone https://github.com/dotkernel/development.git</code></pre>
+<p>Move inside the directory <code>development/wsl</code>:</p>
+<pre class="highlight"><code class="language-shell">cd ~/development/wsl/</code></pre>
+<p>Using your preferred text editor, open <code>config.yml</code> where you must fill in the empty fields.</p>
+<p>Save and close the file.</p>
+<p>Install requirements and initialize systemd by running the below Ansible command:</p>
+<pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
+<p>The installation process will ask for your password (set during the installation process) and will iterate over each
+task in the playbook and will output a short summary with the results.</p>
+<p>At this step, <strong>AlmaLinux 9</strong> needs to be restarted - quit it by pressing <code>Control</code> + <code>d</code>.</p>
+<p>Open <code>Windows Terminal</code>.</p>
+<p>Stop <strong>AlmaLinux 9</strong>:</p>
+<pre class="highlight"><code class="language-shell">wsl -t AlmaLinux9</code></pre>
+<p>Start <strong>AlmaLinux 9</strong>:</p>
+<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux9</code></pre>
+<p>Move inside the directory <code>development/wsl</code>:</p>
+<pre class="highlight"><code class="language-shell">cd ~/development/wsl/</code></pre>
+<p>Continue installation by running the below Ansible command:</p>
+<pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
+<p>The installation process will ask for your password (set during the installation process) and will iterate over each
+task in the playbook and will output a short summary with the results.</p>
+<p>Now check if everything works by opening in your browser:</p>
+<ul>
+<li><a href="http://localhost/">http://localhost/</a> - Apache's default home page</li>
+<li><a href="http://localhost/info.php">http://localhost/info.php</a> - PHP info page</li>
+<li><a href="http://localhost/phpmyadmin/">http://localhost/phpmyadmin/</a> - PhpMyAdmin (login with <code>root</code> + the root password you
+configured in <code>config.yml</code> under <code>mariadb</code> -&gt; <code>root_password</code>)</li>
+</ul>
+<p>The installation is complete, your <strong>AlmaLinux 9</strong> development environment is ready to use.</p>
+<h2 id="running-almalinux-9">Running AlmaLinux 9</h2>
+<p>Open <code>Windows Terminal</code>.</p>
+<p>Start <strong>AlmaLinux 9</strong>:</p>
+<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux9</code></pre>
+<h3 id="note">Note</h3>
+<blockquote>
+<p>In order to run your applications using WSL2, you always need to be connected to your AlmaLinux9 distribution.
+For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.</p>
+</blockquote>
+
+
+
+
+    <nav>
+    <ul class="page-nav hidden-print">
+        
+        <li class="page-nav__item">
+            
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../system-requirements/">
+                    <small class="page-nav__label">Previous</small>
+                    <i class="bi bi-chevron-left"></i>
+                    System Requirements
+                </a>
+            
+        </li>
+
+        
+        <li class="page-nav__item">
+            
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../../virtualhosts/overview/">
+                    <small class="page-nav__label">Next</small>
+                    Overview
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            
+        </li>
+    </ul>
+</nav>
+
+
+
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <footer class="footer">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="footer_head">
+                    <p>DotKernel</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 dk_widget">
+                        <p>DotKernel Frontend</p>
+                        <a href="https://docs.dotkernel.org/frontend/" target="_blank">
+                            <i class="bi bi-arrow-return-right"></i>
+                            DotKernel web starter project suitable for frontend applications
+                        </a>
+                    </div>
+
+                    <div class="col-md-6 dk_widget">
+                        <p>DotKernel API</p>
+                        <a href="https://docs.dotkernel.org/api-documentation/" target="_blank">
+                            <i class="bi bi-arrow-return-right"></i>
+                            DotKernel web starter project suitable for building RESTful APIs
+                        </a>
+                    </div>
+
+                    <div class="col-md-6 dk_widget">
+                        <p>DotKernel Admin</p>
+
+                        <a href="https://docs.dotkernel.org/admin/" target="_blank">
+                            <i class="bi bi-arrow-return-right"></i>
+                            DotKernel web starter project suitable for admin applications
+                        </a>
+                    </div>
+
+                    <div class="col-md-6 dk_widget">
+                        <p>DotKernel Packages</p>
+                        <a href="https://docs.dotkernel.org/packages/" target="_blank">
+                            <i class="bi bi-arrow-return-right"></i>
+                            DotKernel packages offering a wide range of tools
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <div class="footer_head">
+                    <p>Support</p>
+                </div>
+                <ul class="support__list">
+                    <li class="support__list-item">
+                        <a href="https://github.com/dotkernel" class="support__link" title="GitHub" target="_blank">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://dotkernel.slack.com" class="support__link" title="Slack" target="_blank">
+                            <i class="bi bi-slack"></i> Slack
+                        </a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://twitter.com/dotkernel" class="support__link" title="X (Twitter)" target="_blank">
+                            <i class="bi bi-twitter-x"></i> Twitter
+                        </a>
+                    </li>
+
+                    <li class="support__list-item">
+                        <a href="https://www.dotkernel.com/blog/" class="support__link" title="Blog" target="_blank">
+                            <i class="bi bi-file-post"></i> Blog
+                        </a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://www.dotkernel.com/feed/" class="support__link" title="Blog feed" target="_blank">
+                            <i class="bi bi-rss-fill"></i> Feed
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer_copy">
+            &#169; 2024 by <a href="https://www.dotkernel.com/" target="_blank">DotKernel</a> a collection of PSR-7 Middleware applications and libraries
+        </div>
+    </div>
+</footer>
+
+        <script>
+            let base_url = '../../..',
+                project  = "development",
+                siteName = 'development';
+
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelectorAll('.subnavigation__link').forEach(function(link) {
+                        if (link.getAttribute('href') === './') {
+                            link.parentNode.parentNode.classList.add('show');
+                        }
+                    });
+                });
+        </script>
+<!--        -->
+<!--        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search in development" id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+        </div>
+    </div>
+</div>-->
+    </body>
+</html>
