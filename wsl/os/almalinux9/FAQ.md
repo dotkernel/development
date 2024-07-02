@@ -99,6 +99,25 @@ chmod -R 777 public/uploads
 chmod -R 777 log
 ```
 
+## Where are the error log files?
+
+From time to time, you are encountering various errors which are not displayed. Or you can get errors 500 in browser.
+
+In order to find the error messages, you need to read the error log files.
+
+### Apache log files
+
+```text
+/var/log/httpd/error_log
+```
+
+### PHP-FPM log files
+
+```text
+/var/log/php-fpm/error.log
+/var/log/php-fpm/www-error.log
+```
+
 ## How do I create command aliases?
 
 From either your terminal or file explorer, navigate to your home directory (`/home/<your-username>/`).
