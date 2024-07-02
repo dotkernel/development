@@ -307,6 +307,10 @@
                 </li>
             
                 <li class="toc__entry">
+                    <a href="#where-are-the-error-log-files" class="toc__link nav-link">Where are the error log files?</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#how-do-i-create-command-aliases" class="toc__link nav-link">How do I create command aliases?</a>
                 </li>
             
@@ -386,6 +390,14 @@ stream: Permission denied...</p>
 </blockquote>
 <h3 id="solution_2">Solution</h3>
 <pre class="highlight"><code class="language-shell">chmod -R 777 log</code></pre>
+<h2 id="where-are-the-error-log-files">Where are the error log files?</h2>
+<p>From time to time, you are encountering various errors which are not displayed. Or you can get errors 500 in browser.</p>
+<p>In order to find the error messages, you need to read the error log files.</p>
+<h3 id="apache-log-files">Apache log files</h3>
+<pre class="highlight"><code class="language-text">/var/log/httpd/error_log</code></pre>
+<h3 id="php-fpm-log-files">PHP-FPM log files</h3>
+<pre class="highlight"><code class="language-text">/var/log/php-fpm/error.log
+/var/log/php-fpm/www-error.log</code></pre>
 <h2 id="how-do-i-create-command-aliases">How do I create command aliases?</h2>
 <p>From either your terminal or file explorer, navigate to your home directory (<code>/home/&lt;your-username&gt;/</code>).</p>
 <p>Using your preferred text editor, open the file: <code>.bash_profile</code> (if it does not exist, creat it first).</p>
