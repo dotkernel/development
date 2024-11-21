@@ -344,15 +344,14 @@
 <h2 id="how-do-i-switch-to-a-different-version-of-php">How do I switch to a different version of PHP?</h2>
 <p>Execute the following command:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf module switch-to php:remi-{major}.{minor} -y</code></pre>
-<p>where <code>{major}.{minor}</code> is one of the supported PHP versions: <code>8.3</code>, <code>8.2</code>, <code>8.1</code>, <code>8.0</code> and <code>7.4</code>.</p>
+<p>where <code>{major}.{minor}</code> is one of the supported PHP versions: <code>8.4</code>, <code>8.3</code>, <code>8.2</code> and <code>8.1</code>.</p>
 <p>Additionally, our setup includes predefined aliases for executing the above command.
 The aliases are the following:</p>
 <ul>
-<li><code>php74</code>: switch to PHP 7.4</li>
-<li><code>php80</code>: switch to PHP 8.0</li>
 <li><code>php81</code>: switch to PHP 8.1</li>
 <li><code>php82</code>: switch to PHP 8.2</li>
 <li><code>php83</code>: switch to PHP 8.3</li>
+<li><code>php83</code>: switch to PHP 8.4</li>
 </ul>
 <p>After switching to a different PHP version, test with the following command:</p>
 <pre class="highlight"><code class="language-shell">php -v</code></pre>
