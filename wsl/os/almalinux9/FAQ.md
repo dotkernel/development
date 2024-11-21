@@ -8,13 +8,11 @@ Execute the following command:
 sudo dnf module switch-to php:remi-{major}.{minor} -y
 ```
 
-where `{major}.{minor}` is one of the supported PHP versions: `8.4`, `8.3`, `8.2`, `8.1`, `8.0` and `7.4`.
+where `{major}.{minor}` is one of the supported PHP versions: `8.4`, `8.3`, `8.2` and `8.1`.
 
 Additionally, our setup includes predefined aliases for executing the above command.
 The aliases are the following:
 
-- `php74`: switch to PHP 7.4
-- `php80`: switch to PHP 8.0
 - `php81`: switch to PHP 8.1
 - `php82`: switch to PHP 8.2
 - `php83`: switch to PHP 8.3
