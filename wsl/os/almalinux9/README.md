@@ -1,19 +1,43 @@
 # Install WSL development environment on AlmaLinux 9
 
-[< DotKernel: Install development environment](../../README.md)
+[< Dotkernel: Install development environment](../../README.md)
 
-## Download and install AlmaLinux 9
+## Download AlmaLinux 9 image
 
-Open Microsoft Store, in the search box type in: `AlmaLinux` and hit `Enter`.
+Download **AlmaLinux 9** image by following one of the below methods.
+
+### Method 1: Download AlmaLinux 9 WSL image using Windows Terminal
+
+Open `Windows Terminal` and execute the following command:
+
+```shell
+wsl --install -d AlmaLinux-9
+```
+
+You should see the download progress, and once finished, the output should look like this:
+
+```text
+Downloading: AlmaLinux 9
+Installing: AlmaLinux 9
+AlmaLinux 9 has been installed.
+Launching AlmaLinux 9...
+```
+
+Also, you should find a new tab in `Windows Terminal` that is already connected to **AlmaLinux 9**.
+
+### Method 2: Download AlmaLinux 9 WSL image from Microsoft Store
+
+Open Microsoft Store, type `AlmaLinux` in the search box and hit `Enter`.
 
 From the results, select `AlmaLinux 9` - this will take you to AlmaLinux 9's app page.
 
 On this page, locate and click the `Install` button - this will download AlmaLinux 9 WSL image on your machine.
 
-Once the download has finished, the `Install` button is replaced by an `Open` button - clicking it will open
-`Windows Terminal`.
+Once the download has finished, the `Install` button is replaced by an `Open` button - clicking it will open `Windows Terminal`.
 
-Here you will be asked to fill in your username (for example `dotkernel`):
+## Install AlmaLinux 9
+
+You will be asked to fill in your username (for example `dotkernel`):
 
 ```text
 Installing, this may take a few minutes...
@@ -56,7 +80,7 @@ Installation successful!
 Install requirements:
 
 ```shell
-sudo dnf install epel-release dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
+sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
 ```
 
 Update/Upgrade system packages:
@@ -71,7 +95,7 @@ Now, install the latest version of Ansible:
 sudo dnf install ansible -y
 ```
 
-Clone dotkernel/development into your home directory:
+Clone `dotkernel/development` into your home directory:
 
 ```shell
 git clone https://github.com/dotkernel/development.git
@@ -113,9 +137,11 @@ wsl -d AlmaLinux9
 
 Move inside the directory `development/wsl`:
 
-```cd ~/development/wsl/```
+```shell
+cd ~/development/wsl/
+```
 
-Continue installation by running the below Ansible command:
+Continue the installation by running the below Ansible command:
 
 ```shell
 ansible-playbook -i hosts install.yml --ask-become-pass
@@ -125,10 +151,9 @@ The installation process will iterate over each task in the playbook and will ou
 
 Now check if everything works by opening in your browser:
 
-- [http://localhost/](http://localhost/) - Apache's default home page
-- [http://localhost/info.php](http://localhost/info.php) - PHP info page
-- [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/) - PhpMyAdmin (login with `root` + the root password you
-configured in `config.yml` under `mariadb` -> `root_password`)
+- [http://localhost/](http://localhost/): Apache's default home page
+- [http://localhost/info.php](http://localhost/info.php): PHP info page
+- [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
 
 The installation is complete, your development environment is ready to use.
 
@@ -145,10 +170,7 @@ want to create, each on its own line.
 
 Already existing ones will be skipped, no need to comment or remove them.
 
-### NOTE
-
-> By using the pattern `*.localhost` for any new virtualhost, you do not need to modify the `hosts` file in Windows,
-> because these are routed by default.
+> By using the `*.localhost` pattern for any new virtualhost, you do not need to modify the `hosts` file in Windows, because these are routed by default.
 
 Save and close the file.
 
@@ -162,23 +184,17 @@ This will iterate over the list of configured `virtualhosts` and will output a s
 
 Your virtualhost should be accessible and ready to use.
 
-You will install your project under the `html` directory of your project, for example:
-`/var/www/example.localhost/html`.
+You will install your project under the `html` directory of your project, for example: `/var/www/example.localhost/html`.
 
-### NOTE
-> The virtualhost's document root is set to the `public` directory of the above location, for example
-> `/var/www/example.localhost/html/public`.
-> 
-> If you want to have the DocumentRoot directly in `html` folder, you need to modify the file
-> `/etc/httpd/sites-available/example.localhost` 
+> The virtualhost's document root is set to the `public` directory of the above location, for example `/var/www/example.localhost/html/public`.
+
+> If you want to have the DocumentRoot directly in `html` folder, you need to modify the file `/etc/httpd/sites-available/example.localhost`.
 
 ### Good to know
 
-- In order to run your installed projects, you need to start AlmaLinux 9 first.
+- To run your installed projects, you need to start AlmaLinux 9 first.
 - If you work with virtualhosts, your projects are created under `/var/www/`.
 - You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 - If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues).
-- We install PHP 8.3 by default. If you need a different version, see
-[this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-php).
-- We install NodeJS 22 by default. If you need a different version, see
-[this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).
+- We install PHP 8.3 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-php).
+- We install Node.js 22 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).
