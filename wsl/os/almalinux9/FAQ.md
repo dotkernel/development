@@ -59,7 +59,7 @@ node -v
 
 ## How do I fix common permission issues?
 
-If running your project you encounter permission issues, follow the below steps.
+If running your project, you encounter permission issues, follow the below steps.
 
 ### Error
 
@@ -100,9 +100,9 @@ chmod -R 777 log
 
 ## Where are the error log files?
 
-From time to time, you are encountering various errors which are not displayed. Or you can get errors 500 in browser.
+From time to time, you are encountering various errors which are not displayed. Or you can get errors 500 in a browser.
 
-In order to find the error messages, you need to read the error log files.
+To find the error messages, you need to read the error log files.
 
 ### Apache log files
 
@@ -117,6 +117,58 @@ In order to find the error messages, you need to read the error log files.
 /var/log/php-fpm/www-error.log
 ```
 
+## How do I update Composer?
+
+Before updating, check your current Composer version by executing:
+
+```shell
+composer --version
+```
+
+The output should be similar to:
+
+```text
+Composer version 2.8.5 2025-01-21 15:23:40
+PHP version 8.3.20 (/usr/bin/php)
+Run the "diagnose" command to get more detailed diagnostics output.
+```
+
+Update Composer using its own `self-update` command:
+
+```shell
+sudo /usr/local/bin/composer self-update
+```
+
+The output should be similar to:
+
+```text
+Upgrading to version 2.8.8 (stable channel).
+
+Use composer self-update --rollback to return to version 2.8.5
+```
+
+After updating, check again your Composer version by executing:
+
+```shell
+composer --version
+```
+
+The output should be similar to:
+
+```text
+Composer version 2.8.8 2025-04-04 16:56:46
+PHP version 8.3.20 (/usr/bin/php)
+Run the "diagnose" command to get more detailed diagnostics output.
+```
+
+## How do I update phpMyAdmin?
+
+Being installed as a system package, it can be updated using the command which updates the rest of the system packages:
+
+```shell
+sudo dnf upgrade -y
+```
+
 ## How do I create command aliases?
 
 From either your terminal or file explorer, navigate to your home directory (`/home/<your-username>/`).
@@ -125,7 +177,9 @@ Using your preferred text editor, open the file: `.bash_profile` (if it does not
 
 Move to the end of the file and enter on a new line:
 
-    alias command_alias="command to execute"
+```text
+alias command_alias="command to execute"
+```
 
 where:
 
@@ -134,6 +188,8 @@ where:
 
 ### Example:
 
-    alias list_files="ls -Al"
+```text
+alias list_files="ls -Al"
+```
 
 will create an alias called `list_files` that will run the command `ls -Al`.
