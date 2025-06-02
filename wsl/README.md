@@ -12,9 +12,9 @@ This will open a window where you can turn Windows features on/off.
 
 Make sure the next features are activated (checked):
 
-- `Hyper-V` (including its sub-features)
-- `Virtual Machine Platform`
-- `Windows Subsystem for Linux`
+* `Hyper-V` (including its sub-features)
+* `Virtual Machine Platform`
+* `Windows Subsystem for Linux`
 
 > If any of the above features are missing, then first you need to install them manually using [this guide](https://docs.microsoft.com/en-us/windows/wsl/install-manual) and then continue with the below steps.
 
@@ -30,5 +30,4 @@ wsl --set-default-version 2
 
 ## Choose the Operating System you want to use for development:
 
-- [Ubuntu 20](os/ubuntu20/README.md)
-- [AlmaLinux 9](os/almalinux9/README.md)
+* [AlmaLinux9](os/almalinux9/README.md)
