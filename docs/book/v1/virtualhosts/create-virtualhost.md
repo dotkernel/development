@@ -6,6 +6,8 @@ Move inside the directory `development/wsl`:
 cd ~/development/wsl/
 ```
 
+If you don't already have a `config.yml` file, duplicate `config.yml.dist` as `config.yml`.
+
 Using your preferred text editor, open `config.yml` and, under the `virtualhosts` key, enter the virtualhosts that you want to create, each on its own line.
 
 Already existing virtualhosts will be skipped, their contents will not be lost, no need to comment or remove them.

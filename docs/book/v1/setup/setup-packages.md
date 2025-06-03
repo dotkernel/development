@@ -30,7 +30,9 @@ Move inside the directory `development/wsl`:
 cd ~/development/wsl/
 ```
 
-Using your preferred text editor, open `config.yml` where you must fill in the empty fields.
+Duplicate `config.yml.dist` as `config.yml`.
+
+Using your preferred text editor, open `config.yml` and fill in the empty fields.
 
 Save and close the file.
 
