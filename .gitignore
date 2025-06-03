@@ -3,3 +3,4 @@ composer.lock
 docs/html
 documentation-theme
 vendor
+wsl/config.yml
