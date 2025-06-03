@@ -1,3 +1,0 @@
----
-user_wsl_config_dest: /etc/wsl.conf
-user_projects_dir: "/home/{{ config.system.username }}/projects"

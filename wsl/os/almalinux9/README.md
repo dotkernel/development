@@ -1,12 +1,12 @@
-# Install WSL development environment on AlmaLinux 9
+# Install WSL2 development environment on AlmaLinux9
 
 [< Dotkernel: Install development environment](../../README.md)
 
-## Download AlmaLinux 9 image
+## Download AlmaLinux9 image
 
-Download **AlmaLinux 9** image by following one of the below methods.
+Download **AlmaLinux9** image by following one of the below methods.
 
-### Method 1: Download AlmaLinux 9 WSL image using Windows Terminal
+### Method 1: Download AlmaLinux9 WSL2 image using Windows Terminal
 
 Open `Windows Terminal` and execute the following command:
 
@@ -23,19 +23,19 @@ AlmaLinux 9 has been installed.
 Launching AlmaLinux 9...
 ```
 
-Also, you should find a new tab in `Windows Terminal` that is already connected to **AlmaLinux 9**.
+Also, you should find a new tab in `Windows Terminal` that is already connected to **AlmaLinux9**.
 
-### Method 2: Download AlmaLinux 9 WSL image from Microsoft Store
+### Method 2: Download AlmaLinux9 WSL2 image from Microsoft Store
 
 Open Microsoft Store, type `AlmaLinux` in the search box and hit `Enter`.
 
-From the results, select `AlmaLinux 9` - this will take you to AlmaLinux 9's app page.
+From the results, select `AlmaLinux OS 9` - this will take you to AlmaLinux9's app page.
 
-On this page, locate and click the `Install` button - this will download AlmaLinux 9 WSL image on your machine.
+On this page, locate and click the `Install` button - this will download AlmaLinux9 WSL2 image on your machine.
 
 Once the download has finished, the `Install` button is replaced by an `Open` button - clicking it will open `Windows Terminal`.
 
-## Install AlmaLinux 9
+## Install AlmaLinux9
 
 You will be asked to fill in your username (for example `dotkernel`):
 
@@ -54,7 +54,7 @@ Changing password for user dotkernel.
 New password:
 ```
 
-Depending on the strength of your password, you might see one of the following messages (if you want to choose a different password, hit `Enter` and you are taken back to previous step - else, continue with retyping your password)
+Depending on the strength of your password, you might see one of the following messages (if you want to choose a different password, hit `Enter` and you are taken back to previous step - else, continue with retyping your password):
 
 ```text
 BAD PASSWORD: The password fails the dictionary check - it is based on a dictionary word
@@ -75,7 +75,7 @@ Installation successful!
 [dotkernel@hostname:~]$
 ```
 
-## Setup AlmaLinux 9
+## Setup AlmaLinux9
 
 Install requirements:
 
@@ -119,17 +119,17 @@ ansible-playbook -i hosts install.yml --ask-become-pass
 
 The installation process will iterate over each task in the playbook and will output a short summary with the results.
 
-AlmaLinux 9 needs to be restarted, so quit it by pressing `Control` + `d`.
+AlmaLinux9 needs to be restarted, so quit it by pressing `Control` + `d`.
 
 Open Windows Terminal.
 
-Stop AlmaLinux 9:
+Stop AlmaLinux9:
 
 ```shell
 wsl -t AlmaLinux9
 ```
 
-Start AlmaLinux 9:
+Start AlmaLinux9:
 
 ```shell
 wsl -d AlmaLinux9
@@ -151,9 +151,9 @@ The installation process will iterate over each task in the playbook and will ou
 
 Now check if everything works by opening in your browser:
 
-- [http://localhost/](http://localhost/): Apache's default home page
-- [http://localhost/info.php](http://localhost/info.php): PHP info page
-- [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
+* [http://localhost/](http://localhost/): Apache's default home page
+* [http://localhost/info.php](http://localhost/info.php): PHP info page
+* [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
 
 The installation is complete, your development environment is ready to use.
 
@@ -165,8 +165,7 @@ Move inside the directory `development/wsl`:
 cd ~/development/wsl/
 ```
 
-Using your preferred text editor, open `config.yml` and, under the `virtualhosts` key, enter the virtualhosts that you
-want to create, each on its own line. 
+Using your preferred text editor, open `config.yml` and, under the `virtualhosts` key, enter the virtualhosts that you want to create, each on its own line. 
 
 Already existing ones will be skipped, no need to comment or remove them.
 
@@ -192,9 +191,9 @@ You will install your project under the `html` directory of your project, for ex
 
 ### Good to know
 
-- To run your installed projects, you need to start AlmaLinux 9 first.
-- If you work with virtualhosts, your projects are created under `/var/www/`.
-- You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
-- If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues).
-- We install PHP 8.3 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-php).
-- We install Node.js 22 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).
+* To run your installed projects, you need to start AlmaLinux9 first.
+* If you work with virtualhosts, your projects are created under `/var/www/`.
+* You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
+* If you encounter write permission issues, see [this guide](FAQ.md#how-do-i-fix-common-permission-issues).
+* We install PHP 8.3 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-php).
+* We install Node.js 22 by default. If you need a different version, see [this guide](FAQ.md#how-do-i-switch-to-a-different-version-of-nodejs).

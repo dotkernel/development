@@ -13,10 +13,10 @@ where `{major}.{minor}` is one of the supported PHP versions: `8.4`, `8.3`, `8.2
 Additionally, our setup includes predefined aliases for executing the above command.
 The aliases are the following:
 
-- `php81`: switch to PHP 8.1
-- `php82`: switch to PHP 8.2
-- `php83`: switch to PHP 8.3
-- `php84`: switch to PHP 8.4
+* `php81`: switch to PHP 8.1
+* `php82`: switch to PHP 8.2
+* `php83`: switch to PHP 8.3
+* `php84`: switch to PHP 8.4
 
 After switching to a different PHP version, test with the following command:
 
@@ -47,9 +47,9 @@ where `{major}` is the Node.js version you want to switch to.
 Additionally, our setup includes predefined aliases for the above commands.
 The aliases are the following:
 
-- `node22`: switch to Node.js 22
-- `node20`: switch to Node.js 20
-- `node18`: switch to Node.js 18
+* `node22`: switch to Node.js 22
+* `node20`: switch to Node.js 20
+* `node18`: switch to Node.js 18
 
 After switching to a different Node.js version, test with the following command:
 
@@ -67,8 +67,7 @@ If running your project, you encounter permission issues, follow the below steps
 
 > PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/data/cache" is not writable...
 
-> PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/data/cache/doctrine" is not
-> writable...
+> PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/data/cache/doctrine" is not writable...
 
 ### Solution
 
@@ -78,8 +77,7 @@ chmod -R 777 data
 
 ### Error
 
-> PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/public/uploads" is not
-> writable...
+> PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/public/uploads" is not writable...
 
 ### Solution
 
@@ -89,8 +87,7 @@ chmod -R 777 public/uploads
 
 ### Error
 
-> PHP Fatal error: Uncaught ErrorException: fopen(`<path-to-project>`/log/error-log-yyyy-mm-dd.log): Failed to open
-> stream: Permission denied...
+> PHP Fatal error: Uncaught ErrorException: fopen(`<path-to-project>`/log/error-log-yyyy-mm-dd.log): Failed to open stream: Permission denied...
 
 ### Solution
 
@@ -183,8 +180,8 @@ alias command_alias="command to execute"
 
 where:
 
-- `command_alias` is the name by which you want to call your original command
-- `command to execute`: the original command to be executed on alias call
+* `command_alias` is the name by which you want to call your original command
+* `command to execute`: the original command to be executed on alias call
 
 ### Example:
 
