@@ -16,7 +16,7 @@ The aliases are the following:
 * `php81`: switch to PHP 8.1
 * `php82`: switch to PHP 8.2
 * `php83`: switch to PHP 8.3
-* `php83`: switch to PHP 8.4
+* `php84`: switch to PHP 8.4
 
 After switching to a different PHP version, test with the following command:
 
