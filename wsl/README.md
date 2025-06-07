@@ -123,10 +123,10 @@ Move inside your home directory (it is `/home/` followed by your AlmaLinux9 user
 cd ~
 ```
 
-Clone the `almalinux9` branch of the `dotkernel/development` repository:
+Clone the `alma-linux-9` branch of the `dotkernel/development` repository:
 
 ```shell
-git clone --branch almalinux9 --single-branch https://github.com/dotkernel/development.git
+git clone --branch alma-linux-9 --single-branch https://github.com/dotkernel/development.git
 ```
 
 Move inside the directory `development/wsl`:
