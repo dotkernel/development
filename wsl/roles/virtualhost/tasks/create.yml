@@ -43,4 +43,6 @@
   loop_control:
     loop_var: virtualhost
 - name: Reload Apache
-  command: systemctl reload httpd
+  ansible.builtin.systemd_service:
+    name: httpd
+    state: restarted

@@ -2,21 +2,21 @@ docs_dir: docs/book
 site_dir: docs/html
 extra:
   project: Development
-  current_version: v1
+  current_version: AlmaLinux9
   versions:
-    - v1
+    - AlmaLinux9
 nav:
   - Home: index.md
-  - v1:
-      - Introduction: v1/introduction.md
+  - AlmaLinux9:
+      - Introduction: AlmaLinux9/introduction.md
       - Setup:
-          - System Requirements: v1/setup/system-requirements.md
-          - Installation: v1/setup/installation.md
-          - Setup Packages: v1/setup/setup-packages.md
+          - System Requirements: AlmaLinux9/setup/system-requirements.md
+          - Installation: AlmaLinux9/setup/installation.md
+          - Setup Packages: AlmaLinux9/setup/setup-packages.md
       - Virtualhosts:
-          - Overview: v1/virtualhosts/overview.md
-          - Create virtualhost: v1/virtualhosts/create-virtualhost.md
-      - FAQ: v1/faq.md
+          - Overview: AlmaLinux9/virtualhosts/overview.md
+          - Create virtualhost: AlmaLinux9/virtualhosts/create-virtualhost.md
+      - FAQ: AlmaLinux9/faq.md
 site_name: development
 site_description: "WSL2 Development Environment"
 repo_url: "https://github.com/dotkernel/development"

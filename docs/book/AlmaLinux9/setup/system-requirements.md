@@ -1,6 +1,4 @@
-# WSL2 development environment
-
-This is a collection of Ansible scripts helping with the creation and maintenance of your WSL2 development environment.
+# System requirements
 
 If you're not already using it, we recommend you to install [Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&gl=US).
 It is a modern tool that incorporates the power of multiple already known command-line applications like `Windows PowerShell`, `Linux shell`, and more...
@@ -25,7 +23,7 @@ DXCore version: 10.0.26091.1-240325-1447.ge-release
 Windows version: 10.0.22631.3737
 ```
 
-If the output starts with `WSL version: 2.x.x.x`, you are ready to use **WSL2** and can proceed to [install AlmaLinux9](wsl/README.md).
+If the output starts with `WSL version: 2.x.x.x`, you are ready to use **WSL2** and can proceed to [install AlmaLinux9](installation.md).
 
 ## Install WSL2
 
@@ -57,4 +55,4 @@ To test, run again the following command:
 wsl -v
 ```
 
-This time the output should display `WSL version: 2.x.x.x`, which means that your system is ready for using **WSL2** and you can proceed to [install AlmaLinux9](wsl/README.md).
+This time the output should display `WSL version: 2.x.x.x`, which means that your system is ready for using **WSL2** and you can proceed to [install AlmaLinux9](installation.md).

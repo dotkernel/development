@@ -1,0 +1,24 @@
+---
+- name: Update/Upgrade installed packages
+  dnf:
+    name: "*"
+    state: latest
+    update_cache: true
+- name: Install firewall daemon
+  dnf:
+    name: firewalld
+    state: latest
+- name: Set default user
+  ansible.builtin.lineinfile:
+    path: "{{ wsl_config_dest }}"
+    line: "{{ item }}"
+    create: yes
+    insertafter: EOF
+  loop:
+    - ""
+    - "[user]"
+    - "default={{ config.system.username }}"
+- name: Copy ~/.bash_profile file
+  template:
+    src: bash_profile.j2
+    dest: "{{ bash_profile_dest }}"
