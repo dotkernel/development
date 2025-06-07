@@ -2,12 +2,12 @@ docs_dir: docs/book
 site_dir: docs/html
 extra:
   project: Development
-  current_version: AlmaLinux9
+  current_version: v1
   versions:
-    - AlmaLinux9
+    - v1
 nav:
   - Home: index.md
-  - AlmaLinux9:
+  - v1:
       - Introduction: AlmaLinux9/introduction.md
       - Setup:
           - System Requirements: AlmaLinux9/setup/system-requirements.md
