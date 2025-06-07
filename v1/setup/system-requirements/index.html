@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/AlmaLinux9/faq/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/setup/system-requirements/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>FAQ - development - Dotkernel Documentation</title>
+        <title>System Requirements - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -147,7 +147,7 @@
                 
 
                 
-                    <li class="breadcrumb-item"><a href="../..">development</a></li>
+                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
 
                     
                         
@@ -155,8 +155,15 @@
                             
                         
                     
+                        
+                            
+                            
+                                <li class="breadcrumb-item">Setup</li>
+                            
+                        
+                    
 
-                    <li class="breadcrumb-item active" aria-current="page">FAQ</li>
+                    <li class="breadcrumb-item active" aria-current="page">System Requirements</li>
                 
             
         </ol>
@@ -171,7 +178,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../..">development</a>-->
+<!--            <a href="../../..">development</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -181,8 +188,110 @@
 
                 
                 
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
+</li>
 
                     
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#setup" role="button" aria-expanded="false" aria-controls="setup">
+        <span class="subnavigation__headline">Setup</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="setup">
+        
+        
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">System Requirements</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../installation/" class="subnavigation__link">Installation</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../setup-packages/" class="subnavigation__link">Setup Packages</a>
+</li>
+
+        
+    </ul>
+</li>
+
+                    
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#virtualhosts" role="button" aria-expanded="false" aria-controls="virtualhosts">
+        <span class="subnavigation__headline">Virtualhosts</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="virtualhosts">
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../virtualhosts/overview/" class="subnavigation__link">Overview</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
+</li>
+
+        
+    </ul>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../../faq/" class="subnavigation__link">FAQ</a>
+</li>
+
                     
                 
             
@@ -203,31 +312,11 @@
             <ul class="toc__list">
             
                 <li class="toc__entry">
-                    <a href="#how-do-i-switch-to-a-different-version-of-php" class="toc__link nav-link">How do I switch to a different version of PHP?</a>
+                    <a href="#check-if-wls2-is-already-available" class="toc__link nav-link">Check if WLS2 is already available</a>
                 </li>
             
                 <li class="toc__entry">
-                    <a href="#how-do-i-switch-to-a-different-version-of-nodejs" class="toc__link nav-link">How do I switch to a different version of Node.js?</a>
-                </li>
-            
-                <li class="toc__entry">
-                    <a href="#how-do-i-fix-common-permission-issues" class="toc__link nav-link">How do I fix common permission issues?</a>
-                </li>
-            
-                <li class="toc__entry">
-                    <a href="#where-are-the-error-log-files" class="toc__link nav-link">Where are the error log files?</a>
-                </li>
-            
-                <li class="toc__entry">
-                    <a href="#how-do-i-update-composer" class="toc__link nav-link">How do I update Composer?</a>
-                </li>
-            
-                <li class="toc__entry">
-                    <a href="#how-do-i-update-phpmyadmin" class="toc__link nav-link">How do I update phpMyAdmin?</a>
-                </li>
-            
-                <li class="toc__entry">
-                    <a href="#how-do-i-create-command-aliases" class="toc__link nav-link">How do I create command aliases?</a>
+                    <a href="#install-wsl2" class="toc__link nav-link">Install WSL2</a>
                 </li>
             
             </ul>
@@ -240,120 +329,49 @@
                     
                     
 
-    <div class="alert alert-danger alert-caution" role="alert">
-        <p class="mb-0">
-            The documentation you are viewing is for an older version of this component.<br>
-            <a href="../..">Switch to the latest (v1) version.</a>
-        </p>
-    </div>
-
 
 
 
     
     
+<!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
+    
 
-    <h1 id="frequently-asked-questions">Frequently asked questions</h1>
-<h2 id="how-do-i-switch-to-a-different-version-of-php">How do I switch to a different version of PHP?</h2>
-<p>Execute the following command:</p>
-<pre class="highlight"><code class="language-shell">sudo dnf module switch-to php:remi-{major}.{minor} -y</code></pre>
-<p>where <code>{major}.{minor}</code> is one of the supported PHP versions: <code>8.4</code>, <code>8.3</code>, <code>8.2</code> and <code>8.1</code>.</p>
-<p>Additionally, our setup includes predefined aliases for executing the above command.
-The aliases are the following:</p>
+    <h1 id="system-requirements">System requirements</h1>
+<p>If you're not already using it, we recommend you to install <a href="https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&amp;gl=US">Windows Terminal</a>.
+It is a modern tool that incorporates the power of multiple already known command-line applications like <code>Windows PowerShell</code>, <code>Linux shell</code>, and more...</p>
+<h2 id="check-if-wls2-is-already-available">Check if WLS2 is already available</h2>
+<p>Open <code>Windows Terminal</code> and execute the following command:</p>
+<pre class="highlight"><code class="language-shell">wsl -v</code></pre>
+<p>The output should look similar to this:</p>
+<pre class="highlight"><code class="language-text">WSL version: 2.2.4.0
+Kernel version: 5.15.153.1-2
+WSLg version: 1.0.61
+MSRDC version: 1.2.5326
+Direct3D version: 1.611.1-81528511
+DXCore version: 10.0.26091.1-240325-1447.ge-release
+Windows version: 10.0.22631.3737</code></pre>
+<p>If the output starts with <code>WSL version: 2.x.x.x</code>, you are ready to use <strong>WSL2</strong> and can proceed to <a href="../installation/">install AlmaLinux9</a>.</p>
+<h2 id="install-wsl2">Install WSL2</h2>
+<p>Before proceeding with the installation, please consult Microsoft's <a href="https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites">documentation</a> regarding the minimum requirements for running WSL2.</p>
+<p>Once you identified that your machine can run WSL2, open the <code>Run</code> prompt by pressing <code>Win</code> + <code>r</code>, type <code>OptionalFeatures</code> in the dialog and press <code>Enter</code>.
+This will open a window where you can turn Windows features on/off.
+Make sure that the below features are activated (checked):</p>
 <ul>
-<li><code>php81</code>: switch to PHP 8.1</li>
-<li><code>php82</code>: switch to PHP 8.2</li>
-<li><code>php83</code>: switch to PHP 8.3</li>
-<li><code>php84</code>: switch to PHP 8.4</li>
+<li><code>Hyper-V</code> (including its sub-features)</li>
+<li><code>Virtual Machine Platform</code></li>
+<li><code>Windows Subsystem for Linux</code></li>
 </ul>
-<p>After switching to a different PHP version, test with the following command:</p>
-<pre class="highlight"><code class="language-shell">php -v</code></pre>
-<p>Depending on the selected PHP version, the output should look similar to the below:</p>
-<pre class="highlight"><code class="language-text">PHP 8.3.8 (cli) (built: Jun  4 2024 14:53:17) (NTS gcc x86_64)
-Copyright (c) The PHP Group
-Zend Engine v4.3.8, Copyright (c) Zend Technologies</code></pre>
-<h2 id="how-do-i-switch-to-a-different-version-of-nodejs">How do I switch to a different version of Node.js?</h2>
-<p>Execute the following commands:</p>
-<pre class="highlight"><code class="language-shell">sudo dnf remove nodejs -y
-curl -fsSL https://rpm.nodesource.com/setup_{major}.x | sudo bash -
-sudo dnf install nodejs -y</code></pre>
-<p>where <code>{major}</code> is the Node.js version you want to switch to.</p>
-<p>Additionally, our setup includes predefined aliases for the above commands.
-The aliases are the following:</p>
-<ul>
-<li><code>node22</code>: switch to Node.js 22</li>
-<li><code>node20</code>: switch to Node.js 20</li>
-<li><code>node18</code>: switch to Node.js 18</li>
-</ul>
-<p>After switching to a different Node.js version, test with the following command:</p>
-<pre class="highlight"><code class="language-shell">node -v</code></pre>
-<h2 id="how-do-i-fix-common-permission-issues">How do I fix common permission issues?</h2>
-<p>If running your project, you encounter permission issues, follow the below steps.</p>
-<h3 id="error">Error</h3>
 <blockquote>
-<p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/data" is not writable...</p>
-<p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/data/cache" is not writable...</p>
-<p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/data/cache/doctrine" is not writable...</p>
+<p>If any of the above features are missing, then first you need to install them manually using <a href="https://docs.microsoft.com/en-us/windows/wsl/install-manual">this guide</a> and then continue with the below steps.</p>
 </blockquote>
-<h3 id="solution">Solution</h3>
-<pre class="highlight"><code class="language-shell">chmod -R 777 data</code></pre>
-<h3 id="error_1">Error</h3>
-<blockquote>
-<p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/public/uploads" is not writable...</p>
-</blockquote>
-<h3 id="solution_1">Solution</h3>
-<pre class="highlight"><code class="language-shell">chmod -R 777 public/uploads</code></pre>
-<h3 id="error_2">Error</h3>
-<blockquote>
-<p>PHP Fatal error: Uncaught ErrorException: fopen(<code>&lt;path-to-project&gt;</code>/log/error-log-yyyy-mm-dd.log): Failed to open stream: Permission denied...</p>
-</blockquote>
-<h3 id="solution_2">Solution</h3>
-<pre class="highlight"><code class="language-shell">chmod -R 777 log</code></pre>
-<h2 id="where-are-the-error-log-files">Where are the error log files?</h2>
-<p>From time to time, you are encountering various errors which are not displayed. Or you can get errors 500 in a browser.</p>
-<p>To find the error messages, you need to read the error log files.</p>
-<h3 id="apache-log-files">Apache log files</h3>
-<pre class="highlight"><code class="language-text">/var/log/httpd/error_log</code></pre>
-<h3 id="php-fpm-log-files">PHP-FPM log files</h3>
-<pre class="highlight"><code class="language-text">/var/log/php-fpm/error.log
-/var/log/php-fpm/www-error.log</code></pre>
-<h2 id="how-do-i-update-composer">How do I update Composer?</h2>
-<p>Before updating, check your current Composer version by executing:</p>
-<pre class="highlight"><code class="language-shell">composer --version</code></pre>
-<p>The output should be similar to:</p>
-<pre class="highlight"><code class="language-text">Composer version 2.8.5 2025-01-21 15:23:40
-PHP version 8.3.20 (/usr/bin/php)
-Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
-<p>Update Composer using its own <code>self-update</code> command:</p>
-<pre class="highlight"><code class="language-shell">sudo /usr/local/bin/composer self-update</code></pre>
-<p>The output should be similar to:</p>
-<pre class="highlight"><code class="language-text">Upgrading to version 2.8.8 (stable channel).
-
-Use composer self-update --rollback to return to version 2.8.5</code></pre>
-<p>After updating, check again your Composer version by executing:</p>
-<pre class="highlight"><code class="language-shell">composer --version</code></pre>
-<p>The output should be similar to:</p>
-<pre class="highlight"><code class="language-text">Composer version 2.8.8 2025-04-04 16:56:46
-PHP version 8.3.20 (/usr/bin/php)
-Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
-<h2 id="how-do-i-update-phpmyadmin">How do I update phpMyAdmin?</h2>
-<p>Being installed as a system package, it can be updated using the command which updates the rest of the system packages:</p>
-<pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
-<h2 id="how-do-i-create-command-aliases">How do I create command aliases?</h2>
-<p>From either your terminal or file explorer, navigate to your home directory (<code>/home/&lt;your-username&gt;/</code>).</p>
-<p>Using your preferred text editor, open the file: <code>.bash_profile</code> (if it does not exist, creat it first).</p>
-<p>Move to the end of the file and enter on a new line:</p>
-<pre class="highlight"><code class="language-text">alias command_alias="command to execute"</code></pre>
-<p>where:</p>
-<ul>
-<li><code>command_alias</code> is the name by which you want to call your original command</li>
-<li><code>command to execute</code>: the original command to be executed on alias call</li>
-</ul>
-<h3 id="example">Example</h3>
-<pre class="highlight"><code class="language-text">alias list_files="ls -Al"</code></pre>
-<p>will create an alias called <code>list_files</code> that will run the command <code>ls -Al</code>.</p>
-<p>Then, you can execute your custom alias in a terminal just as a regular command:</p>
-<pre class="highlight"><code class="language-shell">list_files</code></pre>
+<p>Click <code>Ok</code> and restart your computer.</p>
+<p>Open Microsoft Store, search for <code>Windows Subsystem for Linux</code> and install it.</p>
+<p>Make sure that version <strong>2</strong> of WSL is set as default by executing the below command in Windows Terminal:</p>
+<pre class="highlight"><code class="language-shell">wsl --set-default-version 2</code></pre>
+<p>To test, run again the following command:</p>
+<pre class="highlight"><code class="language-shell">wsl -v</code></pre>
+<p>This time the output should display <code>WSL version: 2.x.x.x</code>, which means that your system is ready for using <strong>WSL2</strong> and you can proceed to <a href="../installation/">install AlmaLinux9</a>.</p>
 
 
 
@@ -363,15 +381,20 @@ Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../virtualhosts/create-virtualhost/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../introduction/">
                     <i class="bi bi-chevron-left"></i>
-                    Create virtualhost
+                    Introduction
                 </a>
             
         </li>
 
         
         <li class="col text-nowrap text-md-end pe-0">
+            
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../installation/">
+                    Installation
+                    <i class="bi bi-chevron-right"></i>
+                </a>
             
         </li>
     </ul>
@@ -488,7 +511,7 @@ Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
 </footer>
 
         <script>
-            let base_url = '../..',
+            let base_url = '../../..',
                 project  = "development",
                 siteName = 'development';
 

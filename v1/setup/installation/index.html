@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/AlmaLinux9/introduction/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/setup/installation/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Introduction - development - Dotkernel Documentation</title>
+        <title>Installation - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -147,7 +147,7 @@
                 
 
                 
-                    <li class="breadcrumb-item"><a href="../..">development</a></li>
+                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
 
                     
                         
@@ -155,8 +155,15 @@
                             
                         
                     
+                        
+                            
+                            
+                                <li class="breadcrumb-item">Setup</li>
+                            
+                        
+                    
 
-                    <li class="breadcrumb-item active" aria-current="page">Introduction</li>
+                    <li class="breadcrumb-item active" aria-current="page">Installation</li>
                 
             
         </ol>
@@ -171,7 +178,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../..">development</a>-->
+<!--            <a href="../../..">development</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -181,8 +188,110 @@
 
                 
                 
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
+</li>
 
                     
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#setup" role="button" aria-expanded="false" aria-controls="setup">
+        <span class="subnavigation__headline">Setup</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="setup">
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../system-requirements/" class="subnavigation__link">System Requirements</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Installation</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../setup-packages/" class="subnavigation__link">Setup Packages</a>
+</li>
+
+        
+    </ul>
+</li>
+
+                    
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#virtualhosts" role="button" aria-expanded="false" aria-controls="virtualhosts">
+        <span class="subnavigation__headline">Virtualhosts</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="virtualhosts">
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../virtualhosts/overview/" class="subnavigation__link">Overview</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
+</li>
+
+        
+    </ul>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../../faq/" class="subnavigation__link">FAQ</a>
+</li>
+
                     
                 
             
@@ -205,32 +314,67 @@
                     
                     
 
-    <div class="alert alert-danger alert-caution" role="alert">
-        <p class="mb-0">
-            The documentation you are viewing is for an older version of this component.<br>
-            <a href="../..">Switch to the latest (v1) version.</a>
-        </p>
-    </div>
-
 
 
 
     
     
+<!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
+    
 
-    <h1 id="introduction">Introduction</h1>
-<p><code>dotkernel/development</code> is a tool that helps you prepare your development environment with the following components:</p>
-<ul>
-<li><strong>WSL2</strong>: Windows Subsystem for Linux</li>
-<li><strong>AlmaLinux9</strong>: free and open source Linux distribution</li>
-<li><strong>PHP</strong>: general-purpose scripting language geared towards web development</li>
-<li><strong>Apache</strong>: free and open-source cross-platform web server software</li>
-<li><strong>MariaDB</strong>: community-developed, commercially supported fork of the MySQL relational database management system</li>
-<li><strong>Git</strong>: distributed version control system</li>
-<li><strong>Composer</strong>: application-level dependency manager for the PHP</li>
-<li><strong>Node.js</strong>: JavaScript runtime environment</li>
-<li><strong>PhpMyAdmin</strong>: open source administration tool for MySQL and MariaDB</li>
-</ul>
+    <h1 id="install-almalinux9">Install AlmaLinux9</h1>
+<p>Open <code>Windows Terminal</code>.</p>
+<p>List the available Linux distributions (aka: <em>distros</em>) by executing:</p>
+<pre class="highlight"><code class="language-shell">wsl --list --online</code></pre>
+<p>Depending on the list of distros available at the moment you run the command, the output should look similar to the below:</p>
+<pre class="highlight"><code class="language-text">The following is a list of valid distributions that can be installed.
+Install using 'wsl.exe --install &lt;Distro&gt;'.
+
+NAME                            FRIENDLY NAME
+AlmaLinux-8                     AlmaLinux OS 8
+AlmaLinux-9                     AlmaLinux OS 9
+AlmaLinux-Kitten-10             AlmaLinux OS Kitten 10
+AlmaLinux-10                    AlmaLinux OS 10
+Debian                          Debian GNU/Linux
+FedoraLinux-42                  Fedora Linux 42
+SUSE-Linux-Enterprise-15-SP5    SUSE Linux Enterprise 15 SP5
+SUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6
+Ubuntu                          Ubuntu
+Ubuntu-24.04                    Ubuntu 24.04 LTS
+archlinux                       Arch Linux
+kali-linux                      Kali Linux Rolling
+openSUSE-Tumbleweed             openSUSE Tumbleweed
+openSUSE-Leap-15.6              openSUSE Leap 15.6
+Ubuntu-18.04                    Ubuntu 18.04 LTS
+Ubuntu-20.04                    Ubuntu 20.04 LTS
+Ubuntu-22.04                    Ubuntu 22.04 LTS
+OracleLinux_7_9                 Oracle Linux 7.9
+OracleLinux_8_7                 Oracle Linux 8.7
+OracleLinux_9_1                 Oracle Linux 9.1</code></pre>
+<p>Note the two columns: <strong>NAME</strong> and <strong>FRIENDLY NAME</strong>.
+To install a specific distro, use the value from the <strong>NAME</strong> column, in this case: <code>AlmaLinux-9</code>.
+Install the AlmaLinux9 distro by executing the below command:</p>
+<pre class="highlight"><code class="language-shell">wsl --install -d AlmaLinux-9</code></pre>
+<p>You should see the download progress - once finished, the output should look like this:</p>
+<pre class="highlight"><code class="language-text">Downloading: AlmaLinux OS 9
+Installing: AlmaLinux OS 9
+Distribution successfully installed. It can be launched via 'wsl.exe -d AlmaLinux-9'
+Launching AlmaLinux-9...
+Please create a default UNIX user account. The username does not need to match your Windows username.
+For more information visit: https://aka.ms/wslusers
+Enter new UNIX username:</code></pre>
+<p>As per the last line, the installation process now prompts you to enter a username.
+This is the username you will use inside AlmaLinux9, and it can be any alphanumeric string (for example <code>dotkernel</code>):</p>
+<p>Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):</p>
+<pre class="highlight"><code class="language-shell">Enter new UNIX username: dotkernel.
+Changing password for user dotkernel.
+New password:</code></pre>
+<p>Depending on the strength of your password, you might get a <code>BAD PASSWORD: &lt;some-reason&gt;</code> message (if you want to choose a different password, hit <code>Enter</code> and you are taken back to previous step - else, continue with retyping your password):</p>
+<p>Next, you are asked to retype your password:</p>
+<pre class="highlight"><code class="language-text">Retype new password:</code></pre>
+<p>Finally, you should see the following message:</p>
+<pre class="highlight"><code class="language-text">passwd: all authentication tokens updated successfully.
+[&lt;your-almalinux9-username&gt;@&lt;your-device-name&gt; &lt;your-windows-username&gt;]$</code></pre>
 
 
 
@@ -240,9 +384,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../..">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../system-requirements/">
                     <i class="bi bi-chevron-left"></i>
-                    Home
+                    System Requirements
                 </a>
             
         </li>
@@ -250,8 +394,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
-                    System Requirements
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup-packages/">
+                    Setup Packages
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -370,7 +514,7 @@
 </footer>
 
         <script>
-            let base_url = '../..',
+            let base_url = '../../..',
                 project  = "development",
                 siteName = 'development';
 
