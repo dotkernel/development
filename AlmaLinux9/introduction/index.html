@@ -13,16 +13,16 @@
         
             
         
-        <meta name="docsearch:version" content="1.0.0,latest">
+        <meta name="docsearch:version" content="AlmaLinux9.0.0,latest">
         <meta name="docsearch:language" content="en">
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/virtualhosts/create-virtualhost/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/AlmaLinux9/introduction/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Create virtualhost - development - Dotkernel Documentation</title>
+        <title>Introduction - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -147,7 +147,7 @@
                 
 
                 
-                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
+                    <li class="breadcrumb-item"><a href="../..">development</a></li>
 
                     
                         
@@ -155,15 +155,8 @@
                             
                         
                     
-                        
-                            
-                            
-                                <li class="breadcrumb-item">Virtualhosts</li>
-                            
-                        
-                    
 
-                    <li class="breadcrumb-item active" aria-current="page">Create virtualhost</li>
+                    <li class="breadcrumb-item active" aria-current="page">Introduction</li>
                 
             
         </ol>
@@ -178,7 +171,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../../..">development</a>-->
+<!--            <a href="../..">development</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -188,110 +181,8 @@
 
                 
                 
-                    
-                        
-<li class="subnavigation__list-item ">
-    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
-</li>
 
                     
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li class="subnavigation__list-item">
-    <a data-bs-toggle="collapse" href="#setup" role="button" aria-expanded="false" aria-controls="setup">
-        <span class="subnavigation__headline">Setup</span>
-    </a>
-    <ul class="subnavigation__list collapse" id="setup">
-        
-        
-<li class="subnavigation__list-item ">
-    <a href="../../setup/system-requirements/" class="subnavigation__link">System Requirements</a>
-</li>
-
-        
-        
-<li class="subnavigation__list-item ">
-    <a href="../../setup/installation/" class="subnavigation__link">Installation</a>
-</li>
-
-        
-        
-<li class="subnavigation__list-item ">
-    <a href="../../setup/setup-packages/" class="subnavigation__link">Setup Packages</a>
-</li>
-
-        
-    </ul>
-</li>
-
-                    
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li class="subnavigation__list-item">
-    <a data-bs-toggle="collapse" href="#virtualhosts" role="button" aria-expanded="false" aria-controls="virtualhosts">
-        <span class="subnavigation__headline">Virtualhosts</span>
-    </a>
-    <ul class="subnavigation__list collapse" id="virtualhosts">
-        
-        
-<li class="subnavigation__list-item ">
-    <a href="../overview/" class="subnavigation__link">Overview</a>
-</li>
-
-        
-        
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Create virtualhost</a>
-</li>
-
-        
-    </ul>
-</li>
-
-                    
-                        
-<li class="subnavigation__list-item ">
-    <a href="../../faq/" class="subnavigation__link">FAQ</a>
-</li>
-
                     
                 
             
@@ -307,17 +198,6 @@
 
     
     
-        <div class="toc">
-            <h6 class="toc__headline">On this page</h6>
-            <ul class="toc__list">
-            
-                <li class="toc__entry">
-                    <a href="#good-to-know" class="toc__link nav-link">Good to know</a>
-                </li>
-            
-            </ul>
-        </div>
-    
 
                     
                 </div>
@@ -325,44 +205,31 @@
                     
                     
 
+    <div class="alert alert-danger alert-caution" role="alert">
+        <p class="mb-0">
+            The documentation you are viewing is for an older version of this component.<br>
+            <a href="../..">Switch to the latest (AlmaLinux9) version.</a>
+        </p>
+    </div>
+
 
 
 
     
     
-<!--        <h2 class="chapter__headline text-black-50">Virtualhosts</h2>-->
-    
 
-    <h1 id="create-virtualhosts">Create virtualhosts</h1>
-<p>Move inside the directory <code>development/wsl</code>:</p>
-<pre class="highlight"><code class="language-shell">cd ~/development/wsl/</code></pre>
-<p>Using your preferred text editor, open <code>config.yml</code> and, under the <code>virtualhosts</code> key, enter the virtualhosts that you
-want to create, each on its own line.</p>
-<p>Already existing virtualhosts will be skipped, their contents will not be lost, no need to comment or remove them.</p>
-<p>Save and close the file.</p>
-<p>Create the specified virtualhosts:</p>
-<pre class="highlight"><code class="language-shell">ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass</code></pre>
-<p>This process will ask for your password (set during the installation process) and then iterate over the list of
-configured <code>virtualhosts</code> and will output a short summary with the results.</p>
-<p>Your virtualhost should be accessible and ready to use.</p>
-<p>You will install your project under the <code>html</code> directory of your project, for example:
-<code>/var/www/example.localhost/html</code>.</p>
-<blockquote>
-<p>The virtualhost's document root is set to the <code>public</code> directory of the above location, for example
-<code>/var/www/example.localhost/html/public</code>.</p>
-<p>If you want to have the DocumentRoot directly in <code>html</code> folder, you need to modify the file
-<code>/etc/httpd/sites-available/example.localhost</code>.</p>
-</blockquote>
-<h2 id="good-to-know">Good to know</h2>
+    <h1 id="introduction">Introduction</h1>
+<p><code>dotkernel/development</code> is a tool that helps you prepare your development environment with the following components:</p>
 <ul>
-<li>In order to run your installed projects, you need to start AlmaLinux 9 first.</li>
-<li>If you work with virtualhosts, your projects are created under <code>/var/www/</code>.</li>
-<li>You can still run PHP scripts under the default Apache project directory, located at <code>/var/www/html/</code>.</li>
-<li>If you encounter write permission issues, see <a href="../../faq/#how-do-i-fix-common-permission-issues">this guide</a>.</li>
-<li>This tool installs PHP 8.3 by default. If you need a different version, see
-<a href="../../faq/#how-do-i-switch-to-a-different-version-of-php">this guide</a>.</li>
-<li>This tool installs Node.js 22 by default. If you need a different version, see
-<a href="../../faq/#how-do-i-switch-to-a-different-version-of-nodejs">this guide</a>.</li>
+<li><strong>WSL2</strong>: Windows Subsystem for Linux</li>
+<li><strong>AlmaLinux9</strong>: free and open source Linux distribution</li>
+<li><strong>PHP</strong>: general-purpose scripting language geared towards web development</li>
+<li><strong>Apache</strong>: free and open-source cross-platform web server software</li>
+<li><strong>MariaDB</strong>: community-developed, commercially supported fork of the MySQL relational database management system</li>
+<li><strong>Git</strong>: distributed version control system</li>
+<li><strong>Composer</strong>: application-level dependency manager for the PHP</li>
+<li><strong>Node.js</strong>: JavaScript runtime environment</li>
+<li><strong>PhpMyAdmin</strong>: open source administration tool for MySQL and MariaDB</li>
 </ul>
 
 
@@ -373,9 +240,9 @@ configured <code>virtualhosts</code> and will output a short summary with the re
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../overview/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../..">
                     <i class="bi bi-chevron-left"></i>
-                    Overview
+                    Home
                 </a>
             
         </li>
@@ -383,8 +250,8 @@ configured <code>virtualhosts</code> and will output a short summary with the re
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../../faq/">
-                    FAQ
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
+                    System Requirements
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -503,7 +370,7 @@ configured <code>virtualhosts</code> and will output a short summary with the re
 </footer>
 
         <script>
-            let base_url = '../../..',
+            let base_url = '../..',
                 project  = "development",
                 siteName = 'development';
 
