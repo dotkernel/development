@@ -115,11 +115,13 @@ sudo dnf upgrade -y
 Now, install the latest version of **Ansible core and ansible-galaxy**:
 
 ```shell
-sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-10.rpm -y
+sudo dnf install ansible-core -y
 ```
+
 ```shell
 ansible-galaxy collection install community.general
 ```
+
 ```shell
 ansible-galaxy collection install community.mysql
 ```
