@@ -1,5 +1,5 @@
 ---
-- name: Create new virtualhost under AlmaLinux9
+- name: Create new virtualhost under AlmaLinux10
   hosts: localhost
   connection: local
   become: true

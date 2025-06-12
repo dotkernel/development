@@ -1,4 +1,4 @@
-# Install AlmaLinux9
+# Install AlmaLinux10
 
 Open `Windows Terminal`.
 
@@ -38,33 +38,32 @@ OracleLinux_9_1                 Oracle Linux 9.1
 ```
 
 Note the two columns: **NAME** and **FRIENDLY NAME**.
-To install a specific distro, use the value from the **NAME** column, in this case: `AlmaLinux-9`.
-Install the AlmaLinux9 distro by executing the below command:
+To install a specific distro, use the value from the **NAME** column, in this case: `AlmaLinux-10`.
+Install the AlmaLinux10 distro by executing the below command:
 
 ```shell
-wsl --install -d AlmaLinux-9
+wsl --install -d AlmaLinux-10
 ```
 
 You should see the download progress—once finished, the output should look like this:
 
 ```text
-Downloading: AlmaLinux OS 9
-Installing: AlmaLinux OS 9
-Distribution successfully installed. It can be launched via 'wsl.exe -d AlmaLinux-9'
-Launching AlmaLinux-9...
+Downloading: AlmaLinux OS 10
+Installing: AlmaLinux OS 10
+Distribution successfully installed. It can be launched via 'wsl.exe -d AlmaLinux-10'
+Launching AlmaLinux-10...
 Please create a default UNIX user account. The username does not need to match your Windows username.
 For more information visit: https://aka.ms/wslusers
 Enter new UNIX username:
 ```
 
 As per the last line, the installation process now prompts you to enter a username.
-This is the username you will use inside AlmaLinux9, and it can be any alphanumeric string (for example `dotkernel`):
+This is the username you will use inside AlmaLinux10, and it can be any alphanumeric string (for example `dotkernel`):
 
 Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):
 
 ```shell
 Enter new UNIX username: dotkernel.
-Changing password for user dotkernel.
 New password:
 ```
 
@@ -79,6 +78,6 @@ Retype new password:
 Finally, you should see the following message:
 
 ```text
-passwd: all authentication tokens updated successfully.
-[<your-almalinux9-username>@<your-device-name> <your-windows-username>]$
+passwd: password updated successfully
+[<your-almalinux10-username>@<your-device-name> <your-windows-username>]$
 ```
