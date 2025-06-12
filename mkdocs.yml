@@ -2,11 +2,22 @@ docs_dir: docs/book
 site_dir: docs/html
 extra:
   project: Development
-  current_version: v1
+  current_version: v2
   versions:
+    - v2
     - v1
 nav:
   - Home: index.md
+  - v2:
+      - Introduction: v2/introduction.md
+      - Setup:
+          - System Requirements: v2/setup/system-requirements.md
+          - Installation: v2/setup/installation.md
+          - Setup Packages: v2/setup/setup-packages.md
+      - Virtualhosts:
+          - Overview: v2/virtualhosts/overview.md
+          - Create virtualhost: v2/virtualhosts/create-virtualhost.md
+      - FAQ: v2/faq.md
   - v1:
       - Introduction: v1/introduction.md
       - Setup:

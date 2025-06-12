@@ -31,9 +31,9 @@ You will install your project under the `html` directory of your project, for ex
 
 ## Good to know
 
-* To run your installed projects, you need to start AlmaLinux9 first.
+* To run your installed projects, you need to start AlmaLinux10 first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
-* If you encounter write permission issues, see [this guide](https://docs.dotkernel.org/development/v1/faq/#how-do-i-fix-common-permission-issues).
-* We install PHP 8.3 by default—if you need a different version, see [this guide](https://docs.dotkernel.org/development/v1/faq/#how-do-i-switch-to-a-different-version-of-php).
-* We install Node.js 22 by default—if you need a different version, see [this guide](https://docs.dotkernel.org/development/v1/faq/#how-do-i-switch-to-a-different-version-of-nodejs).
+* If you encounter write permission issues, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues).
+* We install PHP 8.4 by default—if you need a different version, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-php).
+* We install Node.js 22 by default—if you need a different version, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-nodejs).

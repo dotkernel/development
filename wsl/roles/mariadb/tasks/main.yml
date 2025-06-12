@@ -1,12 +1,6 @@
 ---
-- name: Create MariaDB 11.4 repo file
-  template:
-    src: "{{ mariadb_repo_src }}"
-    dest: "{{ mariadb_repo_dest }}"
-    owner: "{{ config.system.username }}"
-    group: "{{ config.system.username }}"
 - name: Install MariaDB 11.4
-  command: "dnf install python3-mysqlclient MariaDB-server MariaDB-client -y"
+  command: "dnf install mariadb-server -y"
 - name: Enable and start MariaDB service
   command: systemctl enable --now mariadb
 - name: Set MariaDB root password
