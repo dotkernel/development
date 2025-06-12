@@ -1,6 +1,6 @@
 ---
 - name: Install MariaDB 11.4
-  command: "dnf install mariadb-server -y"
+  command: "dnf install python3-mysqlclient mariadb-server -y"
 - name: Enable and start MariaDB service
   command: systemctl enable --now mariadb
 - name: Set MariaDB root password
