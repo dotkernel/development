@@ -29,7 +29,7 @@ Update/Upgrade system packages:
 sudo dnf upgrade -y
 ```
 
-Now, install the latest version of **Ansible core** and run **ansible-galaxy** in order to install collections:
+Now, install the latest version of **Ansible Core** and run **ansible-galaxy** in order to install collections:
 
 ```shell
 sudo dnf install ansible-core -y
