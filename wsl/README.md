@@ -119,11 +119,7 @@ sudo dnf install ansible-core -y
 ```
 
 ```shell
-ansible-galaxy collection install community.general
-```
-
-```shell
-ansible-galaxy collection install community.mysql
+ansible-galaxy collection install community.general community.mysql
 ```
 
 Move inside your home directory (it is `/home/` followed by your AlmaLinux10 username, for example: `/home/dotkernel`):
