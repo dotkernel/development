@@ -3,7 +3,6 @@
 Install system packages:
 
 ```shell
-# If install Ansible via pip: sudo dnf install epel-release dnf-utils python3-pip https://rpms.remirepo.net/enterprise/remi-release-10.rpm -y
 sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-10.rpm -y
 ```
 
@@ -30,12 +29,14 @@ Update/Upgrade system packages:
 sudo dnf upgrade -y
 ```
 
-Now, install the latest version of **Ansible**:
+Now, install the latest version of **Ansible Core** and run **ansible-galaxy** in order to install collections:
 
 ```shell
-sudo dnf install ansible -y
-# If install Ansible from packages: sudo dnf install ansible-core ansible-collection-community-general -y
-# If install Ansible via pip: pip install ansible
+sudo dnf install ansible-core -y
+```
+
+```shell
+ansible-galaxy collection install community.general community.mysql
 ```
 
 Move inside your home directory (it is `/home/` followed by your AlmaLinux10 username, for example: `/home/dotkernel`):
