@@ -1,0 +1,13 @@
+[Unit]
+Description=Create runtime directories for Apache and MariaDB
+DefaultDependencies=no
+After=local-fs.target
+Before=httpd.service mariadb.service
+
+[Service]
+Type=oneshot
+ExecStart={{ runtime_directories_script_path }}
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

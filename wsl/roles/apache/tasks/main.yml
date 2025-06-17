@@ -5,16 +5,6 @@
       - httpd
       - httpd-tools
     state: latest
-- name: Ensure /run/httpd directory exists on Apache startup
-  ansible.builtin.lineinfile:
-    path: "{{ etc_rc_d_rc_local_path }}"
-    line: "{{ item }}"
-    create: yes
-    insertafter: EOF
-  loop:
-    - "# Ensure /run/httpd directory exists on Apache startup"
-    - "/usr/bin/mkdir -p /run/httpd"
-    - "/usr/bin/install -d -o apache -g apache -m 0755 /run/httpd"
 - name: Enable and start Apache service
   command: systemctl enable --now httpd
 - name: Fix Apache home directory ownership

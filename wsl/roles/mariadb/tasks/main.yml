@@ -1,16 +1,6 @@
 ---
 - name: Install MariaDB 11.4
   command: "dnf install python3-mysqlclient mariadb-server -y"
-- name: Ensure /run/mariadb directory exists on MariaDB startup
-  ansible.builtin.lineinfile:
-    path: "{{ etc_rc_d_rc_local_path }}"
-    line: "{{ item }}"
-    create: yes
-    insertafter: EOF
-  loop:
-    - "# Ensure /run/mariadb directory exists on MariaDB startup"
-    - "/usr/bin/mkdir -p /run/mariadb"
-    - "/usr/bin/chown mysql:mysql /run/mariadb"
 - name: Enable and start MariaDB service
   command: systemctl enable --now mariadb
 - name: Set MariaDB root password

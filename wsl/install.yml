@@ -14,11 +14,11 @@
         name: "{{ role }}"
         tasks_from: main
       loop:
-        - system
         - apache
         - php
         - mariadb
         - phpmyadmin
+        - system
         - composer
         - nodejs
         - git
