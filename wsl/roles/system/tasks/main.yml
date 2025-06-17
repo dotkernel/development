@@ -22,3 +22,7 @@
   template:
     src: bash_profile.j2
     dest: "{{ bash_profile_dest }}"
+- name: Ensure /etc/rc.d/rc.local is executable
+  file:
+    path: "{{ etc_rc_d_rc_local_path }}"
+    mode: '0755'

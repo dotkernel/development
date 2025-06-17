@@ -1,3 +1,4 @@
 ---
 wsl_config_dest: /etc/wsl.conf
 bash_profile_dest: "/home/{{ config.system.username }}/.bash_profile"
+etc_rc_d_rc_local_path: "/etc/rc.d/rc.local"
