@@ -9,9 +9,11 @@
     value: "{{ item.value }}"
     scope: global
   with_dict: "{{ git_config }}"
+  become: false
 - name: Apply global user configurations
   git_config:
     name: "{{ item.key }}"
     value: "{{ item.value }}"
     scope: global
   with_dict: "{{ config.git.config }}"
+  become: false

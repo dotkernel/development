@@ -7,17 +7,18 @@
   vars_files:
     - ./config.yml
     - ./roles/apache/vars/main.yml
+    - ./roles/system/vars/main.yml
   tasks:
     - name: Install and configure packages
       include_role:
         name: "{{ role }}"
         tasks_from: main
       loop:
-        - system
         - apache
         - php
         - mariadb
         - phpmyadmin
+        - system
         - composer
         - nodejs
         - git
