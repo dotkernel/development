@@ -13,7 +13,7 @@
         
             
         
-        <meta name="docsearch:version" content="1.0.0,latest">
+        <meta name="docsearch:version" content="2.0.0,latest">
         <meta name="docsearch:language" content="en">
         <meta name="docsearch:component" content="development">
 
@@ -132,6 +132,35 @@
                 </li>
                 <li class="nav-item">
                     
+<div class="version-selector">
+    <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+            
+                v1
+            
+        </button>
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+            
+                
+                    <a href="../../../v2/introduction/" class="dropdown-item">
+                        
+                            v2 (latest)
+                        
+                    </a>
+                
+            
+                
+                    <a href="../../introduction/" class="dropdown-item active">
+                        
+                            v1
+                        
+                    </a>
+                
+            
+        </div>
+    </div>
+</div>
+
                 </li>
             </ul>
         </div>
@@ -184,6 +213,14 @@
         <h5 class="subnavigation__title">Table of Contents</h5>
 
         <ul class="subnavigation__list">
+            
+
+                
+                
+
+                    
+                    
+                
             
 
                 
@@ -325,6 +362,13 @@
                     
                     
 
+    <div class="alert alert-danger alert-caution" role="alert">
+        <p class="mb-0">
+            The documentation you are viewing is for an older version of this component.<br>
+            <a href="../../..">Switch to the latest (v2) version.</a>
+        </p>
+    </div>
+
 
 
 
@@ -337,7 +381,8 @@
 <p>Install system packages:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y</code></pre>
 <p>You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the <code>sudo</code> modifier at the beginning of the command).</p>
-<pre class="highlight"><code class="language-text">We trust you have received the usual lecture from the local System Administrator. It usually boils down to these three things:
+<pre class="highlight"><code class="language-text">We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
 
     #1) Respect the privacy of others.
     #2) Think before you type.
@@ -351,8 +396,8 @@
 <pre class="highlight"><code class="language-shell">sudo dnf install ansible -y</code></pre>
 <p>Move inside your home directory (it is <code>/home/</code> followed by your AlmaLinux9 username, for example: <code>/home/dotkernel</code>):</p>
 <pre class="highlight"><code class="language-shell">cd ~</code></pre>
-<p>Clone the <code>alma-linux-9</code> branch of the <code>dotkernel/development</code> repository:</p>
-<pre class="highlight"><code class="language-shell">git clone --branch alma-linux-9 --single-branch https://github.com/dotkernel/development.git</code></pre>
+<p>Clone the <code>almalinux9</code> branch of the <code>dotkernel/development</code> repository:</p>
+<pre class="highlight"><code class="language-shell">git clone --branch almalinux9 --single-branch https://github.com/dotkernel/development.git</code></pre>
 <p>Move inside the directory <code>development/wsl</code>:</p>
 <pre class="highlight"><code class="language-shell">cd development/wsl/</code></pre>
 <p>Duplicate <code>config.yml.dist</code> as <code>config.yml</code>:</p>

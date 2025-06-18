@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/introduction/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/setup/setup-packages/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Introduction - development - Dotkernel Documentation</title>
+        <title>Setup Packages - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -136,13 +136,13 @@
     <div class="btn-group">
         <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
             
-                v1
+                v2
             
         </button>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
             
                 
-                    <a href="../../v2/introduction/" class="dropdown-item">
+                    <a href="../../introduction/" class="dropdown-item active">
                         
                             v2 (latest)
                         
@@ -150,7 +150,7 @@
                 
             
                 
-                    <a href="./" class="dropdown-item active">
+                    <a href="../../../v1/introduction/" class="dropdown-item">
                         
                             v1
                         
@@ -176,7 +176,7 @@
                 
 
                 
-                    <li class="breadcrumb-item"><a href="../..">development</a></li>
+                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
 
                     
                         
@@ -184,8 +184,15 @@
                             
                         
                     
+                        
+                            
+                            
+                                <li class="breadcrumb-item">Setup</li>
+                            
+                        
+                    
 
-                    <li class="breadcrumb-item active" aria-current="page">Introduction</li>
+                    <li class="breadcrumb-item active" aria-current="page">Setup Packages</li>
                 
             
         </ol>
@@ -200,7 +207,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../..">development</a>-->
+<!--            <a href="../../..">development</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -210,18 +217,10 @@
 
                 
                 
-
-                    
-                    
-                
-            
-
-                
-                
                     
                         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Introduction</a>
+<li class="subnavigation__list-item ">
+    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
 </li>
 
                     
@@ -247,19 +246,19 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/system-requirements/" class="subnavigation__link">System Requirements</a>
+    <a href="../system-requirements/" class="subnavigation__link">System Requirements</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/installation/" class="subnavigation__link">Installation</a>
+    <a href="../installation/" class="subnavigation__link">Installation</a>
 </li>
 
         
         
-<li class="subnavigation__list-item ">
-    <a href="../setup/setup-packages/" class="subnavigation__link">Setup Packages</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Setup Packages</a>
 </li>
 
         
@@ -303,13 +302,13 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../virtualhosts/overview/" class="subnavigation__link">Overview</a>
+    <a href="../../virtualhosts/overview/" class="subnavigation__link">Overview</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
+    <a href="../../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
 </li>
 
         
@@ -319,9 +318,17 @@
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../faq/" class="subnavigation__link">FAQ</a>
+    <a href="../../faq/" class="subnavigation__link">FAQ</a>
 </li>
 
+                    
+                
+            
+
+                
+                
+
+                    
                     
                 
             
@@ -337,6 +344,17 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#running-almalinux10" class="toc__link nav-link">Running AlmaLinux10</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -344,32 +362,69 @@
                     
                     
 
-    <div class="alert alert-danger alert-caution" role="alert">
-        <p class="mb-0">
-            The documentation you are viewing is for an older version of this component.<br>
-            <a href="../..">Switch to the latest (v2) version.</a>
-        </p>
-    </div>
-
 
 
 
     
     
+<!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
+    
 
-    <h1 id="introduction">Introduction</h1>
-<p><code>dotkernel/development</code> is a tool that helps you prepare your development environment with the following components:</p>
+    <h1 id="setup-almalinux10">Setup AlmaLinux10</h1>
+<p>Install system packages:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-10.rpm -y</code></pre>
+<p>You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the <code>sudo</code> modifier at the beginning of the command).</p>
+<pre class="highlight"><code class="language-text">We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+For security reasons, the password you type will not be visible.
+
+[sudo] password for dotkernel:</code></pre>
+<p>Input your AlmaLinux10 password and hit <code>Enter</code>.</p>
+<p>Update/Upgrade system packages:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
+<p>Now, install the latest version of <strong>Ansible Core</strong> and run <strong>ansible-galaxy</strong> to install collections:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf install ansible-core -y</code></pre>
+<pre class="highlight"><code class="language-shell">ansible-galaxy collection install community.general community.mysql</code></pre>
+<p>Move inside your home directory (it is <code>/home/</code> followed by your AlmaLinux10 username, for example: <code>/home/dotkernel</code>):</p>
+<pre class="highlight"><code class="language-shell">cd ~</code></pre>
+<p>Clone the <code>alma-linux-10</code> branch of the <code>dotkernel/development</code> repository:</p>
+<pre class="highlight"><code class="language-shell">git clone --branch alma-linux-10 --single-branch https://github.com/dotkernel/development.git</code></pre>
+<p>Move inside the directory <code>development/wsl</code>:</p>
+<pre class="highlight"><code class="language-shell">cd development/wsl/</code></pre>
+<p>Duplicate <code>config.yml.dist</code> as <code>config.yml</code>:</p>
+<pre class="highlight"><code class="language-shell">cp config.yml.dist config.yml</code></pre>
+<p>Using your preferred text editor, open <code>config.yml</code> and fill in the empty fields.
+Save and close the file.</p>
+<p>Install components by running the below Ansible command:</p>
+<pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
+<p>The installation process will ask for your AlmaLinux10 password, then iterate over each task in the playbook and output a short summary with the results.</p>
+<p>Once finished, check if everything works by opening in your browser:</p>
 <ul>
-<li><strong>WSL2</strong>: Windows Subsystem for Linux</li>
-<li><strong>AlmaLinux9</strong>: free and open source Linux distribution</li>
-<li><strong>PHP</strong>: general-purpose scripting language geared towards web development</li>
-<li><strong>Apache</strong>: free and open-source cross-platform web server software</li>
-<li><strong>MariaDB</strong>: community-developed, commercially supported fork of the MySQL relational database management system</li>
-<li><strong>Git</strong>: distributed version control system</li>
-<li><strong>Composer</strong>: application-level dependency manager for the PHP</li>
-<li><strong>Node.js</strong>: JavaScript runtime environment</li>
-<li><strong>PhpMyAdmin</strong>: open source administration tool for MySQL and MariaDB</li>
+<li><a href="http://localhost/">http://localhost/</a>: Apache's default home page</li>
+<li><a href="http://localhost/info.php">http://localhost/info.php</a>: PHP info page</li>
+<li><a href="http://localhost/phpmyadmin/">http://localhost/phpmyadmin/</a>: PhpMyAdmin (login with <code>root</code> + the root password you configured in <code>config.yml</code> under <code>mariadb</code> -&gt; <code>root_password</code>)</li>
 </ul>
+<p>The installation is complete, your AlmaLinux10 development environment is ready to use.</p>
+<blockquote>
+<p>Restart your <code>Windows Terminal</code> to find a new option in the tab selector, called <strong>AlmaLinux-10</strong>; clicking it will open a new tab connected to <strong>AlmaLinux10</strong>.</p>
+</blockquote>
+<h2 id="running-almalinux10">Running AlmaLinux10</h2>
+<p>Open <code>Windows Terminal</code>.</p>
+<p>Start AlmaLinux10 by executing:</p>
+<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux10</code></pre>
+<p>OR</p>
+<p>Locate the app selector dropdown in <code>Windows Terminal</code>'s title bar and click <code>AlmaLinux-10</code>.
+This will open a new tab connected to AlmaLinux10.</p>
+<h3 id="note">Note</h3>
+<blockquote>
+<p>To run your applications using WSL2, you always need to be connected to your AlmaLinux10 distribution.
+For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.</p>
+</blockquote>
 
 
 
@@ -379,9 +434,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../v2/faq/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../installation/">
                     <i class="bi bi-chevron-left"></i>
-                    FAQ
+                    Installation
                 </a>
             
         </li>
@@ -389,8 +444,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
-                    System Requirements
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../../virtualhosts/overview/">
+                    Overview
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -509,7 +564,7 @@
 </footer>
 
         <script>
-            let base_url = '../..',
+            let base_url = '../../..',
                 project  = "development",
                 siteName = 'development';
 

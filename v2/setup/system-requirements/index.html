@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/introduction/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/setup/system-requirements/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Introduction - development - Dotkernel Documentation</title>
+        <title>System Requirements - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -136,13 +136,13 @@
     <div class="btn-group">
         <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
             
-                v1
+                v2
             
         </button>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
             
                 
-                    <a href="../../v2/introduction/" class="dropdown-item">
+                    <a href="../../introduction/" class="dropdown-item active">
                         
                             v2 (latest)
                         
@@ -150,7 +150,7 @@
                 
             
                 
-                    <a href="./" class="dropdown-item active">
+                    <a href="../../../v1/introduction/" class="dropdown-item">
                         
                             v1
                         
@@ -176,7 +176,7 @@
                 
 
                 
-                    <li class="breadcrumb-item"><a href="../..">development</a></li>
+                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
 
                     
                         
@@ -184,8 +184,15 @@
                             
                         
                     
+                        
+                            
+                            
+                                <li class="breadcrumb-item">Setup</li>
+                            
+                        
+                    
 
-                    <li class="breadcrumb-item active" aria-current="page">Introduction</li>
+                    <li class="breadcrumb-item active" aria-current="page">System Requirements</li>
                 
             
         </ol>
@@ -200,7 +207,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../..">development</a>-->
+<!--            <a href="../../..">development</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -210,18 +217,10 @@
 
                 
                 
-
-                    
-                    
-                
-            
-
-                
-                
                     
                         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Introduction</a>
+<li class="subnavigation__list-item ">
+    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
 </li>
 
                     
@@ -246,20 +245,20 @@
     <ul class="subnavigation__list collapse" id="setup">
         
         
-<li class="subnavigation__list-item ">
-    <a href="../setup/system-requirements/" class="subnavigation__link">System Requirements</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">System Requirements</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/installation/" class="subnavigation__link">Installation</a>
+    <a href="../installation/" class="subnavigation__link">Installation</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/setup-packages/" class="subnavigation__link">Setup Packages</a>
+    <a href="../setup-packages/" class="subnavigation__link">Setup Packages</a>
 </li>
 
         
@@ -303,13 +302,13 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../virtualhosts/overview/" class="subnavigation__link">Overview</a>
+    <a href="../../virtualhosts/overview/" class="subnavigation__link">Overview</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
+    <a href="../../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
 </li>
 
         
@@ -319,9 +318,17 @@
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../faq/" class="subnavigation__link">FAQ</a>
+    <a href="../../faq/" class="subnavigation__link">FAQ</a>
 </li>
 
+                    
+                
+            
+
+                
+                
+
+                    
                     
                 
             
@@ -337,6 +344,21 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#check-if-wls2-is-already-available" class="toc__link nav-link">Check if WLS2 is already available</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#install-wsl2" class="toc__link nav-link">Install WSL2</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -344,32 +366,49 @@
                     
                     
 
-    <div class="alert alert-danger alert-caution" role="alert">
-        <p class="mb-0">
-            The documentation you are viewing is for an older version of this component.<br>
-            <a href="../..">Switch to the latest (v2) version.</a>
-        </p>
-    </div>
-
 
 
 
     
     
+<!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
+    
 
-    <h1 id="introduction">Introduction</h1>
-<p><code>dotkernel/development</code> is a tool that helps you prepare your development environment with the following components:</p>
+    <h1 id="system-requirements">System requirements</h1>
+<p>If you're not already using it, we recommend you to install <a href="https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&amp;gl=US">Windows Terminal</a>.
+It is a modern tool that incorporates the power of multiple already known command-line applications like <code>Windows PowerShell</code>, <code>Linux shell</code>, and more...</p>
+<h2 id="check-if-wls2-is-already-available">Check if WLS2 is already available</h2>
+<p>Open <code>Windows Terminal</code> and execute the following command:</p>
+<pre class="highlight"><code class="language-shell">wsl -v</code></pre>
+<p>The output should look similar to this:</p>
+<pre class="highlight"><code class="language-text">WSL version: 2.2.4.0
+Kernel version: 5.15.153.1-2
+WSLg version: 1.0.61
+MSRDC version: 1.2.5326
+Direct3D version: 1.611.1-81528511
+DXCore version: 10.0.26091.1-240325-1447.ge-release
+Windows version: 10.0.22631.3737</code></pre>
+<p>If the output starts with <code>WSL version: 2.x.x.x</code>, you are ready to use <strong>WSL2</strong> and can proceed to <a href="../installation/">install AlmaLinux10</a>.</p>
+<h2 id="install-wsl2">Install WSL2</h2>
+<p>Before proceeding with the installation, please consult Microsoft's <a href="https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites">documentation</a> regarding the minimum requirements for running WSL2.</p>
+<p>Once you identified that your machine can run WSL2, open the <code>Run</code> prompt by pressing <code>Win</code> + <code>r</code>, type <code>OptionalFeatures</code> in the dialog and press <code>Enter</code>.
+This will open a window where you can turn Windows features on/off.
+Make sure that the below features are activated (checked):</p>
 <ul>
-<li><strong>WSL2</strong>: Windows Subsystem for Linux</li>
-<li><strong>AlmaLinux9</strong>: free and open source Linux distribution</li>
-<li><strong>PHP</strong>: general-purpose scripting language geared towards web development</li>
-<li><strong>Apache</strong>: free and open-source cross-platform web server software</li>
-<li><strong>MariaDB</strong>: community-developed, commercially supported fork of the MySQL relational database management system</li>
-<li><strong>Git</strong>: distributed version control system</li>
-<li><strong>Composer</strong>: application-level dependency manager for the PHP</li>
-<li><strong>Node.js</strong>: JavaScript runtime environment</li>
-<li><strong>PhpMyAdmin</strong>: open source administration tool for MySQL and MariaDB</li>
+<li><code>Hyper-V</code> (including its sub-features)</li>
+<li><code>Virtual Machine Platform</code></li>
+<li><code>Windows Subsystem for Linux</code></li>
 </ul>
+<blockquote>
+<p>If any of the above features are missing, then first you need to install them manually using <a href="https://docs.microsoft.com/en-us/windows/wsl/install-manual">this guide</a> and then continue with the below steps.</p>
+</blockquote>
+<p>Click <code>Ok</code> and restart your computer.</p>
+<p>Open Microsoft Store, search for <code>Windows Subsystem for Linux</code> and install it.</p>
+<p>Make sure that version <strong>2</strong> of WSL is set as default by executing the below command in Windows Terminal:</p>
+<pre class="highlight"><code class="language-shell">wsl --set-default-version 2</code></pre>
+<p>To test, run again the following command:</p>
+<pre class="highlight"><code class="language-shell">wsl -v</code></pre>
+<p>This time the output should display <code>WSL version: 2.x.x.x</code>, which means that your system is ready for using <strong>WSL2</strong> and you can proceed to <a href="../installation/">install AlmaLinux10</a>.</p>
 
 
 
@@ -379,9 +418,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../v2/faq/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../introduction/">
                     <i class="bi bi-chevron-left"></i>
-                    FAQ
+                    Introduction
                 </a>
             
         </li>
@@ -389,8 +428,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
-                    System Requirements
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../installation/">
+                    Installation
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -509,7 +548,7 @@
 </footer>
 
         <script>
-            let base_url = '../..',
+            let base_url = '../../..',
                 project  = "development",
                 siteName = 'development';
 

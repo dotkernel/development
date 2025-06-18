@@ -13,7 +13,7 @@
         
             
         
-        <meta name="docsearch:version" content="1.0.0,latest">
+        <meta name="docsearch:version" content="2.0.0,latest">
         <meta name="docsearch:language" content="en">
         <meta name="docsearch:component" content="development">
 
@@ -132,6 +132,35 @@
                 </li>
                 <li class="nav-item">
                     
+<div class="version-selector">
+    <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+            
+                v1
+            
+        </button>
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+            
+                
+                    <a href="../../../v2/introduction/" class="dropdown-item">
+                        
+                            v2 (latest)
+                        
+                    </a>
+                
+            
+                
+                    <a href="../../introduction/" class="dropdown-item active">
+                        
+                            v1
+                        
+                    </a>
+                
+            
+        </div>
+    </div>
+</div>
+
                 </li>
             </ul>
         </div>
@@ -184,6 +213,14 @@
         <h5 class="subnavigation__title">Table of Contents</h5>
 
         <ul class="subnavigation__list">
+            
+
+                
+                
+
+                    
+                    
+                
             
 
                 
@@ -307,12 +344,34 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#stop-other-wsl2-distros" class="toc__link nav-link">Stop other WSL2 distros</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#install-almalinux9_1" class="toc__link nav-link">Install AlmaLinux9</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
                 <div class="col-lg-9 main_docs">
                     
                     
+
+    <div class="alert alert-danger alert-caution" role="alert">
+        <p class="mb-0">
+            The documentation you are viewing is for an older version of this component.<br>
+            <a href="../../..">Switch to the latest (v2) version.</a>
+        </p>
+    </div>
 
 
 
@@ -323,8 +382,24 @@
     
 
     <h1 id="install-almalinux9">Install AlmaLinux9</h1>
+<p>Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: <em>distro</em>) is running.
+This is important because this installation will fail if required ports are already in use by another distro.</p>
 <p>Open <code>Windows Terminal</code>.</p>
-<p>List the available Linux distributions (aka: <em>distros</em>) by executing:</p>
+<h2 id="stop-other-wsl2-distros">Stop other WSL2 distros</h2>
+<p>List all installed distros:</p>
+<pre class="highlight"><code class="language-shell">wsl -l -v</code></pre>
+<p>If there is no other distro installed, you will see the below output (an empty list):</p>
+<pre class="highlight"><code class="language-text">  NAME            STATE           VERSION</code></pre>
+<p>In this case, you can jump to the <a href="#install-almalinux9-1">installation</a> section.</p>
+<p>If you have other distros installed, the output could look similar to the below:</p>
+<pre class="highlight"><code class="language-text">  NAME            STATE           VERSION
+* AlmaLinux-9     Stopped         2
+* AlmaLinux-10    Running         2</code></pre>
+<p>Make sure that the <strong>STATE</strong> column reads <strong>Stopped</strong> for all distros.
+If any of them reads <strong>Running</strong>, you must stop if first by executing <code>wsl -t &lt;distro-name&gt;</code>, for example: <code>wsl -t AlmaLinux-10</code>.
+Once you have stopped all distros, you can continue to the <a href="#install-almalinux9-1">installation</a> section.</p>
+<h2 id="install-almalinux9_1">Install AlmaLinux9</h2>
+<p>List the available Linux distros by executing:</p>
 <pre class="highlight"><code class="language-shell">wsl --list --online</code></pre>
 <p>Depending on the list of distros available at the moment you run the command, the output should look similar to the below:</p>
 <pre class="highlight"><code class="language-text">The following is a list of valid distributions that can be installed.
@@ -355,7 +430,7 @@ OracleLinux_9_1                 Oracle Linux 9.1</code></pre>
 To install a specific distro, use the value from the <strong>NAME</strong> column, in this case: <code>AlmaLinux-9</code>.
 Install the AlmaLinux9 distro by executing the below command:</p>
 <pre class="highlight"><code class="language-shell">wsl --install -d AlmaLinux-9</code></pre>
-<p>You should see the download progress - once finished, the output should look like this:</p>
+<p>You should see the download progress—once finished, the output should look like this:</p>
 <pre class="highlight"><code class="language-text">Downloading: AlmaLinux OS 9
 Installing: AlmaLinux OS 9
 Distribution successfully installed. It can be launched via 'wsl.exe -d AlmaLinux-9'
@@ -369,7 +444,7 @@ This is the username you will use inside AlmaLinux9, and it can be any alphanume
 <pre class="highlight"><code class="language-shell">Enter new UNIX username: dotkernel.
 Changing password for user dotkernel.
 New password:</code></pre>
-<p>Depending on the strength of your password, you might get a <code>BAD PASSWORD: &lt;some-reason&gt;</code> message (if you want to choose a different password, hit <code>Enter</code> and you are taken back to previous step - else, continue with retyping your password):</p>
+<p>Depending on the strength of your password, you might get a <code>BAD PASSWORD: &lt;some-reason&gt;</code> message (if you want to choose a different password, hit <code>Enter</code> and you are taken back to the previous step—else, continue with retyping your password):</p>
 <p>Next, you are asked to retype your password:</p>
 <pre class="highlight"><code class="language-text">Retype new password:</code></pre>
 <p>Finally, you should see the following message:</p>

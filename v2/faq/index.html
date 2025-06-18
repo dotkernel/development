@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/introduction/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/faq/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Introduction - development - Dotkernel Documentation</title>
+        <title>FAQ - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -136,13 +136,13 @@
     <div class="btn-group">
         <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
             
-                v1
+                v2
             
         </button>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
             
                 
-                    <a href="../../v2/introduction/" class="dropdown-item">
+                    <a href="../introduction/" class="dropdown-item active">
                         
                             v2 (latest)
                         
@@ -150,7 +150,7 @@
                 
             
                 
-                    <a href="./" class="dropdown-item active">
+                    <a href="../../v1/introduction/" class="dropdown-item">
                         
                             v1
                         
@@ -185,7 +185,7 @@
                         
                     
 
-                    <li class="breadcrumb-item active" aria-current="page">Introduction</li>
+                    <li class="breadcrumb-item active" aria-current="page">FAQ</li>
                 
             
         </ol>
@@ -210,18 +210,10 @@
 
                 
                 
-
-                    
-                    
-                
-            
-
-                
-                
                     
                         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Introduction</a>
+<li class="subnavigation__list-item ">
+    <a href="../introduction/" class="subnavigation__link">Introduction</a>
 </li>
 
                     
@@ -318,10 +310,18 @@
 
                     
                         
-<li class="subnavigation__list-item ">
-    <a href="../faq/" class="subnavigation__link">FAQ</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">FAQ</a>
 </li>
 
+                    
+                
+            
+
+                
+                
+
+                    
                     
                 
             
@@ -337,6 +337,41 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#how-do-i-switch-to-a-different-version-of-php" class="toc__link nav-link">How do I switch to a different version of PHP?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#how-do-i-switch-to-a-different-version-of-nodejs" class="toc__link nav-link">How do I switch to a different version of Node.js?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#how-do-i-fix-common-permission-issues" class="toc__link nav-link">How do I fix common permission issues?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#where-are-the-error-log-files" class="toc__link nav-link">Where are the error log files?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#how-do-i-update-composer" class="toc__link nav-link">How do I update Composer?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#how-do-i-update-phpmyadmin" class="toc__link nav-link">How do I update phpMyAdmin?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#how-do-i-create-command-aliases" class="toc__link nav-link">How do I create command aliases?</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -344,32 +379,113 @@
                     
                     
 
-    <div class="alert alert-danger alert-caution" role="alert">
-        <p class="mb-0">
-            The documentation you are viewing is for an older version of this component.<br>
-            <a href="../..">Switch to the latest (v2) version.</a>
-        </p>
-    </div>
-
 
 
 
     
     
 
-    <h1 id="introduction">Introduction</h1>
-<p><code>dotkernel/development</code> is a tool that helps you prepare your development environment with the following components:</p>
+    <h1 id="frequently-asked-questions">Frequently asked questions</h1>
+<h2 id="how-do-i-switch-to-a-different-version-of-php">How do I switch to a different version of PHP?</h2>
+<p>Execute the following command:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf module switch-to php:remi-{major}.{minor} -y</code></pre>
+<p>where <code>{major}.{minor}</code> is one of the supported PHP versions: <code>8.4</code>, <code>8.3</code>, <code>8.2</code> and <code>8.1</code>.</p>
+<p>Additionally, our setup includes predefined aliases for executing the above command.
+The aliases are the following:</p>
 <ul>
-<li><strong>WSL2</strong>: Windows Subsystem for Linux</li>
-<li><strong>AlmaLinux9</strong>: free and open source Linux distribution</li>
-<li><strong>PHP</strong>: general-purpose scripting language geared towards web development</li>
-<li><strong>Apache</strong>: free and open-source cross-platform web server software</li>
-<li><strong>MariaDB</strong>: community-developed, commercially supported fork of the MySQL relational database management system</li>
-<li><strong>Git</strong>: distributed version control system</li>
-<li><strong>Composer</strong>: application-level dependency manager for the PHP</li>
-<li><strong>Node.js</strong>: JavaScript runtime environment</li>
-<li><strong>PhpMyAdmin</strong>: open source administration tool for MySQL and MariaDB</li>
+<li><code>php81</code>: switch to PHP 8.1</li>
+<li><code>php82</code>: switch to PHP 8.2</li>
+<li><code>php83</code>: switch to PHP 8.3</li>
+<li><code>php84</code>: switch to PHP 8.4</li>
 </ul>
+<p>After switching to a different PHP version, test with the following command:</p>
+<pre class="highlight"><code class="language-shell">php -v</code></pre>
+<p>Depending on the selected PHP version, the output should look similar to the below:</p>
+<pre class="highlight"><code class="language-text">PHP 8.3.8 (cli) (built: Jun  4 2024 14:53:17) (NTS gcc x86_64)
+Copyright (c) The PHP Group
+Zend Engine v4.3.8, Copyright (c) Zend Technologies</code></pre>
+<h2 id="how-do-i-switch-to-a-different-version-of-nodejs">How do I switch to a different version of Node.js?</h2>
+<p>Execute the following commands:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf remove nodejs -y
+curl -fsSL https://rpm.nodesource.com/setup_{major}.x | sudo bash -
+sudo dnf install nodejs -y</code></pre>
+<p>where <code>{major}</code> is the Node.js version you want to switch to.</p>
+<p>Additionally, our setup includes predefined aliases for the above commands.
+The aliases are the following:</p>
+<ul>
+<li><code>node22</code>: switch to Node.js 22</li>
+<li><code>node20</code>: switch to Node.js 20</li>
+<li><code>node18</code>: switch to Node.js 18</li>
+</ul>
+<p>After switching to a different Node.js version, test with the following command:</p>
+<pre class="highlight"><code class="language-shell">node -v</code></pre>
+<h2 id="how-do-i-fix-common-permission-issues">How do I fix common permission issues?</h2>
+<p>If running your project, you encounter permission issues, follow the below steps.</p>
+<h3 id="error">Error</h3>
+<blockquote>
+<p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/data" is not writable...</p>
+<p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/data/cache" is not writable...</p>
+<p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/data/cache/doctrine" is not writable...</p>
+</blockquote>
+<h3 id="solution">Solution</h3>
+<pre class="highlight"><code class="language-shell">chmod -R 777 data</code></pre>
+<h3 id="error_1">Error</h3>
+<blockquote>
+<p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/public/uploads" is not writable...</p>
+</blockquote>
+<h3 id="solution_1">Solution</h3>
+<pre class="highlight"><code class="language-shell">chmod -R 777 public/uploads</code></pre>
+<h3 id="error_2">Error</h3>
+<blockquote>
+<p>PHP Fatal error: Uncaught ErrorException: fopen(<code>&lt;path-to-project&gt;</code>/log/error-log-yyyy-mm-dd.log): Failed to open stream: Permission denied...</p>
+</blockquote>
+<h3 id="solution_2">Solution</h3>
+<pre class="highlight"><code class="language-shell">chmod -R 777 log</code></pre>
+<h2 id="where-are-the-error-log-files">Where are the error log files?</h2>
+<p>From time to time, you are encountering various errors which are not displayed. Or you can get errors 500 in a browser.</p>
+<p>To find the error messages, you need to read the error log files.</p>
+<h3 id="apache-log-files">Apache log files</h3>
+<pre class="highlight"><code class="language-text">/var/log/httpd/error_log</code></pre>
+<h3 id="php-fpm-log-files">PHP-FPM log files</h3>
+<pre class="highlight"><code class="language-text">/var/log/php-fpm/error.log
+/var/log/php-fpm/www-error.log</code></pre>
+<h2 id="how-do-i-update-composer">How do I update Composer?</h2>
+<p>Before updating, check your current Composer version by executing:</p>
+<pre class="highlight"><code class="language-shell">composer --version</code></pre>
+<p>The output should be similar to:</p>
+<pre class="highlight"><code class="language-text">Composer version 2.8.5 2025-01-21 15:23:40
+PHP version 8.3.20 (/usr/bin/php)
+Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
+<p>Update Composer using its own <code>self-update</code> command:</p>
+<pre class="highlight"><code class="language-shell">sudo /usr/local/bin/composer self-update</code></pre>
+<p>The output should be similar to:</p>
+<pre class="highlight"><code class="language-text">Upgrading to version 2.8.8 (stable channel).
+
+Use composer self-update --rollback to return to version 2.8.5</code></pre>
+<p>After updating, check again your Composer version by executing:</p>
+<pre class="highlight"><code class="language-shell">composer --version</code></pre>
+<p>The output should be similar to:</p>
+<pre class="highlight"><code class="language-text">Composer version 2.8.8 2025-04-04 16:56:46
+PHP version 8.3.20 (/usr/bin/php)
+Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
+<h2 id="how-do-i-update-phpmyadmin">How do I update phpMyAdmin?</h2>
+<p>Being installed as a system package, it can be updated using the command which updates the rest of the system packages:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
+<h2 id="how-do-i-create-command-aliases">How do I create command aliases?</h2>
+<p>From either your terminal or file explorer, navigate to your home directory (<code>/home/&lt;your-username&gt;/</code>).</p>
+<p>Using your preferred text editor, open the file: <code>.bash_profile</code> (if it does not exist, creat it first).</p>
+<p>Move to the end of the file and enter on a new line:</p>
+<pre class="highlight"><code class="language-text">alias command_alias="command to execute"</code></pre>
+<p>where:</p>
+<ul>
+<li><code>command_alias</code> is the name by which you want to call your original command</li>
+<li><code>command to execute</code>: the original command to be executed on alias call</li>
+</ul>
+<h3 id="example">Example</h3>
+<pre class="highlight"><code class="language-text">alias list_files="ls -Al"</code></pre>
+<p>will create an alias called <code>list_files</code> that will run the command <code>ls -Al</code>.</p>
+<p>Then, you can execute your custom alias in a terminal just as a regular command:</p>
+<pre class="highlight"><code class="language-shell">list_files</code></pre>
 
 
 
@@ -379,9 +495,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../v2/faq/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../virtualhosts/create-virtualhost/">
                     <i class="bi bi-chevron-left"></i>
-                    FAQ
+                    Create virtualhost
                 </a>
             
         </li>
@@ -389,8 +505,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
-                    System Requirements
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../../v1/introduction/">
+                    Introduction
                     <i class="bi bi-chevron-right"></i>
                 </a>
             

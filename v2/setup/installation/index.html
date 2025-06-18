@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/introduction/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/setup/installation/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Introduction - development - Dotkernel Documentation</title>
+        <title>Installation - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -136,13 +136,13 @@
     <div class="btn-group">
         <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
             
-                v1
+                v2
             
         </button>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
             
                 
-                    <a href="../../v2/introduction/" class="dropdown-item">
+                    <a href="../../introduction/" class="dropdown-item active">
                         
                             v2 (latest)
                         
@@ -150,7 +150,7 @@
                 
             
                 
-                    <a href="./" class="dropdown-item active">
+                    <a href="../../../v1/introduction/" class="dropdown-item">
                         
                             v1
                         
@@ -176,7 +176,7 @@
                 
 
                 
-                    <li class="breadcrumb-item"><a href="../..">development</a></li>
+                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
 
                     
                         
@@ -184,8 +184,15 @@
                             
                         
                     
+                        
+                            
+                            
+                                <li class="breadcrumb-item">Setup</li>
+                            
+                        
+                    
 
-                    <li class="breadcrumb-item active" aria-current="page">Introduction</li>
+                    <li class="breadcrumb-item active" aria-current="page">Installation</li>
                 
             
         </ol>
@@ -200,7 +207,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../..">development</a>-->
+<!--            <a href="../../..">development</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -210,18 +217,10 @@
 
                 
                 
-
-                    
-                    
-                
-            
-
-                
-                
                     
                         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Introduction</a>
+<li class="subnavigation__list-item ">
+    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
 </li>
 
                     
@@ -247,19 +246,19 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/system-requirements/" class="subnavigation__link">System Requirements</a>
+    <a href="../system-requirements/" class="subnavigation__link">System Requirements</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Installation</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/installation/" class="subnavigation__link">Installation</a>
-</li>
-
-        
-        
-<li class="subnavigation__list-item ">
-    <a href="../setup/setup-packages/" class="subnavigation__link">Setup Packages</a>
+    <a href="../setup-packages/" class="subnavigation__link">Setup Packages</a>
 </li>
 
         
@@ -303,13 +302,13 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../virtualhosts/overview/" class="subnavigation__link">Overview</a>
+    <a href="../../virtualhosts/overview/" class="subnavigation__link">Overview</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
+    <a href="../../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
 </li>
 
         
@@ -319,9 +318,17 @@
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../faq/" class="subnavigation__link">FAQ</a>
+    <a href="../../faq/" class="subnavigation__link">FAQ</a>
 </li>
 
+                    
+                
+            
+
+                
+                
+
+                    
                     
                 
             
@@ -337,6 +344,21 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#stop-other-wsl2-distros" class="toc__link nav-link">Stop other WSL2 distros</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#install-almalinux10_1" class="toc__link nav-link">Install AlmaLinux10</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -344,32 +366,82 @@
                     
                     
 
-    <div class="alert alert-danger alert-caution" role="alert">
-        <p class="mb-0">
-            The documentation you are viewing is for an older version of this component.<br>
-            <a href="../..">Switch to the latest (v2) version.</a>
-        </p>
-    </div>
-
 
 
 
     
     
+<!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
+    
 
-    <h1 id="introduction">Introduction</h1>
-<p><code>dotkernel/development</code> is a tool that helps you prepare your development environment with the following components:</p>
-<ul>
-<li><strong>WSL2</strong>: Windows Subsystem for Linux</li>
-<li><strong>AlmaLinux9</strong>: free and open source Linux distribution</li>
-<li><strong>PHP</strong>: general-purpose scripting language geared towards web development</li>
-<li><strong>Apache</strong>: free and open-source cross-platform web server software</li>
-<li><strong>MariaDB</strong>: community-developed, commercially supported fork of the MySQL relational database management system</li>
-<li><strong>Git</strong>: distributed version control system</li>
-<li><strong>Composer</strong>: application-level dependency manager for the PHP</li>
-<li><strong>Node.js</strong>: JavaScript runtime environment</li>
-<li><strong>PhpMyAdmin</strong>: open source administration tool for MySQL and MariaDB</li>
-</ul>
+    <h1 id="install-almalinux10">Install AlmaLinux10</h1>
+<p>Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: <em>distro</em>) is running.
+This is important because this installation will fail if required ports are already in use by another distro.</p>
+<p>Open <code>Windows Terminal</code>.</p>
+<h2 id="stop-other-wsl2-distros">Stop other WSL2 distros</h2>
+<p>List all installed distros:</p>
+<pre class="highlight"><code class="language-shell">wsl -l -v</code></pre>
+<p>If there is no other distro installed, you will see the below output (an empty list):</p>
+<pre class="highlight"><code class="language-text">  NAME            STATE           VERSION</code></pre>
+<p>In this case, you can jump to the <a href="#install-almalinux10-1">installation</a> section.</p>
+<p>If you have other distros installed, the output could look similar to the below:</p>
+<pre class="highlight"><code class="language-text">  NAME            STATE           VERSION
+* AlmaLinux-8     Stopped         2
+* AlmaLinux-9     Running         2</code></pre>
+<p>Make sure that the <strong>STATE</strong> column reads <strong>Stopped</strong> for all distros.
+If any of them reads <strong>Running</strong>, you must stop if first by executing <code>wsl -t &lt;distro-name&gt;</code>, for example: <code>wsl -t AlmaLinux-9</code>.
+Once you have stopped all distros, you can continue to the <a href="#install-almalinux10-1">installation</a> section.</p>
+<h2 id="install-almalinux10_1">Install AlmaLinux10</h2>
+<p>List the available Linux distros by executing:</p>
+<pre class="highlight"><code class="language-shell">wsl --list --online</code></pre>
+<p>Depending on the list of distros available at the moment you run the command, the output should look similar to the below:</p>
+<pre class="highlight"><code class="language-text">The following is a list of valid distributions that can be installed.
+Install using 'wsl.exe --install &lt;Distro&gt;'.
+
+NAME                            FRIENDLY NAME
+AlmaLinux-8                     AlmaLinux OS 8
+AlmaLinux-9                     AlmaLinux OS 9
+AlmaLinux-Kitten-10             AlmaLinux OS Kitten 10
+AlmaLinux-10                    AlmaLinux OS 10
+Debian                          Debian GNU/Linux
+FedoraLinux-42                  Fedora Linux 42
+SUSE-Linux-Enterprise-15-SP5    SUSE Linux Enterprise 15 SP5
+SUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6
+Ubuntu                          Ubuntu
+Ubuntu-24.04                    Ubuntu 24.04 LTS
+archlinux                       Arch Linux
+kali-linux                      Kali Linux Rolling
+openSUSE-Tumbleweed             openSUSE Tumbleweed
+openSUSE-Leap-15.6              openSUSE Leap 15.6
+Ubuntu-18.04                    Ubuntu 18.04 LTS
+Ubuntu-20.04                    Ubuntu 20.04 LTS
+Ubuntu-22.04                    Ubuntu 22.04 LTS
+OracleLinux_7_9                 Oracle Linux 7.9
+OracleLinux_8_7                 Oracle Linux 8.7
+OracleLinux_9_1                 Oracle Linux 9.1</code></pre>
+<p>Note the two columns: <strong>NAME</strong> and <strong>FRIENDLY NAME</strong>.
+To install a specific distro, use the value from the <strong>NAME</strong> column, in this case: <code>AlmaLinux-10</code>.
+Install the AlmaLinux10 distro by executing the below command:</p>
+<pre class="highlight"><code class="language-shell">wsl --install -d AlmaLinux-10</code></pre>
+<p>You should see the download progress—once finished, the output should look like this:</p>
+<pre class="highlight"><code class="language-text">Downloading: AlmaLinux OS 10
+Installing: AlmaLinux OS 10
+Distribution successfully installed. It can be launched via 'wsl.exe -d AlmaLinux-10'
+Launching AlmaLinux-10...
+Please create a default UNIX user account. The username does not need to match your Windows username.
+For more information visit: https://aka.ms/wslusers
+Enter new UNIX username:</code></pre>
+<p>As per the last line, the installation process now prompts you to enter a username.
+This is the username you will use inside AlmaLinux10, and it can be any alphanumeric string (for example <code>dotkernel</code>):</p>
+<p>Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):</p>
+<pre class="highlight"><code class="language-shell">Enter new UNIX username: dotkernel.
+New password:</code></pre>
+<p>Depending on the strength of your password, you might get a <code>BAD PASSWORD: &lt;some-reason&gt;</code> message (if you want to choose a different password, hit <code>Enter</code> and you are taken back to the previous step—else, continue with retyping your password):</p>
+<p>Next, you are asked to retype your password:</p>
+<pre class="highlight"><code class="language-text">Retype new password:</code></pre>
+<p>Finally, you should see the following message:</p>
+<pre class="highlight"><code class="language-text">passwd: password updated successfully
+[&lt;your-almalinux10-username&gt;@&lt;your-device-name&gt; &lt;your-windows-username&gt;]$</code></pre>
 
 
 
@@ -379,9 +451,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../v2/faq/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../system-requirements/">
                     <i class="bi bi-chevron-left"></i>
-                    FAQ
+                    System Requirements
                 </a>
             
         </li>
@@ -389,8 +461,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
-                    System Requirements
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup-packages/">
+                    Setup Packages
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -509,7 +581,7 @@
 </footer>
 
         <script>
-            let base_url = '../..',
+            let base_url = '../../..',
                 project  = "development",
                 siteName = 'development';
 

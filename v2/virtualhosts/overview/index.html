@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/introduction/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/virtualhosts/overview/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Introduction - development - Dotkernel Documentation</title>
+        <title>Overview - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -136,13 +136,13 @@
     <div class="btn-group">
         <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
             
-                v1
+                v2
             
         </button>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
             
                 
-                    <a href="../../v2/introduction/" class="dropdown-item">
+                    <a href="../../introduction/" class="dropdown-item active">
                         
                             v2 (latest)
                         
@@ -150,7 +150,7 @@
                 
             
                 
-                    <a href="./" class="dropdown-item active">
+                    <a href="../../../v1/introduction/" class="dropdown-item">
                         
                             v1
                         
@@ -176,7 +176,7 @@
                 
 
                 
-                    <li class="breadcrumb-item"><a href="../..">development</a></li>
+                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
 
                     
                         
@@ -184,8 +184,15 @@
                             
                         
                     
+                        
+                            
+                            
+                                <li class="breadcrumb-item">Virtualhosts</li>
+                            
+                        
+                    
 
-                    <li class="breadcrumb-item active" aria-current="page">Introduction</li>
+                    <li class="breadcrumb-item active" aria-current="page">Overview</li>
                 
             
         </ol>
@@ -200,7 +207,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../..">development</a>-->
+<!--            <a href="../../..">development</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -210,18 +217,10 @@
 
                 
                 
-
-                    
-                    
-                
-            
-
-                
-                
                     
                         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Introduction</a>
+<li class="subnavigation__list-item ">
+    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
 </li>
 
                     
@@ -247,19 +246,19 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/system-requirements/" class="subnavigation__link">System Requirements</a>
+    <a href="../../setup/system-requirements/" class="subnavigation__link">System Requirements</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/installation/" class="subnavigation__link">Installation</a>
+    <a href="../../setup/installation/" class="subnavigation__link">Installation</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../setup/setup-packages/" class="subnavigation__link">Setup Packages</a>
+    <a href="../../setup/setup-packages/" class="subnavigation__link">Setup Packages</a>
 </li>
 
         
@@ -302,14 +301,14 @@
     <ul class="subnavigation__list collapse" id="virtualhosts">
         
         
-<li class="subnavigation__list-item ">
-    <a href="../virtualhosts/overview/" class="subnavigation__link">Overview</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Overview</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
+    <a href="../create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
 </li>
 
         
@@ -319,9 +318,17 @@
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../faq/" class="subnavigation__link">FAQ</a>
+    <a href="../../faq/" class="subnavigation__link">FAQ</a>
 </li>
 
+                    
+                
+            
+
+                
+                
+
+                    
                     
                 
             
@@ -344,32 +351,31 @@
                     
                     
 
-    <div class="alert alert-danger alert-caution" role="alert">
-        <p class="mb-0">
-            The documentation you are viewing is for an older version of this component.<br>
-            <a href="../..">Switch to the latest (v2) version.</a>
-        </p>
-    </div>
-
 
 
 
     
     
+<!--        <h2 class="chapter__headline text-black-50">Virtualhosts</h2>-->
+    
 
-    <h1 id="introduction">Introduction</h1>
-<p><code>dotkernel/development</code> is a tool that helps you prepare your development environment with the following components:</p>
+    <h1 id="overview">Overview</h1>
+<p>Virtualhosts allow developers to host multiple applications on their local system.</p>
+<p>Using this tool, you configure a virtualhost for each of your applications, and it will create them so that you can start working with them.</p>
+<p><strong>Example</strong>:</p>
 <ul>
-<li><strong>WSL2</strong>: Windows Subsystem for Linux</li>
-<li><strong>AlmaLinux9</strong>: free and open source Linux distribution</li>
-<li><strong>PHP</strong>: general-purpose scripting language geared towards web development</li>
-<li><strong>Apache</strong>: free and open-source cross-platform web server software</li>
-<li><strong>MariaDB</strong>: community-developed, commercially supported fork of the MySQL relational database management system</li>
-<li><strong>Git</strong>: distributed version control system</li>
-<li><strong>Composer</strong>: application-level dependency manager for the PHP</li>
-<li><strong>Node.js</strong>: JavaScript runtime environment</li>
-<li><strong>PhpMyAdmin</strong>: open source administration tool for MySQL and MariaDB</li>
+<li><code>api.dotkernel.localhost</code>: this could be the endpoint where you host your website's API</li>
+<li><code>frontend.dotkernel.localhost</code>: this could be subdomain where you host your website's frontend that will consume the API</li>
 </ul>
+<p>In the above example, the URLs are built like this:</p>
+<ul>
+<li>the subdomain is the identifier of your application (<code>api</code>/<code>frontend</code>)</li>
+<li>the domain is the identifier of your project (<code>dotkernel</code>)</li>
+<li>the TLD sends the requests to localhost where Apache will route them to their real location</li>
+</ul>
+<blockquote>
+<p>By using the pattern <code>*.localhost</code> for any new virtualhost, you do not need to modify the <code>hosts</code> file in Windows, because these are routed by default.</p>
+</blockquote>
 
 
 
@@ -379,9 +385,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../v2/faq/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../setup/setup-packages/">
                     <i class="bi bi-chevron-left"></i>
-                    FAQ
+                    Setup Packages
                 </a>
             
         </li>
@@ -389,8 +395,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
-                    System Requirements
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../create-virtualhost/">
+                    Create virtualhost
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -509,7 +515,7 @@
 </footer>
 
         <script>
-            let base_url = '../..',
+            let base_url = '../../..',
                 project  = "development",
                 siteName = 'development';
 
