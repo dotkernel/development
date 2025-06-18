@@ -1,8 +1,41 @@
 # Install AlmaLinux10
 
+Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: _distro_) is running.
+This is important because this installation will fail if required ports are already in use by another distro.
+
 Open `Windows Terminal`.
 
-List the available Linux distributions (aka: _distros_) by executing:
+## Stop other WSL2 distros
+
+List all installed distros:
+
+```shell
+wsl -l -v
+```
+
+If there is no other distro installed, you will see the below output (an empty list):
+
+```text
+  NAME            STATE           VERSION
+```
+
+In this case, you can jump to the [installation](#install-almalinux10-1) section.
+
+If you have other distros installed, the output could look similar to the below:
+
+```text
+  NAME            STATE           VERSION
+* AlmaLinux-8     Stopped         2
+* AlmaLinux-9     Running         2
+```
+
+Make sure that the **STATE** column reads **Stopped** for all distros.
+If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>`, for example: `wsl -t AlmaLinux-9`.
+Once you have stopped all distros, you can continue to the [installation](#install-almalinux10-1) section.
+
+## Install AlmaLinux10
+
+List the available Linux distros by executing:
 
 ```shell
 wsl --list --online
@@ -39,6 +72,14 @@ OracleLinux_9_1                 Oracle Linux 9.1
 
 Note the two columns: **NAME** and **FRIENDLY NAME**.
 To install a specific distro, use the value from the **NAME** column, in this case: `AlmaLinux-10`.
+
+> If you try to install a distro that is already installed, the installation process will fail:
+>
+> Downloading: AlmaLinux OS 10
+> Installing: AlmaLinux OS 10
+> A distribution with the supplied name already exists. Use --name to choose a different name.
+> Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS
+
 Install the AlmaLinux10 distro by executing the below command:
 
 ```shell

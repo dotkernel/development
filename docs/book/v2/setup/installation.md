@@ -1,8 +1,41 @@
 # Install AlmaLinux10
 
+Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: _distro_) is running.
+This is important because this installation will fail if required ports are already in use by another distro.
+
 Open `Windows Terminal`.
 
-List the available Linux distributions (aka: _distros_) by executing:
+## Stop other WSL2 distros
+
+List all installed distros:
+
+```shell
+wsl -l -v
+```
+
+If there is no other distro installed, you will see the below output (an empty list):
+
+```text
+  NAME            STATE           VERSION
+```
+
+In this case, you can jump to the [installation](#install-almalinux10-1) section.
+
+If you have other distros installed, the output could look similar to the below:
+
+```text
+  NAME            STATE           VERSION
+* AlmaLinux-8     Stopped         2
+* AlmaLinux-9     Running         2
+```
+
+Make sure that the **STATE** column reads **Stopped** for all distros.
+If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>`, for example: `wsl -t AlmaLinux-9`.
+Once you have stopped all distros, you can continue to the [installation](#install-almalinux10-1) section.
+
+## Install AlmaLinux10
+
+List the available Linux distros by executing:
 
 ```shell
 wsl --list --online
