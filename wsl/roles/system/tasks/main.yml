@@ -22,3 +22,24 @@
   template:
     src: bash_profile.j2
     dest: "{{ bash_profile_dest }}"
+- name: Add create runtime directories script
+  template:
+    src: runtime-directories.sh.j2
+    dest: "{{ runtime_directories_script_path }}"
+    mode: "0755"
+- name: Add create runtime directories service
+  template:
+    src: runtime-directories.service.j2
+    dest: "{{ runtime_directories_service_path }}"
+    mode: "0755"
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: yes
+- name: Enable runtime-directories.service
+  ansible.builtin.systemd:
+    name: runtime-directories.service
+    enabled: yes
+- name: Start runtime-directories.service
+  ansible.builtin.systemd:
+    name: runtime-directories.service
+    state: started

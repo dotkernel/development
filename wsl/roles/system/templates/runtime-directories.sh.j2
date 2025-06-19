@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+# Create /run/httpd with correct ownership and permissions
+install -d -o apache -g apache -m 0755 /run/httpd
+
+# Create /run/mariadb with correct ownership and permissions
+install -d -o mysql -g mysql -m 0755 /run/mariadb

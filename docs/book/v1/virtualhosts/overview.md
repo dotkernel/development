@@ -7,7 +7,7 @@ Using this tool, you configure a virtualhost for each of your applications, and 
 **Example**:
 
 * `api.dotkernel.localhost`: this could be the endpoint where you host your website's API
-* `frontend.dotkernel.localhost`: this could be domain you host your website's frontend that will consume the API
+* `frontend.dotkernel.localhost`: this could be the subdomain you host your website's frontend that will consume the API
 
 In the above example, the URLs are built like this:
 
