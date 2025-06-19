@@ -27,9 +27,10 @@ php -v
 Depending on the selected PHP version, the output should look similar to the below:
 
 ```text
-PHP 8.3.8 (cli) (built: Jun  4 2024 14:53:17) (NTS gcc x86_64)
+PHP 8.4.8 (cli) (built: Jun  3 2025 16:29:26) (NTS gcc x86_64)
 Copyright (c) The PHP Group
-Zend Engine v4.3.8, Copyright (c) Zend Technologies
+Built by Remi's RPM repository <https://rpms.remirepo.net/> #StandWithUkraine
+Zend Engine v4.4.8, Copyright (c) Zend Technologies
 ```
 
 ## How do I switch to a different version of Node.js?

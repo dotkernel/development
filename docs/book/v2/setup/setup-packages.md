@@ -1,4 +1,4 @@
-# Setup AlmaLinux10
+# AlmaLinux 10 Setup
 
 Install system packages:
 
@@ -21,7 +21,7 @@ For security reasons, the password you type will not be visible.
 [sudo] password for dotkernel:
 ```
 
-Input your AlmaLinux10 password and hit `Enter`.
+Input your **AlmaLinux 10** password and hit `Enter`.
 
 Update/Upgrade system packages:
 
@@ -39,7 +39,7 @@ sudo dnf install ansible-core -y
 ansible-galaxy collection install community.general community.mysql
 ```
 
-Move inside your home directory (it is `/home/` followed by your AlmaLinux10 username, for example: `/home/dotkernel`):
+Move inside your home directory (it is `/home/` followed by your **AlmaLinux 10** username, for example: `/home/dotkernel`):
 
 ```shell
 cd ~
@@ -72,7 +72,7 @@ Install components by running the below Ansible command:
 ansible-playbook -i hosts install.yml --ask-become-pass
 ```
 
-The installation process will ask for your AlmaLinux10 password, then iterate over each task in the playbook and output a short summary with the results.
+The installation process will ask for your **AlmaLinux 10** password, then iterate over each task in the playbook and output a short summary with the results.
 
 Once finished, check if everything works by opening in your browser:
 
@@ -80,26 +80,26 @@ Once finished, check if everything works by opening in your browser:
 * [http://localhost/info.php](http://localhost/info.php): PHP info page
 * [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
 
-The installation is complete, your AlmaLinux10 development environment is ready to use.
+The installation is complete, your **AlmaLinux 10** development environment is ready to use.
 
-> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-10**; clicking it will open a new tab connected to **AlmaLinux10**.
+> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-10**; clicking it will open a new tab connected to **AlmaLinux 10**.
 
-## Running AlmaLinux10
+## Running AlmaLinux 10
 
 Open `Windows Terminal`.
 
-Start AlmaLinux10 by executing:
+Start **AlmaLinux 10** by executing:
 
 ```shell
-wsl -d AlmaLinux10
+wsl -d AlmaLinux-10
 ```
 
 OR
 
 Locate the app selector dropdown in `Windows Terminal`'s title bar and click `AlmaLinux-10`.
-This will open a new tab connected to AlmaLinux10.
+This will open a new tab connected to **AlmaLinux 10**.
 
 ### Note
 
-> To run your applications using WSL2, you always need to be connected to your AlmaLinux10 distribution.
+> To run your applications using WSL2, you always need to be connected to your **AlmaLinux 10** distribution.
 > For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.

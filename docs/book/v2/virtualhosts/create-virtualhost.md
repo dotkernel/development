@@ -20,7 +20,7 @@ Create the specified virtualhosts:
 ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass
 ```
 
-This process will ask for your AlmaLinux10 password, iterate over the list of configured `virtualhosts` and output a short summary with the results.
+This process will ask for your **AlmaLinux 10** password, iterate over the list of configured `virtualhosts` and output a short summary with the results.
 Your virtualhost should be accessible and ready to use.
 
 You will install your project under the `html` directory of your project, for example `/var/www/example.localhost/html`.
@@ -31,7 +31,7 @@ You will install your project under the `html` directory of your project, for ex
 
 ## Good to know
 
-* To run your installed projects, you need to start AlmaLinux10 first.
+* To run your installed projects, you need to start **AlmaLinux 10** first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 * If you encounter write permission issues, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues).

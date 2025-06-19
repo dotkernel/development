@@ -1,4 +1,4 @@
-# Setup AlmaLinux9
+# AlmaLinux 9 Setup
 
 Install system packages:
 
@@ -19,7 +19,7 @@ Administrator. It usually boils down to these three things:
 [sudo] password for dotkernel:
 ```
 
-Input your AlmaLinux9 password and hit `Enter`.
+Input your **AlmaLinux 9** password and hit `Enter`.
 
 Update/Upgrade system packages:
 
@@ -33,16 +33,16 @@ Now, install the latest version of **Ansible**:
 sudo dnf install ansible -y
 ```
 
-Move inside your home directory (it is `/home/` followed by your AlmaLinux9 username, for example: `/home/dotkernel`):
+Move inside your home directory (it is `/home/` followed by your **AlmaLinux 9** username, for example: `/home/dotkernel`):
 
 ```shell
 cd ~
 ```
 
-Clone the `almalinux9` branch of the `dotkernel/development` repository:
+Clone the `alma-linux-9` branch of the `dotkernel/development` repository:
 
 ```shell
-git clone --branch almalinux9 --single-branch https://github.com/dotkernel/development.git
+git clone --branch alma-linux-9 --single-branch https://github.com/dotkernel/development.git
 ```
 
 Move inside the directory `development/wsl`:
@@ -66,7 +66,7 @@ Install components by running the below Ansible command:
 ansible-playbook -i hosts install.yml --ask-become-pass
 ```
 
-The installation process will ask for your AlmaLinux9 password, then iterate over each task in the playbook and output a short summary with the results.
+The installation process will ask for your **AlmaLinux 9** password, then iterate over each task in the playbook and output a short summary with the results.
 
 Once finished, check if everything works by opening in your browser:
 
@@ -74,26 +74,26 @@ Once finished, check if everything works by opening in your browser:
 * [http://localhost/info.php](http://localhost/info.php): PHP info page
 * [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
 
-The installation is complete, your AlmaLinux9 development environment is ready to use.
+The installation is complete, your **AlmaLinux 9** development environment is ready to use.
 
-> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-9** - clicking it will open a new tab connected to **AlmaLinux9**.
+> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-9** - clicking it will open a new tab connected to **AlmaLinux 9**.
 
-## Running AlmaLinux9
+## Running AlmaLinux 9
 
 Open `Windows Terminal`.
 
-Start AlmaLinux9 by executing:
+Start **AlmaLinux 9** by executing:
 
 ```shell
-wsl -d AlmaLinux9
+wsl -d AlmaLinux-9
 ```
 
 OR
 
 Locate the app selector dropdown in `Windows Terminal`'s title bar and click `AlmaLinux-9`.
-This will open a new tab connected to AlmaLinux9.
+This will open a new tab connected to **AlmaLinux 9**.
 
 ### Note
 
-> To run your applications using WSL2, you always need to be connected to your AlmaLinux9 distribution.
+> To run your applications using WSL2, you always need to be connected to your **AlmaLinux 9** distribution.
 > For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.

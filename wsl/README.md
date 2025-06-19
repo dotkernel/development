@@ -1,4 +1,4 @@
-# Install AlmaLinux10
+# Install AlmaLinux 10
 
 Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: _distro_) is running.
 This is important because this installation will fail if required ports are already in use by another distro.
@@ -19,21 +19,21 @@ If there is no other distro installed, you will see the below output (an empty l
   NAME            STATE           VERSION
 ```
 
-In this case, you can jump to the [installation](#install-almalinux10-1) section.
+In this case, you can jump to the [installation](#install-almalinux-10-1) section.
 
 If you have other distros installed, the output could look similar to the below:
 
 ```text
   NAME            STATE           VERSION
-* AlmaLinux-8     Stopped         2
+  AlmaLinux-8     Stopped         2
 * AlmaLinux-9     Running         2
 ```
 
 Make sure that the **STATE** column reads **Stopped** for all distros.
-If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>`, for example: `wsl -t AlmaLinux-9`.
-Once you have stopped all distros, you can continue to the [installation](#install-almalinux10-1) section.
+If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>` after replacing `<distro-name>` with the name of the distro you want to stop.
+Once you have stopped all distros, you can continue to the [installation](#install-almalinux-10-1) section.
 
-## Install AlmaLinux10
+## Install AlmaLinux 10
 
 List the available Linux distros by executing:
 
@@ -82,7 +82,7 @@ A distribution with the supplied name already exists. Use --name to choose a dif
 Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS
 ```
 
-Install the AlmaLinux10 distro by executing the below command:
+Install the **AlmaLinux 10** distro by executing the below command:
 
 ```shell
 wsl --install -d AlmaLinux-10
@@ -101,7 +101,7 @@ Enter new UNIX username:
 ```
 
 As per the last line, the installation process now prompts you to enter a username.
-This is the username you will use inside AlmaLinux10, and it can be any alphanumeric string (for example `dotkernel`):
+This is the username you will use inside **AlmaLinux 10**, and it can be any alphanumeric string (for example `dotkernel`):
 
 Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):
 
@@ -122,10 +122,10 @@ Finally, you should see the following message:
 
 ```text
 passwd: all authentication tokens updated successfully.
-[<your-almalinux10-username>@<your-device-name> <your-windows-username>]$
+[<your-alma-linux-10-username>@<your-device-name> <your-windows-username>]$
 ```
 
-## Setup AlmaLinux10
+## Setup AlmaLinux 10
 
 Install system packages:
 
@@ -147,7 +147,7 @@ For security reasons, the password you type will not be visible.
 [sudo] password for dotkernel:
 ```
 
-Input your AlmaLinux10 password and hit `Enter`.
+Input your **AlmaLinux 10** password and hit `Enter`.
 
 Update/Upgrade system packages:
 
@@ -165,7 +165,7 @@ sudo dnf install ansible-core -y
 ansible-galaxy collection install community.general community.mysql
 ```
 
-Move inside your home directory (it is `/home/` followed by your AlmaLinux10 username, for example: `/home/dotkernel`):
+Move inside your home directory (it is `/home/` followed by your **AlmaLinux 10** username, for example: `/home/dotkernel`):
 
 ```shell
 cd ~
@@ -198,7 +198,7 @@ Install components by running the below Ansible command:
 ansible-playbook -i hosts install.yml --ask-become-pass
 ```
 
-The installation process will ask for your AlmaLinux10 password, then iterate over each task in the playbook and output a short summary with the results.
+The installation process will ask for your **AlmaLinux 10** password, then iterate over each task in the playbook and output a short summary with the results.
 
 Once finished, check if everything works by opening in your browser:
 
@@ -206,9 +206,9 @@ Once finished, check if everything works by opening in your browser:
 * [http://localhost/info.php](http://localhost/info.php): PHP info page
 * [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
 
-The installation is complete, your AlmaLinux10 development environment is ready to use.
+The installation is complete, your **AlmaLinux 10** development environment is ready to use.
 
-> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-10**; clicking it will open a new tab connected to **AlmaLinux10**.
+> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-10**; clicking it will open a new tab connected to **AlmaLinux 10**.
 
 ## Create virtualhosts
 
@@ -232,7 +232,7 @@ Create the specified virtualhosts:
 ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass
 ```
 
-This process will ask for your AlmaLinux10 password, iterate over the list of configured `virtualhosts` and output a short summary with the results.
+This process will ask for your **AlmaLinux 10** password, iterate over the list of configured `virtualhosts` and output a short summary with the results.
 Your virtualhost should be accessible and ready to use.
 
 You will install your project under the `html` directory of your project, for example `/var/www/example.localhost/html`.
@@ -243,7 +243,7 @@ You will install your project under the `html` directory of your project, for ex
 
 ### Good to know
 
-* To run your installed projects, you need to start AlmaLinux10 first.
+* To run your installed projects, you need to start **AlmaLinux 10** first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 * If you encounter write permission issues, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues).

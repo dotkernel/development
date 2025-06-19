@@ -1,5 +1,5 @@
 ---
-- name: Setup AlmaLinux10 development environment
+- name: Setup AlmaLinux 10 development environment
   hosts: localhost
   connection: local
   become: true
