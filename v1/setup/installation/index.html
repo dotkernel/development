@@ -427,8 +427,15 @@ OracleLinux_7_9                 Oracle Linux 7.9
 OracleLinux_8_7                 Oracle Linux 8.7
 OracleLinux_9_1                 Oracle Linux 9.1</code></pre>
 <p>Note the two columns: <strong>NAME</strong> and <strong>FRIENDLY NAME</strong>.
-To install a specific distro, use the value from the <strong>NAME</strong> column, in this case: <code>AlmaLinux-9</code>.
-Install the AlmaLinux9 distro by executing the below command:</p>
+To install a specific distro, use the value from the <strong>NAME</strong> column, in this case: <code>AlmaLinux-9</code>.</p>
+<blockquote>
+<p>If you try to install a distro that is already installed, the installation process will fail:</p>
+</blockquote>
+<pre class="highlight"><code class="language-text">Downloading: AlmaLinux OS 9
+Installing: AlmaLinux OS 9
+A distribution with the supplied name already exists. Use --name to choose a different name.
+Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS</code></pre>
+<p>Install the AlmaLinux9 distro by executing the below command:</p>
 <pre class="highlight"><code class="language-shell">wsl --install -d AlmaLinux-9</code></pre>
 <p>You should see the download progress—once finished, the output should look like this:</p>
 <pre class="highlight"><code class="language-text">Downloading: AlmaLinux OS 9
