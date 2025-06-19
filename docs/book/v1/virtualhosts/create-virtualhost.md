@@ -1,4 +1,6 @@
-# Create virtualhosts
+# AlmaLinux 9 Create virtualhosts
+
+> By using the `*.localhost` pattern for any new virtualhost, you do not need to modify the `hosts` file in Windows, because these are routed by default.
 
 Move inside the directory `development/wsl`:
 
@@ -9,9 +11,7 @@ cd ~/development/wsl/
 If you don't already have a `config.yml` file, duplicate `config.yml.dist` as `config.yml`.
 
 Using your preferred text editor, open `config.yml` and, under the `virtualhosts` key, enter the virtualhosts that you want to create, each on its own line.
-
 Already existing virtualhosts will be skipped, their contents will not be lost, no need to comment or remove them.
-
 Save and close the file.
 
 Create the specified virtualhosts:
@@ -20,8 +20,7 @@ Create the specified virtualhosts:
 ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass
 ```
 
-This process will ask for your password (set during the installation process) and then iterate over the list of configured `virtualhosts` and will output a short summary with the results.
-
+This process will ask for your **AlmaLinux 9** password, iterate over the list of configured `virtualhosts` and output a short summary with the results.
 Your virtualhost should be accessible and ready to use.
 
 You will install your project under the `html` directory of your project, for example `/var/www/example.localhost/html`.
@@ -32,7 +31,7 @@ You will install your project under the `html` directory of your project, for ex
 
 ## Good to know
 
-* To run your installed projects, you need to start AlmaLinux9 first.
+* To run your installed projects, you need to start **AlmaLinux 9** first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 * If you encounter write permission issues, see [this guide](https://docs.dotkernel.org/development/v1/faq/#how-do-i-fix-common-permission-issues).

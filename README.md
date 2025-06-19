@@ -25,7 +25,7 @@ DXCore version: 10.0.26091.1-240325-1447.ge-release
 Windows version: 10.0.22631.3737
 ```
 
-If the output starts with `WSL version: 2.x.x.x`, you are ready to use **WSL2** and can proceed to [install AlmaLinux9](wsl/README.md).
+If the output starts with `WSL version: 2.x.x.x`, you are ready to use **WSL2** and can proceed to [install AlmaLinux 9](wsl/README.md).
 
 ## Install WSL2
 
@@ -57,4 +57,4 @@ To test, run again the following command:
 wsl -v
 ```
 
-This time the output should display `WSL version: 2.x.x.x`, which means that your system is ready for using **WSL2** and you can proceed to [install AlmaLinux9](wsl/README.md).
+This time the output should display `WSL version: 2.x.x.x`, which means that your system is ready for using **WSL2** and you can proceed to [install AlmaLinux 9](wsl/README.md).
