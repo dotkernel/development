@@ -72,6 +72,16 @@ OracleLinux_9_1                 Oracle Linux 9.1
 
 Note the two columns: **NAME** and **FRIENDLY NAME**.
 To install a specific distro, use the value from the **NAME** column, in this case: `AlmaLinux-10`.
+
+> If you try to install a distro that is already installed, the installation process will fail:
+
+```text
+Downloading: AlmaLinux OS 10
+Installing: AlmaLinux OS 10
+A distribution with the supplied name already exists. Use --name to choose a different name.
+Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS
+```
+
 Install the AlmaLinux10 distro by executing the below command:
 
 ```shell
