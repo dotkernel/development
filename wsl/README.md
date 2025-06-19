@@ -1,4 +1,4 @@
-# Install AlmaLinux9
+# AlmaLinux 9 Installation
 
 Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: _distro_) is running.
 This is important because this installation will fail if required ports are already in use by another distro.
@@ -19,21 +19,21 @@ If there is no other distro installed, you will see the below output (an empty l
   NAME            STATE           VERSION
 ```
 
-In this case, you can jump to the [installation](#install-almalinux9-1) section.
+In this case, you can jump to the [installation](#install-almalinux-9) section.
 
 If you have other distros installed, the output could look similar to the below:
 
 ```text
   NAME            STATE           VERSION
-* AlmaLinux-9     Stopped         2
+  AlmaLinux-9     Stopped         2
 * AlmaLinux-10    Running         2
 ```
 
 Make sure that the **STATE** column reads **Stopped** for all distros.
-If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>`, for example: `wsl -t AlmaLinux-10`.
-Once you have stopped all distros, you can continue to the [installation](#install-almalinux9-1) section.
+If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>` after replacing `<distro-name>` with the name of the distro you want to stop.
+Once you have stopped all distros, you can continue to the [installation](#install-almalinux-9) section.
 
-## Install AlmaLinux9
+## Install AlmaLinux 9
 
 List the available Linux distros by executing:
 
@@ -82,7 +82,7 @@ A distribution with the supplied name already exists. Use --name to choose a dif
 Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS
 ```
 
-Install the AlmaLinux9 distro by executing the below command:
+Install the **AlmaLinux 9** distro by executing the below command:
 
 ```shell
 wsl --install -d AlmaLinux-9
@@ -101,7 +101,7 @@ Enter new UNIX username:
 ```
 
 As per the last line, the installation process now prompts you to enter a username.
-This is the username you will use inside AlmaLinux9, and it can be any alphanumeric string (for example `dotkernel`):
+This is the username you will use inside **AlmaLinux 9**, and it can be any alphanumeric string (for example `dotkernel`):
 
 Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):
 
@@ -123,10 +123,10 @@ Finally, you should see the following message:
 
 ```text
 passwd: all authentication tokens updated successfully.
-[<your-almalinux9-username>@<your-device-name> <your-windows-username>]$
+[<your-alma-linux-9-username>@<your-device-name> <your-windows-username>]$
 ```
 
-## Setup AlmaLinux9
+## Setup AlmaLinux 9
 
 Install system packages:
 
@@ -137,7 +137,8 @@ sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/rem
 You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the `sudo` modifier at the beginning of the command).
 
 ```text
-We trust you have received the usual lecture from the local System Administrator. It usually boils down to these three things:
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
 
     #1) Respect the privacy of others.
     #2) Think before you type.
@@ -146,7 +147,7 @@ We trust you have received the usual lecture from the local System Administrator
 [sudo] password for dotkernel:
 ```
 
-Input your AlmaLinux9 password and hit `Enter`.
+Input your **AlmaLinux 9** password and hit `Enter`.
 
 Update/Upgrade system packages:
 
@@ -160,7 +161,7 @@ Now, install the latest version of **Ansible**:
 sudo dnf install ansible -y
 ```
 
-Move inside your home directory (it is `/home/` followed by your AlmaLinux9 username, for example: `/home/dotkernel`):
+Move inside your home directory (it is `/home/` followed by your **AlmaLinux 9** username, for example: `/home/dotkernel`):
 
 ```shell
 cd ~
@@ -193,7 +194,7 @@ Install components by running the below Ansible command:
 ansible-playbook -i hosts install.yml --ask-become-pass
 ```
 
-The installation process will ask for your AlmaLinux9 password, then iterate over each task in the playbook and output a short summary with the results.
+The installation process will ask for your **AlmaLinux 9** password, then iterate over each task in the playbook and output a short summary with the results.
 
 Once finished, check if everything works by opening in your browser:
 
@@ -201,9 +202,9 @@ Once finished, check if everything works by opening in your browser:
 * [http://localhost/info.php](http://localhost/info.php): PHP info page
 * [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
 
-The installation is complete, your AlmaLinux9 development environment is ready to use.
+The installation is complete, your **AlmaLinux 9** development environment is ready to use.
 
-> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-9** - clicking it will open a new tab connected to **AlmaLinux9**.
+> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-9** - clicking it will open a new tab connected to **AlmaLinux 9**.
 
 ## Create virtualhosts
 
@@ -225,7 +226,7 @@ Create the specified virtualhosts:
 ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass
 ```
 
-This will iterate over the list of configured `virtualhosts` and will output a short summary with the results.
+This process will ask for your **AlmaLinux 9** password, iterate over the list of configured `virtualhosts` and output a short summary with the results.
 Your virtualhost should be accessible and ready to use.
 
 You will install your project under the `html` directory of your project, for example: `/var/www/example.localhost/html`.
@@ -236,7 +237,7 @@ You will install your project under the `html` directory of your project, for ex
 
 ### Good to know
 
-* To run your installed projects, you need to start AlmaLinux9 first.
+* To run your installed projects, you need to start **AlmaLinux 9** first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 * If you encounter write permission issues, see [this guide](https://docs.dotkernel.org/development/v1/faq/#how-do-i-fix-common-permission-issues).
