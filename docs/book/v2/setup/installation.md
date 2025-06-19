@@ -1,4 +1,4 @@
-# Install AlmaLinux10
+# AlmaLinux 10 Installation
 
 Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: _distro_) is running.
 This is important because this installation will fail if required ports are already in use by another distro.
@@ -19,21 +19,21 @@ If there is no other distro installed, you will see the below output (an empty l
   NAME            STATE           VERSION
 ```
 
-In this case, you can jump to the [installation](#install-almalinux10-1) section.
+In this case, you can jump to the [installation](#install-almalinux-10) section.
 
 If you have other distros installed, the output could look similar to the below:
 
 ```text
   NAME            STATE           VERSION
-* AlmaLinux-8     Stopped         2
+  AlmaLinux-8     Stopped         2
 * AlmaLinux-9     Running         2
 ```
 
 Make sure that the **STATE** column reads **Stopped** for all distros.
-If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>`, for example: `wsl -t AlmaLinux-9`.
-Once you have stopped all distros, you can continue to the [installation](#install-almalinux10-1) section.
+If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>` after replacing `<distro-name>` with the name of the distro you want to stop.
+Once you have stopped all distros, you can continue to the [installation](#install-almalinux-10) section.
 
-## Install AlmaLinux10
+## Install AlmaLinux 10
 
 List the available Linux distros by executing:
 
@@ -82,7 +82,7 @@ A distribution with the supplied name already exists. Use --name to choose a dif
 Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS
 ```
 
-Install the AlmaLinux10 distro by executing the below command:
+Install the **AlmaLinux 10** distro by executing the below command:
 
 ```shell
 wsl --install -d AlmaLinux-10
@@ -101,7 +101,7 @@ Enter new UNIX username:
 ```
 
 As per the last line, the installation process now prompts you to enter a username.
-This is the username you will use inside AlmaLinux10, and it can be any alphanumeric string (for example `dotkernel`):
+This is the username you will use inside **AlmaLinux 10**, and it can be any alphanumeric string (for example `dotkernel`):
 
 Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):
 
@@ -122,5 +122,5 @@ Finally, you should see the following message:
 
 ```text
 passwd: password updated successfully
-[<your-almalinux10-username>@<your-device-name> <your-windows-username>]$
+[<your-alma-linux-10-username>@<your-device-name> <your-windows-username>]$
 ```

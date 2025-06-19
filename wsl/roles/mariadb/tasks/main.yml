@@ -1,5 +1,5 @@
 ---
-- name: Install MariaDB 11.4
+- name: Install the latest version of MariaDB
   command: "dnf install python3-mysqlclient mariadb-server -y"
 - name: Enable and start MariaDB service
   command: systemctl enable --now mariadb
