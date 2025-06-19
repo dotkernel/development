@@ -1,3 +1,5 @@
 ---
 wsl_config_dest: /etc/wsl.conf
 bash_profile_dest: "/home/{{ config.system.username }}/.bash_profile"
+runtime_directories_script_path: "/usr/local/bin/runtime-directories.sh"
+runtime_directories_service_path: "/etc/systemd/system/runtime-directories.service"

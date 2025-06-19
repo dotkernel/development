@@ -72,13 +72,23 @@ OracleLinux_9_1                 Oracle Linux 9.1
 
 Note the two columns: **NAME** and **FRIENDLY NAME**.
 To install a specific distro, use the value from the **NAME** column, in this case: `AlmaLinux-9`.
+
+> If you try to install a distro that is already installed, the installation process will fail:
+
+```text
+Downloading: AlmaLinux OS 9
+Installing: AlmaLinux OS 9
+A distribution with the supplied name already exists. Use --name to choose a different name.
+Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS
+```
+
 Install the AlmaLinux9 distro by executing the below command:
 
 ```shell
 wsl --install -d AlmaLinux-9
 ```
 
-You should see the download progress - once finished, the output should look like this:
+You should see the download progress—once finished, the output should look like this:
 
 ```text
 Downloading: AlmaLinux OS 9
@@ -101,7 +111,7 @@ Changing password for user dotkernel.
 New password:
 ```
 
-Depending on the strength of your password, you might get a `BAD PASSWORD: <some-reason>` message (if you want to choose a different password, hit `Enter` and you are taken back to previous step - else, continue with retyping your password):
+Depending on the strength of your password, you might get a `BAD PASSWORD: <some-reason>` message (if you want to choose a different password, hit `Enter` and you are taken back to the previous step—else, continue with retyping your password):
 
 Next, you are asked to retype your password:
 
