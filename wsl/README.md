@@ -1,4 +1,4 @@
-# Install AlmaLinux 10
+# AlmaLinux 10 Installation
 
 Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: _distro_) is running.
 This is important because this installation will fail if required ports are already in use by another distro.
@@ -19,7 +19,7 @@ If there is no other distro installed, you will see the below output (an empty l
   NAME            STATE           VERSION
 ```
 
-In this case, you can jump to the [installation](#install-almalinux-10-1) section.
+In this case, you can jump to the [installation](#install-almalinux-10) section.
 
 If you have other distros installed, the output could look similar to the below:
 
@@ -31,7 +31,7 @@ If you have other distros installed, the output could look similar to the below:
 
 Make sure that the **STATE** column reads **Stopped** for all distros.
 If any of them reads **Running**, you must stop if first by executing `wsl -t <distro-name>` after replacing `<distro-name>` with the name of the distro you want to stop.
-Once you have stopped all distros, you can continue to the [installation](#install-almalinux-10-1) section.
+Once you have stopped all distros, you can continue to the [installation](#install-almalinux-10) section.
 
 ## Install AlmaLinux 10
 

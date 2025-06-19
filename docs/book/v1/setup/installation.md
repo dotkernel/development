@@ -25,7 +25,7 @@ If you have other distros installed, the output could look similar to the below:
 
 ```text
   NAME            STATE           VERSION
-* AlmaLinux-9     Stopped         2
+  AlmaLinux-9     Stopped         2
 * AlmaLinux-10    Running         2
 ```
 
