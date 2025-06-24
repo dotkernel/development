@@ -9,7 +9,6 @@ extra:
 nav:
   - Home: index.md
   - v2:
-      - Introduction: v2/introduction.md
       - Setup:
           - System Requirements: v2/setup/system-requirements.md
           - Installation: v2/setup/installation.md
@@ -19,7 +18,6 @@ nav:
           - Create virtualhost: v2/virtualhosts/create-virtualhost.md
       - FAQ: v2/faq.md
   - v1:
-      - Introduction: v1/introduction.md
       - Setup:
           - System Requirements: v1/setup/system-requirements.md
           - Installation: v1/setup/installation.md
