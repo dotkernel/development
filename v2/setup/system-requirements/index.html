@@ -132,34 +132,45 @@
                 </li>
                 <li class="nav-item">
                     
+    
+
+  
+
+
+
 <div class="version-selector">
-    <div class="btn-group">
-        <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+  <div class="btn-group">
+    <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+      
+        AlmaLinux 10
+      
+    </button>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+      
+        
+        <a href="../../.." class="dropdown-item active">
+          
             
-                v2
+              AlmaLinux 10 (latest)
             
-        </button>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+          
+        </a>
+        
+      
+        
+        <a href="../../.." class="dropdown-item">
+          
             
-                
-                    <a href="../../introduction/" class="dropdown-item active">
-                        
-                            v2 (latest)
-                        
-                    </a>
-                
+              AlmaLinux 9
             
-                
-                    <a href="../../../v1/introduction/" class="dropdown-item">
-                        
-                            v1
-                        
-                    </a>
-                
-            
-        </div>
+          
+        </a>
+        
+      
     </div>
+  </div>
 </div>
+
 
                 </li>
             </ul>
@@ -217,12 +228,6 @@
 
                 
                 
-                    
-                        
-<li class="subnavigation__list-item ">
-    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
-</li>
-
                     
                         
 
@@ -374,7 +379,7 @@
 <!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
     
 
-    <h1 id="system-requirements">System requirements</h1>
+    <h1 id="almalinux-10-system-requirements">AlmaLinux 10 System requirements</h1>
 <p>If you're not already using it, we recommend you to install <a href="https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&amp;gl=US">Windows Terminal</a>.
 It is a modern tool that incorporates the power of multiple already known command-line applications like <code>Windows PowerShell</code>, <code>Linux shell</code>, and more...</p>
 <h2 id="check-if-wls2-is-already-available">Check if WLS2 is already available</h2>
@@ -388,7 +393,7 @@ MSRDC version: 1.2.5326
 Direct3D version: 1.611.1-81528511
 DXCore version: 10.0.26091.1-240325-1447.ge-release
 Windows version: 10.0.22631.3737</code></pre>
-<p>If the output starts with <code>WSL version: 2.x.x.x</code>, you are ready to use <strong>WSL2</strong> and can proceed to <a href="../installation/">install AlmaLinux10</a>.</p>
+<p>If the output starts with <code>WSL version: 2.x.x.x</code>, you are ready to use <strong>WSL2</strong> and can proceed to <a href="../installation/">install AlmaLinux 10</a>.</p>
 <h2 id="install-wsl2">Install WSL2</h2>
 <p>Before proceeding with the installation, please consult Microsoft's <a href="https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites">documentation</a> regarding the minimum requirements for running WSL2.</p>
 <p>Once you identified that your machine can run WSL2, open the <code>Run</code> prompt by pressing <code>Win</code> + <code>r</code>, type <code>OptionalFeatures</code> in the dialog and press <code>Enter</code>.
@@ -408,7 +413,7 @@ Make sure that the below features are activated (checked):</p>
 <pre class="highlight"><code class="language-shell">wsl --set-default-version 2</code></pre>
 <p>To test, run again the following command:</p>
 <pre class="highlight"><code class="language-shell">wsl -v</code></pre>
-<p>This time the output should display <code>WSL version: 2.x.x.x</code>, which means that your system is ready for using <strong>WSL2</strong> and you can proceed to <a href="../installation/">install AlmaLinux10</a>.</p>
+<p>This time the output should display <code>WSL version: 2.x.x.x</code>, which means that your system is ready for using <strong>WSL2</strong> and you can proceed to <a href="../installation/">install AlmaLinux 10</a>.</p>
 
 
 
@@ -418,9 +423,9 @@ Make sure that the below features are activated (checked):</p>
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../introduction/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../..">
                     <i class="bi bi-chevron-left"></i>
-                    Introduction
+                    Home
                 </a>
             
         </li>

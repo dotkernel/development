@@ -132,34 +132,45 @@
                 </li>
                 <li class="nav-item">
                     
+    
+
+  
+
+
+
 <div class="version-selector">
-    <div class="btn-group">
-        <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+  <div class="btn-group">
+    <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+      
+        AlmaLinux 9
+      
+    </button>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+      
+        
+        <a href="../../.." class="dropdown-item">
+          
             
-                v1
+              AlmaLinux 10 (latest)
             
-        </button>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+          
+        </a>
+        
+      
+        
+        <a href="../../.." class="dropdown-item active">
+          
             
-                
-                    <a href="../../../v2/introduction/" class="dropdown-item">
-                        
-                            v2 (latest)
-                        
-                    </a>
-                
+              AlmaLinux 9
             
-                
-                    <a href="../../introduction/" class="dropdown-item active">
-                        
-                            v1
-                        
-                    </a>
-                
-            
-        </div>
+          
+        </a>
+        
+      
     </div>
+  </div>
 </div>
+
 
                 </li>
             </ul>
@@ -225,12 +236,6 @@
 
                 
                 
-                    
-                        
-<li class="subnavigation__list-item ">
-    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
-</li>
-
                     
                         
 
@@ -353,7 +358,7 @@
                 </li>
             
                 <li class="toc__entry">
-                    <a href="#install-almalinux9_1" class="toc__link nav-link">Install AlmaLinux9</a>
+                    <a href="#install-almalinux-9" class="toc__link nav-link">Install AlmaLinux 9</a>
                 </li>
             
             </ul>
@@ -381,7 +386,7 @@
 <!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
     
 
-    <h1 id="install-almalinux9">Install AlmaLinux9</h1>
+    <h1 id="almalinux-9-installation">AlmaLinux 9 Installation</h1>
 <p>Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: <em>distro</em>) is running.
 This is important because this installation will fail if required ports are already in use by another distro.</p>
 <p>Open <code>Windows Terminal</code>.</p>
@@ -390,15 +395,15 @@ This is important because this installation will fail if required ports are alre
 <pre class="highlight"><code class="language-shell">wsl -l -v</code></pre>
 <p>If there is no other distro installed, you will see the below output (an empty list):</p>
 <pre class="highlight"><code class="language-text">  NAME            STATE           VERSION</code></pre>
-<p>In this case, you can jump to the <a href="#install-almalinux9-1">installation</a> section.</p>
+<p>In this case, you can jump to the <a href="#install-almalinux-9">installation</a> section.</p>
 <p>If you have other distros installed, the output could look similar to the below:</p>
 <pre class="highlight"><code class="language-text">  NAME            STATE           VERSION
-* AlmaLinux-9     Stopped         2
+  AlmaLinux-9     Stopped         2
 * AlmaLinux-10    Running         2</code></pre>
 <p>Make sure that the <strong>STATE</strong> column reads <strong>Stopped</strong> for all distros.
-If any of them reads <strong>Running</strong>, you must stop if first by executing <code>wsl -t &lt;distro-name&gt;</code>, for example: <code>wsl -t AlmaLinux-10</code>.
-Once you have stopped all distros, you can continue to the <a href="#install-almalinux9-1">installation</a> section.</p>
-<h2 id="install-almalinux9_1">Install AlmaLinux9</h2>
+If any of them reads <strong>Running</strong>, you must stop if first by executing <code>wsl -t &lt;distro-name&gt;</code> after replacing <code>&lt;distro-name&gt;</code> with the name of the distro you want to stop.
+Once you have stopped all distros, you can continue to the <a href="#install-almalinux-9">installation</a> section.</p>
+<h2 id="install-almalinux-9">Install AlmaLinux 9</h2>
 <p>List the available Linux distros by executing:</p>
 <pre class="highlight"><code class="language-shell">wsl --list --online</code></pre>
 <p>Depending on the list of distros available at the moment you run the command, the output should look similar to the below:</p>
@@ -435,7 +440,7 @@ To install a specific distro, use the value from the <strong>NAME</strong> colum
 Installing: AlmaLinux OS 9
 A distribution with the supplied name already exists. Use --name to choose a different name.
 Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS</code></pre>
-<p>Install the AlmaLinux9 distro by executing the below command:</p>
+<p>Install the <strong>AlmaLinux 9</strong> distro by executing the below command:</p>
 <pre class="highlight"><code class="language-shell">wsl --install -d AlmaLinux-9</code></pre>
 <p>You should see the download progress—once finished, the output should look like this:</p>
 <pre class="highlight"><code class="language-text">Downloading: AlmaLinux OS 9
@@ -446,7 +451,7 @@ Please create a default UNIX user account. The username does not need to match y
 For more information visit: https://aka.ms/wslusers
 Enter new UNIX username:</code></pre>
 <p>As per the last line, the installation process now prompts you to enter a username.
-This is the username you will use inside AlmaLinux9, and it can be any alphanumeric string (for example <code>dotkernel</code>):</p>
+This is the username you will use inside <strong>AlmaLinux 9</strong>, and it can be any alphanumeric string (for example <code>dotkernel</code>):</p>
 <p>Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):</p>
 <pre class="highlight"><code class="language-shell">Enter new UNIX username: dotkernel.
 Changing password for user dotkernel.
@@ -456,7 +461,7 @@ New password:</code></pre>
 <pre class="highlight"><code class="language-text">Retype new password:</code></pre>
 <p>Finally, you should see the following message:</p>
 <pre class="highlight"><code class="language-text">passwd: all authentication tokens updated successfully.
-[&lt;your-almalinux9-username&gt;@&lt;your-device-name&gt; &lt;your-windows-username&gt;]$</code></pre>
+[&lt;your-alma-linux-9-username&gt;@&lt;your-device-name&gt; &lt;your-windows-username&gt;]$</code></pre>
 
 
 

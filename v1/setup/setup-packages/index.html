@@ -132,34 +132,45 @@
                 </li>
                 <li class="nav-item">
                     
+    
+
+  
+
+
+
 <div class="version-selector">
-    <div class="btn-group">
-        <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+  <div class="btn-group">
+    <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+      
+        AlmaLinux 9
+      
+    </button>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+      
+        
+        <a href="../../.." class="dropdown-item">
+          
             
-                v1
+              AlmaLinux 10 (latest)
             
-        </button>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+          
+        </a>
+        
+      
+        
+        <a href="../../.." class="dropdown-item active">
+          
             
-                
-                    <a href="../../../v2/introduction/" class="dropdown-item">
-                        
-                            v2 (latest)
-                        
-                    </a>
-                
+              AlmaLinux 9
             
-                
-                    <a href="../../introduction/" class="dropdown-item active">
-                        
-                            v1
-                        
-                    </a>
-                
-            
-        </div>
+          
+        </a>
+        
+      
     </div>
+  </div>
 </div>
+
 
                 </li>
             </ul>
@@ -225,12 +236,6 @@
 
                 
                 
-                    
-                        
-<li class="subnavigation__list-item ">
-    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
-</li>
-
                     
                         
 
@@ -349,7 +354,7 @@
             <ul class="toc__list">
             
                 <li class="toc__entry">
-                    <a href="#running-almalinux9" class="toc__link nav-link">Running AlmaLinux9</a>
+                    <a href="#running-almalinux-9" class="toc__link nav-link">Running AlmaLinux 9</a>
                 </li>
             
             </ul>
@@ -377,7 +382,7 @@
 <!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
     
 
-    <h1 id="setup-almalinux9">Setup AlmaLinux9</h1>
+    <h1 id="almalinux-9-setup">AlmaLinux 9 Setup</h1>
 <p>Install system packages:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y</code></pre>
 <p>You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the <code>sudo</code> modifier at the beginning of the command).</p>
@@ -389,15 +394,15 @@ Administrator. It usually boils down to these three things:
     #3) With great power comes great responsibility.
 
 [sudo] password for dotkernel:</code></pre>
-<p>Input your AlmaLinux9 password and hit <code>Enter</code>.</p>
+<p>Input your <strong>AlmaLinux 9</strong> password and hit <code>Enter</code>.</p>
 <p>Update/Upgrade system packages:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
 <p>Now, install the latest version of <strong>Ansible</strong>:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf install ansible -y</code></pre>
-<p>Move inside your home directory (it is <code>/home/</code> followed by your AlmaLinux9 username, for example: <code>/home/dotkernel</code>):</p>
+<p>Move inside your home directory (it is <code>/home/</code> followed by your <strong>AlmaLinux 9</strong> username, for example: <code>/home/dotkernel</code>):</p>
 <pre class="highlight"><code class="language-shell">cd ~</code></pre>
-<p>Clone the <code>almalinux9</code> branch of the <code>dotkernel/development</code> repository:</p>
-<pre class="highlight"><code class="language-shell">git clone --branch almalinux9 --single-branch https://github.com/dotkernel/development.git</code></pre>
+<p>Clone the <code>alma-linux-9</code> branch of the <code>dotkernel/development</code> repository:</p>
+<pre class="highlight"><code class="language-shell">git clone --branch alma-linux-9 --single-branch https://github.com/dotkernel/development.git</code></pre>
 <p>Move inside the directory <code>development/wsl</code>:</p>
 <pre class="highlight"><code class="language-shell">cd development/wsl/</code></pre>
 <p>Duplicate <code>config.yml.dist</code> as <code>config.yml</code>:</p>
@@ -406,27 +411,27 @@ Administrator. It usually boils down to these three things:
 Save and close the file.</p>
 <p>Install components by running the below Ansible command:</p>
 <pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
-<p>The installation process will ask for your AlmaLinux9 password, then iterate over each task in the playbook and output a short summary with the results.</p>
+<p>The installation process will ask for your <strong>AlmaLinux 9</strong> password, then iterate over each task in the playbook and output a short summary with the results.</p>
 <p>Once finished, check if everything works by opening in your browser:</p>
 <ul>
 <li><a href="http://localhost/">http://localhost/</a>: Apache's default home page</li>
 <li><a href="http://localhost/info.php">http://localhost/info.php</a>: PHP info page</li>
 <li><a href="http://localhost/phpmyadmin/">http://localhost/phpmyadmin/</a>: PhpMyAdmin (login with <code>root</code> + the root password you configured in <code>config.yml</code> under <code>mariadb</code> -&gt; <code>root_password</code>)</li>
 </ul>
-<p>The installation is complete, your AlmaLinux9 development environment is ready to use.</p>
+<p>The installation is complete, your <strong>AlmaLinux 9</strong> development environment is ready to use.</p>
 <blockquote>
-<p>Restart your <code>Windows Terminal</code> to find a new option in the tab selector, called <strong>AlmaLinux-9</strong> - clicking it will open a new tab connected to <strong>AlmaLinux9</strong>.</p>
+<p>Restart your <code>Windows Terminal</code> to find a new option in the tab selector, called <strong>AlmaLinux-9</strong> - clicking it will open a new tab connected to <strong>AlmaLinux 9</strong>.</p>
 </blockquote>
-<h2 id="running-almalinux9">Running AlmaLinux9</h2>
+<h2 id="running-almalinux-9">Running AlmaLinux 9</h2>
 <p>Open <code>Windows Terminal</code>.</p>
-<p>Start AlmaLinux9 by executing:</p>
-<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux9</code></pre>
+<p>Start <strong>AlmaLinux 9</strong> by executing:</p>
+<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux-9</code></pre>
 <p>OR</p>
 <p>Locate the app selector dropdown in <code>Windows Terminal</code>'s title bar and click <code>AlmaLinux-9</code>.
-This will open a new tab connected to AlmaLinux9.</p>
+This will open a new tab connected to <strong>AlmaLinux 9</strong>.</p>
 <h3 id="note">Note</h3>
 <blockquote>
-<p>To run your applications using WSL2, you always need to be connected to your AlmaLinux9 distribution.
+<p>To run your applications using WSL2, you always need to be connected to your <strong>AlmaLinux 9</strong> distribution.
 For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.</p>
 </blockquote>
 

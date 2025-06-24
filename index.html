@@ -132,34 +132,43 @@
                 </li>
                 <li class="nav-item">
                     
+    
+
+
+
 <div class="version-selector">
-    <div class="btn-group">
-        <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+  <div class="btn-group">
+    <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+      
+        AlmaLinux 10
+      
+    </button>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+      
+        
+        <a href="." class="dropdown-item">
+          
             
-                v2
+              AlmaLinux 10 (latest)
             
-        </button>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+          
+        </a>
+        
+      
+        
+        <a href="." class="dropdown-item">
+          
             
-                
-                    <a href="v2/introduction/" class="dropdown-item">
-                        
-                            v2 (latest)
-                        
-                    </a>
-                
+              AlmaLinux 9
             
-                
-                    <a href="v1/introduction/" class="dropdown-item">
-                        
-                            v1
-                        
-                    </a>
-                
-            
-        </div>
+          
+        </a>
+        
+      
     </div>
+  </div>
 </div>
+
 
                 </li>
             </ul>
@@ -201,12 +210,6 @@
 
                 
                 
-                    
-                        
-<li class="subnavigation__list-item ">
-    <a href="v2/introduction/" class="subnavigation__link">Introduction</a>
-</li>
-
                     
                         
 
@@ -331,20 +334,99 @@
 
 
     
-    <h1>Development</h1>
-    <p>WSL2 Development Environment</p>
-    <h2>Installation</h2>
-    <h3>Using Git</h3>
-    <pre class="highlight line-numbers">
-        <i class="bi bi-copy copy_btn" onclick="copy(this)"></i>
-        <code class="language-bash">git clone https://github.com/dotkernel/development.git</code>
-    </pre>
+    <h1>WSL2 Development Environment</h1>
+<p>Install PHP, Apache, MariaDB, Composer, PhpMyAdmin, Node.js and Git on WSL2</p>
+<h3>Features</h3>
+<div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/WSL.svg" class="card-img-top card-image" alt="WSL2 logo">
+      <div class="card-body">
+        <h5 class="card-title">WSL2</h5>
+        <p class="card-text">Windows Subsystem for Linux (WSL) is a component of Microsoft Windows that allows the use of a Linux environment from within Windows without a virtual machine.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/AlmaLinux.svg" class="card-img-top card-image" alt="AlmaLinux logo">
+      <div class="card-body">
+        <h5 class="card-title">AlmaLinux</h5>
+        <p class="card-text">AlmaLinux is a free and open source Linux distribution, developed by the AlmaLinux OS Foundation as a RHEL-compatible enterprise alternative for enterprise projects.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/PHP.svg" class="card-img-top card-image" alt="PHP logo">
+      <div class="card-body">
+        <h5 class="card-title">PHP</h5>
+        <p class="card-text">PHP is a general-purpose scripting language geared towards web development, enabling dynamic content, server-side scripting, and integration with web technologies.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/Apache.svg" class="card-img-top card-image" alt="Apache logo">
+      <div class="card-body">
+        <h5 class="card-title">Apache</h5>
+        <p class="card-text">The Apache HTTP Server is a free and open-source cross-platform web server, that delivers web content through the internet, released under the terms of Apache License 2.0.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/MariaDB.svg" class="card-img-top card-image" alt="MariaDB logo">
+      <div class="card-body">
+        <h5 class="card-title">MariaDB</h5>
+        <p class="card-text">MariaDB is an open-source relational database management system (RDBMS) that is a drop-in replacement for MySQL, designed for speed, scalability, and reliability.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/Git.svg" class="card-img-top card-image" alt="Git logo">
+      <div class="card-body">
+        <h5 class="card-title">Git</h5>
+        <p class="card-text">Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency, supporting collaborative development.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/Composer.svg" class="card-img-top card-image" alt="Composer logo">
+      <div class="card-body">
+        <h5 class="card-title">Composer</h5>
+        <p class="card-text">Composer is a dependency manager for PHP that handles library installation, versioning, and autoloading based on a project’s configuration file and requirements.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/Node.JS.svg" class="card-img-top card-image" alt="Node.js logo">
+      <div class="card-body">
+        <h5 class="card-title">Node.js</h5>
+        <p class="card-text">Node.js is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts with high performance.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://docs.dotkernel.org/img/logos/phpMyAdmin.svg" class="card-img-top card-image" alt="phpMyAdmin logo">
+      <div class="card-body">
+        <h5 class="card-title">phpMyAdmin</h5>
+        <p class="card-text">phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL and MariaDB databases through a web interface, simplifying database management tasks.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <h2>Support</h2>
 <ul>
-    <li>Issues: <a href="https://github.com/dotkernel/development/issues">github.com/dotkernel/development/issues</a></li>
-    <li>Source: <a href="https://github.com/dotkernel/development">github.com/dotkernel/development</a></li>
+    <li>Discussions: <a href="https://github.com/orgs/dotkernel/discussions" target="_blank">https://github.com/orgs/dotkernel/discussions</a></li>
+    <li>Issues: <a href="https://github.com/dotkernel/development/issues" target="_blank">github.com/dotkernel/development/issues</a></li>
+    <li>Source: <a href="https://github.com/dotkernel/development" target="_blank">github.com/dotkernel/development</a></li>
 </ul>
 
 
@@ -360,8 +442,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="v2/introduction/">
-                    Introduction
+                <a rel="next" class="page-nav__link page-nav__link--next" href="v2/setup/system-requirements/">
+                    System Requirements
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -516,5 +598,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-06-19 07:26:35.813153+00:00
+Build Date UTC : 2025-06-24 12:30:23.991098+00:00
 -->
