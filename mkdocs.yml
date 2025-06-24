@@ -8,6 +8,7 @@ extra:
 nav:
   - Home: index.md
   - v1:
+      - Terminal: v1/terminal.md
       - Setup:
           - System Requirements: v1/setup/system-requirements.md
           - Installation: v1/setup/installation.md
