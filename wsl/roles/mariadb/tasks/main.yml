@@ -1,8 +1,21 @@
 ---
-- name: Install the latest version of MariaDB
-  command: "dnf install python3-mysqlclient mariadb-server -y"
-- name: Enable and start MariaDB service
-  command: systemctl enable --now mariadb
+- name: Create MariaDB 11.4 repo file
+  template:
+    src: "{{ mariadb_repo_src }}"
+    dest: "{{ mariadb_repo_dest }}"
+    owner: "{{ config.system.username }}"
+    group: "{{ config.system.username }}"
+- name: Install MariaDB 11.4
+  ansible.builtin.dnf:
+    name:
+      - python3-mysqlclient
+      - mariadb-server
+    state: present
+- name: Enable and start MariaDB
+  ansible.builtin.service:
+    name: mariadb
+    enabled: true
+    state: started
 - name: Set MariaDB root password
   mysql_user:
     login_user: root
