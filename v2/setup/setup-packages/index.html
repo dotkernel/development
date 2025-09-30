@@ -103,7 +103,7 @@
                             </a>
                         </li>
                         
-                        <li class="dropdown-item bg-light">
+                        <li class="dropdown-item bg-dark-subtle">
                             <a href="https://docs.dotkernel.org/development/" class="nav-link d-flex gap-4 align-items-center">
                                 <i class="bi bi-arrow-return-right text-primary"></i>
                                 <div class="py-1">
@@ -394,8 +394,11 @@
     
 
     <h1 id="almalinux-10-setup">AlmaLinux 10 Setup</h1>
+<blockquote>
+<p>We recommend the use of <a href="https://hetzner.cloud/?ref=HYu6z4XGfkcP">Hetzner Cloud via our referral link</a> for development thanks to the initial € 20 free <a href="https://www.hetzner.com/legal/referrals">Hetzner Cloud credit</a>.</p>
+</blockquote>
 <p>Install system packages:</p>
-<pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-10.rpm -y</code></pre>
+<pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y</code></pre>
 <p>You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the <code>sudo</code> modifier at the beginning of the command).</p>
 <pre class="highlight"><code class="language-text">We trust you have received the usual lecture from the local System
 Administrator. It usually boils down to these three things:
