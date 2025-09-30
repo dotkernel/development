@@ -1,9 +1,11 @@
 # AlmaLinux 9 Setup
 
+> We recommend the use of [Hetzner Cloud via our referral link](https://hetzner.cloud/?ref=HYu6z4XGfkcP) for development thanks to the initial € 20 free [Hetzner Cloud credit](https://www.hetzner.com/legal/referrals).
+
 Install system packages:
 
 ```shell
-sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
+sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y
 ```
 
 You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the `sudo` modifier at the beginning of the command).
