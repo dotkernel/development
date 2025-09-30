@@ -1,5 +1,7 @@
 # AlmaLinux 10 Setup
 
+> We recommend the use of [Hetzner Cloud via our referral link](https://hetzner.cloud/?ref=HYu6z4XGfkcP) for development thanks to the initial € 20 free [Hetzner Cloud credit](https://www.hetzner.com/legal/referrals).
+
 Install system packages:
 
 ```shell
