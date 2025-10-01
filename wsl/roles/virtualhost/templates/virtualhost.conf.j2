@@ -1,7 +1,5 @@
 <VirtualHost *:{{ apache_port }}>
     ServerName {{ virtualhost }}
-    ServerAlias www.{{ virtualhost }}
-
     ServerAdmin webmaster@localhost
     DocumentRoot {{ apache_root_dir }}/{{ virtualhost }}/html/public
 
