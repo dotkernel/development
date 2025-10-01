@@ -1,5 +1,7 @@
 # Running AlmaLinux 9 on WSL 2
 
+> If you are not using WSL 2, connect via SSH with [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/).
+
 Open `Windows Terminal`.
 
 Start **AlmaLinux 9** by executing:
