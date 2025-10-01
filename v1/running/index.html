@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="development">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/virtualhosts/overview/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v1/running/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Overview - development - Dotkernel Documentation</title>
+        <title>Running on WSL 2 - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -154,13 +154,13 @@
   <div class="btn-group">
     <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
       
-        AlmaLinux 10
+        AlmaLinux 9
       
     </button>
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
       
         
-        <a href="../../terminal/" class="dropdown-item active">
+        <a href="../../v2/terminal/" class="dropdown-item">
           
             
               AlmaLinux 10 (latest)
@@ -170,7 +170,7 @@
         
       
         
-        <a href="../../../v1/terminal/" class="dropdown-item">
+        <a href="../terminal/" class="dropdown-item active">
           
             
               AlmaLinux 9
@@ -199,7 +199,7 @@
                 
 
                 
-                    <li class="breadcrumb-item"><a href="../../..">development</a></li>
+                    <li class="breadcrumb-item"><a href="../..">development</a></li>
 
                     
                         
@@ -207,15 +207,8 @@
                             
                         
                     
-                        
-                            
-                            
-                                <li class="breadcrumb-item">Virtualhosts</li>
-                            
-                        
-                    
 
-                    <li class="breadcrumb-item active" aria-current="page">Overview</li>
+                    <li class="breadcrumb-item active" aria-current="page">Running on WSL 2</li>
                 
             
         </ol>
@@ -230,7 +223,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../../..">development</a>-->
+<!--            <a href="../..">development</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -240,10 +233,18 @@
 
                 
                 
+
+                    
+                    
+                
+            
+
+                
+                
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../../terminal/" class="subnavigation__link">Terminal</a>
+    <a href="../terminal/" class="subnavigation__link">Terminal</a>
 </li>
 
                     
@@ -269,19 +270,19 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../setup/system-requirements/" class="subnavigation__link">System Requirements</a>
+    <a href="../setup/system-requirements/" class="subnavigation__link">System Requirements</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../setup/installation/" class="subnavigation__link">Installation</a>
+    <a href="../setup/installation/" class="subnavigation__link">Installation</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../setup/setup-packages/" class="subnavigation__link">Setup Packages</a>
+    <a href="../setup/setup-packages/" class="subnavigation__link">Setup Packages</a>
 </li>
 
         
@@ -290,8 +291,8 @@
 
                     
                         
-<li class="subnavigation__list-item ">
-    <a href="../../running/" class="subnavigation__link">Running on WSL 2</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Running on WSL 2</a>
 </li>
 
                     
@@ -330,14 +331,14 @@
     <ul class="subnavigation__list collapse" id="virtualhosts">
         
         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Overview</a>
+<li class="subnavigation__list-item ">
+    <a href="../virtualhosts/overview/" class="subnavigation__link">Overview</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
+    <a href="../virtualhosts/create-virtualhost/" class="subnavigation__link">Create virtualhost</a>
 </li>
 
         
@@ -347,17 +348,9 @@
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../../faq/" class="subnavigation__link">FAQ</a>
+    <a href="../faq/" class="subnavigation__link">FAQ</a>
 </li>
 
-                    
-                
-            
-
-                
-                
-
-                    
                     
                 
             
@@ -380,30 +373,31 @@
                     
                     
 
+    <div class="alert alert-danger alert-caution" role="alert">
+        <p class="mb-0">
+            The documentation you are viewing is for an older version of this component.<br>
+            <a href="../..">Switch to the latest (v2) version.</a>
+        </p>
+    </div>
+
 
 
 
     
     
-<!--        <h2 class="chapter__headline text-black-50">Virtualhosts</h2>-->
-    
 
-    <h1 id="almalinux-10-overview">AlmaLinux 10 Overview</h1>
-<p>Virtualhosts allow developers to host multiple applications on their local system.</p>
-<p>Using this tool, you configure a virtualhost for each of your applications, and it will create them so that you can start working with them.</p>
-<p><strong>Example</strong>:</p>
-<ul>
-<li><code>api.dotkernel.localhost</code>: this could be the endpoint where you host your website's API</li>
-<li><code>frontend.dotkernel.localhost</code>: this could be the subdomain where you host your website's frontend that will consume the API</li>
-</ul>
-<p>In the above example, the URLs are built like this:</p>
-<ul>
-<li>the subdomain is the identifier of your application (<code>api</code> / <code>frontend</code>)</li>
-<li>the domain is the identifier of your project (<code>dotkernel</code>)</li>
-<li>the TLD sends the requests to localhost where Apache will route them to their real location</li>
-</ul>
+    <h1 id="running-almalinux-9-on-wsl-2">Running AlmaLinux 9 on WSL 2</h1>
+<p>Open <code>Windows Terminal</code>.</p>
+<p>Start <strong>AlmaLinux 9</strong> by executing:</p>
+<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux-9</code></pre>
+<p>OR</p>
+<p>Locate the app selector dropdown in <code>Windows Terminal</code>'s title bar and click <code>AlmaLinux-9</code>.
+This will open a new tab connected to <strong>AlmaLinux 9</strong>.</p>
 <blockquote>
-<p>By using the pattern <code>*.localhost</code> for any new virtualhost, you do not need to modify the <code>hosts</code> file in Windows, because these are routed by default.</p>
+<p>To run your applications using WSL 2, you always need to be connected to your <strong>AlmaLinux 9</strong> distribution.
+For this, all you need to do is to launch it from a terminal, file explorer or an IDE.
+Once launched, you can close the tool you launched it from.
+It will stay connected until you shut it down manually or reboot your computer.</p>
 </blockquote>
 
 
@@ -414,9 +408,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../running/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../setup/setup-packages/">
                     <i class="bi bi-chevron-left"></i>
-                    Running on WSL 2
+                    Setup Packages
                 </a>
             
         </li>
@@ -424,8 +418,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../create-virtualhost/">
-                    Create virtualhost
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../virtualhosts/overview/">
+                    Overview
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -549,7 +543,7 @@
 </footer>
 
         <script>
-            let base_url = '../../..',
+            let base_url = '../..',
                 project  = "development",
                 siteName = 'development';
 

@@ -298,6 +298,12 @@
 
                     
                         
+<li class="subnavigation__list-item ">
+    <a href="../../running/" class="subnavigation__link">Running on WSL 2</a>
+</li>
+
+                    
+                        
 
 
 
@@ -367,17 +373,6 @@
 
     
     
-        <div class="toc">
-            <h6 class="toc__headline">On this page</h6>
-            <ul class="toc__list">
-            
-                <li class="toc__entry">
-                    <a href="#running-almalinux-9" class="toc__link nav-link">Running AlmaLinux 9</a>
-                </li>
-            
-            </ul>
-        </div>
-    
 
                     
                 </div>
@@ -402,10 +397,10 @@
 
     <h1 id="almalinux-9-setup">AlmaLinux 9 Setup</h1>
 <blockquote>
-<p>We recommend the use of <a href="https://hetzner.cloud/?ref=HYu6z4XGfkcP">Hetzner Cloud via our referral link</a> for development thanks to the initial € 20 free <a href="https://www.hetzner.com/legal/referrals">Hetzner Cloud credit</a>.</p>
+<p>The instructions below also work without using WSL.</p>
 </blockquote>
-<p>Install system packages:</p>
-<pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y</code></pre>
+<p>Update/Upgrade system packages:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
 <p>You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the <code>sudo</code> modifier at the beginning of the command).</p>
 <pre class="highlight"><code class="language-text">We trust you have received the usual lecture from the local System
 Administrator. It usually boils down to these three things:
@@ -416,8 +411,8 @@ Administrator. It usually boils down to these three things:
 
 [sudo] password for dotkernel:</code></pre>
 <p>Input your <strong>AlmaLinux 9</strong> password and hit <code>Enter</code>.</p>
-<p>Update/Upgrade system packages:</p>
-<pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
+<p>Install system packages:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y</code></pre>
 <p>Now, install the latest version of <strong>Ansible</strong>:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf install ansible -y</code></pre>
 <p>Move inside your home directory (it is <code>/home/</code> followed by your <strong>AlmaLinux 9</strong> username, for example: <code>/home/dotkernel</code>):</p>
@@ -434,6 +429,9 @@ Save and close the file.</p>
 <pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
 <p>The installation process will ask for your <strong>AlmaLinux 9</strong> password, then iterate over each task in the playbook and output a short summary with the results.</p>
 <p>Once finished, check if everything works by opening in your browser:</p>
+<blockquote>
+<p>If you are not using WSL 2, test the below using your server's IP address instead of <code>localhost</code>.</p>
+</blockquote>
 <ul>
 <li><a href="http://localhost/">http://localhost/</a>: Apache's default home page</li>
 <li><a href="http://localhost/info.php">http://localhost/info.php</a>: PHP info page</li>
@@ -441,19 +439,7 @@ Save and close the file.</p>
 </ul>
 <p>The installation is complete, your <strong>AlmaLinux 9</strong> development environment is ready to use.</p>
 <blockquote>
-<p>Restart your <code>Windows Terminal</code> to find a new option in the tab selector, called <strong>AlmaLinux-9</strong> - clicking it will open a new tab connected to <strong>AlmaLinux 9</strong>.</p>
-</blockquote>
-<h2 id="running-almalinux-9">Running AlmaLinux 9</h2>
-<p>Open <code>Windows Terminal</code>.</p>
-<p>Start <strong>AlmaLinux 9</strong> by executing:</p>
-<pre class="highlight"><code class="language-shell">wsl -d AlmaLinux-9</code></pre>
-<p>OR</p>
-<p>Locate the app selector dropdown in <code>Windows Terminal</code>'s title bar and click <code>AlmaLinux-9</code>.
-This will open a new tab connected to <strong>AlmaLinux 9</strong>.</p>
-<h3 id="note">Note</h3>
-<blockquote>
-<p>To run your applications using WSL2, you always need to be connected to your <strong>AlmaLinux 9</strong> distribution.
-For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.</p>
+<p>If you are using WSL 2, restart your <code>Windows Terminal</code> to find a new option in the tab selector, called <strong>AlmaLinux-9</strong> - clicking it will open a new tab connected to <strong>AlmaLinux 9</strong>.</p>
 </blockquote>
 
 
@@ -474,8 +460,8 @@ For this, all you need to do is to keep open an instance of Windows Terminal tha
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../../virtualhosts/overview/">
-                    Overview
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../../running/">
+                    Running on WSL 2
                     <i class="bi bi-chevron-right"></i>
                 </a>
             

@@ -290,6 +290,12 @@
 
                     
                         
+<li class="subnavigation__list-item ">
+    <a href="../../running/" class="subnavigation__link">Running on WSL 2</a>
+</li>
+
+                    
+                        
 
 
 
@@ -372,7 +378,7 @@
             <ul class="toc__list">
             
                 <li class="toc__entry">
-                    <a href="#install-wsl2" class="toc__link nav-link">Install WSL2</a>
+                    <a href="#install-wsl-2" class="toc__link nav-link">Install WSL 2</a>
                 </li>
             
             </ul>
@@ -393,7 +399,7 @@
 <!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
     
 
-    <h1 id="almalinux-10-system-requirements">AlmaLinux 10 System requirements</h1>
+    <h1 id="system-requirements-for-almalinux-10-on-wsl-2">System requirements for AlmaLinux 10 on WSL 2</h1>
 <p>Open <code>Windows Terminal</code> and execute the following command:</p>
 <pre class="highlight"><code class="language-shell">wsl -v</code></pre>
 <p>The output should look similar to this:</p>
@@ -404,10 +410,10 @@ MSRDC version: 1.2.5326
 Direct3D version: 1.611.1-81528511
 DXCore version: 10.0.26091.1-240325-1447.ge-release
 Windows version: 10.0.22631.3737</code></pre>
-<p>If the output starts with <code>WSL version: 2.x.x.x</code>, you are ready to use <strong>WSL2</strong> and can proceed to <a href="../installation/">install AlmaLinux 10</a>.</p>
-<h2 id="install-wsl2">Install WSL2</h2>
-<p>Before proceeding with the installation, please consult Microsoft's <a href="https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites">documentation</a> regarding the minimum requirements for running WSL2.</p>
-<p>Once you identified that your machine can run WSL2, open the <code>Run</code> prompt by pressing <code>Win</code> + <code>r</code>, type <code>OptionalFeatures</code> in the dialog and press <code>Enter</code>.
+<p>If the output starts with <code>WSL version: 2.x.x.x</code>, you are ready to use WSL 2 and can proceed to <a href="../installation/">install AlmaLinux 10</a>.</p>
+<h2 id="install-wsl-2">Install WSL 2</h2>
+<p>Before proceeding with the installation, please consult Microsoft's <a href="https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites">documentation</a> regarding the minimum requirements for running WSL 2.</p>
+<p>Once you identified that your machine can run WSL 2, open the <code>Run</code> prompt by pressing <code>Win</code> + <code>r</code>, type <code>OptionalFeatures</code> in the dialog and press <code>Enter</code>.
 This will open a window where you can turn Windows features on/off.
 Make sure that the below features are activated (checked):</p>
 <ul>
@@ -420,11 +426,11 @@ Make sure that the below features are activated (checked):</p>
 </blockquote>
 <p>Click <code>Ok</code> and restart your computer.</p>
 <p>Open Microsoft Store, search for <code>Windows Subsystem for Linux</code> and install it.</p>
-<p>Make sure that version <strong>2</strong> of WSL is set as default by executing the below command in Windows Terminal:</p>
+<p>Make sure that version <code>2</code> of WSL is set as default by executing the below command in Windows Terminal:</p>
 <pre class="highlight"><code class="language-shell">wsl --set-default-version 2</code></pre>
 <p>To test, run again the following command:</p>
 <pre class="highlight"><code class="language-shell">wsl -v</code></pre>
-<p>This time the output should display <code>WSL version: 2.x.x.x</code>, which means that your system is ready for using <strong>WSL2</strong> and you can proceed to <a href="../installation/">install AlmaLinux 10</a>.</p>
+<p>This time the output should display <code>WSL version: 2.x.x.x</code>, which means that your system is ready for using WSL 2 and you can proceed to <a href="../installation/">install AlmaLinux 10</a>.</p>
 
 
 
