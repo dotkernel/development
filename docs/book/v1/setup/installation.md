@@ -1,5 +1,7 @@
 # Install AlmaLinux 9 on WSL 2
 
+> If you are not using WSL, you can jump straight to the [AlmaLinux 9 Setup page](https://docs.dotkernel.org/development/v1/setup/setup-packages/).
+
 Before proceeding with the installation, we need to make sure that no other WSL 2 distribution (aka: _distro_) is running.
 This is important because this installation will fail if required ports are already in use by another distro.
 
