@@ -1,11 +1,11 @@
 # AlmaLinux 9 Setup
 
-> We recommend the use of [Hetzner Cloud via our referral link](https://hetzner.cloud/?ref=HYu6z4XGfkcP) for development thanks to the initial € 20 free [Hetzner Cloud credit](https://www.hetzner.com/legal/referrals).
+> The below instructions are working for virtual servers too.
 
-Install system packages:
+Update/Upgrade system packages:
 
 ```shell
-sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y
+sudo dnf upgrade -y
 ```
 
 You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the `sudo` modifier at the beginning of the command).
@@ -23,10 +23,10 @@ Administrator. It usually boils down to these three things:
 
 Input your **AlmaLinux 9** password and hit `Enter`.
 
-Update/Upgrade system packages:
+Install system packages:
 
 ```shell
-sudo dnf upgrade -y
+sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y
 ```
 
 Now, install the latest version of **Ansible**:
@@ -72,30 +72,12 @@ The installation process will ask for your **AlmaLinux 9** password, then iterat
 
 Once finished, check if everything works by opening in your browser:
 
+> If you are not using WSL 2, test the below using your server's IP address instead of `localhost`.
+
 * [http://localhost/](http://localhost/): Apache's default home page
 * [http://localhost/info.php](http://localhost/info.php): PHP info page
 * [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
 
 The installation is complete, your **AlmaLinux 9** development environment is ready to use.
 
-> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-9** - clicking it will open a new tab connected to **AlmaLinux 9**.
-
-## Running AlmaLinux 9
-
-Open `Windows Terminal`.
-
-Start **AlmaLinux 9** by executing:
-
-```shell
-wsl -d AlmaLinux-9
-```
-
-OR
-
-Locate the app selector dropdown in `Windows Terminal`'s title bar and click `AlmaLinux-9`.
-This will open a new tab connected to **AlmaLinux 9**.
-
-### Note
-
-> To run your applications using WSL2, you always need to be connected to your **AlmaLinux 9** distribution.
-> For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.
+> If you are using WSL 2, restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-9** - clicking it will open a new tab connected to **AlmaLinux 9**.

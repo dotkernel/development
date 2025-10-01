@@ -1,11 +1,11 @@
-# AlmaLinux 9 Installation
+# Install AlmaLinux 9 on WSL 2
 
-Before proceeding with the installation, we need to make sure that no other WSL2 distribution (aka: _distro_) is running.
+Before proceeding with the installation, we need to make sure that no other WSL 2 distribution (aka: _distro_) is running.
 This is important because this installation will fail if required ports are already in use by another distro.
 
 Open `Windows Terminal`.
 
-## Stop other WSL2 distros
+## Stop other WSL 2 distros
 
 List all installed distros:
 
