@@ -1,5 +1,7 @@
 # System requirements for AlmaLinux 9 on WSL 2
 
+> If you are not using WSL, you can jump straight to the [AlmaLinux 9 Setup page](https://docs.dotkernel.org/development/v1/setup/setup-packages/).
+
 Open `Windows Terminal` and execute the following command:
 
 ```shell
