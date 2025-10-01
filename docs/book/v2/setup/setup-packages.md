@@ -1,11 +1,11 @@
 # AlmaLinux 10 Setup
 
-> We recommend the use of [Hetzner Cloud via our referral link](https://hetzner.cloud/?ref=HYu6z4XGfkcP) for development thanks to the initial € 20 free [Hetzner Cloud credit](https://www.hetzner.com/legal/referrals).
+> The instructions below also work without using WSL.
 
-Install system packages:
+Update/Upgrade system packages:
 
 ```shell
-sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y
+sudo dnf upgrade -y
 ```
 
 You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the `sudo` modifier at the beginning of the command).
@@ -25,10 +25,10 @@ For security reasons, the password you type will not be visible.
 
 Input your **AlmaLinux 10** password and hit `Enter`.
 
-Update/Upgrade system packages:
+Install system packages:
 
 ```shell
-sudo dnf upgrade -y
+sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y
 ```
 
 Now, install the latest version of **Ansible Core** and run **ansible-galaxy** to install collections:
@@ -78,30 +78,12 @@ The installation process will ask for your **AlmaLinux 10** password, then itera
 
 Once finished, check if everything works by opening in your browser:
 
+> If you are not using WSL 2, test the below using your server's IP address instead of `localhost`.
+
 * [http://localhost/](http://localhost/): Apache's default home page
 * [http://localhost/info.php](http://localhost/info.php): PHP info page
 * [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/): PhpMyAdmin (login with `root` + the root password you configured in `config.yml` under `mariadb` -> `root_password`)
 
 The installation is complete, your **AlmaLinux 10** development environment is ready to use.
 
-> Restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-10**; clicking it will open a new tab connected to **AlmaLinux 10**.
-
-## Running AlmaLinux 10
-
-Open `Windows Terminal`.
-
-Start **AlmaLinux 10** by executing:
-
-```shell
-wsl -d AlmaLinux-10
-```
-
-OR
-
-Locate the app selector dropdown in `Windows Terminal`'s title bar and click `AlmaLinux-10`.
-This will open a new tab connected to **AlmaLinux 10**.
-
-### Note
-
-> To run your applications using WSL2, you always need to be connected to your **AlmaLinux 10** distribution.
-> For this, all you need to do is to keep open an instance of Windows Terminal that is connected to it.
+> If you are using WSL 2, restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-10**; clicking it will open a new tab connected to **AlmaLinux 10**.

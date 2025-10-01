@@ -1,4 +1,4 @@
-# AlmaLinux 10 System requirements
+# System requirements for AlmaLinux 10 on WSL 2
 
 Open `Windows Terminal` and execute the following command:
 
@@ -18,13 +18,13 @@ DXCore version: 10.0.26091.1-240325-1447.ge-release
 Windows version: 10.0.22631.3737
 ```
 
-If the output starts with `WSL version: 2.x.x.x`, you are ready to use **WSL2** and can proceed to [install AlmaLinux 10](installation.md).
+If the output starts with `WSL version: 2.x.x.x`, you are ready to use WSL 2 and can proceed to [install AlmaLinux 10](installation.md).
 
-## Install WSL2
+## Install WSL 2
 
-Before proceeding with the installation, please consult Microsoft's [documentation](https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites) regarding the minimum requirements for running WSL2.
+Before proceeding with the installation, please consult Microsoft's [documentation](https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites) regarding the minimum requirements for running WSL 2.
 
-Once you identified that your machine can run WSL2, open the `Run` prompt by pressing `Win` + `r`, type `OptionalFeatures` in the dialog and press `Enter`.
+Once you identified that your machine can run WSL 2, open the `Run` prompt by pressing `Win` + `r`, type `OptionalFeatures` in the dialog and press `Enter`.
 This will open a window where you can turn Windows features on/off.
 Make sure that the below features are activated (checked):
 
@@ -38,7 +38,7 @@ Click `Ok` and restart your computer.
 
 Open Microsoft Store, search for `Windows Subsystem for Linux` and install it.
 
-Make sure that version **2** of WSL is set as default by executing the below command in Windows Terminal:
+Make sure that version `2` of WSL is set as default by executing the below command in Windows Terminal:
 
 ```shell
 wsl --set-default-version 2
@@ -50,4 +50,4 @@ To test, run again the following command:
 wsl -v
 ```
 
-This time the output should display `WSL version: 2.x.x.x`, which means that your system is ready for using **WSL2** and you can proceed to [install AlmaLinux 10](installation.md).
+This time the output should display `WSL version: 2.x.x.x`, which means that your system is ready for using WSL 2 and you can proceed to [install AlmaLinux 10](installation.md).

@@ -14,6 +14,7 @@ nav:
           - System Requirements: v2/setup/system-requirements.md
           - Installation: v2/setup/installation.md
           - Setup Packages: v2/setup/setup-packages.md
+      - Running on WSL 2: v2/running.md
       - Virtualhosts:
           - Overview: v2/virtualhosts/overview.md
           - Create virtualhost: v2/virtualhosts/create-virtualhost.md
@@ -24,6 +25,7 @@ nav:
           - System Requirements: v1/setup/system-requirements.md
           - Installation: v1/setup/installation.md
           - Setup Packages: v1/setup/setup-packages.md
+      - Running on WSL 2: v1/running.md
       - Virtualhosts:
           - Overview: v1/virtualhosts/overview.md
           - Create virtualhost: v1/virtualhosts/create-virtualhost.md
