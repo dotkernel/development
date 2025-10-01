@@ -1,6 +1,6 @@
 # AlmaLinux 10 Setup
 
-> The below instructions are working for virtual servers too.
+> The instructions below also work without using WSL.
 
 Update/Upgrade system packages:
 
