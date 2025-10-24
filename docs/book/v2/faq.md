@@ -173,12 +173,12 @@ By default, MariaDB is at version 11.4 LTS.
 In case you want to upgrade to a different version, for instance [11.8 LTS](https://mariadb.org/11-8-is-lts/), use the below steps:
 
 * Open the MariaDB.repo file in any text editor.
-* 
+ 
 ```shell
 sudo nano /etc/yum.repos.d/MariaDB.repo
 ```
 
-* Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`. 
+* Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`.
 * Clean dnf cache
 
 ```shell
@@ -192,6 +192,7 @@ sudo systemctl stop mariadb
 ```
 
 * Upgrade MariaDB
+
 ```shell
 sudo dnf update -y
 ```
