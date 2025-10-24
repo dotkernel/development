@@ -166,6 +166,7 @@ Being installed as a system package, it can be updated using the command which u
 ```shell
 sudo dnf upgrade -y
 ```
+
 ## How do I upgrade MariaDB ?
 
 By default, MariaDB is at version 11.4 LTS. 
@@ -175,6 +176,7 @@ In case you want to upgrade to a different version, for instance [11.8 LTS](http
 ```shell
 sudo nano /etc/yum.repos.d/MariaDB.repo
 ```
+
 - Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`. 
 - Clean dnf cache
 ```shell
