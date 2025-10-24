@@ -169,41 +169,47 @@ sudo dnf upgrade -y
 
 ## How do I upgrade MariaDB ?
 
-By default, MariaDB is at version 11.4 LTS. 
+By default, MariaDB is at version 11.4 LTS.
 In case you want to upgrade to a different version, for instance [11.8 LTS](https://mariadb.org/11-8-is-lts/), use the below steps:
 
-- Open the MariaDB.repo file in any text editor.
+* Open the MariaDB.repo file in any text editor.
+* 
 ```shell
 sudo nano /etc/yum.repos.d/MariaDB.repo
 ```
 
-- Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`. 
-- Clean dnf cache
+* Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`. 
+* Clean dnf cache
+
 ```shell
 sudo dnf clean all
 ```
 
-- Stop MariaDB
+* Stop MariaDB
+
 ```shell
 sudo systemctl stop mariadb
 ```
 
-- Upgrade MariaDB
+* Upgrade MariaDB
 ```shell
 sudo dnf update -y
 ```
 
-- Start MariaDB
+* Start MariaDB
+
 ```shell
 sudo systemctl start mariadb
 ```
 
-- Upgrade databases
+* Upgrade databases
+
 ```shell
 sudo mariadb-upgrade -uroot -p
 ```
 
-- Restart MariaDB
+* Restart MariaDB
+
 ```shell
 sudo systemctl restart mariadb
 ```
