@@ -395,6 +395,10 @@
                 </li>
             
                 <li class="toc__entry">
+                    <a href="#how-do-i-upgrade-mariadb" class="toc__link nav-link">How do I upgrade MariaDB ?</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#how-do-i-create-command-aliases" class="toc__link nav-link">How do I create command aliases?</a>
                 </li>
             
@@ -501,6 +505,38 @@ Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
 <h2 id="how-do-i-update-phpmyadmin">How do I update phpMyAdmin?</h2>
 <p>Being installed as a system package, it can be updated using the command which updates the rest of the system packages:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
+<h2 id="how-do-i-upgrade-mariadb">How do I upgrade MariaDB ?</h2>
+<p>Initially, MariaDB was at version 11.4 LTS.
+In case you want to upgrade to a different version, for instance <a href="https://mariadb.org/11-8-is-lts/">11.8 LTS</a>, use the below steps:</p>
+<ul>
+<li>Open the MariaDB.repo file in any text editor.</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo nano /etc/yum.repos.d/MariaDB.repo</code></pre>
+<ul>
+<li>Modify the <strong>baseurl</strong> variable to match the desired version, for instance <code>11.8</code> instead of <code>11.4</code>.</li>
+<li>Clean dnf cache</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo dnf clean all</code></pre>
+<ul>
+<li>Stop MariaDB</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo systemctl stop mariadb</code></pre>
+<ul>
+<li>Upgrade MariaDB</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo dnf update -y</code></pre>
+<ul>
+<li>Start MariaDB</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo systemctl start mariadb</code></pre>
+<ul>
+<li>Upgrade databases</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo mariadb-upgrade -uroot -p</code></pre>
+<ul>
+<li>Restart MariaDB</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo systemctl restart mariadb</code></pre>
 <h2 id="how-do-i-create-command-aliases">How do I create command aliases?</h2>
 <p>From either your terminal or file explorer, navigate to your home directory (<code>/home/&lt;your-username&gt;/</code>).</p>
 <p>Using your preferred text editor, open the file: <code>.bash_profile</code> (if it does not exist, creat it first).</p>
