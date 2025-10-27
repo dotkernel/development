@@ -167,6 +167,54 @@ Being installed as a system package, it can be updated using the command which u
 sudo dnf upgrade -y
 ```
 
+## How do I upgrade MariaDB ?
+
+Initially, MariaDB was at version 11.4 LTS.
+In case you want to upgrade to a different version, for instance [11.8 LTS](https://mariadb.org/11-8-is-lts/), use the below steps:
+
+* Open the MariaDB.repo file in any text editor.
+
+```shell
+sudo nano /etc/yum.repos.d/MariaDB.repo
+```
+
+* Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`.
+* Clean dnf cache
+
+```shell
+sudo dnf clean all
+```
+
+* Stop MariaDB
+
+```shell
+sudo systemctl stop mariadb
+```
+
+* Upgrade MariaDB
+
+```shell
+sudo dnf update -y
+```
+
+* Start MariaDB
+
+```shell
+sudo systemctl start mariadb
+```
+
+* Upgrade databases
+
+```shell
+sudo mariadb-upgrade -uroot -p
+```
+
+* Restart MariaDB
+
+```shell
+sudo systemctl restart mariadb
+```
+
 ## How do I create command aliases?
 
 From either your terminal or file explorer, navigate to your home directory (`/home/<your-username>/`).
