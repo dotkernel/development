@@ -155,8 +155,8 @@ composer --version
 The output should be similar to:
 
 ```text
-Composer version 2.8.8 2025-04-04 16:56:46
-PHP version 8.3.20 (/usr/bin/php)
+Composer version 2.9.0 2025-11-13 10:37:16
+PHP version 8.5.0 (/usr/bin/php)
 Run the "diagnose" command to get more detailed diagnostics output.
 ```
 
@@ -215,6 +215,29 @@ sudo mariadb-upgrade -uroot -p
 ```shell
 sudo systemctl restart mariadb
 ```
+
+## How do I delete a virtualhost?
+
+If for whatever reason you want to delete a virtualhost, you need to do the following:
+
+* Delete the folder where are the files located
+
+```shell
+sudo rm -rf /var/www/tobedeleted.localhost
+```
+
+* Delete the Apache configuration file
+
+```shell
+sudo rm -f /etc/httpd/sites-available/desters.localhost.conf
+```
+
+* Restart httpd server
+
+```shell
+sudo systemctl restart httpd
+```
+
 
 ## How do I create command aliases?
 
