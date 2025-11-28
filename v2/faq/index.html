@@ -399,6 +399,10 @@
                 </li>
             
                 <li class="toc__entry">
+                    <a href="#how-do-i-delete-a-virtualhost" class="toc__link nav-link">How do I delete a virtualhost?</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#how-do-i-create-command-aliases" class="toc__link nav-link">How do I create command aliases?</a>
                 </li>
             
@@ -500,8 +504,8 @@ Use composer self-update --rollback to return to version 2.8.5</code></pre>
 <p>After updating, check again your Composer version by executing:</p>
 <pre class="highlight"><code class="language-shell">composer --version</code></pre>
 <p>The output should be similar to:</p>
-<pre class="highlight"><code class="language-text">Composer version 2.8.8 2025-04-04 16:56:46
-PHP version 8.3.20 (/usr/bin/php)
+<pre class="highlight"><code class="language-text">Composer version 2.9.0 2025-11-13 10:37:16
+PHP version 8.5.0 (/usr/bin/php)
 Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
 <h2 id="how-do-i-update-phpmyadmin">How do I update phpMyAdmin?</h2>
 <p>Being installed as a system package, it can be updated using the command which updates the rest of the system packages:</p>
@@ -538,6 +542,20 @@ In case you want to upgrade to a different version, for instance <a href="https:
 <li>Restart MariaDB</li>
 </ul>
 <pre class="highlight"><code class="language-shell">sudo systemctl restart mariadb</code></pre>
+<h2 id="how-do-i-delete-a-virtualhost">How do I delete a virtualhost?</h2>
+<p>If for whatever reason you want to delete a virtualhost, for instance <code>to-be-deleted.localhost</code> you need to do the following:</p>
+<ul>
+<li>Delete the folder where are the files located</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo rm -rf /var/www/to-be-deleted.localhost</code></pre>
+<ul>
+<li>Delete the Apache configuration file</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo rm -f /etc/httpd/sites-available/to-be-deleted.localhost.conf</code></pre>
+<ul>
+<li>Restart httpd server</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo systemctl restart httpd</code></pre>
 <h2 id="how-do-i-create-command-aliases">How do I create command aliases?</h2>
 <p>From either your terminal or file explorer, navigate to your home directory (<code>/home/&lt;your-username&gt;/</code>).</p>
 <p>Using your preferred text editor, open the file: <code>.bash_profile</code> (if it does not exist, creat it first).</p>
