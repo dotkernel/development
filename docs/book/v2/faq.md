@@ -238,7 +238,6 @@ sudo rm -f /etc/httpd/sites-available/desters.localhost.conf
 sudo systemctl restart httpd
 ```
 
-
 ## How do I create command aliases?
 
 From either your terminal or file explorer, navigate to your home directory (`/home/<your-username>/`).
