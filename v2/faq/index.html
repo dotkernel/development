@@ -439,7 +439,7 @@ The aliases are the following:</p>
 <p>After switching to a different PHP version, test with the following command:</p>
 <pre class="highlight"><code class="language-shell">php -v</code></pre>
 <p>Depending on the selected PHP version, the output should look similar to the below:</p>
-<pre class="highlight"><code class="language-text">PHP 8.4.8 (cli) (built: Jun  3 2025 16:29:26) (NTS gcc x86_64)
+<pre class="highlight"><code class="language-terminaloutput">PHP 8.4.8 (cli) (built: Jun  3 2025 16:29:26) (NTS gcc x86_64)
 Copyright (c) The PHP Group
 Built by Remi's RPM repository &lt;https://rpms.remirepo.net/&gt; #StandWithUkraine
 Zend Engine v4.4.8, Copyright (c) Zend Technologies</code></pre>
@@ -452,12 +452,19 @@ sudo dnf install nodejs -y</code></pre>
 <p>Additionally, our setup includes predefined aliases for the above commands.
 The aliases are the following:</p>
 <ul>
+<li><code>node24</code>: switch to Node.js 24</li>
 <li><code>node22</code>: switch to Node.js 22</li>
 <li><code>node20</code>: switch to Node.js 20</li>
 <li><code>node18</code>: switch to Node.js 18</li>
 </ul>
 <p>After switching to a different Node.js version, test with the following command:</p>
 <pre class="highlight"><code class="language-shell">node -v</code></pre>
+<p>Depending on the selected Node.js version, the output should look similar to the below:</p>
+<pre class="highlight"><code class="language-terminaloutput">v24.13.0</code></pre>
+<p>Check npm version:</p>
+<pre class="highlight"><code class="language-shell">npm -v</code></pre>
+<p>Depending on the current npm version, the output should look similar to the below:</p>
+<pre class="highlight"><code class="language-terminaloutput">11.9.0</code></pre>
 <h2 id="how-do-i-fix-common-permission-issues">How do I fix common permission issues?</h2>
 <p>If running your project, you encounter permission issues, follow the below steps.</p>
 <h3 id="error">Error</h3>
