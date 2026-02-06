@@ -27,7 +27,7 @@ php -v
 
 Depending on the selected PHP version, the output should look similar to the below:
 
-```text
+```terminaloutput
 PHP 8.3.8 (cli) (built: Jun  4 2024 14:53:17) (NTS gcc x86_64)
 Copyright (c) The PHP Group
 Zend Engine v4.3.8, Copyright (c) Zend Technologies
@@ -48,6 +48,7 @@ where `{major}` is the Node.js version you want to switch to.
 Additionally, our setup includes predefined aliases for the above commands.
 The aliases are the following:
 
+* `node24`: switch to Node.js 24
 * `node22`: switch to Node.js 22
 * `node20`: switch to Node.js 20
 * `node18`: switch to Node.js 18
@@ -56,6 +57,24 @@ After switching to a different Node.js version, test with the following command:
 
 ```shell
 node -v
+```
+
+Depending on the selected Node.js version, the output should look similar to the below:
+
+```terminaloutput
+v24.13.0
+```
+
+Check npm version:
+
+```shell
+npm -v
+```
+
+Depending on the current npm version, the output should look similar to the below:
+
+```terminaloutput
+11.9.0
 ```
 
 ## How do I fix common permission issues?
