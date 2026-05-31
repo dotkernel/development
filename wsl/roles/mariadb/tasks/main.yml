@@ -21,6 +21,6 @@
     login_user: root
     login_password: "{{ config.mariadb.root_password }}"
     check_implicit_admin: true
-    user: root
+    name: root
     password: "{{ config.mariadb.root_password }}"
     host: localhost
