@@ -4,17 +4,17 @@
 
 Stop any other running WSL 2 distros, then install the AlmaLinux 10 distro (`wsl --install -d AlmaLinux-10`) and create the initial Unix user account.
 
-> If you are not using WSL, you can jump straight to the [AlmaLinux 10 Setup page](https://docs.dotkernel.org/development/v2/setup/setup-packages/).
+If you are not using WSL, you can jump straight to the [AlmaLinux 10 Setup page](https://docs.dotkernel.org/development/v2/setup/setup-packages/).
 
-> This is step 2 of 3: [System Requirements](system-requirements.md) → **Install AlmaLinux 10** (this page) → [Setup Packages](setup-packages.md).
+This is step 2 of 3: [System Requirements](system-requirements.md) → **Install AlmaLinux 10** (this page) → [Setup Packages](setup-packages.md).
 
-> All commands on this page are executed in `Windows Terminal`, on your Windows host, not inside AlmaLinux 10.
+All commands on this page are executed in `Windows Terminal`, on your Windows host, not inside AlmaLinux 10.
 
 Before proceeding with the installation, we need to make sure that no other WSL 2 distribution (aka: _distro_) is running.
 This is important because this installation will fail if required ports are already in use by another distro.
 
-> The distro is downloaded over the internet, so make sure you have a stable connection.
-> Depending on your connection speed, the download can take anywhere from a couple of minutes to significantly longer.
+The distro is downloaded over the internet, so make sure you have a stable connection.
+Depending on your connection speed, the download can take anywhere from a couple of minutes to significantly longer.
 
 Open `Windows Terminal`.
 
@@ -91,7 +91,7 @@ OracleLinux_9_1                 Oracle Linux 9.1
 Note the two columns: **NAME** and **FRIENDLY NAME**.
 To install a specific distro, use the value from the **NAME** column, in this case: `AlmaLinux-10`.
 
-> If you try to install a distro that is already installed, the installation process will fail:
+If you try to install a distro that is already installed, the installation process will fail:
 
 ```text
 Downloading: AlmaLinux OS 10
@@ -144,10 +144,10 @@ passwd: password updated successfully
 [<your-alma-linux-10-username>@<your-device-name> <your-windows-username>]$
 ```
 
-> At this point your terminal has dropped you inside the **AlmaLinux 10** shell (notice the prompt changed).
-> Keep this window open and continue directly with [Setup Packages](setup-packages.md).
-> Its commands run inside AlmaLinux 10, not in Windows Terminal.
-> If you close this window, see [Running on WSL 2](../running.md) to reconnect.
+At this point your terminal has dropped you inside the **AlmaLinux 10** shell (notice the prompt changed).
+Keep this window open and continue directly with [Setup Packages](setup-packages.md).
+Its commands run inside AlmaLinux 10, not in Windows Terminal.
+If you close this window, see [Running on WSL 2](../running.md) to reconnect.
 
 ## Next step
 
