@@ -1,5 +1,17 @@
 # AlmaLinux 10 Frequently asked questions
 
+Quick answers to common questions about switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your development environment.
+
+* [How do I switch to a different version of PHP?](#how-do-i-switch-to-a-different-version-of-php)
+* [How do I switch to a different version of Node.js?](#how-do-i-switch-to-a-different-version-of-nodejs)
+* [How do I fix common permission issues?](#how-do-i-fix-common-permission-issues)
+* [Where are the error log files?](#where-are-the-error-log-files)
+* [How do I update Composer?](#how-do-i-update-composer)
+* [How do I update phpMyAdmin?](#how-do-i-update-phpmyadmin)
+* [How do I upgrade MariaDB?](#how-do-i-upgrade-mariadb)
+* [How do I delete a virtualhost?](#how-do-i-delete-a-virtualhost)
+* [How do I create command aliases?](#how-do-i-create-command-aliases)
+
 ## How do I switch to a different version of PHP?
 
 Execute the following command:
@@ -82,6 +94,9 @@ Depending on the current npm version, the output should look similar to the belo
 
 If running your project, you encounter permission issues, follow the below steps.
 
+> `chmod -R 777` grants read/write/execute access to everyone, which is only appropriate for a local development environment like this one.
+> Avoid carrying this habit into staging or production, where permissions should be scoped more narrowly (for example, to the web server's user/group).
+
 ### Error
 
 > PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/data" is not writable...
@@ -160,7 +175,7 @@ sudo /usr/local/bin/composer self-update
 The output should be similar to:
 
 ```text
-Upgrading to version 2.8.8 (stable channel).
+Upgrading to version 2.9.0 (stable channel).
 
 Use composer self-update --rollback to return to version 2.8.5
 ```
@@ -187,7 +202,7 @@ Being installed as a system package, it can be updated using the command which u
 sudo dnf upgrade -y
 ```
 
-## How do I upgrade MariaDB ?
+## How do I upgrade MariaDB?
 
 Initially, MariaDB was at version 11.4 LTS.
 In case you want to upgrade to a different version, for instance [11.8 LTS](https://mariadb.org/11-8-is-lts/), use the below steps:
@@ -239,7 +254,7 @@ sudo systemctl restart mariadb
 
 If for whatever reason you want to delete a virtualhost, for instance `to-be-deleted.localhost` you need to do the following:
 
-* Delete the folder where are the files located
+* Delete the folder where the files are located
 
 ```shell
 sudo rm -rf /var/www/to-be-deleted.localhost
@@ -249,6 +264,12 @@ sudo rm -rf /var/www/to-be-deleted.localhost
 
 ```shell
 sudo rm -f /etc/httpd/sites-available/to-be-deleted.localhost.conf
+```
+
+* Delete the enabled site symlink
+
+```shell
+sudo rm -f /etc/httpd/sites-enabled/to-be-deleted.localhost.conf
 ```
 
 * Restart httpd server
@@ -261,7 +282,7 @@ sudo systemctl restart httpd
 
 From either your terminal or file explorer, navigate to your home directory (`/home/<your-username>/`).
 
-Using your preferred text editor, open the file: `.bash_profile` (if it does not exist, creat it first).
+Using your preferred text editor, open the file: `.bash_profile` (if it does not exist, create it first).
 
 Move to the end of the file and enter on a new line:
 

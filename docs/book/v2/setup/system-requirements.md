@@ -8,7 +8,7 @@ Check whether WSL 2 is already installed and, if not, enable the required Window
 
 > This is step 1 of 3 in setting up your development environment: **System Requirements** (this page) → [Install AlmaLinux 10](installation.md) → [Setup Packages](setup-packages.md).
 
-> All commands on this page are executed in `Windows Terminal`, on your Windows host — not inside AlmaLinux 10.
+> All commands on this page are executed in `Windows Terminal`, on your Windows host - not inside AlmaLinux 10.
 
 ## Minimum requirements
 
@@ -43,7 +43,7 @@ Windows version: 10.0.22631.3737
 ```
 
 If the output starts with `WSL version: 2.x.x.x`, you are ready to use WSL 2 and can proceed to [install AlmaLinux 10](installation.md).
-If it doesn't (for example it shows `WSL version: 1.x.x.x`, or the command isn't recognized), continue with the section below.
+If it doesn't (for example, it shows `WSL version: 1.x.x.x`, or the command isn't recognized), continue with the section below.
 
 ## Install WSL 2
 
@@ -67,13 +67,19 @@ Make sure that version `2` of WSL is set as default by executing the below comma
 wsl --set-default-version 2
 ```
 
-Run `wsl -v` again — this time the output should display `WSL version: 2.x.x.x` (in the same format shown [above](#check-your-wsl-version)), which means that your system is ready for using WSL 2 and you can proceed to [install AlmaLinux 10](installation.md).
+Run `wsl -v` again - this time the output should display `WSL version: 2.x.x.x` (in the same format shown [above](#check-your-wsl-version)), which means that your system is ready for using WSL 2 and you can proceed to [install AlmaLinux 10](installation.md).
 
 ## FAQ
 
 ### What if `wsl -v` shows WSL version 1 instead of 2?
 
-Run `wsl --set-default-version 2` and then re-run `wsl -v` to confirm the version has switched.
+Run:
+
+```shell
+wsl --set-default-version 2
+```
+
+Then re-run `wsl -v` to confirm the version has switched.
 
 ### What if the `OptionalFeatures` dialog doesn't show all required features?
 
@@ -85,4 +91,5 @@ Yes, a restart is required after clicking `Ok` in the `OptionalFeatures` dialog 
 
 ### What if my machine doesn't meet the minimum requirements for WSL 2?
 
-Double-check the [minimum requirements](#minimum-requirements) above, in particular that hardware virtualization is enabled in your BIOS/UEFI — this is the most common blocker. If you're still unsure, consult Microsoft's [prerequisites documentation](https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites).
+Double-check the [minimum requirements](#minimum-requirements) above, in particular that hardware virtualization is enabled in your BIOS/UEFI - this is the most common blocker.
+If you're still unsure, consult Microsoft's [prerequisites documentation](https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites).
