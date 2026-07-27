@@ -1,8 +1,12 @@
-<!-- source: terminal.md -->
+# DotKernel Development Environment (AlmaLinux 10 on WSL 2)
 
-# Terminal
+> A collection of Ansible playbooks and documentation for provisioning a local AlmaLinux 10 development environment on Windows via WSL 2. It covers installing Windows Terminal, setting up WSL 2, provisioning the full stack (PHP, Node.js, MariaDB, Apache, phpMyAdmin, Composer) with Ansible, and creating per-project Apache virtualhosts under `*.localhost` domains.
 
-## Summary
+## Introduction
+
+### Terminal
+
+#### Summary
 
 Install Windows Terminal, the tool you'll use throughout this guide to run WSL 2 commands and to open dedicated tabs for your AlmaLinux 10 distro.
 
@@ -13,16 +17,15 @@ It is a modern tool that incorporates the power of multiple already known comman
 
 Once your AlmaLinux 10 distro is installed, it gets its own dedicated tab profile in Windows Terminal (see [Running on WSL 2](running.md)), so every command in this guide (Windows and Linux alike) can be run from the same app.
 
-## Next step
+#### Next step
 
 Continue to [System Requirements](setup/system-requirements.md) to check whether your machine is ready for WSL 2.
 
+## Setup
 
-<!-- source: setup/system-requirements.md -->
+### System Requirements for AlmaLinux 10 on WSL 2
 
-# System Requirements for AlmaLinux 10 on WSL 2
-
-## Summary
+#### Summary
 
 Check whether WSL 2 is already installed and, if not, enable the required Windows features (Hyper-V, Virtual Machine Platform, Windows Subsystem for Linux) and set WSL 2 as the default version.
 
@@ -32,7 +35,7 @@ This is step 1 of 3 in setting up your development environment: **System Require
 
 All commands on this page are executed in `Windows Terminal`, on your Windows host, not inside AlmaLinux 10.
 
-## Minimum requirements
+#### Minimum requirements
 
 Before installing WSL 2, make sure your machine meets the following:
 
@@ -44,7 +47,7 @@ Before installing WSL 2, make sure your machine meets the following:
 
 For the full, up-to-date list, see Microsoft's [prerequisites documentation](https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites).
 
-## Check your WSL version
+#### Check your WSL version
 
 Open `Windows Terminal` and execute the following command:
 
@@ -67,9 +70,9 @@ Windows version: 10.0.22631.3737
 If the output starts with `WSL version: 2.x.x.x`, you are ready to use WSL 2 and can proceed to [install AlmaLinux 10](installation.md).
 If it doesn't (for example, it shows `WSL version: 1.x.x.x`, or the command isn't recognized), continue with the section below.
 
-## Install WSL 2
+#### Install WSL 2
 
-Once you've confirmed your machine meets the [minimum requirements](#minimum-requirements) above, open the `Run` prompt by pressing `Win` + `r`, type `OptionalFeatures` in the dialog and press `Enter`.
+Once you've confirmed your machine meets the minimum requirements above, open the `Run` prompt by pressing `Win` + `r`, type `OptionalFeatures` in the dialog and press `Enter`.
 This will open a window where you can turn Windows features on/off.
 Make sure that the below features are activated (checked):
 
@@ -89,11 +92,11 @@ Make sure that version `2` of WSL is set as default by executing the below comma
 wsl --set-default-version 2
 ```
 
-Run `wsl -v` again - this time the output should display `WSL version: 2.x.x.x` (in the same format shown [above](#check-your-wsl-version)), which means that your system is ready for using WSL 2 and you can proceed to [install AlmaLinux 10](installation.md).
+Run `wsl -v` again - this time the output should display `WSL version: 2.x.x.x` (in the same format shown above), which means that your system is ready for using WSL 2 and you can proceed to [install AlmaLinux 10](installation.md).
 
-## FAQ
+#### FAQ
 
-### What if `wsl -v` shows WSL version 1 instead of 2?
+##### What if `wsl -v` shows WSL version 1 instead of 2?
 
 Run:
 
@@ -103,25 +106,22 @@ wsl --set-default-version 2
 
 Then re-run `wsl -v` to confirm the version has switched.
 
-### What if the `OptionalFeatures` dialog doesn't show all required features?
+##### What if the `OptionalFeatures` dialog doesn't show all required features?
 
 Install them manually first using Microsoft's [manual install guide](https://docs.microsoft.com/en-us/windows/wsl/install-manual), then continue with the steps above.
 
-### Do I need to restart my computer after enabling the Windows features?
+##### Do I need to restart my computer after enabling the Windows features?
 
 Yes, a restart is required after clicking `Ok` in the `OptionalFeatures` dialog for the feature changes to take effect.
 
-### What if my machine doesn't meet the minimum requirements for WSL 2?
+##### What if my machine doesn't meet the minimum requirements for WSL 2?
 
-Double-check the [minimum requirements](#minimum-requirements) above, in particular that hardware virtualization is enabled in your BIOS/UEFI - this is the most common blocker.
+Double-check the minimum requirements above, in particular that hardware virtualization is enabled in your BIOS/UEFI - this is the most common blocker.
 If you're still unsure, consult Microsoft's [prerequisites documentation](https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites).
 
+### Install AlmaLinux 10 on WSL 2
 
-<!-- source: setup/installation.md -->
-
-# Install AlmaLinux 10 on WSL 2
-
-## Summary
+#### Summary
 
 Stop any other running WSL 2 distros, then install the AlmaLinux 10 distro (`wsl --install -d AlmaLinux-10`) and create the initial Unix user account.
 
@@ -139,7 +139,7 @@ Depending on your connection speed, the download can take anywhere from a couple
 
 Open `Windows Terminal`.
 
-## Stop other WSL 2 distros
+#### Stop other WSL 2 distros
 
 List all installed distros:
 
@@ -153,7 +153,7 @@ If there is no other distro installed, you will see the below output (an empty l
   NAME            STATE           VERSION
 ```
 
-In this case, you can jump to the [installation](#install-almalinux-10) section.
+In this case, you can jump to the installation section below.
 
 If you have other distros installed, the output could look similar to the below:
 
@@ -170,9 +170,9 @@ If any of them reads **Running**, you must stop it first by executing the below 
 wsl -t <distro-name>
 ```
 
-Once you have stopped all distros, you can continue to the [installation](#install-almalinux-10) section.
+Once you have stopped all distros, you can continue to the installation section below.
 
-## Install AlmaLinux 10
+#### Install AlmaLinux 10
 
 List the available Linux distros by executing:
 
@@ -270,13 +270,13 @@ Keep this window open and continue directly with [Setup Packages](setup-packages
 Its commands run inside AlmaLinux 10, not in Windows Terminal.
 If you close this window, see [Running on WSL 2](../running.md) to reconnect.
 
-## Next step
+#### Next step
 
 Continue to [Setup Packages](setup-packages.md) to install the required system packages and provision your development environment.
 
-## FAQ
+#### FAQ
 
-### What if the installation fails because a distro is already running?
+##### What if the installation fails because a distro is already running?
 
 Make sure no other WSL 2 distro is running by checking:
 
@@ -290,21 +290,21 @@ All distros must show **Stopped**. Stop any running distro with the below comman
 wsl -t <distro-name>
 ```
 
-### What if `AlmaLinux-10` is already installed?
+##### What if `AlmaLinux-10` is already installed?
 
 The installation will fail with `A distribution with the supplied name already exists`.
 Use a different `--name` value, or remove the existing distro first if you intend to reinstall it.
 
-### Does the username need to match my Windows username?
+##### Does the username need to match my Windows username?
 
 No, the Unix username created during installation can be any alphanumeric string and does not need to match your Windows username.
 
-### What if I get a `BAD PASSWORD` message?
+##### What if I get a `BAD PASSWORD` message?
 
 This is just a strength warning.
 Press `Enter` to choose a different password, or continue retyping the same one if you want to keep it.
 
-### Where can I find the list of available distros if `AlmaLinux-10` isn't shown?
+##### Where can I find the list of available distros if `AlmaLinux-10` isn't shown?
 
 Run the below command to see the current list of installable distros and their **NAME** values:
 
@@ -312,18 +312,18 @@ Run the below command to see the current list of installable distros and their *
 wsl --list --online
 ```
 
-### What if `wsl --install -d AlmaLinux-10` fails or hangs with no clear error?
+##### What if `wsl --install -d AlmaLinux-10` fails or hangs with no clear error?
 
 This is most often caused by hardware virtualization being disabled in your BIOS/UEFI, or by Hyper-V/Virtual Machine Platform not being enabled.
-Revisit the [System Requirements](system-requirements.md) page and confirm both.
+Revisit the System Requirements page and confirm both.
 A blocked or unstable internet connection (including corporate proxies/firewalls) can also cause the download to stall.
 
-### What if the Microsoft Store is unavailable or blocked (for example, on a work laptop)?
+##### What if the Microsoft Store is unavailable or blocked (for example, on a work laptop)?
 
 You don't need the Store for this step.
 `wsl --install -d AlmaLinux-10` downloads and registers the distro directly, without going through the Store.
 
-### How do I completely remove AlmaLinux-10 and start over?
+##### How do I completely remove AlmaLinux-10 and start over?
 
 Unregister the distro, which deletes it and all its data, then reinstall it from scratch:
 
@@ -333,12 +333,9 @@ wsl --unregister AlmaLinux-10
 
 Once unregistered, you can run `wsl --install -d AlmaLinux-10` again as described above.
 
+### AlmaLinux 10 Setup
 
-<!-- source: setup/setup-packages.md -->
-
-# AlmaLinux 10 Setup
-
-## Summary
+#### Summary
 
 Update system packages, install Ansible and required repositories, clone this repository, configure `config.yml`, and run the `install.yml` Ansible playbook to provision the full development environment.
 
@@ -451,13 +448,13 @@ The installation is complete, your **AlmaLinux 10** development environment is r
 If you are using WSL 2, restart your `Windows Terminal` to find a new option in the tab selector, called **AlmaLinux-10**.
 Clicking it will open a new tab connected to **AlmaLinux 10**.
 
-## Next step
+#### Next step
 
 Your environment is now provisioned. Continue to [Running on WSL 2](../running.md) to learn how to (re)connect to your **AlmaLinux 10** distro, or jump straight to [Virtualhosts](../virtualhosts/overview.md) to host your first project.
 
-## FAQ
+#### FAQ
 
-### What if `config.yml` doesn't exist yet?
+##### What if `config.yml` doesn't exist yet?
 
 Duplicate the provided template by running:
 
@@ -467,7 +464,7 @@ cp config.yml.dist config.yml
 
 Then fill in the empty fields before running the playbook.
 
-### What if the Ansible playbook fails partway through?
+##### What if the Ansible playbook fails partway through?
 
 Review the summary output for the failed task, fix the underlying issue (for example, a misconfigured field in `config.yml`), and re-run:
 
@@ -477,32 +474,31 @@ ansible-playbook -i hosts install.yml --ask-become-pass
 
 It is safe to re-run.
 
-### What if `ansible-galaxy collection install` fails or times out?
+##### What if `ansible-galaxy collection install` fails or times out?
 
 This command downloads collections from Ansible Galaxy over the internet, so it fails if your network connection is down, unstable, or blocked by a proxy/firewall.
 Check your connection and re-run the command.
 It's safe to run again even if some collections already installed successfully.
 
-### What if `http://localhost/` doesn't load after installation?
+##### What if `http://localhost/` doesn't load after installation?
 
 If you are not using WSL 2, make sure you are using your server's IP address instead of `localhost`.
 Otherwise, confirm the playbook completed without errors and that your **AlmaLinux 10** distro is still running.
 
-### How do I log into phpMyAdmin?
+##### How do I log into phpMyAdmin?
 
 Use the username `root` and the password you configured under `mariadb` -> `root_password` in `config.yml`.
 
-### Can I run this setup without WSL?
+##### Can I run this setup without WSL?
 
 Yes, the instructions work the same way on a non-WSL AlmaLinux system.
 You can then skip the WSL-specific notes.
 
+## Guides
 
-<!-- source: running.md -->
+### Running AlmaLinux 10 on WSL 2
 
-# Running AlmaLinux 10 on WSL 2
-
-## Summary
+#### Summary
 
 Start (or reconnect to) your AlmaLinux 10 distro from Windows Terminal, check whether it's currently running, and shut it down when you're done.
 
@@ -526,7 +522,7 @@ For this, all you need to do is to launch it from a terminal, file explorer or a
 Once launched, you can close the tool you launched it from.
 It will stay connected until you shut it down manually or reboot your computer.
 
-## Check if AlmaLinux 10 is running
+#### Check if AlmaLinux 10 is running
 
 From Windows Terminal, execute:
 
@@ -536,7 +532,7 @@ wsl -l -v
 
 Look for the `AlmaLinux-10` row — its **STATE** column reads **Running** if it's currently active, or **Stopped** otherwise.
 
-## Shut down AlmaLinux 10
+#### Shut down AlmaLinux 10
 
 To stop just the AlmaLinux 10 distro, leaving any other distros untouched:
 
@@ -550,13 +546,13 @@ To shut down all currently running WSL 2 distros at once:
 wsl --shutdown
 ```
 
-## Next step
+#### Next step
 
 Continue to [Virtualhosts](virtualhosts/overview.md) to start hosting your projects.
 
-## FAQ
+#### FAQ
 
-### What if `AlmaLinux-10` doesn't appear in the tab selector dropdown?
+##### What if `AlmaLinux-10` doesn't appear in the tab selector dropdown?
 
 Confirm it's actually installed by running:
 
@@ -567,7 +563,7 @@ wsl -l -v
 If it's missing from the list entirely, revisit [Install AlmaLinux 10](setup/installation.md).
 Restarting Windows Terminal after installation also helps it pick up the new tab profile.
 
-### What if `wsl -d AlmaLinux-10` fails to start?
+##### What if `wsl -d AlmaLinux-10` fails to start?
 
 Run the below command to confirm the distro is installed and check its current state:
 
@@ -581,12 +577,9 @@ If another distro is using the same resources, stop it first with the below comm
 wsl -t <distro-name>
 ```
 
+### AlmaLinux 10 Overview
 
-<!-- source: virtualhosts/overview.md -->
-
-# AlmaLinux 10 Overview
-
-## Summary
+#### Summary
 
 Virtualhosts let you host multiple local applications under `*.localhost` subdomains, routed automatically through Apache without editing the Windows `hosts` file.
 
@@ -607,37 +600,34 @@ In the above example, the URLs are built like this:
 
 By using the pattern `*.localhost` for any new virtualhost, you do not need to modify the `hosts` file in Windows, because these are routed by default.
 
-## Next step
+#### Next step
 
 Ready to set one up?
 Continue to [Create virtualhost](create-virtualhost.md).
 
-## FAQ
+#### FAQ
 
-### Do I need to edit the Windows `hosts` file for my virtualhosts?
+##### Do I need to edit the Windows `hosts` file for my virtualhosts?
 
 No, as long as you use the `*.localhost` pattern (for example `api.dotkernel.localhost`), these domains are routed automatically and require no `hosts` file changes.
 
-### Can I use a domain that doesn't end in `.localhost`?
+##### Can I use a domain that doesn't end in `.localhost`?
 
 The automatic routing described here relies on the `*.localhost` pattern.
 Using a different TLD would require manually editing the Windows `hosts` file yourself.
 
-### How are the subdomain and domain parts of a virtualhost URL structured?
+##### How are the subdomain and domain parts of a virtualhost URL structured?
 
 The subdomain identifies the application (for example `api` or `frontend`), and the domain identifies the project (for example `dotkernel`) - together with the `.localhost` TLD, Apache routes the request to the right place.
 
-### Where do I actually create a virtualhost?
+##### Where do I actually create a virtualhost?
 
 This page only covers the concept.
 See [Create virtualhost](create-virtualhost.md) for the steps to provision one.
 
+### AlmaLinux 10 Create virtualhosts
 
-<!-- source: virtualhosts/create-virtualhost.md -->
-
-# AlmaLinux 10 Create virtualhosts
-
-## Summary
+#### Summary
 
 Add your desired domains to `config.yml` and run the `create-virtualhost.yml` Ansible playbook to provision each one.
 
@@ -686,7 +676,7 @@ Visiting the virtualhost's URL in your browser will show an error until you plac
 Apache logs for each virtualhost are stored separately, for example `/var/www/example.localhost/log/error.log` and `/var/www/example.localhost/log/requests.log`.
 Check these first if something isn't working as expected.
 
-## Good to know
+#### Good to know
 
 * To run your installed projects, you need to start **AlmaLinux 10** first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
@@ -695,9 +685,9 @@ Check these first if something isn't working as expected.
 * We install PHP 8.4 by default-if you need a different version, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-php).
 * We install Node.js 22 by default-if you need a different version, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-nodejs).
 
-## FAQ
+#### FAQ
 
-### What if I don't have a `config.yml` file yet?
+##### What if I don't have a `config.yml` file yet?
 
 Duplicate the provided template by running the below command inside `development/wsl`:
 
@@ -707,41 +697,40 @@ cp config.yml.dist config.yml
 
 Then add your virtualhosts under the `virtualhosts` key.
 
-### What happens if I list a virtualhost that already exists?
+##### What happens if I list a virtualhost that already exists?
 
 It will simply be skipped.
 Its existing files and configuration are left untouched, so there's no need to comment out or remove already-created entries from `config.yml`.
 
-### Where should I put my project's files?
+##### Where should I put my project's files?
 
 Under the `html` directory of your virtualhost, for example `/var/www/example.localhost/html`.
 The document root is set to the `public` subdirectory of that location, for example `/var/www/example.localhost/html/public`.
 
-### How do I make the DocumentRoot point directly to `html` instead of `html/public`?
+##### How do I make the DocumentRoot point directly to `html` instead of `html/public`?
 
 Edit the virtualhost's Apache configuration file at `/etc/httpd/sites-available/example.localhost` and change the `DocumentRoot` accordingly.
 
-### How do I access my virtualhost if AlmaLinux 10 isn't running?
+##### How do I access my virtualhost if AlmaLinux 10 isn't running?
 
 You need to start **AlmaLinux 10** first.
 Your virtualhosts are only reachable while the distro is running.
 
-### What if I hit permission errors when writing to my project's files?
+##### What if I hit permission errors when writing to my project's files?
 
-See the [permission issues guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues) in the FAQ.
+See the permission issues guide in the FAQ section below.
 
-### How do I delete a virtualhost I no longer need?
+##### How do I delete a virtualhost I no longer need?
 
-See [How do I delete a virtualhost?](https://docs.dotkernel.org/development/v2/faq/#how-do-i-delete-a-virtualhost) in the FAQ.
+See "How do I delete a virtualhost?" in the FAQ section below.
 
+## FAQ
 
-<!-- source: faq.md -->
-
-# AlmaLinux 10 Frequently asked questions
+### AlmaLinux 10 Frequently asked questions
 
 Quick answers to common questions about switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your development environment.
 
-## How do I switch to a different version of PHP?
+#### How do I switch to a different version of PHP?
 
 Execute the following command:
 
@@ -768,14 +757,14 @@ php -v
 
 Depending on the selected PHP version, the output should look similar to the below:
 
-```terminaloutput
+```text
 PHP 8.4.8 (cli) (built: Jun  3 2025 16:29:26) (NTS gcc x86_64)
 Copyright (c) The PHP Group
 Built by Remi's RPM repository <https://rpms.remirepo.net/> #StandWithUkraine
 Zend Engine v4.4.8, Copyright (c) Zend Technologies
 ```
 
-## How do I switch to a different version of Node.js?
+#### How do I switch to a different version of Node.js?
 
 Execute the following commands:
 
@@ -803,7 +792,7 @@ node -v
 
 Depending on the selected Node.js version, the output should look similar to the below:
 
-```terminaloutput
+```text
 v24.13.0
 ```
 
@@ -815,18 +804,18 @@ npm -v
 
 Depending on the current npm version, the output should look similar to the below:
 
-```terminaloutput
+```text
 11.9.0
 ```
 
-## How do I fix common permission issues?
+#### How do I fix common permission issues?
 
 If running your project, you encounter permission issues, follow the below steps.
 
 `chmod -R 777` grants read/write/execute access to everyone, which is only appropriate for a local development environment like this one.
 Avoid carrying this habit into staging or production, where permissions should be scoped more narrowly (for example, to the web server's user/group).
 
-### Error
+##### Error: `data` directory not writable
 
 PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/data" is not writable...
 
@@ -834,52 +823,52 @@ PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-pro
 
 PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/data/cache/doctrine" is not writable...
 
-### Solution
+Solution:
 
 ```shell
 chmod -R 777 data
 ```
 
-### Error
+##### Error: `public/uploads` directory not writable
 
 PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/public/uploads" is not writable...
 
-### Solution
+Solution:
 
 ```shell
 chmod -R 777 public/uploads
 ```
 
-### Error
+##### Error: `log` directory not writable
 
 PHP Fatal error: Uncaught ErrorException: fopen(`<path-to-project>`/log/error-log-yyyy-mm-dd.log): Failed to open stream: Permission denied...
 
-### Solution
+Solution:
 
 ```shell
 chmod -R 777 log
 ```
 
-## Where are the error log files?
+#### Where are the error log files?
 
 From time to time, you are encountering various errors which are not displayed. Or you can get errors 500 in a browser.
 
 To find the error messages, you need to read the error log files.
 
-### Apache log files
+Apache log files:
 
 ```text
 /var/log/httpd/error_log
 ```
 
-### PHP-FPM log files
+PHP-FPM log files:
 
 ```text
 /var/log/php-fpm/error.log
 /var/log/php-fpm/www-error.log
 ```
 
-## How do I update Composer?
+#### How do I update Composer?
 
 Before updating, check your current Composer version by executing:
 
@@ -923,7 +912,7 @@ PHP version 8.5.0 (/usr/bin/php)
 Run the "diagnose" command to get more detailed diagnostics output.
 ```
 
-## How do I update phpMyAdmin?
+#### How do I update phpMyAdmin?
 
 Being installed as a system package, it can be updated using the command which updates the rest of the system packages:
 
@@ -931,83 +920,84 @@ Being installed as a system package, it can be updated using the command which u
 sudo dnf upgrade -y
 ```
 
-## How do I upgrade MariaDB?
+#### How do I upgrade MariaDB?
 
 Initially, MariaDB was at version 11.4 LTS.
 In case you want to upgrade to a different version, for instance [11.8 LTS](https://mariadb.org/11-8-is-lts/), use the below steps:
 
-* Open the MariaDB.repo file in any text editor.
+Open the MariaDB.repo file in any text editor:
 
 ```shell
 sudo nano /etc/yum.repos.d/MariaDB.repo
 ```
 
-* Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`.
-* Clean dnf cache
+Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`.
+
+Clean dnf cache:
 
 ```shell
 sudo dnf clean all
 ```
 
-* Stop MariaDB
+Stop MariaDB:
 
 ```shell
 sudo systemctl stop mariadb
 ```
 
-* Upgrade MariaDB
+Upgrade MariaDB:
 
 ```shell
 sudo dnf update -y
 ```
 
-* Start MariaDB
+Start MariaDB:
 
 ```shell
 sudo systemctl start mariadb
 ```
 
-* Upgrade databases
+Upgrade databases:
 
 ```shell
 sudo mariadb-upgrade -uroot -p
 ```
 
-* Restart MariaDB
+Restart MariaDB:
 
 ```shell
 sudo systemctl restart mariadb
 ```
 
-## How do I delete a virtualhost?
+#### How do I delete a virtualhost?
 
 If for whatever reason you want to delete a virtualhost, for instance `to-be-deleted.localhost` you need to do the following:
 
-* Delete the folder where the files are located
+Delete the folder where the files are located:
 
 ```shell
 sudo rm -rf /var/www/to-be-deleted.localhost
 ```
 
-* Delete the Apache configuration file
+Delete the Apache configuration file:
 
 ```shell
 sudo rm -f /etc/httpd/sites-available/to-be-deleted.localhost.conf
 ```
 
-* Delete the enabled site symlink
+Delete the enabled site symlink:
 
 ```shell
 sudo rm -f /etc/httpd/sites-enabled/to-be-deleted.localhost.conf
 ```
 
-* Restart httpd server
+Restart httpd server:
 
 ```shell
 sudo systemctl restart httpd
 ```
 
-## How do I create command aliases?
+#### How do I create command aliases?
 
 From either your terminal or file explorer, navigate to your home directory (`/home/<your-username>/`).
 
@@ -1024,7 +1014,7 @@ where:
 * `command_alias` is the name by which you want to call your original command
 * `command to execute`: the original command to be executed on alias call
 
-### Example
+Example:
 
 ```text
 alias list_files="ls -Al"
@@ -1037,5 +1027,3 @@ Then, you can execute your custom alias in a terminal just as a regular command:
 ```shell
 list_files
 ```
-
-

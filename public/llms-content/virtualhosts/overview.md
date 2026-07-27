@@ -1,30 +1,18 @@
+---
+title: AlmaLinux 10 Overview
+description: Virtualhosts let you host multiple local applications under *.localhost subdomains, routed automatically through Apache without editing the Windows hosts file.
+author: "admin"
+date_published: "2026-07-27"
+canonical_url: "https://docs.dotkernel.org/development/v2/virtualhosts/overview"
+category: "Development"
+language: "en"
+---
+
 # AlmaLinux 10 Overview
 
-## Summary
+## TL;DR
 
-Virtualhosts let you host multiple local applications under `*.localhost` subdomains, routed automatically through Apache without editing the Windows `hosts` file.
-
-Virtualhosts allow developers to host multiple applications on their local system.
-
-Using this tool, you configure a virtualhost for each of your applications, and it will create them so that you can start working with them.
-
-**Example**:
-
-* `api.dotkernel.localhost`: this could be the endpoint where you host your website's API
-* `frontend.dotkernel.localhost`: this could be the subdomain where you host your website's frontend that will consume the API
-
-In the above example, the URLs are built like this:
-
-* The subdomain is the identifier of your application (`api` / `frontend`).
-* The domain is the identifier of your project (`dotkernel`).
-* The TLD sends the requests to localhost where Apache will route them to their real location.
-
-By using the pattern `*.localhost` for any new virtualhost, you do not need to modify the `hosts` file in Windows, because these are routed by default.
-
-## Next step
-
-Ready to set one up?
-Continue to [Create virtualhost](create-virtualhost.md).
+Virtualhosts let you host multiple local applications under `*.localhost` subdomains, routed automatically through Apache without editing the Windows `hosts` file. For example, `api.dotkernel.localhost` and `frontend.dotkernel.localhost` can host an API and its consuming frontend side by side on the same machine.
 
 ## FAQ
 

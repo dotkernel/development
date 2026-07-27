@@ -1,8 +1,22 @@
+---
+title: AlmaLinux 10 Frequently asked questions
+description: Quick answers to common questions about switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your AlmaLinux 10 development environment.
+author: "admin"
+date_published: "2026-07-27"
+canonical_url: "https://docs.dotkernel.org/development/v2/faq"
+category: "Development"
+language: "en"
+---
+
 # AlmaLinux 10 Frequently asked questions
+
+## TL;DR
 
 Quick answers to common questions about switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your development environment.
 
-## How do I switch to a different version of PHP?
+## FAQ
+
+### How do I switch to a different version of PHP?
 
 Execute the following command:
 
@@ -36,7 +50,7 @@ Built by Remi's RPM repository <https://rpms.remirepo.net/> #StandWithUkraine
 Zend Engine v4.4.8, Copyright (c) Zend Technologies
 ```
 
-## How do I switch to a different version of Node.js?
+### How do I switch to a different version of Node.js?
 
 Execute the following commands:
 
@@ -80,14 +94,14 @@ Depending on the current npm version, the output should look similar to the belo
 11.9.0
 ```
 
-## How do I fix common permission issues?
+### How do I fix common permission issues?
 
 If running your project, you encounter permission issues, follow the below steps.
 
 `chmod -R 777` grants read/write/execute access to everyone, which is only appropriate for a local development environment like this one.
 Avoid carrying this habit into staging or production, where permissions should be scoped more narrowly (for example, to the web server's user/group).
 
-### Error
+#### Error
 
 PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/data" is not writable...
 
@@ -95,52 +109,52 @@ PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-pro
 
 PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/data/cache/doctrine" is not writable...
 
-### Solution
+#### Solution
 
 ```shell
 chmod -R 777 data
 ```
 
-### Error
+#### Error
 
 PHP Fatal error: Uncaught InvalidArgumentException: The directory "`<path-to-project>`/public/uploads" is not writable...
 
-### Solution
+#### Solution
 
 ```shell
 chmod -R 777 public/uploads
 ```
 
-### Error
+#### Error
 
 PHP Fatal error: Uncaught ErrorException: fopen(`<path-to-project>`/log/error-log-yyyy-mm-dd.log): Failed to open stream: Permission denied...
 
-### Solution
+#### Solution
 
 ```shell
 chmod -R 777 log
 ```
 
-## Where are the error log files?
+### Where are the error log files?
 
 From time to time, you are encountering various errors which are not displayed. Or you can get errors 500 in a browser.
 
 To find the error messages, you need to read the error log files.
 
-### Apache log files
+#### Apache log files
 
 ```text
 /var/log/httpd/error_log
 ```
 
-### PHP-FPM log files
+#### PHP-FPM log files
 
 ```text
 /var/log/php-fpm/error.log
 /var/log/php-fpm/www-error.log
 ```
 
-## How do I update Composer?
+### How do I update Composer?
 
 Before updating, check your current Composer version by executing:
 
@@ -184,7 +198,7 @@ PHP version 8.5.0 (/usr/bin/php)
 Run the "diagnose" command to get more detailed diagnostics output.
 ```
 
-## How do I update phpMyAdmin?
+### How do I update phpMyAdmin?
 
 Being installed as a system package, it can be updated using the command which updates the rest of the system packages:
 
@@ -192,7 +206,7 @@ Being installed as a system package, it can be updated using the command which u
 sudo dnf upgrade -y
 ```
 
-## How do I upgrade MariaDB?
+### How do I upgrade MariaDB?
 
 Initially, MariaDB was at version 11.4 LTS.
 In case you want to upgrade to a different version, for instance [11.8 LTS](https://mariadb.org/11-8-is-lts/), use the below steps:
@@ -240,7 +254,7 @@ sudo mariadb-upgrade -uroot -p
 sudo systemctl restart mariadb
 ```
 
-## How do I delete a virtualhost?
+### How do I delete a virtualhost?
 
 If for whatever reason you want to delete a virtualhost, for instance `to-be-deleted.localhost` you need to do the following:
 
@@ -268,7 +282,7 @@ sudo rm -f /etc/httpd/sites-enabled/to-be-deleted.localhost.conf
 sudo systemctl restart httpd
 ```
 
-## How do I create command aliases?
+### How do I create command aliases?
 
 From either your terminal or file explorer, navigate to your home directory (`/home/<your-username>/`).
 
@@ -285,7 +299,7 @@ where:
 * `command_alias` is the name by which you want to call your original command
 * `command to execute`: the original command to be executed on alias call
 
-### Example
+#### Example
 
 ```text
 alias list_files="ls -Al"
