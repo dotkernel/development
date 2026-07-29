@@ -60,9 +60,9 @@ You will install your project under the `html` directory of your project, for ex
 
 ## FAQ
 
-### What if I don't have a `config.yml` file yet?
+**Q: What if I don't have a `config.yml` file yet?**
 
-Duplicate the provided template by running the below command inside `development/wsl`:
+A: Duplicate the provided template by running the below command inside `development/wsl`:
 
 ```shell
 cp config.yml.dist config.yml
@@ -70,29 +70,29 @@ cp config.yml.dist config.yml
 
 Then add your virtualhosts under the `virtualhosts` key.
 
-### What happens if I list a virtualhost that already exists?
+**Q: What happens if I list a virtualhost that already exists?**
 
-It will simply be skipped.
+A: It will simply be skipped.
 Its existing files and configuration are left untouched, so there's no need to comment out or remove already-created entries from `config.yml`.
 
-### Where should I put my project's files?
+**Q: Where should I put my project's files?**
 
-Under the `html` directory of your virtualhost, for example `/var/www/example.localhost/html`.
+A: Under the `html` directory of your virtualhost, for example `/var/www/example.localhost/html`.
 The document root is set to the `public` subdirectory of that location, for example `/var/www/example.localhost/html/public`.
 
-### How do I make the DocumentRoot point directly to `html` instead of `html/public`?
+**Q: How do I make the DocumentRoot point directly to `html` instead of `html/public`?**
 
-Edit the virtualhost's Apache configuration file at `/etc/httpd/sites-available/example.localhost` and change the `DocumentRoot` accordingly.
+A: Edit the virtualhost's Apache configuration file at `/etc/httpd/sites-available/example.localhost` and change the `DocumentRoot` accordingly.
 
-### How do I access my virtualhost if AlmaLinux 10 isn't running?
+**Q: How do I access my virtualhost if AlmaLinux 10 isn't running?**
 
-You need to start **AlmaLinux 10** first.
+A: You need to start **AlmaLinux 10** first.
 Your virtualhosts are only reachable while the distro is running.
 
-### What if I hit permission errors when writing to my project's files?
+**Q: What if I hit permission errors when writing to my project's files?**
 
-See the [permission issues guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues) in the FAQ.
+A: See the [permission issues guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues) in the FAQ.
 
-### How do I delete a virtualhost I no longer need?
+**Q: How do I delete a virtualhost I no longer need?**
 
-See [How do I delete a virtualhost?](https://docs.dotkernel.org/development/v2/faq/#how-do-i-delete-a-virtualhost) in the FAQ.
+A: See [How do I delete a virtualhost?](https://docs.dotkernel.org/development/v2/faq/#how-do-i-delete-a-virtualhost) in the FAQ.

@@ -54,9 +54,9 @@ Continue to [Virtualhosts](virtualhosts/overview.md) to start hosting your proje
 
 ## FAQ
 
-### What if `AlmaLinux-10` doesn't appear in the tab selector dropdown?
+**Q: What if `AlmaLinux-10` doesn't appear in the tab selector dropdown?**
 
-Confirm it's actually installed by running:
+A: Confirm it's actually installed by running:
 
 ```shell
 wsl -l -v
@@ -65,9 +65,9 @@ wsl -l -v
 If it's missing from the list entirely, revisit [Install AlmaLinux 10](setup/installation.md).
 Restarting Windows Terminal after installation also helps it pick up the new tab profile.
 
-### What if `wsl -d AlmaLinux-10` fails to start?
+**Q: What if `wsl -d AlmaLinux-10` fails to start?**
 
-Run the below command to confirm the distro is installed and check its current state:
+A: Run the below command to confirm the distro is installed and check its current state:
 
 ```shell
 wsl -l -v
