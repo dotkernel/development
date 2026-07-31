@@ -373,6 +373,25 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#next-step" class="toc__link nav-link">Next step</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -388,7 +407,20 @@
 <!--        <h2 class="chapter__headline text-black-50">Virtualhosts</h2>-->
     
 
+    
+    
+        <p class="view-as-markdown text-end small mb-2">
+            <a href="../overview.md" class="text-body-secondary text-decoration-none"
+               type="text/markdown" rel="alternate" title="View the Markdown source of this page">
+                <i class="bi bi-filetype-md"></i>
+                View as Markdown
+            </a>
+        </p>
+    
+
     <h1 id="almalinux-10-overview">AlmaLinux 10 Overview</h1>
+<h2 id="summary">Summary</h2>
+<p>Virtualhosts let you host multiple local applications under <code>*.localhost</code> subdomains, routed automatically through Apache without editing the Windows <code>hosts</code> file.</p>
 <p>Virtualhosts allow developers to host multiple applications on their local system.</p>
 <p>Using this tool, you configure a virtualhost for each of your applications, and it will create them so that you can start working with them.</p>
 <p><strong>Example</strong>:</p>
@@ -398,13 +430,27 @@
 </ul>
 <p>In the above example, the URLs are built like this:</p>
 <ul>
-<li>the subdomain is the identifier of your application (<code>api</code> / <code>frontend</code>)</li>
-<li>the domain is the identifier of your project (<code>dotkernel</code>)</li>
-<li>the TLD sends the requests to localhost where Apache will route them to their real location</li>
+<li>The subdomain is the identifier of your application (<code>api</code> / <code>frontend</code>).</li>
+<li>The domain is the identifier of your project (<code>dotkernel</code>).</li>
+<li>The TLD sends the requests to localhost where Apache will route them to their real location.</li>
 </ul>
 <blockquote>
 <p>By using the pattern <code>*.localhost</code> for any new virtualhost, you do not need to modify the <code>hosts</code> file in Windows, because these are routed by default.</p>
 </blockquote>
+<h2 id="next-step">Next step</h2>
+<p>Ready to set one up?
+Continue to <a href="../create-virtualhost/">Create virtualhost</a>.</p>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Do I need to edit the Windows <code>hosts</code> file for my virtualhosts?</strong></p>
+<p>A: No, as long as you use the <code>*.localhost</code> pattern (for example <code>api.dotkernel.localhost</code>), these domains are routed automatically and require no <code>hosts</code> file changes.</p>
+<p><strong>Q: Can I use a domain that doesn't end in <code>.localhost</code>?</strong></p>
+<p>A: The automatic routing described here relies on the <code>*.localhost</code> pattern.
+Using a different TLD would require manually editing the Windows <code>hosts</code> file yourself.</p>
+<p><strong>Q: How are the subdomain and domain parts of a virtualhost URL structured?</strong></p>
+<p>A: The subdomain identifies the application (for example <code>api</code> or <code>frontend</code>), and the domain identifies the project (for example <code>dotkernel</code>) - together with the <code>.localhost</code> TLD, Apache routes the request to the right place.</p>
+<p><strong>Q: Where do I actually create a virtualhost?</strong></p>
+<p>A: This page only covers the concept.
+See <a href="../create-virtualhost/">Create virtualhost</a> for the steps to provision one.</p>
 
 
 

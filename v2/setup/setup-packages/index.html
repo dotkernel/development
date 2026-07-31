@@ -373,6 +373,25 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#next-step" class="toc__link nav-link">Next step</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -388,12 +407,32 @@
 <!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
     
 
+    
+    
+        <p class="view-as-markdown text-end small mb-2">
+            <a href="../setup-packages.md" class="text-body-secondary text-decoration-none"
+               type="text/markdown" rel="alternate" title="View the Markdown source of this page">
+                <i class="bi bi-filetype-md"></i>
+                View as Markdown
+            </a>
+        </p>
+    
+
     <h1 id="almalinux-10-setup">AlmaLinux 10 Setup</h1>
+<h2 id="summary">Summary</h2>
+<p>Update system packages, install Ansible and required repositories, clone this repository, configure <code>config.yml</code>, and run the <code>install.yml</code> Ansible playbook to provision the full development environment.</p>
 <blockquote>
 <p>The instructions below also work without using WSL.</p>
+<p>This is step 3 of 3: <a href="../system-requirements/">System Requirements</a> → <a href="../installation/">Install AlmaLinux 10</a> → <strong>Setup Packages</strong> (this page).</p>
+<p>All commands on this page are executed <strong>inside the AlmaLinux 10 shell</strong> (Linux), not in Windows Terminal.
+This is the same session left open at the end of the <a href="../installation/">installation</a> step.
+If you closed it, see <a href="../../running/">Running on WSL 2</a> to reconnect first.</p>
 </blockquote>
 <p>Update/Upgrade system packages:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
+<blockquote>
+<p>This step downloads packages over the internet and can take a few minutes depending on your connection speed and how many updates are pending.</p>
+</blockquote>
 <p>You should see the below message, shown the first time you execute a command which requires elevated permissions (hence the <code>sudo</code> modifier at the beginning of the command).</p>
 <pre class="highlight"><code class="language-text">We trust you have received the usual lecture from the local System
 Administrator. It usually boils down to these three things:
@@ -408,9 +447,17 @@ For security reasons, the password you type will not be visible.
 <p>Input your <strong>AlmaLinux 10</strong> password and hit <code>Enter</code>.</p>
 <p>Install system packages:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf install epel-release dnf-utils https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %almalinux).rpm -y</code></pre>
+<blockquote>
+<p><code>$(rpm -E %almalinux)</code> resolves to your AlmaLinux major version (<code>10</code>), so this installs the matching Remi repository release package.
+<code>dnf</code> verifies the package's GPG signature before installing it, same as any other package.</p>
+</blockquote>
 <p>Now, install the latest version of <strong>Ansible Core</strong> and run <strong>ansible-galaxy</strong> to install collections:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf install ansible-core -y</code></pre>
 <pre class="highlight"><code class="language-shell">ansible-galaxy collection install community.general community.mysql</code></pre>
+<blockquote>
+<p>Both of the above require internet access to download packages/collections from their respective repositories (dnf repos and Ansible Galaxy).
+If either command fails or times out, check your network connection first.</p>
+</blockquote>
 <p>Move inside your home directory (it is <code>/home/</code> followed by your <strong>AlmaLinux 10</strong> username, for example: <code>/home/dotkernel</code>):</p>
 <pre class="highlight"><code class="language-shell">cd ~</code></pre>
 <p>Clone the <code>alma-linux-10</code> branch of the <code>dotkernel/development</code> repository:</p>
@@ -419,11 +466,17 @@ For security reasons, the password you type will not be visible.
 <pre class="highlight"><code class="language-shell">cd development/wsl/</code></pre>
 <p>Duplicate <code>config.yml.dist</code> as <code>config.yml</code>:</p>
 <pre class="highlight"><code class="language-shell">cp config.yml.dist config.yml</code></pre>
-<p>Using your preferred text editor, open <code>config.yml</code> and fill in the empty fields.
-Save and close the file.</p>
+<p>Using your preferred text editor, open <code>config.yml</code> and fill in the empty fields:</p>
+<ul>
+<li><code>config.git.config."user.name"</code> / <code>"user.email"</code>: the identity Git will use for your commits inside AlmaLinux 10.</li>
+<li><code>config.mariadb.root_password</code>: the password to set for MariaDB's <code>root</code> user (you'll use this to log into phpMyAdmin later).</li>
+<li><code>config.system.username</code>: defaults to your current AlmaLinux 10 username automatically, usually no change needed.</li>
+<li><code>config.virtualhosts</code>: a list of local domains to create virtualhosts for (see <a href="../../virtualhosts/overview/">Virtualhosts</a>); the default entry <code>example.localhost</code> can be removed or left as-is.</li>
+</ul>
+<p>Save and close the file.</p>
 <p>Install components by running the below Ansible command:</p>
 <pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
-<p>The installation process will ask for your <strong>AlmaLinux 10</strong> password, then iterate over each task in the playbook and output a short summary with the results.</p>
+<p>The installation process will ask for your <strong>AlmaLinux 10</strong> password, then iterate over each task in the playbook, and output a short summary with the results.</p>
 <p>Once finished, check if everything works by opening in your browser:</p>
 <blockquote>
 <p>If you are not using WSL 2, test the below using your server's IP address instead of <code>localhost</code>.</p>
@@ -435,8 +488,32 @@ Save and close the file.</p>
 </ul>
 <p>The installation is complete, your <strong>AlmaLinux 10</strong> development environment is ready to use.</p>
 <blockquote>
-<p>If you are using WSL 2, restart your <code>Windows Terminal</code> to find a new option in the tab selector, called <strong>AlmaLinux-10</strong>; clicking it will open a new tab connected to <strong>AlmaLinux 10</strong>.</p>
+<p>If you are using WSL 2, restart your <code>Windows Terminal</code> to find a new option in the tab selector, called <strong>AlmaLinux-10</strong>.
+Clicking it will open a new tab connected to <strong>AlmaLinux 10</strong>.</p>
 </blockquote>
+<h2 id="next-step">Next step</h2>
+<p>Your environment is now provisioned. Continue to <a href="../../running/">Running on WSL 2</a> to learn how to (re)connect to your <strong>AlmaLinux 10</strong> distro, or jump straight to <a href="../../virtualhosts/overview/">Virtualhosts</a> to host your first project.</p>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: What if <code>config.yml</code> doesn't exist yet?</strong></p>
+<p>A: Duplicate the provided template by running:</p>
+<pre class="highlight"><code class="language-shell">cp config.yml.dist config.yml</code></pre>
+<p>Then fill in the empty fields before running the playbook.</p>
+<p><strong>Q: What if the Ansible playbook fails partway through?</strong></p>
+<p>A: Review the summary output for the failed task, fix the underlying issue (for example, a misconfigured field in <code>config.yml</code>), and re-run:</p>
+<pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
+<p>It is safe to re-run.</p>
+<p><strong>Q: What if <code>ansible-galaxy collection install</code> fails or times out?</strong></p>
+<p>A: This command downloads collections from Ansible Galaxy over the internet, so it fails if your network connection is down, unstable, or blocked by a proxy/firewall.
+Check your connection and re-run the command.
+It's safe to run again even if some collections already installed successfully.</p>
+<p><strong>Q: What if <code>http://localhost/</code> doesn't load after installation?</strong></p>
+<p>A: If you are not using WSL 2, make sure you are using your server's IP address instead of <code>localhost</code>.
+Otherwise, confirm the playbook completed without errors and that your <strong>AlmaLinux 10</strong> distro is still running.</p>
+<p><strong>Q: How do I log into phpMyAdmin?</strong></p>
+<p>A: Use the username <code>root</code> and the password you configured under <code>mariadb</code> -&gt; <code>root_password</code> in <code>config.yml</code>.</p>
+<p><strong>Q: Can I run this setup without WSL?</strong></p>
+<p>A: Yes, the instructions work the same way on a non-WSL AlmaLinux system.
+You can then skip the WSL-specific notes.</p>
 
 
 

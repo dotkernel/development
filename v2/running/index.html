@@ -366,6 +366,33 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#check-if-almalinux-10-is-running" class="toc__link nav-link">Check if AlmaLinux 10 is running</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#shut-down-almalinux-10" class="toc__link nav-link">Shut down AlmaLinux 10</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#next-step" class="toc__link nav-link">Next step</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -379,7 +406,20 @@
     
     
 
+    
+    
+        <p class="view-as-markdown text-end small mb-2">
+            <a href="../running.md" class="text-body-secondary text-decoration-none"
+               type="text/markdown" rel="alternate" title="View the Markdown source of this page">
+                <i class="bi bi-filetype-md"></i>
+                View as Markdown
+            </a>
+        </p>
+    
+
     <h1 id="running-almalinux-10-on-wsl-2">Running AlmaLinux 10 on WSL 2</h1>
+<h2 id="summary">Summary</h2>
+<p>Start (or reconnect to) your AlmaLinux 10 distro from Windows Terminal, check whether it's currently running, and shut it down when you're done.</p>
 <blockquote>
 <p>If you are not using WSL 2, connect via SSH with <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>.</p>
 </blockquote>
@@ -395,6 +435,28 @@ For this, all you need to do is to launch it from a terminal, file explorer or a
 Once launched, you can close the tool you launched it from.
 It will stay connected until you shut it down manually or reboot your computer.</p>
 </blockquote>
+<h2 id="check-if-almalinux-10-is-running">Check if AlmaLinux 10 is running</h2>
+<p>From Windows Terminal, execute:</p>
+<pre class="highlight"><code class="language-shell">wsl -l -v</code></pre>
+<p>Look for the <code>AlmaLinux-10</code> row — its <strong>STATE</strong> column reads <strong>Running</strong> if it's currently active, or <strong>Stopped</strong> otherwise.</p>
+<h2 id="shut-down-almalinux-10">Shut down AlmaLinux 10</h2>
+<p>To stop just the AlmaLinux 10 distro, leaving any other distros untouched:</p>
+<pre class="highlight"><code class="language-shell">wsl -t AlmaLinux-10</code></pre>
+<p>To shut down all currently running WSL 2 distros at once:</p>
+<pre class="highlight"><code class="language-shell">wsl --shutdown</code></pre>
+<h2 id="next-step">Next step</h2>
+<p>Continue to <a href="../virtualhosts/overview/">Virtualhosts</a> to start hosting your projects.</p>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: What if <code>AlmaLinux-10</code> doesn't appear in the tab selector dropdown?</strong></p>
+<p>A: Confirm it's actually installed by running:</p>
+<pre class="highlight"><code class="language-shell">wsl -l -v</code></pre>
+<p>If it's missing from the list entirely, revisit <a href="../setup/installation/">Install AlmaLinux 10</a>.
+Restarting Windows Terminal after installation also helps it pick up the new tab profile.</p>
+<p><strong>Q: What if <code>wsl -d AlmaLinux-10</code> fails to start?</strong></p>
+<p>A: Run the below command to confirm the distro is installed and check its current state:</p>
+<pre class="highlight"><code class="language-shell">wsl -l -v</code></pre>
+<p>If another distro is using the same resources, stop it first with the below command, then retry:</p>
+<pre class="highlight"><code class="language-shell">wsl -t &lt;distro-name&gt;</code></pre>
 
 
 

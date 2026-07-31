@@ -395,7 +395,7 @@
                 </li>
             
                 <li class="toc__entry">
-                    <a href="#how-do-i-upgrade-mariadb" class="toc__link nav-link">How do I upgrade MariaDB ?</a>
+                    <a href="#how-do-i-upgrade-mariadb" class="toc__link nav-link">How do I upgrade MariaDB?</a>
                 </li>
             
                 <li class="toc__entry">
@@ -422,7 +422,30 @@
     
     
 
+    
+    
+        <p class="view-as-markdown text-end small mb-2">
+            <a href="../faq.md" class="text-body-secondary text-decoration-none"
+               type="text/markdown" rel="alternate" title="View the Markdown source of this page">
+                <i class="bi bi-filetype-md"></i>
+                View as Markdown
+            </a>
+        </p>
+    
+
     <h1 id="almalinux-10-frequently-asked-questions">AlmaLinux 10 Frequently asked questions</h1>
+<p>Quick answers to common questions about switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your development environment.</p>
+<ul>
+<li><a href="#how-do-i-switch-to-a-different-version-of-php">How do I switch to a different version of PHP?</a></li>
+<li><a href="#how-do-i-switch-to-a-different-version-of-nodejs">How do I switch to a different version of Node.js?</a></li>
+<li><a href="#how-do-i-fix-common-permission-issues">How do I fix common permission issues?</a></li>
+<li><a href="#where-are-the-error-log-files">Where are the error log files?</a></li>
+<li><a href="#how-do-i-update-composer">How do I update Composer?</a></li>
+<li><a href="#how-do-i-update-phpmyadmin">How do I update phpMyAdmin?</a></li>
+<li><a href="#how-do-i-upgrade-mariadb">How do I upgrade MariaDB?</a></li>
+<li><a href="#how-do-i-delete-a-virtualhost">How do I delete a virtualhost?</a></li>
+<li><a href="#how-do-i-create-command-aliases">How do I create command aliases?</a></li>
+</ul>
 <h2 id="how-do-i-switch-to-a-different-version-of-php">How do I switch to a different version of PHP?</h2>
 <p>Execute the following command:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf module switch-to php:remi-{major}.{minor} -y</code></pre>
@@ -467,6 +490,10 @@ The aliases are the following:</p>
 <pre class="highlight"><code class="language-terminaloutput">11.9.0</code></pre>
 <h2 id="how-do-i-fix-common-permission-issues">How do I fix common permission issues?</h2>
 <p>If running your project, you encounter permission issues, follow the below steps.</p>
+<blockquote>
+<p><code>chmod -R 777</code> grants read/write/execute access to everyone, which is only appropriate for a local development environment like this one.
+Avoid carrying this habit into staging or production, where permissions should be scoped more narrowly (for example, to the web server's user/group).</p>
+</blockquote>
 <h3 id="error">Error</h3>
 <blockquote>
 <p>PHP Fatal error: Uncaught InvalidArgumentException: The directory "<code>&lt;path-to-project&gt;</code>/data" is not writable...</p>
@@ -505,7 +532,7 @@ Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
 <p>Update Composer using its own <code>self-update</code> command:</p>
 <pre class="highlight"><code class="language-shell">sudo /usr/local/bin/composer self-update</code></pre>
 <p>The output should be similar to:</p>
-<pre class="highlight"><code class="language-text">Upgrading to version 2.8.8 (stable channel).
+<pre class="highlight"><code class="language-text">Upgrading to version 2.9.0 (stable channel).
 
 Use composer self-update --rollback to return to version 2.8.5</code></pre>
 <p>After updating, check again your Composer version by executing:</p>
@@ -517,7 +544,7 @@ Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
 <h2 id="how-do-i-update-phpmyadmin">How do I update phpMyAdmin?</h2>
 <p>Being installed as a system package, it can be updated using the command which updates the rest of the system packages:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
-<h2 id="how-do-i-upgrade-mariadb">How do I upgrade MariaDB ?</h2>
+<h2 id="how-do-i-upgrade-mariadb">How do I upgrade MariaDB?</h2>
 <p>Initially, MariaDB was at version 11.4 LTS.
 In case you want to upgrade to a different version, for instance <a href="https://mariadb.org/11-8-is-lts/">11.8 LTS</a>, use the below steps:</p>
 <ul>
@@ -552,7 +579,7 @@ In case you want to upgrade to a different version, for instance <a href="https:
 <h2 id="how-do-i-delete-a-virtualhost">How do I delete a virtualhost?</h2>
 <p>If for whatever reason you want to delete a virtualhost, for instance <code>to-be-deleted.localhost</code> you need to do the following:</p>
 <ul>
-<li>Delete the folder where are the files located</li>
+<li>Delete the folder where the files are located</li>
 </ul>
 <pre class="highlight"><code class="language-shell">sudo rm -rf /var/www/to-be-deleted.localhost</code></pre>
 <ul>
@@ -560,12 +587,16 @@ In case you want to upgrade to a different version, for instance <a href="https:
 </ul>
 <pre class="highlight"><code class="language-shell">sudo rm -f /etc/httpd/sites-available/to-be-deleted.localhost.conf</code></pre>
 <ul>
+<li>Delete the enabled site symlink</li>
+</ul>
+<pre class="highlight"><code class="language-shell">sudo rm -f /etc/httpd/sites-enabled/to-be-deleted.localhost.conf</code></pre>
+<ul>
 <li>Restart httpd server</li>
 </ul>
 <pre class="highlight"><code class="language-shell">sudo systemctl restart httpd</code></pre>
 <h2 id="how-do-i-create-command-aliases">How do I create command aliases?</h2>
 <p>From either your terminal or file explorer, navigate to your home directory (<code>/home/&lt;your-username&gt;/</code>).</p>
-<p>Using your preferred text editor, open the file: <code>.bash_profile</code> (if it does not exist, creat it first).</p>
+<p>Using your preferred text editor, open the file: <code>.bash_profile</code> (if it does not exist, create it first).</p>
 <p>Move to the end of the file and enter on a new line:</p>
 <pre class="highlight"><code class="language-text">alias command_alias="command to execute"</code></pre>
 <p>where:</p>

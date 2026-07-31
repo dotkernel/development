@@ -378,7 +378,15 @@
             <ul class="toc__list">
             
                 <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#good-to-know" class="toc__link nav-link">Good to know</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
                 </li>
             
             </ul>
@@ -399,24 +407,49 @@
 <!--        <h2 class="chapter__headline text-black-50">Virtualhosts</h2>-->
     
 
+    
+    
+        <p class="view-as-markdown text-end small mb-2">
+            <a href="../create-virtualhost.md" class="text-body-secondary text-decoration-none"
+               type="text/markdown" rel="alternate" title="View the Markdown source of this page">
+                <i class="bi bi-filetype-md"></i>
+                View as Markdown
+            </a>
+        </p>
+    
+
     <h1 id="almalinux-10-create-virtualhosts">AlmaLinux 10 Create virtualhosts</h1>
+<h2 id="summary">Summary</h2>
+<p>Add your desired domains to <code>config.yml</code> and run the <code>create-virtualhost.yml</code> Ansible playbook to provision each one.</p>
 <blockquote>
 <p>By using the <code>*.localhost</code> pattern for any new virtualhost, you do not need to modify the <code>hosts</code> file in Windows, because these are routed by default.</p>
+<p>This assumes you've already completed <a href="../../setup/setup-packages/">Setup Packages</a>.
+Apache must already be installed before virtualhosts can be created.</p>
 </blockquote>
 <p>Move inside the directory <code>development/wsl</code>:</p>
 <pre class="highlight"><code class="language-shell">cd ~/development/wsl/</code></pre>
 <p>If you don't already have a <code>config.yml</code> file, duplicate <code>config.yml.dist</code> as <code>config.yml</code>.</p>
 <p>Using your preferred text editor, open <code>config.yml</code> and, under the <code>virtualhosts</code> key, enter the virtualhosts that you want to create, each on its own line.
-Already existing virtualhosts will be skipped, their contents will not be lost, no need to comment or remove them.
-Save and close the file.</p>
+Already existing virtualhosts will be skipped, their contents will not be lost, no need to comment or remove them.</p>
+<blockquote>
+<p>Virtualhost names should be valid hostnames (lowercase letters, numbers, and hyphens) ending in <code>.localhost</code>, for example <code>api.dotkernel.localhost</code>.
+Avoid spaces or other special characters.</p>
+<p>You can come back and add more virtualhosts at any time: add new lines under <code>virtualhosts</code> and re-run the playbook.
+Existing virtualhosts are left untouched.</p>
+</blockquote>
+<p>Save and close the file.</p>
 <p>Create the specified virtualhosts:</p>
 <pre class="highlight"><code class="language-shell">ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass</code></pre>
-<p>This process will ask for your <strong>AlmaLinux 10</strong> password, iterate over the list of configured <code>virtualhosts</code> and output a short summary with the results.
+<p>This process will ask for your <strong>AlmaLinux 10</strong> password, iterate over the list of configured, and output a short summary with the results.
 Your virtualhost should be accessible and ready to use.</p>
 <p>You will install your project under the <code>html</code> directory of your project, for example <code>/var/www/example.localhost/html</code>.</p>
 <blockquote>
 <p>The virtualhost's document root is set to the <code>public</code> directory of the above location, for example <code>/var/www/example.localhost/html/public</code>.</p>
 <p>If you want to have the DocumentRoot directly in <code>html</code> folder, you need to modify the file <code>/etc/httpd/sites-available/example.localhost</code>.</p>
+<p>A freshly created virtualhost only has an empty <code>html</code> directory - <code>html/public</code> doesn't exist yet.
+Visiting the virtualhost's URL in your browser will show an error until you place a project there, this is expected.</p>
+<p>Apache logs for each virtualhost are stored separately, for example <code>/var/www/example.localhost/log/error.log</code> and <code>/var/www/example.localhost/log/requests.log</code>.
+Check these first if something isn't working as expected.</p>
 </blockquote>
 <h2 id="good-to-know">Good to know</h2>
 <ul>
@@ -424,9 +457,29 @@ Your virtualhost should be accessible and ready to use.</p>
 <li>If you work with virtualhosts, your projects are created under <code>/var/www/</code>.</li>
 <li>You can still run PHP scripts under the default Apache project directory, located at <code>/var/www/html/</code>.</li>
 <li>If you encounter write permission issues, see <a href="https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues">this guide</a>.</li>
-<li>We install PHP 8.4 by default—if you need a different version, see <a href="https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-php">this guide</a>.</li>
-<li>We install Node.js 22 by default—if you need a different version, see <a href="https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-nodejs">this guide</a>.</li>
+<li>We install PHP 8.4 by default-if you need a different version, see <a href="https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-php">this guide</a>.</li>
+<li>We install Node.js 22 by default-if you need a different version, see <a href="https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-nodejs">this guide</a>.</li>
 </ul>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: What if I don't have a <code>config.yml</code> file yet?</strong></p>
+<p>A: Duplicate the provided template by running the below command inside <code>development/wsl</code>:</p>
+<pre class="highlight"><code class="language-shell">cp config.yml.dist config.yml</code></pre>
+<p>Then add your virtualhosts under the <code>virtualhosts</code> key.</p>
+<p><strong>Q: What happens if I list a virtualhost that already exists?</strong></p>
+<p>A: It will simply be skipped.
+Its existing files and configuration are left untouched, so there's no need to comment out or remove already-created entries from <code>config.yml</code>.</p>
+<p><strong>Q: Where should I put my project's files?</strong></p>
+<p>A: Under the <code>html</code> directory of your virtualhost, for example <code>/var/www/example.localhost/html</code>.
+The document root is set to the <code>public</code> subdirectory of that location, for example <code>/var/www/example.localhost/html/public</code>.</p>
+<p><strong>Q: How do I make the DocumentRoot point directly to <code>html</code> instead of <code>html/public</code>?</strong></p>
+<p>A: Edit the virtualhost's Apache configuration file at <code>/etc/httpd/sites-available/example.localhost</code> and change the <code>DocumentRoot</code> accordingly.</p>
+<p><strong>Q: How do I access my virtualhost if AlmaLinux 10 isn't running?</strong></p>
+<p>A: You need to start <strong>AlmaLinux 10</strong> first.
+Your virtualhosts are only reachable while the distro is running.</p>
+<p><strong>Q: What if I hit permission errors when writing to my project's files?</strong></p>
+<p>A: See the <a href="https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues">permission issues guide</a> in the FAQ.</p>
+<p><strong>Q: How do I delete a virtualhost I no longer need?</strong></p>
+<p>A: See <a href="https://docs.dotkernel.org/development/v2/faq/#how-do-i-delete-a-virtualhost">How do I delete a virtualhost?</a> in the FAQ.</p>
 
 
 
