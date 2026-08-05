@@ -408,13 +408,42 @@
 
     
     
-        <p class="view-as-markdown text-end small mb-2">
-            <a href="../running.md" class="text-body-secondary text-decoration-none"
-               type="text/markdown" rel="alternate" title="View the Markdown source of this page">
-                <i class="bi bi-filetype-md"></i>
-                View as Markdown
-            </a>
-        </p>
+        
+        
+            
+        
+        
+        <div class="md-actions-bar">
+            <div class="md-actions">
+                <button type="button" class="md-actions-toggle" aria-haspopup="true" aria-expanded="false"
+                        onclick="toggleMdActionsMenu(this)">
+                    <span class="md-actions-toggle-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9l7 7v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M13 4v6h6"/></svg>
+                        <span>Copy Page</span>
+                    </span>
+                    <span class="md-actions-toggle-chev">
+                        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                </button>
+                <div class="md-actions-menu" role="menu">
+                    <button type="button" class="md-actions-item" role="menuitem" data-copy-url="../running.md"
+                            onclick="copyMarkdownPage(this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                        <span class="label">Copy Page (as Markdown)</span>
+                    </button>
+                    <a href="../running.md" target="_blank" rel="alternate noopener noreferrer" type="text/markdown"
+                       class="md-actions-item" role="menuitem" title="View the Markdown source of this page">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9l7 7v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M13 4v6h6"/><path d="M8 15h8M8 11h4"/></svg>
+                        <span class="label">View as Markdown</span>
+                    </a>
+                    <a href="https://claude.ai/new?q=Read%20from%20https%3A//docs.dotkernel.org/development/v2/running.md%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="noopener noreferrer"
+                       class="md-actions-item" role="menuitem" title="Open this page in Claude">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z"/></svg>
+                        <span class="label">Open in Claude</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     
 
     <h1 id="running-almalinux-10-on-wsl-2">Running AlmaLinux 10 on WSL 2</h1>
