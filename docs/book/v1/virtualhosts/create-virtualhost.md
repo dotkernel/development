@@ -1,4 +1,4 @@
-# AlmaLinux 9 Create virtualhosts
+# Create virtualhosts
 
 > By using the `*.localhost` pattern for any new virtualhost, you do not need to modify the `hosts` file in Windows, because these are routed by default.
 
