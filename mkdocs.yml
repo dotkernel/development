@@ -18,6 +18,8 @@ nav:
       - Virtualhosts:
           - Overview: v2/virtualhosts/overview.md
           - Create virtualhost: v2/virtualhosts/create-virtualhost.md
+      - Editor Integration: v2/editor-integration.md
+      - WSL Configuration: v2/wsl-configuration.md
       - FAQ: v2/faq.md
   - v1:
       - Terminal: v1/terminal.md
