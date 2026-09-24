@@ -1,4 +1,4 @@
-# AlmaLinux 10 Setup
+# Setup
 
 ## Summary
 
@@ -88,7 +88,9 @@ Using your preferred text editor, open `config.yml` and fill in the empty fields
 * `config.git.config."user.name"` / `"user.email"`: the identity Git will use for your commits inside AlmaLinux 10.
 * `config.mariadb.root_password`: the password to set for MariaDB's `root` user (you'll use this to log into phpMyAdmin later).
 * `config.system.username`: defaults to your current AlmaLinux 10 username automatically, usually no change needed.
-* `config.virtualhosts`: a list of local domains to create virtualhosts for (see [Virtualhosts](../virtualhosts/overview.md)); the default entry `example.localhost` can be removed or left as-is.
+* `config.virtualhosts`: an optional starter list of local domains to create a virtualhost for during this same run; the default entry `example.localhost` can be removed or left as-is. You do not need to list every project here — see [Create a virtualhost](../virtualhosts/create-virtualhost.md) to add one at any time after setup, without re-running this step.
+
+> This environment is intended for **local development only**, not production or network-exposed use — security is relaxed or effectively nonexistent by default. `config.mariadb.root_password` is stored in plaintext in this gitignored, local-only `config.yml`, and phpMyAdmin is exposed at `/phpmyadmin` with root login. That's acceptable for a local dev box, but this stack should never be exposed to a network.
 
 Save and close the file.
 
@@ -115,7 +117,7 @@ The installation is complete, your **AlmaLinux 10** development environment is r
 
 ## Next step
 
-Your environment is now provisioned. Continue to [Running on WSL 2](../running.md) to learn how to (re)connect to your **AlmaLinux 10** distro, or jump straight to [Virtualhosts](../virtualhosts/overview.md) to host your first project.
+`install.yml` provisions the server-wide stack (Apache, PHP, MariaDB, phpMyAdmin, Composer, Node.js) — a one-time step you don't need to repeat. Creating a virtualhost for a project is a separate, repeatable step: continue to [Running on WSL 2](../running.md) to learn how to (re)connect to your **AlmaLinux 10** distro, or jump straight to [Create a virtualhost](../virtualhosts/create-virtualhost.md) whenever you're ready to host a project — you can come back and repeat that step for every new project.
 
 ## FAQ
 
