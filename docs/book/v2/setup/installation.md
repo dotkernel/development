@@ -4,7 +4,7 @@
 
 Stop any other running WSL 2 distros, then install the AlmaLinux 10 distro (`wsl --install -d AlmaLinux-10`) and create the initial Unix user account.
 
-> If you are not using WSL, you can jump straight to the [AlmaLinux 10 Setup page](https://docs.dotkernel.org/development/v2/setup/setup-packages/).
+> If you are not using WSL, you can jump straight to the [Setup Packages page](setup-packages.md).
 
 > This is step 2 of 3: [System Requirements](system-requirements.md) → **Install AlmaLinux 10** (this page) → [Setup Packages](setup-packages.md).
 
@@ -106,7 +106,7 @@ Install the **AlmaLinux 10** distro by executing the below command:
 wsl --install -d AlmaLinux-10
 ```
 
-You should see the download progress-once finished, the output should look like this:
+You should see the download progress — once finished, the output should look like this:
 
 ```text
 Downloading: AlmaLinux OS 10
@@ -124,7 +124,7 @@ This is the username you will use inside **AlmaLinux 10**, and it can be any alp
 Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):
 
 ```shell
-Enter new UNIX username: dotkernel.
+Enter new UNIX username: dotkernel
 New password:
 ```
 
@@ -140,7 +140,7 @@ Retype new password:
 Finally, you should see the following message:
 
 ```text
-passwd: password updated successfully
+passwd: all authentication tokens updated successfully
 [<your-alma-linux-10-username>@<your-device-name> <your-windows-username>]$
 ```
 
@@ -148,6 +148,35 @@ passwd: password updated successfully
 > Keep this window open and continue directly with [Setup Packages](setup-packages.md).
 > Its commands run inside AlmaLinux 10, not in Windows Terminal.
 > If you close this window, see [Running on WSL 2](../running.md) to reconnect.
+
+## Before you continue
+
+The next step ([Setup Packages](setup-packages.md)) relies on `systemd` being active inside **AlmaLinux 10** — several of its tasks use `systemctl`, and they will fail with `System has not been booted with systemd as init system` if it isn't.
+
+Check now by running:
+
+```shell
+systemctl is-system-running
+```
+
+If this prints a status (for example `running` or `degraded`) rather than an error, systemd is active and you can continue.
+
+If it isn't active, add the following to `/etc/wsl.conf` (you'll need `sudo` to edit it):
+
+```text
+[boot]
+systemd=true
+```
+
+Then, from **Windows Terminal** (not inside AlmaLinux 10), restart the distro for the change to take effect:
+
+```shell
+wsl --shutdown
+```
+
+Reopen **AlmaLinux 10** and re-run the check above to confirm.
+
+> This same restart is also what makes the default-user setting from your `config.yml` take effect once you reach [Setup Packages](setup-packages.md) — so if your terminal ever drops you in as the wrong user after that step, run `wsl --shutdown` and reopen.
 
 ## Next step
 
@@ -193,7 +222,7 @@ wsl --list --online
 
 **Q: What if `wsl --install -d AlmaLinux-10` fails or hangs with no clear error?**
 
-A: This is most often caused by hardware virtualization being disabled in your BIOS/UEFI, or by Hyper-V/Virtual Machine Platform not being enabled.
+A: This is most often caused by hardware virtualization being disabled in your BIOS/UEFI, or by the `Virtual Machine Platform` Windows feature not being enabled.
 Revisit the [System Requirements](system-requirements.md) page and confirm both.
 A blocked or unstable internet connection (including corporate proxies/firewalls) can also cause the download to stall.
 
