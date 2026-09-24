@@ -1,7 +1,7 @@
 ---
-- name: Install PHP 8.4
-  command: dnf module install php:remi-8.4 -y
-- name: Enable and start PHP 8.4
+- name: Install PHP 8.5
+  command: dnf module install php:remi-8.5 -y
+- name: Enable and start PHP 8.5
   command: systemctl enable --now php-fpm
 - name: Create PHP info file
   template:
