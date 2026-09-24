@@ -1,60 +1,31 @@
-# WSL2 development environment
+# Development environment
 
-This is a collection of Ansible scripts helping with the creation and maintenance of your WSL2 development environment.
+This repo provisions a full local development environment for Dotkernel projects using an Ansible playbook, runnable directly on Linux or inside WSL 2 on Windows.
 
-If you're not already using it, we recommend you to install [Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&gl=US).
-It is a modern tool that incorporates the power of multiple already known command-line applications like `Windows PowerShell`, `Linux shell`, and more...
+## What you get
 
-## Check if WLS2 is already available
+Running the playbook installs and configures:
 
-Open `Windows Terminal` and execute the following command:
+* Apache
+* PHP-FPM (version pinned in `wsl/roles/php/tasks/main.yml`)
+* MariaDB (version pinned in `wsl/roles/mariadb/templates/MariaDB.repo.j2`)
+* phpMyAdmin
+* Composer
+* Node.js 22
 
-```shell
-wsl -v
-```
+A full run typically takes somewhere between 15 and 30 minutes, depending on your internet connection - most of that time is spent downloading packages.
 
-The output should look similar to this:
+## Which version should I use?
 
-```text
-WSL version: 2.2.4.0
-Kernel version: 5.15.153.1-2
-WSLg version: 1.0.61
-MSRDC version: 1.2.5326
-Direct3D version: 1.611.1-81528511
-DXCore version: 10.0.26091.1-240325-1447.ge-release
-Windows version: 10.0.22631.3737
-```
+Two versions of this guide are maintained:
 
-If the output starts with `WSL version: 2.x.x.x`, you are ready to use **WSL2** and can proceed to [install AlmaLinux 10](wsl/README.md).
+* **v2** targets **AlmaLinux 10** and is the current, actively maintained version - start here unless you have a specific reason not to.
+* **v1** targets **AlmaLinux 9**, for environments that haven't moved to AlmaLinux 10 yet.
 
-## Install WSL2
+## Getting started
 
-Before proceeding with the installation, please consult Microsoft's [documentation](https://learn.microsoft.com/en-us/windows/wsl/install#prerequisites) regarding the minimum requirements for running WSL2.
+Full documentation is published at <https://docs.dotkernel.org/development/v2/>.
 
-Once you identified that your machine can run WSL2, open the `Run` prompt by pressing `Win` + `r`, type `OptionalFeatures` in the dialog and press `Enter`.
-This will open a window where you can turn Windows features on/off.
-Make sure that the below features are activated (checked):
+If you're using WSL 2 (Windows Subsystem for Linux) to run your development environment, start with [Terminal](https://docs.dotkernel.org/development/v2/terminal/) to install Windows Terminal, then continue to [System Requirements](https://docs.dotkernel.org/development/v2/setup/system-requirements/).
 
-* `Hyper-V` (including its sub-features)
-* `Virtual Machine Platform`
-* `Windows Subsystem for Linux`
-
-> If any of the above features are missing, then first you need to install them manually using [this guide](https://docs.microsoft.com/en-us/windows/wsl/install-manual) and then continue with the below steps.
-
-Click `Ok` and restart your computer.
-
-Open Microsoft Store, search for `Windows Subsystem for Linux` and install it.
-
-Make sure that version **2** of WSL is set as default by executing the below command in Windows Terminal:
-
-```shell
-wsl --set-default-version 2
-```
-
-To test, run again the following command:
-
-```shell
-wsl -v
-```
-
-This time the output should display `WSL version: 2.x.x.x`, which means that your system is ready for using **WSL2** and you can proceed to [install AlmaLinux 10](wsl/README.md).
+If you're not using WSL (for example, a native Linux host), you can jump straight to [Setup Packages](https://docs.dotkernel.org/development/v2/setup/setup-packages/).
