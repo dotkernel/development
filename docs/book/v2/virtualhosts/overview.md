@@ -1,4 +1,4 @@
-# AlmaLinux 10 Overview
+# Overview
 
 ## Summary
 
