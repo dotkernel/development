@@ -1,4 +1,4 @@
-# AlmaLinux 9 Frequently asked questions
+# Frequently asked questions
 
 ## How do I switch to a different version of PHP?
 
