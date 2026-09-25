@@ -1,6 +1,6 @@
 # Development environment
 
-This repo provisions a full local development environment for Dotkernel projects using an Ansible playbook, runnable directly on Linux or inside WSL 2 on Windows.
+This repo provisions a full local development environment for any PHP framework or project, using an Ansible playbook, runnable directly on Linux or inside WSL 2 on Windows.
 
 ## What you get
 
@@ -12,8 +12,6 @@ Running the playbook installs and configures:
 * phpMyAdmin
 * Composer
 * Node.js 22
-
-A full run typically takes somewhere between 15 and 30 minutes, depending on your internet connection - most of that time is spent downloading packages.
 
 ## Which version should I use?
 
