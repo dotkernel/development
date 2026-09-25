@@ -22,7 +22,7 @@ This opens VS Code connected to your **AlmaLinux 10** distro - notice the green 
 
 ## PhpStorm (WSL interpreter)
 
-PhpStorm can also run against the PHP interpreter inside AlmaLinux 10 directly, rather than a local Windows PHP install.
+You install PhpStorm normally on Windows, but configure it to use the PHP interpreter inside AlmaLinux 10 instead of installing PHP on Windows.
 
 1. Open your project in PhpStorm.
 2. Go to `Settings` -> `PHP`.
@@ -32,7 +32,8 @@ PhpStorm can also run against the PHP interpreter inside AlmaLinux 10 directly, 
 
 PhpStorm can now index, run, and debug using the same PHP install the playbook provisioned, instead of a separate Windows copy.
 
-> If your project files live inside the WSL filesystem (the default and recommended location - see [WSL Configuration](wsl-configuration.md)), open the project from its `\\wsl.localhost\AlmaLinux-10\...` path in PhpStorm so file watching and indexing stay fast.
+> Your project files are located inside the WSL filesystem (the default and recommended location - see [WSL Configuration](wsl-configuration.md)).
+> You open the project from its `\\wsl.localhost\AlmaLinux-10\...` path in PhpStorm so file watching and indexing stay fast.
 
 ## Xdebug
 
