@@ -31,11 +31,11 @@
         <meta name="twitter:image"       content="https://docs.dotkernel.org/img/open-graph/twitter-card-docs.png"/>
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/terminal/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/wsl-configuration/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Terminal - development - Dotkernel Documentation</title>
+        <title>WSL Configuration - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -171,7 +171,7 @@
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
       
         
-        <a href="./" class="dropdown-item active">
+        <a href="../terminal/" class="dropdown-item active">
           
             
               AlmaLinux 10 (latest)
@@ -221,8 +221,8 @@
                 
                     
                         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Terminal</a>
+<li class="subnavigation__list-item ">
+    <a href="../terminal/" class="subnavigation__link">Terminal</a>
 </li>
 
                     
@@ -331,8 +331,8 @@
 
                     
                         
-<li class="subnavigation__list-item ">
-    <a href="../wsl-configuration/" class="subnavigation__link">WSL Configuration</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">WSL Configuration</a>
 </li>
 
                     
@@ -375,7 +375,7 @@
                     
                 
 
-                <li class="breadcrumb-item active" aria-current="page">Terminal</li>
+                <li class="breadcrumb-item active" aria-current="page">WSL Configuration</li>
             
         
     </ol>
@@ -410,17 +410,17 @@
                     </span>
                 </button>
                 <div class="md-actions-menu" role="menu">
-                    <button type="button" class="md-actions-item" role="menuitem" data-copy-url="../terminal.md"
+                    <button type="button" class="md-actions-item" role="menuitem" data-copy-url="../wsl-configuration.md"
                             onclick="copyMarkdownPage(this)">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
                         <span class="label">Copy Page (as Markdown)</span>
                     </button>
-                    <a href="../terminal.md" target="_blank" rel="alternate noopener noreferrer" type="text/markdown"
+                    <a href="../wsl-configuration.md" target="_blank" rel="alternate noopener noreferrer" type="text/markdown"
                        class="md-actions-item" role="menuitem" title="View the Markdown source of this page">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9l7 7v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M13 4v6h6"/><path d="M8 15h8M8 11h4"/></svg>
                         <span class="label">View as Markdown</span>
                     </a>
-                    <a href="https://claude.ai/new?q=Read%20from%20https%3A//docs.dotkernel.org/development/v2/terminal.md%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="noopener noreferrer"
+                    <a href="https://claude.ai/new?q=Read%20from%20https%3A//docs.dotkernel.org/development/v2/wsl-configuration.md%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="noopener noreferrer"
                        class="md-actions-item" role="menuitem" title="Open this page in Claude">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z"/></svg>
                         <span class="label">Open in Claude</span>
@@ -430,17 +430,48 @@
         </div>
     
 
-    <h1 id="terminal">Terminal</h1>
+    <h1 id="wsl-configuration">WSL Configuration</h1>
 <h2 id="summary">Summary</h2>
-<p>Install Windows Terminal, the tool you'll use throughout this guide to run WSL 2 commands and to open dedicated tabs for your AlmaLinux 10 distro.</p>
+<p>Where to put your project files, how to open them from Windows, how to tune WSL 2's resource usage, and how to back up or move your distro.</p>
+<h2 id="where-to-put-your-project-files">Where to put your project files</h2>
+<p>Keep your projects inside the WSL filesystem - for example under <code>/var/www/</code>, which is exactly where this playbook creates your virtualhosts. Avoid working with projects stored under <code>/mnt/c/...</code> (or any other Windows drive mounted into WSL): crossing filesystems this way can significantly slow down file-heavy operations like <code>composer install</code>, <code>npm install</code>, or a framework's file-watcher.</p>
 <blockquote>
-<p>If you are not using WSL, you can jump straight to the <a href="../setup/setup-packages/">Setup Packages page</a>.</p>
+<p>If you cloned a project onto <code>C:\</code> before setting up WSL, move or re-clone it into your AlmaLinux 10 home directory or <code>/var/www</code> instead.</p>
 </blockquote>
-<p>If you're not already using it, we recommend installing <a href="https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&amp;gl=US">Windows Terminal</a>.
-It is a modern tool that incorporates the power of multiple already known command-line applications like <code>Windows PowerShell</code>, <code>Linux shell</code>, and more.</p>
-<p>Once your AlmaLinux 10 distro is installed, it gets its own dedicated tab profile in Windows Terminal (see <a href="../running/">Running on WSL 2</a>), so every command in this guide (Windows and Linux alike) can be run from the same app.</p>
+<h2 id="opening-a-wsl-project-from-windows">Opening a WSL project from Windows</h2>
+<p>To browse your <strong>AlmaLinux 10</strong> files from Windows File Explorer, open:</p>
+<pre class="highlight"><code class="language-text">\\wsl.localhost\AlmaLinux-10\var\www\</code></pre>
+<p>(older WSL versions use <code>\\wsl$\AlmaLinux-10\...</code> instead - both work).</p>
+<p>From inside AlmaLinux 10, you can also open the current directory in Windows File Explorer directly:</p>
+<pre class="highlight"><code class="language-shell">explorer.exe .</code></pre>
+<h2 id="wslconfig"><code>.wslconfig</code></h2>
+<p>WSL 2 runs inside a lightweight VM, and by default it can use most of your machine's memory and grow its virtual disk indefinitely. You can cap this with a <code>.wslconfig</code> file at <code>C:\Users\&lt;your-windows-username&gt;\.wslconfig</code> (created from Windows, not inside AlmaLinux 10):</p>
+<pre class="highlight"><code class="language-text">[wsl2]
+memory=8GB
+processors=4
+swap=2GB
+vmIdleTimeout=60000
+networkingMode=mirrored</code></pre>
+<ul>
+<li><code>memory</code> / <code>processors</code>: cap how much RAM/CPU the WSL VM can use.</li>
+<li><code>swap</code>: swap file size inside the VM.</li>
+<li><code>vmIdleTimeout</code>: milliseconds of inactivity before the VM is torn down (frees memory when you're not using WSL).</li>
+<li><code>networkingMode=mirrored</code>: mirrors your Windows network interfaces into WSL, which can fix some VPN/corporate-network connectivity issues.</li>
+</ul>
+<p>Apply changes with:</p>
+<pre class="highlight"><code class="language-shell">wsl --shutdown</code></pre>
+<p>then reopen <strong>AlmaLinux 10</strong>.</p>
+<blockquote>
+<p>The VM's virtual disk (VHDX) only grows - it doesn't shrink automatically as you delete files. See Microsoft's guide on compacting a WSL disk if it grows larger than expected.</p>
+</blockquote>
+<h2 id="backup-and-portability">Backup and portability</h2>
+<p><code>wsl --unregister AlmaLinux-10</code> (documented in <a href="../setup/installation/">Install AlmaLinux 10</a>) deletes the distro and everything in it - it's a reset, not a backup.</p>
+<p>To back up or move your environment instead, export it to a single file:</p>
+<pre class="highlight"><code class="language-shell">wsl --export AlmaLinux-10 alma-linux-10-backup.tar</code></pre>
+<p>And restore it (to the same machine or a different one) with:</p>
+<pre class="highlight"><code class="language-shell">wsl --import AlmaLinux-10 C:\WSL\AlmaLinux-10 alma-linux-10-backup.tar</code></pre>
 <h2 id="next-step">Next step</h2>
-<p>Continue to <a href="../setup/system-requirements/">System Requirements</a> to check whether your machine is ready for WSL 2.</p>
+<p>See <a href="../editor-integration/">Editor Integration</a> to connect VS Code or PhpStorm, or jump to the <a href="../faq/">FAQ</a> for common troubleshooting.</p>
 
 
 
@@ -450,9 +481,9 @@ It is a modern tool that incorporates the power of multiple already known comman
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../..">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../editor-integration/">
                     <i class="bi bi-chevron-left"></i>
-                    Home
+                    Editor Integration
                 </a>
             
         </li>
@@ -460,8 +491,8 @@ It is a modern tool that incorporates the power of multiple already known comman
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
-                    System Requirements
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../faq/">
+                    FAQ
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -488,6 +519,22 @@ It is a modern tool that incorporates the power of multiple already known comman
             
                 <li class="toc__entry">
                     <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#where-to-put-your-project-files" class="toc__link nav-link">Where to put your project files</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#opening-a-wsl-project-from-windows" class="toc__link nav-link">Opening a WSL project from Windows</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#wslconfig" class="toc__link nav-link">.wslconfig</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#backup-and-portability" class="toc__link nav-link">Backup and portability</a>
                 </li>
             
                 <li class="toc__entry">

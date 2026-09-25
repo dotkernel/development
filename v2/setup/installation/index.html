@@ -326,6 +326,18 @@
                     
                         
 <li class="subnavigation__list-item ">
+    <a href="../../editor-integration/" class="subnavigation__link">Editor Integration</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../../wsl-configuration/" class="subnavigation__link">WSL Configuration</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
     <a href="../../faq/" class="subnavigation__link">FAQ</a>
 </li>
 
@@ -431,7 +443,7 @@
 <h2 id="summary">Summary</h2>
 <p>Stop any other running WSL 2 distros, then install the AlmaLinux 10 distro (<code>wsl --install -d AlmaLinux-10</code>) and create the initial Unix user account.</p>
 <blockquote>
-<p>If you are not using WSL, you can jump straight to the <a href="https://docs.dotkernel.org/development/v2/setup/setup-packages/">AlmaLinux 10 Setup page</a>.</p>
+<p>If you are not using WSL, you can jump straight to the <a href="../setup-packages/">Setup Packages page</a>.</p>
 <p>This is step 2 of 3: <a href="../system-requirements/">System Requirements</a> → <strong>Install AlmaLinux 10</strong> (this page) → <a href="../setup-packages/">Setup Packages</a>.</p>
 <p>All commands on this page are executed in <code>Windows Terminal</code>, on your Windows host, not inside AlmaLinux 10.</p>
 </blockquote>
@@ -495,7 +507,7 @@ A distribution with the supplied name already exists. Use --name to choose a dif
 Error code: Wsl/InstallDistro/Service/RegisterDistro/ERROR_ALREADY_EXISTS</code></pre>
 <p>Install the <strong>AlmaLinux 10</strong> distro by executing the below command:</p>
 <pre class="highlight"><code class="language-shell">wsl --install -d AlmaLinux-10</code></pre>
-<p>You should see the download progress-once finished, the output should look like this:</p>
+<p>You should see the download progress — once finished, the output should look like this:</p>
 <pre class="highlight"><code class="language-text">Downloading: AlmaLinux OS 10
 Installing: AlmaLinux OS 10
 Distribution successfully installed. It can be launched via 'wsl.exe -d AlmaLinux-10'
@@ -506,20 +518,34 @@ Enter new UNIX username:</code></pre>
 <p>As per the last line, the installation process now prompts you to enter a username.
 This is the username you will use inside <strong>AlmaLinux 10</strong>, and it can be any alphanumeric string (for example <code>dotkernel</code>):</p>
 <p>Next, you are prompted to change the password associated with your chosen username (you will not see what you are typing, that's a security measure in Linux regarding passwords):</p>
-<pre class="highlight"><code class="language-shell">Enter new UNIX username: dotkernel.
+<pre class="highlight"><code class="language-shell">Enter new UNIX username: dotkernel
 New password:</code></pre>
 <p>Depending on the strength of your password, you might get a <code>BAD PASSWORD: &lt;some-reason&gt;</code> message.
 If you want to choose a different password, hit <code>Enter</code> and you are taken back to the previous step or continue with retyping your password.</p>
 <p>Next, you are asked to retype your password:</p>
 <pre class="highlight"><code class="language-text">Retype new password:</code></pre>
 <p>Finally, you should see the following message:</p>
-<pre class="highlight"><code class="language-text">passwd: password updated successfully
+<pre class="highlight"><code class="language-text">passwd: all authentication tokens updated successfully
 [&lt;your-alma-linux-10-username&gt;@&lt;your-device-name&gt; &lt;your-windows-username&gt;]$</code></pre>
 <blockquote>
 <p>At this point your terminal has dropped you inside the <strong>AlmaLinux 10</strong> shell (notice the prompt changed).
 Keep this window open and continue directly with <a href="../setup-packages/">Setup Packages</a>.
 Its commands run inside AlmaLinux 10, not in Windows Terminal.
 If you close this window, see <a href="../../running/">Running on WSL 2</a> to reconnect.</p>
+</blockquote>
+<h2 id="before-you-continue">Before you continue</h2>
+<p>The next step (<a href="../setup-packages/">Setup Packages</a>) relies on <code>systemd</code> being active inside <strong>AlmaLinux 10</strong> — several of its tasks use <code>systemctl</code>, and they will fail with <code>System has not been booted with systemd as init system</code> if it isn't.</p>
+<p>Check now by running:</p>
+<pre class="highlight"><code class="language-shell">systemctl is-system-running</code></pre>
+<p>If this prints a status (for example <code>running</code> or <code>degraded</code>) rather than an error, systemd is active and you can continue.</p>
+<p>If it isn't active, add the following to <code>/etc/wsl.conf</code> (you'll need <code>sudo</code> to edit it):</p>
+<pre class="highlight"><code class="language-text">[boot]
+systemd=true</code></pre>
+<p>Then, from <strong>Windows Terminal</strong> (not inside AlmaLinux 10), restart the distro for the change to take effect:</p>
+<pre class="highlight"><code class="language-shell">wsl --shutdown</code></pre>
+<p>Reopen <strong>AlmaLinux 10</strong> and re-run the check above to confirm.</p>
+<blockquote>
+<p>This same restart is also what makes the default-user setting from your <code>config.yml</code> take effect once you reach <a href="../setup-packages/">Setup Packages</a> — so if your terminal ever drops you in as the wrong user after that step, run <code>wsl --shutdown</code> and reopen.</p>
 </blockquote>
 <h2 id="next-step">Next step</h2>
 <p>Continue to <a href="../setup-packages/">Setup Packages</a> to install the required system packages and provision your development environment.</p>
@@ -541,7 +567,7 @@ Press <code>Enter</code> to choose a different password, or continue retyping th
 <p>A: Run the below command to see the current list of installable distros and their <strong>NAME</strong> values:</p>
 <pre class="highlight"><code class="language-shell">wsl --list --online</code></pre>
 <p><strong>Q: What if <code>wsl --install -d AlmaLinux-10</code> fails or hangs with no clear error?</strong></p>
-<p>A: This is most often caused by hardware virtualization being disabled in your BIOS/UEFI, or by Hyper-V/Virtual Machine Platform not being enabled.
+<p>A: This is most often caused by hardware virtualization being disabled in your BIOS/UEFI, or by the <code>Virtual Machine Platform</code> Windows feature not being enabled.
 Revisit the <a href="../system-requirements/">System Requirements</a> page and confirm both.
 A blocked or unstable internet connection (including corporate proxies/firewalls) can also cause the download to stall.</p>
 <p><strong>Q: What if the Microsoft Store is unavailable or blocked (for example, on a work laptop)?</strong></p>
@@ -606,6 +632,10 @@ A blocked or unstable internet connection (including corporate proxies/firewalls
             
                 <li class="toc__entry">
                     <a href="#install-almalinux-10" class="toc__link nav-link">Install AlmaLinux 10</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#before-you-continue" class="toc__link nav-link">Before you continue</a>
                 </li>
             
                 <li class="toc__entry">

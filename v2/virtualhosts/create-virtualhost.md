@@ -1,6 +1,8 @@
-# AlmaLinux 10 Create virtualhosts
+# Create virtualhosts
 
 ## Summary
+
+Provisioning your **AlmaLinux 10** environment is a two-step process: `install.yml` sets up the server-wide stack once (Apache, PHP, MariaDB, phpMyAdmin, Composer, Node.js); creating a virtualhost for each project is a separate, repeatable step that you run as needed, any time after that — this page covers that second step.
 
 Add your desired domains to `config.yml` and run the `create-virtualhost.yml` Ansible playbook to provision each one.
 
@@ -34,14 +36,14 @@ Create the specified virtualhosts:
 ansible-playbook -i hosts create-virtualhost.yml --ask-become-pass
 ```
 
-This process will ask for your **AlmaLinux 10** password, iterate over the list of configured, and output a short summary with the results.
+This process will ask for your **AlmaLinux 10** password, iterate over the list of configured virtualhosts, and output a short summary with the results.
 Your virtualhost should be accessible and ready to use.
 
 You will install your project under the `html` directory of your project, for example `/var/www/example.localhost/html`.
 
 > The virtualhost's document root is set to the `public` directory of the above location, for example `/var/www/example.localhost/html/public`.
 
-> If you want to have the DocumentRoot directly in `html` folder, you need to modify the file `/etc/httpd/sites-available/example.localhost`.
+> If you want to have the DocumentRoot directly in `html` folder, you need to modify the file `/etc/httpd/sites-available/example.localhost.conf`.
 
 > A freshly created virtualhost only has an empty `html` directory - `html/public` doesn't exist yet.
 > Visiting the virtualhost's URL in your browser will show an error until you place a project there, this is expected.
@@ -54,9 +56,9 @@ You will install your project under the `html` directory of your project, for ex
 * To run your installed projects, you need to start **AlmaLinux 10** first.
 * If you work with virtualhosts, your projects are created under `/var/www/`.
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
-* If you encounter write permission issues, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues).
-* We install PHP 8.4 by default-if you need a different version, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-php).
-* We install Node.js 22 by default-if you need a different version, see [this guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-switch-to-a-different-version-of-nodejs).
+* If you encounter write permission issues, see [this guide](../faq.md#how-do-i-fix-common-permission-issues).
+* We install the PHP version pinned in `wsl/roles/php/tasks/main.yml` (currently 8.5) by default — if you need a different version, see [this guide](../faq.md#how-do-i-switch-to-a-different-version-of-php).
+* We install Node.js 22 by default — if you need a different version, see [this guide](../faq.md#how-do-i-switch-to-a-different-version-of-nodejs).
 
 ## FAQ
 
@@ -82,7 +84,7 @@ The document root is set to the `public` subdirectory of that location, for exam
 
 **Q: How do I make the DocumentRoot point directly to `html` instead of `html/public`?**
 
-A: Edit the virtualhost's Apache configuration file at `/etc/httpd/sites-available/example.localhost` and change the `DocumentRoot` accordingly.
+A: Edit the virtualhost's Apache configuration file at `/etc/httpd/sites-available/example.localhost.conf` and change the `DocumentRoot` accordingly.
 
 **Q: How do I access my virtualhost if AlmaLinux 10 isn't running?**
 
@@ -91,8 +93,8 @@ Your virtualhosts are only reachable while the distro is running.
 
 **Q: What if I hit permission errors when writing to my project's files?**
 
-A: See the [permission issues guide](https://docs.dotkernel.org/development/v2/faq/#how-do-i-fix-common-permission-issues) in the FAQ.
+A: See the [permission issues guide](../faq.md#how-do-i-fix-common-permission-issues) in the FAQ.
 
 **Q: How do I delete a virtualhost I no longer need?**
 
-A: See [How do I delete a virtualhost?](https://docs.dotkernel.org/development/v2/faq/#how-do-i-delete-a-virtualhost) in the FAQ.
+A: See [How do I delete a virtualhost?](../faq.md#how-do-i-delete-a-virtualhost) in the FAQ.

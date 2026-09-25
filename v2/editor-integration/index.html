@@ -31,11 +31,11 @@
         <meta name="twitter:image"       content="https://docs.dotkernel.org/img/open-graph/twitter-card-docs.png"/>
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/terminal/">
+        <link rel="canonical" href="https://docs.dotkernel.org/development/v2/editor-integration/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Terminal - development - Dotkernel Documentation</title>
+        <title>Editor Integration - development - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -171,7 +171,7 @@
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
       
         
-        <a href="./" class="dropdown-item active">
+        <a href="../terminal/" class="dropdown-item active">
           
             
               AlmaLinux 10 (latest)
@@ -221,8 +221,8 @@
                 
                     
                         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Terminal</a>
+<li class="subnavigation__list-item ">
+    <a href="../terminal/" class="subnavigation__link">Terminal</a>
 </li>
 
                     
@@ -325,8 +325,8 @@
 
                     
                         
-<li class="subnavigation__list-item ">
-    <a href="../editor-integration/" class="subnavigation__link">Editor Integration</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Editor Integration</a>
 </li>
 
                     
@@ -375,7 +375,7 @@
                     
                 
 
-                <li class="breadcrumb-item active" aria-current="page">Terminal</li>
+                <li class="breadcrumb-item active" aria-current="page">Editor Integration</li>
             
         
     </ol>
@@ -410,17 +410,17 @@
                     </span>
                 </button>
                 <div class="md-actions-menu" role="menu">
-                    <button type="button" class="md-actions-item" role="menuitem" data-copy-url="../terminal.md"
+                    <button type="button" class="md-actions-item" role="menuitem" data-copy-url="../editor-integration.md"
                             onclick="copyMarkdownPage(this)">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
                         <span class="label">Copy Page (as Markdown)</span>
                     </button>
-                    <a href="../terminal.md" target="_blank" rel="alternate noopener noreferrer" type="text/markdown"
+                    <a href="../editor-integration.md" target="_blank" rel="alternate noopener noreferrer" type="text/markdown"
                        class="md-actions-item" role="menuitem" title="View the Markdown source of this page">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9l7 7v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M13 4v6h6"/><path d="M8 15h8M8 11h4"/></svg>
                         <span class="label">View as Markdown</span>
                     </a>
-                    <a href="https://claude.ai/new?q=Read%20from%20https%3A//docs.dotkernel.org/development/v2/terminal.md%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="noopener noreferrer"
+                    <a href="https://claude.ai/new?q=Read%20from%20https%3A//docs.dotkernel.org/development/v2/editor-integration.md%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="noopener noreferrer"
                        class="md-actions-item" role="menuitem" title="Open this page in Claude">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z"/></svg>
                         <span class="label">Open in Claude</span>
@@ -430,17 +430,59 @@
         </div>
     
 
-    <h1 id="terminal">Terminal</h1>
+    <h1 id="editor-integration">Editor Integration</h1>
 <h2 id="summary">Summary</h2>
-<p>Install Windows Terminal, the tool you'll use throughout this guide to run WSL 2 commands and to open dedicated tabs for your AlmaLinux 10 distro.</p>
+<p>Connect your editor of choice (VS Code or PhpStorm) directly to your <strong>AlmaLinux 10</strong> environment, and set up Xdebug for step debugging.</p>
 <blockquote>
-<p>If you are not using WSL, you can jump straight to the <a href="../setup/setup-packages/">Setup Packages page</a>.</p>
+<p>This assumes you've already completed <a href="../setup/setup-packages/">Setup Packages</a> and have at least one project running under a <a href="../virtualhosts/overview/">virtualhost</a>.</p>
 </blockquote>
-<p>If you're not already using it, we recommend installing <a href="https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&amp;gl=US">Windows Terminal</a>.
-It is a modern tool that incorporates the power of multiple already known command-line applications like <code>Windows PowerShell</code>, <code>Linux shell</code>, and more.</p>
-<p>Once your AlmaLinux 10 distro is installed, it gets its own dedicated tab profile in Windows Terminal (see <a href="../running/">Running on WSL 2</a>), so every command in this guide (Windows and Linux alike) can be run from the same app.</p>
+<h2 id="vs-code-remote-wsl">VS Code (Remote - WSL)</h2>
+<p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl">Remote - WSL</a> extension in VS Code on Windows.</p>
+<p>Then, from inside <strong>AlmaLinux 10</strong>, move to your project's directory and run:</p>
+<pre class="highlight"><code class="language-shell">code .</code></pre>
+<p>This opens VS Code connected to your <strong>AlmaLinux 10</strong> distro - notice the green remote indicator in the bottom-left corner. Every extension, terminal, and file operation now runs using the Linux binaries inside AlmaLinux 10, not the Windows ones, which matters for anything that shells out to <code>php</code>, <code>composer</code>, or <code>node</code>.</p>
+<blockquote>
+<p>The first time you run <code>code .</code> from a new distro, VS Code Server is downloaded and installed automatically inside AlmaLinux 10 - this can take a minute or two.</p>
+</blockquote>
+<h2 id="phpstorm-wsl-interpreter">PhpStorm (WSL interpreter)</h2>
+<p>You install PhpStorm normally on Windows, but configure it to use the PHP interpreter inside AlmaLinux 10 instead of installing PHP on Windows.</p>
+<ol>
+<li>Open your project in PhpStorm.</li>
+<li>Go to <code>Settings</code> -&gt; <code>PHP</code>.</li>
+<li>Next to <code>CLI Interpreter</code>, click <code>...</code> and add a new interpreter.</li>
+<li>Choose <code>From WSL</code>, select the <code>AlmaLinux-10</code> distro, and point it at <code>/usr/bin/php</code>.</li>
+<li>Confirm and apply.</li>
+</ol>
+<p>PhpStorm can now index, run, and debug using the same PHP install the playbook provisioned, instead of a separate Windows copy.</p>
+<blockquote>
+<p>Your project files are located inside the WSL filesystem (the default and recommended location - see <a href="../wsl-configuration/">WSL Configuration</a>).
+You open the project from its <code>\\wsl.localhost\AlmaLinux-10\...</code> path in PhpStorm so file watching and indexing stay fast.</p>
+</blockquote>
+<h2 id="xdebug">Xdebug</h2>
+<p>Xdebug isn't installed by the playbook. To add it:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf install php-pecl-xdebug -y</code></pre>
+<p>Then configure it (as root) by editing the Xdebug ini file:</p>
+<pre class="highlight"><code class="language-shell">sudo nano /etc/php.d/15-xdebug.ini</code></pre>
+<p>Add or adjust:</p>
+<pre class="highlight"><code class="language-text">zend_extension=xdebug.so
+xdebug.mode=debug
+xdebug.start_with_request=yes
+xdebug.client_host=127.0.0.1
+xdebug.client_port=9003</code></pre>
+<p>Restart PHP-FPM for the change to take effect:</p>
+<pre class="highlight"><code class="language-shell">sudo systemctl restart php-fpm</code></pre>
+<h3 id="vs-code">VS Code</h3>
+<p>Install the <code>PHP Debug</code> extension, then add a <code>Listen for Xdebug</code> launch configuration on port <code>9003</code>. Start listening, then request your project's URL in the browser - the debugger should stop at your breakpoints.</p>
+<h3 id="phpstorm">PhpStorm</h3>
+<p>Go to <code>Settings</code> -&gt; <code>PHP</code> -&gt; <code>Debug</code>, confirm the Xdebug port is <code>9003</code>, then click the "Start listening for PHP Debug connections" icon in the toolbar and request your project's URL in the browser.</p>
+<h2 id="phpunit">PHPUnit</h2>
+<p>Both editors can run PHPUnit using the same WSL-side PHP and Composer install:</p>
+<ul>
+<li><strong>VS Code</strong>: install a PHPUnit test-runner extension once connected via Remote - WSL, and point it at your project's <code>vendor/bin/phpunit</code>.</li>
+<li><strong>PhpStorm</strong>: go to <code>Settings</code> -&gt; <code>PHP</code> -&gt; <code>Test Frameworks</code>, add a PHPUnit configuration using the WSL interpreter configured above and your project's <code>vendor/bin/phpunit</code>.</li>
+</ul>
 <h2 id="next-step">Next step</h2>
-<p>Continue to <a href="../setup/system-requirements/">System Requirements</a> to check whether your machine is ready for WSL 2.</p>
+<p>See <a href="../wsl-configuration/">WSL Configuration</a> for where to put your project files and how to tune WSL's resource usage, or jump to the <a href="../faq/">FAQ</a> for common troubleshooting.</p>
 
 
 
@@ -450,9 +492,9 @@ It is a modern tool that incorporates the power of multiple already known comman
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../..">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../virtualhosts/create-virtualhost/">
                     <i class="bi bi-chevron-left"></i>
-                    Home
+                    Create virtualhost
                 </a>
             
         </li>
@@ -460,8 +502,8 @@ It is a modern tool that incorporates the power of multiple already known comman
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../setup/system-requirements/">
-                    System Requirements
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../wsl-configuration/">
+                    WSL Configuration
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -488,6 +530,22 @@ It is a modern tool that incorporates the power of multiple already known comman
             
                 <li class="toc__entry">
                     <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#vs-code-remote-wsl" class="toc__link nav-link">VS Code (Remote - WSL)</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#phpstorm-wsl-interpreter" class="toc__link nav-link">PhpStorm (WSL interpreter)</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#xdebug" class="toc__link nav-link">Xdebug</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#phpunit" class="toc__link nav-link">PHPUnit</a>
                 </li>
             
                 <li class="toc__entry">

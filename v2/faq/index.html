@@ -325,6 +325,18 @@
 
                     
                         
+<li class="subnavigation__list-item ">
+    <a href="../editor-integration/" class="subnavigation__link">Editor Integration</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../wsl-configuration/" class="subnavigation__link">WSL Configuration</a>
+</li>
+
+                    
+                        
 <li class="subnavigation__list-item subnavigation__list-item--active">
     <a href="./" class="subnavigation__link">FAQ</a>
 </li>
@@ -418,9 +430,12 @@
         </div>
     
 
-    <h1 id="almalinux-10-frequently-asked-questions">AlmaLinux 10 Frequently asked questions</h1>
-<p>Quick answers to common questions about switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your development environment.</p>
+    <h1 id="frequently-asked-questions">Frequently asked questions</h1>
+<p>Quick answers to common questions about the security posture of this environment, troubleshooting systemd/port issues, switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your development environment.</p>
 <ul>
+<li><a href="#is-this-environment-safe-to-expose-beyond-localhost">Is this environment safe to expose beyond localhost?</a></li>
+<li><a href="#why-do-playbook-tasks-fail-with-a-systemd-error">Why do playbook tasks fail with a systemd error?</a></li>
+<li><a href="#what-if-port-80-is-already-in-use-by-something-else">What if port 80 is already in use by something else?</a></li>
 <li><a href="#how-do-i-switch-to-a-different-version-of-php">How do I switch to a different version of PHP?</a></li>
 <li><a href="#how-do-i-switch-to-a-different-version-of-nodejs">How do I switch to a different version of Node.js?</a></li>
 <li><a href="#how-do-i-fix-common-permission-issues">How do I fix common permission issues?</a></li>
@@ -428,9 +443,36 @@
 <li><a href="#how-do-i-update-composer">How do I update Composer?</a></li>
 <li><a href="#how-do-i-update-phpmyadmin">How do I update phpMyAdmin?</a></li>
 <li><a href="#how-do-i-upgrade-mariadb">How do I upgrade MariaDB?</a></li>
+<li><a href="#why-are-my-git-credentials-stored-in-plaintext-and-can-i-use-something-else">Why are my git credentials stored in plaintext, and can I use something else?</a></li>
 <li><a href="#how-do-i-delete-a-virtualhost">How do I delete a virtualhost?</a></li>
+<li><a href="#how-do-i-remove-the-provisioned-stack-without-deleting-the-whole-distro">How do I remove the provisioned stack without deleting the whole distro?</a></li>
 <li><a href="#how-do-i-create-command-aliases">How do I create command aliases?</a></li>
 </ul>
+<h2 id="is-this-environment-safe-to-expose-beyond-localhost">Is this environment safe to expose beyond localhost?</h2>
+<p>No — this stack is a <strong>local development environment only</strong>, not intended for production or network-exposed use. Security is relaxed or effectively nonexistent by default: the MariaDB root password lives in plaintext in <code>config.yml</code>, phpMyAdmin is served at a predictable <code>/phpmyadmin</code> path with root login, and nothing is firewalled off.</p>
+<p><code>firewalld</code> is installed by the playbook but never enabled or given any rule — it's there so you have the option, not because anything is locked down out of the box. If you ever need to open a port (for example, to reach Apache from another device on your network), enable it and add a rule explicitly:</p>
+<pre class="highlight"><code class="language-shell">sudo systemctl enable --now firewalld
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --reload</code></pre>
+<p>Only do this if you understand the rest of the environment is otherwise unsecured by default — don't expose it on an untrusted network.</p>
+<h2 id="why-do-playbook-tasks-fail-with-a-systemd-error">Why do playbook tasks fail with a systemd error?</h2>
+<p>If <code>install.yml</code> fails on a task like <code>systemctl enable --now httpd</code> with an error such as <code>System has not been booted with systemd as init system</code>, systemd isn't active yet inside your <strong>AlmaLinux 10</strong> WSL distro.</p>
+<p>Check with:</p>
+<pre class="highlight"><code class="language-shell">systemctl is-system-running</code></pre>
+<p>If that errors instead of printing a status, add the following to <code>/etc/wsl.conf</code> (you'll need <code>sudo</code> to edit it):</p>
+<pre class="highlight"><code class="language-text">[boot]
+systemd=true</code></pre>
+<p>Then, from <strong>Windows Terminal</strong> (not inside AlmaLinux 10), restart the distro for the change to take effect:</p>
+<pre class="highlight"><code class="language-shell">wsl --shutdown</code></pre>
+<p>Reopen <strong>AlmaLinux 10</strong>, re-run the check above to confirm, then re-run <code>install.yml</code> — it's safe to re-run.</p>
+<h2 id="what-if-port-80-is-already-in-use-by-something-else">What if port 80 is already in use by something else?</h2>
+<p>Apache needs port 80. If Docker Desktop, IIS, Skype, or another service on your Windows host already holds it, Apache will fail to bind (and <code>install.yml</code> will fail at the Apache step).</p>
+<p>To find what's using port 80 on Windows, run in <code>Windows Terminal</code>:</p>
+<pre class="highlight"><code class="language-shell">netstat -ano | findstr :80</code></pre>
+<p>Then either stop the conflicting service, or change Apache's <code>Listen</code> port inside AlmaLinux 10 and access your virtualhosts on that port instead:</p>
+<pre class="highlight"><code class="language-shell">sudo nano /etc/httpd/conf/httpd.conf</code></pre>
+<p>Update the <code>Listen</code> directive, then restart httpd:</p>
+<pre class="highlight"><code class="language-shell">sudo systemctl restart httpd</code></pre>
 <h2 id="how-do-i-switch-to-a-different-version-of-php">How do I switch to a different version of PHP?</h2>
 <p>Execute the following command:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf module switch-to php:remi-{major}.{minor} -y</code></pre>
@@ -512,7 +554,7 @@ Avoid carrying this habit into staging or production, where permissions should b
 <pre class="highlight"><code class="language-shell">composer --version</code></pre>
 <p>The output should be similar to:</p>
 <pre class="highlight"><code class="language-text">Composer version 2.8.5 2025-01-21 15:23:40
-PHP version 8.3.20 (/usr/bin/php)
+PHP version 8.5.0 (/usr/bin/php)
 Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
 <p>Update Composer using its own <code>self-update</code> command:</p>
 <pre class="highlight"><code class="language-shell">sudo /usr/local/bin/composer self-update</code></pre>
@@ -522,7 +564,7 @@ Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
 Use composer self-update --rollback to return to version 2.8.5</code></pre>
 <p>After updating, check again your Composer version by executing:</p>
 <pre class="highlight"><code class="language-shell">composer --version</code></pre>
-<p>The output should be similar to:</p>
+<p>The output should be similar to (note that only the Composer version changes — <code>self-update</code> never touches your PHP version):</p>
 <pre class="highlight"><code class="language-text">Composer version 2.9.0 2025-11-13 10:37:16
 PHP version 8.5.0 (/usr/bin/php)
 Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
@@ -530,14 +572,13 @@ Run the "diagnose" command to get more detailed diagnostics output.</code></pre>
 <p>Being installed as a system package, it can be updated using the command which updates the rest of the system packages:</p>
 <pre class="highlight"><code class="language-shell">sudo dnf upgrade -y</code></pre>
 <h2 id="how-do-i-upgrade-mariadb">How do I upgrade MariaDB?</h2>
-<p>Initially, MariaDB was at version 11.4 LTS.
-In case you want to upgrade to a different version, for instance <a href="https://mariadb.org/11-8-is-lts/">11.8 LTS</a>, use the below steps:</p>
+<p>This repo currently pins MariaDB to the version set in <code>wsl/roles/mariadb/templates/MariaDB.repo.j2</code> (<code>12.3</code> at the time of writing — check that file for the current value, since it has changed more than once during development). If you want to switch to a different version, use the below steps:</p>
 <ul>
 <li>Open the MariaDB.repo file in any text editor.</li>
 </ul>
 <pre class="highlight"><code class="language-shell">sudo nano /etc/yum.repos.d/MariaDB.repo</code></pre>
 <ul>
-<li>Modify the <strong>baseurl</strong> variable to match the desired version, for instance <code>11.8</code> instead of <code>11.4</code>.</li>
+<li>Modify the <strong>baseurl</strong> variable to match the desired version, replacing the version number currently in the URL with the one you want.</li>
 <li>Clean dnf cache</li>
 </ul>
 <pre class="highlight"><code class="language-shell">sudo dnf clean all</code></pre>
@@ -561,6 +602,16 @@ In case you want to upgrade to a different version, for instance <a href="https:
 <li>Restart MariaDB</li>
 </ul>
 <pre class="highlight"><code class="language-shell">sudo systemctl restart mariadb</code></pre>
+<h2 id="why-are-my-git-credentials-stored-in-plaintext-and-can-i-use-something-else">Why are my git credentials stored in plaintext, and can I use something else?</h2>
+<p>The <code>git</code> role sets <code>credential.helper=store</code>, which saves your credentials to a plaintext file after your first successful git operation. That's convenient for a local dev box, but the file isn't encrypted.</p>
+<p>Alternatives:</p>
+<ul>
+<li>Point WSL's git credential helper at the Windows Git Credential Manager executable, so credentials are shared with (and encrypted by) Windows instead of stored in plaintext inside WSL:</li>
+</ul>
+<pre class="highlight"><code class="language-shell">git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"</code></pre>
+<ul>
+<li>Or use <code>gh</code> (GitHub CLI) / <code>glab</code> (GitLab CLI) instead of raw <code>git</code> for authenticated operations — <code>gh auth login</code> / <code>glab auth login</code> set up their own credential helper backed by the host's credential storage rather than a plaintext file.</li>
+</ul>
 <h2 id="how-do-i-delete-a-virtualhost">How do I delete a virtualhost?</h2>
 <p>If for whatever reason you want to delete a virtualhost, for instance <code>to-be-deleted.localhost</code> you need to do the following:</p>
 <ul>
@@ -579,6 +630,11 @@ In case you want to upgrade to a different version, for instance <a href="https:
 <li>Restart httpd server</li>
 </ul>
 <pre class="highlight"><code class="language-shell">sudo systemctl restart httpd</code></pre>
+<h2 id="how-do-i-remove-the-provisioned-stack-without-deleting-the-whole-distro">How do I remove the provisioned stack without deleting the whole distro?</h2>
+<p>Unlike <code>wsl --unregister AlmaLinux-10</code> (which deletes the entire distro and everything in it), you can remove just the provisioned stack and keep the distro itself:</p>
+<pre class="highlight"><code class="language-shell">sudo dnf remove -y httpd php* mariadb-server phpMyAdmin nodejs
+sudo rm -rf /var/www/*.localhost</code></pre>
+<p>Anything Composer or npm installed under your project directories goes away along with those project folders. Your <code>config.yml</code> (with its stored MariaDB root password) isn't removed automatically — delete <code>development/wsl/config.yml</code> yourself if you no longer need it.</p>
 <h2 id="how-do-i-create-command-aliases">How do I create command aliases?</h2>
 <p>From either your terminal or file explorer, navigate to your home directory (<code>/home/&lt;your-username&gt;/</code>).</p>
 <p>Using your preferred text editor, open the file: <code>.bash_profile</code> (if it does not exist, create it first).</p>
@@ -603,9 +659,9 @@ In case you want to upgrade to a different version, for instance <a href="https:
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../virtualhosts/create-virtualhost/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../wsl-configuration/">
                     <i class="bi bi-chevron-left"></i>
-                    Create virtualhost
+                    WSL Configuration
                 </a>
             
         </li>
@@ -640,6 +696,18 @@ In case you want to upgrade to a different version, for instance <a href="https:
             <ul class="toc__list">
             
                 <li class="toc__entry">
+                    <a href="#is-this-environment-safe-to-expose-beyond-localhost" class="toc__link nav-link">Is this environment safe to expose beyond localhost?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#why-do-playbook-tasks-fail-with-a-systemd-error" class="toc__link nav-link">Why do playbook tasks fail with a systemd error?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#what-if-port-80-is-already-in-use-by-something-else" class="toc__link nav-link">What if port 80 is already in use by something else?</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#how-do-i-switch-to-a-different-version-of-php" class="toc__link nav-link">How do I switch to a different version of PHP?</a>
                 </li>
             
@@ -668,7 +736,15 @@ In case you want to upgrade to a different version, for instance <a href="https:
                 </li>
             
                 <li class="toc__entry">
+                    <a href="#why-are-my-git-credentials-stored-in-plaintext-and-can-i-use-something-else" class="toc__link nav-link">Why are my git credentials stored in plaintext, and can I use something else?</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#how-do-i-delete-a-virtualhost" class="toc__link nav-link">How do I delete a virtualhost?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#how-do-i-remove-the-provisioned-stack-without-deleting-the-whole-distro" class="toc__link nav-link">How do I remove the provisioned stack without deleting the whole distro?</a>
                 </li>
             
                 <li class="toc__entry">

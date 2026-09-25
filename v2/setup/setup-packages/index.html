@@ -326,6 +326,18 @@
                     
                         
 <li class="subnavigation__list-item ">
+    <a href="../../editor-integration/" class="subnavigation__link">Editor Integration</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../../wsl-configuration/" class="subnavigation__link">WSL Configuration</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
     <a href="../../faq/" class="subnavigation__link">FAQ</a>
 </li>
 
@@ -427,7 +439,7 @@
         </div>
     
 
-    <h1 id="almalinux-10-setup">AlmaLinux 10 Setup</h1>
+    <h1 id="setup">Setup</h1>
 <h2 id="summary">Summary</h2>
 <p>Update system packages, install Ansible and required repositories, clone this repository, configure <code>config.yml</code>, and run the <code>install.yml</code> Ansible playbook to provision the full development environment.</p>
 <blockquote>
@@ -480,8 +492,11 @@ If either command fails or times out, check your network connection first.</p>
 <li><code>config.git.config."user.name"</code> / <code>"user.email"</code>: the identity Git will use for your commits inside AlmaLinux 10.</li>
 <li><code>config.mariadb.root_password</code>: the password to set for MariaDB's <code>root</code> user (you'll use this to log into phpMyAdmin later).</li>
 <li><code>config.system.username</code>: defaults to your current AlmaLinux 10 username automatically, usually no change needed.</li>
-<li><code>config.virtualhosts</code>: a list of local domains to create virtualhosts for (see <a href="../../virtualhosts/overview/">Virtualhosts</a>); the default entry <code>example.localhost</code> can be removed or left as-is.</li>
+<li><code>config.virtualhosts</code>: an optional starter list of local domains to create a virtualhost for during this same run; the default entry <code>example.localhost</code> can be removed or left as-is. You do not need to list every project here — see <a href="../../virtualhosts/create-virtualhost/">Create a virtualhost</a> to add one at any time after setup, without re-running this step.</li>
 </ul>
+<blockquote>
+<p>This environment is intended for <strong>local development only</strong>, not production or network-exposed use — security is relaxed or effectively nonexistent by default. <code>config.mariadb.root_password</code> is stored in plaintext in this gitignored, local-only <code>config.yml</code>, and phpMyAdmin is exposed at <code>/phpmyadmin</code> with root login. That's acceptable for a local dev box, but this stack should never be exposed to a network.</p>
+</blockquote>
 <p>Save and close the file.</p>
 <p>Install components by running the below Ansible command:</p>
 <pre class="highlight"><code class="language-shell">ansible-playbook -i hosts install.yml --ask-become-pass</code></pre>
@@ -501,7 +516,7 @@ If either command fails or times out, check your network connection first.</p>
 Clicking it will open a new tab connected to <strong>AlmaLinux 10</strong>.</p>
 </blockquote>
 <h2 id="next-step">Next step</h2>
-<p>Your environment is now provisioned. Continue to <a href="../../running/">Running on WSL 2</a> to learn how to (re)connect to your <strong>AlmaLinux 10</strong> distro, or jump straight to <a href="../../virtualhosts/overview/">Virtualhosts</a> to host your first project.</p>
+<p><code>install.yml</code> provisions the server-wide stack (Apache, PHP, MariaDB, phpMyAdmin, Composer, Node.js) — a one-time step you don't need to repeat. Creating a virtualhost for a project is a separate, repeatable step: continue to <a href="../../running/">Running on WSL 2</a> to learn how to (re)connect to your <strong>AlmaLinux 10</strong> distro, or jump straight to <a href="../../virtualhosts/create-virtualhost/">Create a virtualhost</a> whenever you're ready to host a project — you can come back and repeat that step for every new project.</p>
 <h2 id="faq">FAQ</h2>
 <p><strong>Q: What if <code>config.yml</code> doesn't exist yet?</strong></p>
 <p>A: Duplicate the provided template by running:</p>

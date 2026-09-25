@@ -1,7 +1,10 @@
-# AlmaLinux 10 Frequently asked questions
+# Frequently asked questions
 
-Quick answers to common questions about switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your development environment.
+Quick answers to common questions about the security posture of this environment, troubleshooting systemd/port issues, switching PHP/Node.js versions, fixing permissions, finding logs, and maintaining your development environment.
 
+* [Is this environment safe to expose beyond localhost?](#is-this-environment-safe-to-expose-beyond-localhost)
+* [Why do playbook tasks fail with a systemd error?](#why-do-playbook-tasks-fail-with-a-systemd-error)
+* [What if port 80 is already in use by something else?](#what-if-port-80-is-already-in-use-by-something-else)
 * [How do I switch to a different version of PHP?](#how-do-i-switch-to-a-different-version-of-php)
 * [How do I switch to a different version of Node.js?](#how-do-i-switch-to-a-different-version-of-nodejs)
 * [How do I fix common permission issues?](#how-do-i-fix-common-permission-issues)
@@ -9,8 +12,71 @@ Quick answers to common questions about switching PHP/Node.js versions, fixing p
 * [How do I update Composer?](#how-do-i-update-composer)
 * [How do I update phpMyAdmin?](#how-do-i-update-phpmyadmin)
 * [How do I upgrade MariaDB?](#how-do-i-upgrade-mariadb)
+* [Why are my git credentials stored in plaintext, and can I use something else?](#why-are-my-git-credentials-stored-in-plaintext-and-can-i-use-something-else)
 * [How do I delete a virtualhost?](#how-do-i-delete-a-virtualhost)
+* [How do I remove the provisioned stack without deleting the whole distro?](#how-do-i-remove-the-provisioned-stack-without-deleting-the-whole-distro)
 * [How do I create command aliases?](#how-do-i-create-command-aliases)
+
+## Is this environment safe to expose beyond localhost?
+
+No — this stack is a **local development environment only**, not intended for production or network-exposed use. Security is relaxed or effectively nonexistent by default: the MariaDB root password lives in plaintext in `config.yml`, phpMyAdmin is served at a predictable `/phpmyadmin` path with root login, and nothing is firewalled off.
+
+`firewalld` is installed by the playbook but never enabled or given any rule — it's there so you have the option, not because anything is locked down out of the box. If you ever need to open a port (for example, to reach Apache from another device on your network), enable it and add a rule explicitly:
+
+```shell
+sudo systemctl enable --now firewalld
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --reload
+```
+
+Only do this if you understand the rest of the environment is otherwise unsecured by default — don't expose it on an untrusted network.
+
+## Why do playbook tasks fail with a systemd error?
+
+If `install.yml` fails on a task like `systemctl enable --now httpd` with an error such as `System has not been booted with systemd as init system`, systemd isn't active yet inside your **AlmaLinux 10** WSL distro.
+
+Check with:
+
+```shell
+systemctl is-system-running
+```
+
+If that errors instead of printing a status, add the following to `/etc/wsl.conf` (you'll need `sudo` to edit it):
+
+```text
+[boot]
+systemd=true
+```
+
+Then, from **Windows Terminal** (not inside AlmaLinux 10), restart the distro for the change to take effect:
+
+```shell
+wsl --shutdown
+```
+
+Reopen **AlmaLinux 10**, re-run the check above to confirm, then re-run `install.yml` — it's safe to re-run.
+
+## What if port 80 is already in use by something else?
+
+Apache needs port 80. If Docker Desktop, IIS, Skype, or another service on your Windows host already holds it, Apache will fail to bind (and `install.yml` will fail at the Apache step).
+
+To find what's using port 80 on Windows, run in `Windows Terminal`:
+
+```shell
+netstat -ano | findstr :80
+```
+
+Then either stop the conflicting service, or change Apache's `Listen` port inside AlmaLinux 10 and access your virtualhosts on that port instead:
+
+```shell
+sudo nano /etc/httpd/conf/httpd.conf
+```
+
+Update the `Listen` directive, then restart httpd:
+
+```shell
+sudo systemctl restart httpd
+```
 
 ## How do I switch to a different version of PHP?
 
@@ -162,7 +228,7 @@ The output should be similar to:
 
 ```text
 Composer version 2.8.5 2025-01-21 15:23:40
-PHP version 8.3.20 (/usr/bin/php)
+PHP version 8.5.0 (/usr/bin/php)
 Run the "diagnose" command to get more detailed diagnostics output.
 ```
 
@@ -186,7 +252,7 @@ After updating, check again your Composer version by executing:
 composer --version
 ```
 
-The output should be similar to:
+The output should be similar to (note that only the Composer version changes — `self-update` never touches your PHP version):
 
 ```text
 Composer version 2.9.0 2025-11-13 10:37:16
@@ -204,8 +270,7 @@ sudo dnf upgrade -y
 
 ## How do I upgrade MariaDB?
 
-Initially, MariaDB was at version 11.4 LTS.
-In case you want to upgrade to a different version, for instance [11.8 LTS](https://mariadb.org/11-8-is-lts/), use the below steps:
+This repo currently pins MariaDB to the version set in `wsl/roles/mariadb/templates/MariaDB.repo.j2` (`12.3` at the time of writing — check that file for the current value, since it has changed more than once during development). If you want to switch to a different version, use the below steps:
 
 * Open the MariaDB.repo file in any text editor.
 
@@ -213,7 +278,7 @@ In case you want to upgrade to a different version, for instance [11.8 LTS](http
 sudo nano /etc/yum.repos.d/MariaDB.repo
 ```
 
-* Modify the **baseurl** variable to match the desired version, for instance `11.8` instead of `11.4`.
+* Modify the **baseurl** variable to match the desired version, replacing the version number currently in the URL with the one you want.
 * Clean dnf cache
 
 ```shell
@@ -250,6 +315,20 @@ sudo mariadb-upgrade -uroot -p
 sudo systemctl restart mariadb
 ```
 
+## Why are my git credentials stored in plaintext, and can I use something else?
+
+The `git` role sets `credential.helper=store`, which saves your credentials to a plaintext file after your first successful git operation. That's convenient for a local dev box, but the file isn't encrypted.
+
+Alternatives:
+
+* Point WSL's git credential helper at the Windows Git Credential Manager executable, so credentials are shared with (and encrypted by) Windows instead of stored in plaintext inside WSL:
+
+```shell
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"
+```
+
+* Or use `gh` (GitHub CLI) / `glab` (GitLab CLI) instead of raw `git` for authenticated operations — `gh auth login` / `glab auth login` set up their own credential helper backed by the host's credential storage rather than a plaintext file.
+
 ## How do I delete a virtualhost?
 
 If for whatever reason you want to delete a virtualhost, for instance `to-be-deleted.localhost` you need to do the following:
@@ -277,6 +356,17 @@ sudo rm -f /etc/httpd/sites-enabled/to-be-deleted.localhost.conf
 ```shell
 sudo systemctl restart httpd
 ```
+
+## How do I remove the provisioned stack without deleting the whole distro?
+
+Unlike `wsl --unregister AlmaLinux-10` (which deletes the entire distro and everything in it), you can remove just the provisioned stack and keep the distro itself:
+
+```shell
+sudo dnf remove -y httpd php* mariadb-server phpMyAdmin nodejs
+sudo rm -rf /var/www/*.localhost
+```
+
+Anything Composer or npm installed under your project directories goes away along with those project folders. Your `config.yml` (with its stored MariaDB root password) isn't removed automatically — delete `development/wsl/config.yml` yourself if you no longer need it.
 
 ## How do I create command aliases?
 

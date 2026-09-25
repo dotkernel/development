@@ -1,4 +1,4 @@
-# AlmaLinux 9 Setup
+# Setup
 
 > The instructions below also work without using WSL.
 
