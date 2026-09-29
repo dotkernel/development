@@ -58,7 +58,7 @@ You will install your project under the `html` directory of your project, for ex
 * You can still run PHP scripts under the default Apache project directory, located at `/var/www/html/`.
 * If you encounter write permission issues, see [this guide](../faq.md#how-do-i-fix-common-permission-issues).
 * We install the PHP version pinned in `wsl/roles/php/tasks/main.yml` (currently 8.5) by default — if you need a different version, see [this guide](../faq.md#how-do-i-switch-to-a-different-version-of-php).
-* We install Node.js 22 by default — if you need a different version, see [this guide](../faq.md#how-do-i-switch-to-a-different-version-of-nodejs).
+* We install Node.js 24 by default — if you need a different version, see [this guide](../faq.md#how-do-i-switch-to-a-different-version-of-nodejs).
 
 ## FAQ
 
