@@ -15,13 +15,13 @@ It works with any PHP framework or project.
 
 Running `install.yml` installs and configures:
 
-| Component | Details                                                                                  |
-| --- |------------------------------------------------------------------------------------------|
+| Component  | Details                                                                                  |
+|------------|------------------------------------------------------------------------------------------|
 | Web server | Apache, routing `*.localhost` domains to your projects                                   |
-| PHP | PHP-FPM 8.5 by default; 8.1–8.5 available via the `php81` … `php85` aliases              |
-| Database | MariaDB 12.3, plus phpMyAdmin                                                            |
-| Node.js | 24 by default; 18–24 available via the `node18` … `node24` aliases                       |
-| Tools | Composer, Git (configured with your name and email) and the required Ansible collections |
+| PHP        | PHP-FPM 8.5 by default; 8.1–8.5 available via the `php81` … `php85` aliases              |
+| Database   | MariaDB 12.3, plus phpMyAdmin                                                            |
+| Node.js    | 24 by default; 18–24 available via the `node18` … `node24` aliases                       |
+| Tools      | Composer, Git (configured with your name and email) and the required Ansible collections |
 
 The pinned versions live in `wsl/roles/php/tasks/main.yml`, `wsl/roles/mariadb/templates/MariaDB.repo.j2` and `wsl/roles/nodejs/tasks/main.yml`.
 
