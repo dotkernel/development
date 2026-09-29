@@ -25,4 +25,3 @@
   include_role:
     name: virtualhost
     tasks_from: create
-  when: sites_enabled_check.stdout == "1"
