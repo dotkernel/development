@@ -42,40 +42,40 @@ To upgrade an existing installation:
 
 1. Go to your clone of the repository and pull the latest changes:
 
-```shell
-cd ~/development
-git pull
-```
+    ```shell
+    cd ~/development
+    git pull
+    ```
 
 2. Open `~/.bash_profile`:
 
-```shell
-nano ~/.bash_profile
-```
+    ```shell
+    nano ~/.bash_profile
+    ```
 
 3. Add the following line:
 
-```shell
-alias node24="sudo dnf remove nodejs -y && curl -fsSL https://rpm.nodesource.com/setup_24.x | sudo bash - && sudo dnf install nodejs -y"
-```
+    ```shell
+    alias node24="sudo dnf remove nodejs -y && curl -fsSL https://rpm.nodesource.com/setup_24.x | sudo bash - && sudo dnf install nodejs -y"
+    ```
 
 4. Save the file, then log out and log back in.
 5. Run the alias to switch to Node.js 24:
 
-```shell
-node24
-```
+    ```shell
+    node24
+    ```
 
 6. Check the installed version:
 
-```shell
-node -v
-```
+    ```shell
+    node -v
+    ```
 
-The output should look similar to the below:
+    The output should look similar to the below:
 
-```terminaloutput
-v24.13.0
-```
+    ```terminaloutput
+    v24.13.0
+    ```
 
 For more on switching between Node.js versions, see the [FAQ](faq.md#how-do-i-switch-to-a-different-version-of-nodejs).
