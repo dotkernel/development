@@ -15,6 +15,7 @@ nav:
           - Installation: v2/setup/installation.md
           - Setup Packages: v2/setup/setup-packages.md
       - Running on WSL 2: v2/running.md
+      - Updating: v2/updating.md
       - Virtualhosts:
           - Overview: v2/virtualhosts/overview.md
           - Create virtualhost: v2/virtualhosts/create-virtualhost.md

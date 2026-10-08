@@ -57,6 +57,12 @@ On a native Linux host, skip steps 1 and 2 and go straight to [Setup Packages](h
 > Security is relaxed by default: the MariaDB root password is stored in plaintext in `config.yml`, and phpMyAdmin allows root login.
 > Never expose it to a network.
 
+## Updating
+
+Already have an installation?
+Run `git pull` in your clone and add any new aliases to `~/.bash_profile`.
+See [Updating](https://docs.dotkernel.org/development/v2/updating/) for the steps and a list of changes.
+
 ## Virtualhosts
 
 List the domains you want under the `virtualhosts` key in `wsl/config.yml`, then run:
