@@ -132,6 +132,8 @@ The aliases are the following:
 * `node20`: switch to Node.js 20
 * `node18`: switch to Node.js 18
 
+> If an alias is missing from an existing installation, see [Updating an existing installation](updating.md).
+
 After switching to a different Node.js version, test with the following command:
 
 ```shell
