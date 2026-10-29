@@ -33,6 +33,9 @@ Save the file, then log out and log back in (or run `source ~/.bash_profile`) so
 > Only add what is new.
 > Do not replace the whole file, as it may contain your own customizations.
 
+> Do not re-run `install.yml` to pick up new aliases.
+> It overwrites `~/.bash_profile` without making a backup, so any aliases you added yourself would be lost.
+
 ## Changes
 
 ### Node.js 24 by default

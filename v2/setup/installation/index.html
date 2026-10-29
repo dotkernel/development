@@ -163,15 +163,15 @@
 
 <div class="version-selector">
   <div class="btn-group">
-    <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+    <button type="button" class="btn dropdown-toggle bg-light" data-bs-toggle="dropdown" data-bs-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
       
         AlmaLinux 10
       
     </button>
-    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="version-selector-dropdown">
       
         
-        <a href="../../terminal/" class="dropdown-item active">
+        <a href="../../.." class="dropdown-item active">
           
             
               AlmaLinux 10 (latest)
@@ -221,12 +221,26 @@
                 
                     
                         
-<li class="subnavigation__list-item ">
-    <a href="../../terminal/" class="subnavigation__link">Terminal</a>
-</li>
 
-                    
-                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -241,10 +255,16 @@
 
 
 <li class="subnavigation__list-item">
-    <a data-bs-toggle="collapse" href="#setup" role="button" aria-expanded="false" aria-controls="setup">
-        <span class="subnavigation__headline">Setup</span>
+    <a data-bs-toggle="collapse" href="#getting-started" role="button" class="" aria-expanded="true" aria-controls="getting-started">
+        <span class="subnavigation__headline">Getting Started</span>
     </a>
-    <ul class="subnavigation__list collapse" id="setup">
+    <ul class="subnavigation__list collapse show" id="getting-started">
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../terminal/" class="subnavigation__link">Terminal</a>
+</li>
+
         
         
 <li class="subnavigation__list-item ">
@@ -264,19 +284,13 @@
 </li>
 
         
-    </ul>
-</li>
-
-                    
-                        
+        
 <li class="subnavigation__list-item ">
     <a href="../../running/" class="subnavigation__link">Running on WSL 2</a>
 </li>
 
-                    
-                        
-<li class="subnavigation__list-item ">
-    <a href="../../updating/" class="subnavigation__link">Updating</a>
+        
+    </ul>
 </li>
 
                     
@@ -309,7 +323,7 @@
 
 
 <li class="subnavigation__list-item">
-    <a data-bs-toggle="collapse" href="#virtualhosts" role="button" aria-expanded="false" aria-controls="virtualhosts">
+    <a data-bs-toggle="collapse" href="#virtualhosts" role="button" class="collapsed" aria-expanded="false" aria-controls="virtualhosts">
         <span class="subnavigation__headline">Virtualhosts</span>
     </a>
     <ul class="subnavigation__list collapse" id="virtualhosts">
@@ -331,20 +345,132 @@
 
                     
                         
-<li class="subnavigation__list-item ">
-    <a href="../../editor-integration/" class="subnavigation__link">Editor Integration</a>
-</li>
 
-                    
-                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#virtualhosts" role="button" class="collapsed" aria-expanded="false" aria-controls="virtualhosts">
+        <span class="subnavigation__headline">Virtualhosts</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="virtualhosts">
+        
+        
 <li class="subnavigation__list-item ">
     <a href="../../wsl-configuration/" class="subnavigation__link">WSL Configuration</a>
 </li>
 
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../editor-integration/" class="subnavigation__link">Editor Integration</a>
+</li>
+
+        
+    </ul>
+</li>
+
                     
                         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#maintenance" role="button" class="collapsed" aria-expanded="false" aria-controls="maintenance">
+        <span class="subnavigation__headline">Maintenance</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="maintenance">
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../updating/" class="subnavigation__link">Updating</a>
+</li>
+
+        
+    </ul>
+</li>
+
+                    
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="subnavigation__list-item">
+    <a data-bs-toggle="collapse" href="#reference" role="button" class="collapsed" aria-expanded="false" aria-controls="reference">
+        <span class="subnavigation__headline">Reference</span>
+    </a>
+    <ul class="subnavigation__list collapse" id="reference">
+        
+        
 <li class="subnavigation__list-item ">
     <a href="../../faq/" class="subnavigation__link">FAQ</a>
+</li>
+
+        
+    </ul>
 </li>
 
                     
@@ -383,7 +509,7 @@
                     
                         
                         
-                            <li class="breadcrumb-item">Setup</li>
+                            <li class="breadcrumb-item">Getting Started</li>
                         
                     
                 
@@ -402,7 +528,7 @@
 
     
     
-<!--        <h2 class="chapter__headline text-black-50">Setup</h2>-->
+<!--        <h2 class="chapter__headline text-black-50">Getting Started</h2>-->
     
 
     
@@ -695,8 +821,8 @@ A blocked or unstable internet connection (including corporate proxies/firewalls
     </div>
 
     <div class="dk-home-footer__bottom">
-        <img src="https://docs.dotkernel.org/img/dk_logo_2024_white.svg" alt="Dotkernel" width="112" height="21" style="opacity:.75" />
-        <div class="dk-home-footer__tagline">Built with Mezzio, Laminas &amp; Doctrine &mdash; for PHP developers, by PHP developers. The Laminas logo is copyright of the Laminas Foundation.</div>
+        <img src="https://docs.dotkernel.org/img/dk_logo_2024_white.svg" alt="Dotkernel Logo" width="112" height="21" style="opacity:.75" />
+        <div class="dk-home-footer__tagline">Built with Mezzio, Laminas &amp; Doctrine - for PHP developers, by PHP developers. The Laminas logo is copyright of the Laminas Foundation.</div>
         <div class="flex-grow-1"></div>
         <div class="dk-home-footer__copyright">&#169; Copyright Dotkernel <span id="current-year"></span>. All rights reserved.</div>
     </div>
@@ -706,14 +832,6 @@ A blocked or unstable internet connection (including corporate proxies/firewalls
             let base_url = '../../..',
                 project  = "development",
                 siteName = 'development';
-
-                document.addEventListener("DOMContentLoaded", function() {
-                    document.querySelectorAll('.subnavigation__link').forEach(function(link) {
-                        if (link.getAttribute('href') === './') {
-                            link.parentNode.parentNode.classList.add('show');
-                        }
-                    });
-                });
         </script>
         
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

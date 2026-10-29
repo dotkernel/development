@@ -159,15 +159,15 @@
 
 <div class="version-selector">
   <div class="btn-group">
-    <button type="button" class="btn dropdown-toggle bg-light" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
+    <button type="button" class="btn dropdown-toggle bg-light" data-bs-toggle="dropdown" data-bs-display="static" aria-haspopup="true" aria-expanded="false" id="version-selector-dropdown">
       
         AlmaLinux 10
       
     </button>
-    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="version-selector-dropdown">
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="version-selector-dropdown">
       
         
-        <a href="../v2/terminal/" class="dropdown-item">
+        <a href="../." class="dropdown-item">
           
             
               AlmaLinux 10 (latest)
@@ -310,8 +310,8 @@
     </div>
 
     <div class="dk-home-footer__bottom">
-        <img src="https://docs.dotkernel.org/img/dk_logo_2024_white.svg" alt="Dotkernel" width="112" height="21" style="opacity:.75" />
-        <div class="dk-home-footer__tagline">Built with Mezzio, Laminas &amp; Doctrine &mdash; for PHP developers, by PHP developers. The Laminas logo is copyright of the Laminas Foundation.</div>
+        <img src="https://docs.dotkernel.org/img/dk_logo_2024_white.svg" alt="Dotkernel Logo" width="112" height="21" style="opacity:.75" />
+        <div class="dk-home-footer__tagline">Built with Mezzio, Laminas &amp; Doctrine - for PHP developers, by PHP developers. The Laminas logo is copyright of the Laminas Foundation.</div>
         <div class="flex-grow-1"></div>
         <div class="dk-home-footer__copyright">&#169; Copyright Dotkernel <span id="current-year"></span>. All rights reserved.</div>
     </div>
@@ -321,14 +321,6 @@
             let base_url = '..',
                 project  = "development",
                 siteName = 'development';
-
-                document.addEventListener("DOMContentLoaded", function() {
-                    document.querySelectorAll('.subnavigation__link').forEach(function(link) {
-                        if (link.getAttribute('href') === './') {
-                            link.parentNode.parentNode.classList.add('show');
-                        }
-                    });
-                });
         </script>
         
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
